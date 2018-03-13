@@ -1,0 +1,9 @@
+{
+  "name": "loftidashboard",
+  "version": "1.0.0",
+  "description": "Un beau dasboard pour que notre cher Lofti puisse rendre de magnifiques maquettes en temps et en heures",
+  "main": "index.js",
+  "repository": "git@github.com:codimac/loftiDashboard.git",
+  "author": "Florian <zobeleflorian@gmail.com>",
+  "license": "MIT"
+}
