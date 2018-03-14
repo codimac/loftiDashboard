@@ -8,8 +8,9 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 // paths
 const paths = {
     DIST: path.resolve(__dirname, '../dist'),
+    PUBLIC: path.resolve(__dirname, '../public'),
     SRC: path.resolve(__dirname, '../src'),
-    PUBLIC: path.resolve(__dirname, '../public')
+    STYLES: path.resolve(__dirname, '../src/styles')
 };
 
 const plugins = [
@@ -21,7 +22,10 @@ const plugins = [
 
 // config
 const config = {
-    entry: path.resolve(paths.SRC, 'index.jsx'),
+    entry: [
+        path.resolve(paths.SRC, 'index.jsx'),
+        path.resolve(paths.STYLES, 'app.scss')
+    ],
     module: {
         rules: [
             {
@@ -31,12 +35,17 @@ const config = {
                 options: {
                     presets: ['@babel/preset-env']
                 }
+            },
+            {
+                test: /\.scss$/,
+                exclude: /(node_modules|bower_components)/,
+                use: ['style-loader', 'css-loader', 'sass-loader']
             }
         ]
     },
     resolve: {
         modules: ['node_modules', paths.SRC],
-        extensions: ['.json', '.js', '.jsx']
+        extensions: ['.json', '.js', '.jsx', '.scss', '.css']
     },
     plugins
 };
