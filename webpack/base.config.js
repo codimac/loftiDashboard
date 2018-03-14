@@ -27,13 +27,15 @@ const config = {
             {
                 test: /(\.jsx|\.js)$/,
                 exclude: /(node_modules|bower_components)/,
-                use: {
-                    loader: 'babel-loader'
-                } 
+                loader: 'babel-loader',
+                options: {
+                    presets: ['@babel/preset-env']
+                }
             }
         ]
     },
     resolve: {
+        modules: ['node_modules', paths.SRC],
         extensions: ['.json', '.js', '.jsx']
     },
     plugins
