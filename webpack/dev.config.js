@@ -4,18 +4,14 @@ const baseConfig = require('./base.config');
 const paths = require('./base.config');
 
 module.exports = merge(baseConfig, {
-    devServer: {
-        contentBase: paths.SRC,
-        port: 8000,
-        // open: true,
-        stats: {
-<<<<<<< Updated upstream
-            modules: false,
-            timings: false,
-            children: false
-=======
-            modules: false
->>>>>>> Stashed changes
-        }
-    },
+  devServer: {
+    contentBase: paths.SRC,
+    port: 8000,
+    // open: true,
+    stats: {
+/*       modules: false,
+      timings: false,
+      children: false */
+    }
+  },
 })
