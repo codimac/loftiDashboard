@@ -21,6 +21,7 @@
     "webpack-merge": "^4.1.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --mode development --config webpack/dev.config.js"
+    "start": "webpack-dev-server --progress --mode development --config webpack/dev.config.js",
+    "build": "webpack --progress --mode production --config webpack/prod.config.js"
   }
 }

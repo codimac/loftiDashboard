@@ -1,17 +1,17 @@
 Arguments: 
-  D:\Programmes\nodejs\node.exe C:\Program Files (x86)\Yarn\bin\yarn.js add -D @babel/react
+  /usr/local/bin/node /usr/share/yarn/bin/yarn.js build
 
 PATH: 
-  D:\Programmes\cmder\bin;D:\Programmes\cmder\vendor\conemu-maximus5\ConEmu\Scripts;D:\Programmes\cmder\vendor\conemu-maximus5;D:\Programmes\cmder\vendor\conemu-maximus5\ConEmu;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\windows\system32;C:\windows;C:\windows\System32\Wbem;C:\windows\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files (x86)\QuickTime\QTSystem\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files\Common Files\Autodesk Shared\;C:\Program Files\RedHat\java-1.8.0-openjdk-1.8.0.144-1\bin;C:\MinGW;C:\Program Files (x86)\Yarn\bin;D:\Documents\WAMP\bin\php\php7.1.9;C:\ProgramData\chocolatey\bin;C:\Program Files\Java\jdk1.8.0_152\bin;C:\Android\android-sdk\tools;C:\Android\android-sdk\platform-tools;C:\Program Files\nodejs;D:\Programmes\composer;D:\Programmes\Putty\;D:\Programmes\nodejs\;C:\Users\Florian\AppData\Roaming\Dashlane\5.8.0.17084\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Florian\AppData\Roaming\Dashlane\5.8.0.17084\ucrt;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\share\vim\vim74;D:\Programmes\cmder\
+  /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
 
 Yarn version: 
-  1.3.2
+  1.5.1
 
 Node version: 
-  9.7.1
+  9.6.1
 
 Platform: 
-  win32 x64
+  linux x64
 
 npm manifest: 
   {
@@ -25,6 +25,7 @@ npm manifest:
     "devDependencies": {
       "@babel/core": "^7.0.0-beta.40",
       "@babel/preset-env": "^7.0.0-beta.40",
+      "@babel/preset-react": "^7.0.0-beta.40",
       "babel-loader": "^8.0.0-beta",
       "babel-preset-react": "^6.24.1",
       "html-webpack-plugin": "^3.0.6",
@@ -36,7 +37,8 @@ npm manifest:
       "webpack-merge": "^4.1.2"
     },
     "scripts": {
-      "start": "webpack-dev-server --mode development --config webpack/dev.config.js"
+      "start": "webpack-dev-server --progress --mode development --config webpack/dev.config.js",
+      "build": "webpack --progress --mode production --config webpack/prod.configs.js"
     }
   }
 
@@ -95,6 +97,13 @@ Lockfile:
     dependencies:
       "@babel/helper-explode-assignable-expression" "7.0.0-beta.40"
       "@babel/types" "7.0.0-beta.40"
+  
+  "@babel/helper-builder-react-jsx@7.0.0-beta.40":
+    version "7.0.0-beta.40"
+    resolved "https://registry.yarnpkg.com/@babel/helper-builder-react-jsx/-/helper-builder-react-jsx-7.0.0-beta.40.tgz#2a171b6c4939c6cd0bdc38cca261d1f3b32cedb1"
+    dependencies:
+      "@babel/types" "7.0.0-beta.40"
+      esutils "^2.0.0"
   
   "@babel/helper-call-delegate@7.0.0-beta.40":
     version "7.0.0-beta.40"
@@ -250,6 +259,10 @@ Lockfile:
     version "7.0.0-beta.40"
     resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-async-generators/-/plugin-syntax-async-generators-7.0.0-beta.40.tgz#6c45889569add3b3721cc9a481ae99906f240874"
   
+  "@babel/plugin-syntax-jsx@7.0.0-beta.40":
+    version "7.0.0-beta.40"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-jsx/-/plugin-syntax-jsx-7.0.0-beta.40.tgz#db44d52ff06f784be22f2659e694cc2cf97f99f9"
+  
   "@babel/plugin-syntax-object-rest-spread@7.0.0-beta.40":
     version "7.0.0-beta.40"
     resolved "https://registry.yarnpkg.com/@babel/plugin-syntax-object-rest-spread/-/plugin-syntax-object-rest-spread-7.0.0-beta.40.tgz#d5e04536062e4df685c203ae48bb19bfe2cf235c"
@@ -371,6 +384,29 @@ Lockfile:
       "@babel/helper-call-delegate" "7.0.0-beta.40"
       "@babel/helper-get-function-arity" "7.0.0-beta.40"
   
+  "@babel/plugin-transform-react-display-name@7.0.0-beta.40":
+    version "7.0.0-beta.40"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-display-name/-/plugin-transform-react-display-name-7.0.0-beta.40.tgz#2e9aba5d74da8ecee00d6d4bf68c833955355e4c"
+  
+  "@babel/plugin-transform-react-jsx-self@7.0.0-beta.40":
+    version "7.0.0-beta.40"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-self/-/plugin-transform-react-jsx-self-7.0.0-beta.40.tgz#cbf0286ec9e52129840e16d1a173adb98e52fb97"
+    dependencies:
+      "@babel/plugin-syntax-jsx" "7.0.0-beta.40"
+  
+  "@babel/plugin-transform-react-jsx-source@7.0.0-beta.40":
+    version "7.0.0-beta.40"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx-source/-/plugin-transform-react-jsx-source-7.0.0-beta.40.tgz#7e62fe33f3e46c7f0d81d187d9c9aa348daa6488"
+    dependencies:
+      "@babel/plugin-syntax-jsx" "7.0.0-beta.40"
+  
+  "@babel/plugin-transform-react-jsx@7.0.0-beta.40":
+    version "7.0.0-beta.40"
+    resolved "https://registry.yarnpkg.com/@babel/plugin-transform-react-jsx/-/plugin-transform-react-jsx-7.0.0-beta.40.tgz#93af0b0ef691cda86ab52d912b50f72eb538349d"
+    dependencies:
+      "@babel/helper-builder-react-jsx" "7.0.0-beta.40"
+      "@babel/plugin-syntax-jsx" "7.0.0-beta.40"
+  
   "@babel/plugin-transform-regenerator@7.0.0-beta.40":
     version "7.0.0-beta.40"
     resolved "https://registry.yarnpkg.com/@babel/plugin-transform-regenerator/-/plugin-transform-regenerator-7.0.0-beta.40.tgz#f8a89ce89a0fae8e9cdfc2f2768104811517374a"
@@ -449,6 +485,16 @@ Lockfile:
       browserslist "^3.0.0"
       invariant "^2.2.2"
       semver "^5.3.0"
+  
+  "@babel/preset-react@^7.0.0-beta.40":
+    version "7.0.0-beta.40"
+    resolved "https://registry.yarnpkg.com/@babel/preset-react/-/preset-react-7.0.0-beta.40.tgz#ccc8f916b694c8ea4b4ccbd1584f873caf199557"
+    dependencies:
+      "@babel/plugin-syntax-jsx" "7.0.0-beta.40"
+      "@babel/plugin-transform-react-display-name" "7.0.0-beta.40"
+      "@babel/plugin-transform-react-jsx" "7.0.0-beta.40"
+      "@babel/plugin-transform-react-jsx-self" "7.0.0-beta.40"
+      "@babel/plugin-transform-react-jsx-source" "7.0.0-beta.40"
   
   "@babel/template@7.0.0-beta.40":
     version "7.0.0-beta.40"
@@ -2419,7 +2465,7 @@ Lockfile:
     version "4.2.0"
     resolved "https://registry.yarnpkg.com/estraverse/-/estraverse-4.2.0.tgz#0dee3fed31fcd469618ce7342099fc1afa0bdb13"
   
-  esutils@^2.0.2:
+  esutils@^2.0.0, esutils@^2.0.2:
     version "2.0.2"
     resolved "https://registry.yarnpkg.com/esutils/-/esutils-2.0.2.tgz#0abf4f1caa5bcb1f7a9d8acc6dea4faaa04bac9b"
   
@@ -6444,14 +6490,16 @@ Lockfile:
       yeoman-environment "^2.0.5"
 
 Trace: 
-  Error: https://registry.yarnpkg.com/@babel%2freact: Not found
-      at Request.params.callback [as _callback] (C:\Program Files (x86)\Yarn\lib\cli.js:62098:18)
-      at Request.self.callback (C:\Program Files (x86)\Yarn\lib\cli.js:123085:22)
-      at Request.emit (events.js:127:13)
-      at Request.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:124068:10)
-      at Request.emit (events.js:127:13)
-      at IncomingMessage.<anonymous> (C:\Program Files (x86)\Yarn\lib\cli.js:123988:12)
-      at Object.onceWrapper (events.js:219:13)
-      at IncomingMessage.emit (events.js:132:15)
-      at endReadableNT (_stream_readable.js:1101:12)
-      at process._tickCallback (internal/process/next_tick.js:114:19)
+  Error: Command failed.
+  Exit code: 1
+  Command: sh
+  Arguments: -c webpack --progress --mode production --config webpack/prod.configs.js
+  Directory: /home/florian/Documents/Projets/LoftiWebS4/loftiDashboard
+  Output:
+  
+      at ProcessTermError.MessageError (/usr/share/yarn/lib/cli.js:186:110)
+      at new ProcessTermError (/usr/share/yarn/lib/cli.js:226:113)
+      at ChildProcess.<anonymous> (/usr/share/yarn/lib/cli.js:30281:17)
+      at ChildProcess.emit (events.js:127:13)
+      at maybeClose (internal/child_process.js:933:16)
+      at Process.ChildProcess._handle.onexit (internal/child_process.js:220:5)
