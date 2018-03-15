@@ -14,15 +14,35 @@ const paths = {
   STYLES: path.resolve(__dirname, '../src/styles')
 };
 
+// loaders
+const cssLoaders = [
+  {
+    loader: 'css-loader',
+    options: {
+      importLoaders: 1
+    }
+  },
+  {
+    loader: 'postcss-loader',
+    options: {
+      plugins: () => [
+        require('autoprefixer')({
+          browsers: ['last 2 versions', 'ie > 8']
+        })
+      ]
+    }
+  }
+];
+
 const plugins = [
   new HtmlWebpackPlugin({
     template: path.join(paths.SRC, 'index.html'),
-    filename: 'index.html'
+    filename: 'index.html',
   }),
   new ExtractTextPlugin({
-    filename: 'style.css',
-    allChunks: true
-  }),
+    filename: '[name].[contenthash:16].css',
+    allChunks: true,
+  })
 ];
 
 // config
@@ -42,17 +62,29 @@ const config = {
         }
       },
       {
+        test: /\.css$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: [
+            ...cssLoaders
+          ]
+        })
+      },
+      {
         test: /\.scss$/,
         use: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader']
+          use: [
+            ...cssLoaders,
+            'sass-loader'
+          ]
         })
       },
     ]
   },
   resolve: {
     modules: ['node_modules', paths.SRC],
-    extensions: ['.json', '.js', '.jsx', '.scss', '.css']
+    extensions: ['.json', '.js', '.jsx']
   },
   plugins
 };
