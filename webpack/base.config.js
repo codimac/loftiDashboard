@@ -32,23 +32,25 @@ const cssLoaders = [
 ];
 
 const plugins = [
+  new ExtractTextPlugin({
+    filename: isDev ? '[name].css' : '[name].[contenthash:16].css',
+    allChunks: true,
+    disable: isDev
+  }),
   new HtmlWebpackPlugin({
     template: path.join(paths.SRC, 'index.html'),
     filename: 'index.html',
-  }),
-  new ExtractTextPlugin({
-    filename: '[name].[contenthash:16].css',
-    allChunks: true,
-    disable: isDev
   })
 ];
 
 // config
 module.exports = {
-  entry: [
-    path.join(paths.SRC, 'index.jsx'),
-    path.join(paths.STYLES, 'styles.scss')
-  ],
+  entry: {
+    bundle: [
+      path.join(paths.STYLES, 'styles.scss'),
+      path.join(paths.SRC, 'index.jsx')
+    ]
+  },
   module: {
     rules: [
       {

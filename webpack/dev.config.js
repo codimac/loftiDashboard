@@ -9,9 +9,9 @@ module.exports = merge(baseConfig, {
     port: 8000,
     // open: true,
     stats: {
-      modules: false,
-      timings: false,
-      children: false
+      // modules: false,
+      // timings: false,
+      // children: false
     }
   },
 })
