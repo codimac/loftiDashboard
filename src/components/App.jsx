@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
-import { render } from 'react-dom';
 
-import piscine from 'styles/images.jpg';
-
-console.log(piscine);
 
 export default class Hello extends Component {
 
