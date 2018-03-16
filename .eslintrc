@@ -28,6 +28,8 @@
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
     "no-unused-vars": "off",
+    "semi": ["warn", "always"],
+    "no-extra-semi": "warn",
     "quotes": ["warn", "single"]
   },
   "globals": {
