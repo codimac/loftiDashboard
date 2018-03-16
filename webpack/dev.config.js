@@ -8,10 +8,5 @@ module.exports = merge(baseConfig, {
     contentBase: paths.SRC,
     port: 8000,
     // open: true,
-    stats: {
-      // modules: false,
-      // timings: false,
-      // children: false
-    }
   },
 })

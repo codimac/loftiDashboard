@@ -15,7 +15,7 @@ const cssLoaders = [
   {
     loader: 'css-loader',
     options: {
-      importLoaders: 1
+      importLoaders: 1,
     }
   },
   {
@@ -80,6 +80,28 @@ module.exports = {
           ]
         })
       },
+      {
+        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
+        loader: 'file-loader'
+      },
+      {
+        test: /\.(png|jpg|gif|svg)?$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 8192,
+              name: '[name].[hash:8].[ext]'
+            }
+          },
+          {
+            loader: 'img-loader',
+            options: {
+              enabled: isProd
+            }
+          }
+        ]
+      }
     ]
   },
   resolve: {
@@ -88,7 +110,7 @@ module.exports = {
     alias: {
       components: path.resolve(paths.SRC, 'components'),
       containers: '',
-      styles: ''
+      styles: path.resolve(paths.STYLES)
     }
   },
   plugins
