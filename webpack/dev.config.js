@@ -1,7 +1,7 @@
 // requires
 const merge = require('webpack-merge');
 const baseConfig = require('./base.config');
-const paths = require('./base.config');
+const paths = require('./paths');
 
 module.exports = merge(baseConfig, {
   devServer: {
@@ -9,9 +9,9 @@ module.exports = merge(baseConfig, {
     port: 8000,
     // open: true,
     stats: {
-/*       modules: false,
+      modules: false,
       timings: false,
-      children: false */
+      children: false
     }
   },
 })

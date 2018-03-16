@@ -1,18 +1,11 @@
 // requires
 const webpack = require('webpack');
 const path = require('path');
+const paths = require('./paths')
 
 // plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-
-// paths
-const paths = {
-  DIST: path.resolve(__dirname, '../dist'),
-  PUBLIC: path.resolve(__dirname, '../public'),
-  SRC: path.resolve(__dirname, '../src'),
-  STYLES: path.resolve(__dirname, '../src/styles')
-};
 
 // loaders
 const cssLoaders = [
@@ -27,7 +20,8 @@ const cssLoaders = [
     options: {
       plugins: () => [
         require('autoprefixer')({
-          browsers: ['last 2 versions', 'ie > 8']
+          browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9', /* React doesn't support IE8 anyway*/],
+          flexbox: 'no-2009',
         })
       ]
     }
@@ -46,10 +40,10 @@ const plugins = [
 ];
 
 // config
-const config = {
+module.exports = {
   entry: [
-    path.resolve(paths.SRC, 'index.jsx'),
-    path.resolve(paths.STYLES, 'styles.scss')
+    path.join(paths.SRC, 'index.jsx'),
+    path.join(paths.STYLES, 'styles.scss')
   ],
   module: {
     rules: [
@@ -84,9 +78,12 @@ const config = {
   },
   resolve: {
     modules: ['node_modules', paths.SRC],
-    extensions: ['.json', '.js', '.jsx']
+    extensions: ['.json', '.js', '.jsx'],
+    alias: {
+      components: path.resolve(paths.SRC, 'components'),
+      containers: '',
+      styles: ''
+    }
   },
   plugins
 };
-
-module.exports = config;

@@ -1,14 +1,6 @@
 import React, { Component } from 'react';
 import { render } from 'react-dom';
+import App from './components/App';
 
-export default class Hello extends Component {
-  render() {
-    return (
-      <div>
-        Hello from react
-      </div>
-    );
-  }
-}
+render(<App />, document.getElementById('app'));
 
-render(<Hello />, document.getElementById('app'));
