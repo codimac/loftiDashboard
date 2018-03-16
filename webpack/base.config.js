@@ -7,6 +7,9 @@ const paths = require('./paths')
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
+const isProd = process.argv.indexOf('production') > -1;
+const isDev = !isProd;
+
 // loaders
 const cssLoaders = [
   {
@@ -36,6 +39,7 @@ const plugins = [
   new ExtractTextPlugin({
     filename: '[name].[contenthash:16].css',
     allChunks: true,
+    disable: isDev
   })
 ];
 
