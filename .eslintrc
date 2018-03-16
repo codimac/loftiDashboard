@@ -24,9 +24,11 @@
     "object-curly-spacing": "off",
     "react/jsx-curly-spacing": "off",
     "space-infix-ops": "off",
+    "comma-dangle": "off",
     "jsx-a11y/href-no-hash": "off",
     "jsx-a11y/anchor-is-valid": ["warn", { "aspects": ["invalidHref"] }],
-    "no-unused-vars": "warn"
+    "no-unused-vars": "off",
+    "quotes": ["warn", "single"]
   },
   "globals": {
     "document": true,

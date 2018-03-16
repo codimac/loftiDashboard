@@ -10,12 +10,14 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const isProd = process.argv.indexOf('production') > -1;
 const isDev = !isProd;
 
+
 // loaders
 const cssLoaders = [
   {
     loader: 'css-loader',
     options: {
       importLoaders: 1,
+      minimize: isProd
     }
   },
   {
@@ -50,6 +52,16 @@ module.exports = {
       path.join(paths.STYLES, 'styles.scss'),
       path.join(paths.SRC, 'index.jsx')
     ]
+  },
+  resolve: {
+    modules: ['node_modules', paths.SRC],
+    extensions: ['.js', '.jsx'],
+    alias: {
+      '@components': path.resolve(paths.SRC, 'components'),
+      '@containers': path.resolve(paths.SRC, 'containers'),
+      'images': path.resolve(paths.IMG),
+      '@styles': path.resolve(paths.STYLES)
+    }
   },
   module: {
     rules: [
@@ -95,7 +107,10 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name: '[name].[hash:8].[ext]'
+              name (file) {
+                if (isProd) return 'assets/[hash:16].[ext]'
+                return '[name].[ext]'
+              }
             }
           },
           {
@@ -103,19 +118,10 @@ module.exports = {
             options: {
               enabled: isProd
             }
-          }
+          },
         ]
       }
     ]
-  },
-  resolve: {
-    modules: ['node_modules', paths.SRC],
-    extensions: ['.json', '.js', '.jsx'],
-    alias: {
-      components: path.resolve(paths.SRC, 'components'),
-      containers: '',
-      styles: path.resolve(paths.STYLES)
-    }
   },
   plugins
 };
