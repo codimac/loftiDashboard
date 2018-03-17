@@ -65,6 +65,7 @@ module.exports = {
       '@components': path.resolve(paths.SRC, 'components'),
       '@containers': path.resolve(paths.SRC, 'containers'),
       'images': path.resolve(paths.IMG),
+      '@shared': path.resolve(paths.SRC, 'shared'),
       '@styles': path.resolve(paths.STYLES)
     }
   },

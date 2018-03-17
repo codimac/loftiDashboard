@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import Http from '@shared/Http';
 
 export default class FetchData extends React.Component {
 
@@ -11,9 +11,9 @@ export default class FetchData extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://jsonplaceholder.typicode.com/posts')
+    Http.get('/posts')
       .then(res => this.setState({posts: res.data}))
-      .catch(err => console.log(err));
+      .catch(err => console.error(err));
   }
 
   render() {
