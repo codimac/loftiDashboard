@@ -42,6 +42,11 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: path.join(paths.SRC, 'index.html'),
     filename: 'index.html',
+  }),
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify(isDev ? 'development' : 'production')
+    }
   })
 ];
 
