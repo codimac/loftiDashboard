@@ -17,6 +17,7 @@
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
     "no-console": "off",
     "object-curly-spacing": "off",
     "space-infix-ops": "off",
