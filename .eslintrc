@@ -12,17 +12,13 @@
     "node": true
   },
   "rules": {
-    "react/prefer-stateless-function": [0, { "ignorePureComponents": "React.PureComponent" }],
     "class-methods-use-this": [0],
     "padded-blocks": "off",
-    "react/no-unescaped-entities": "off",
-    "react/self-closing-comp": "off",
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
     "no-console": "off",
     "object-curly-spacing": "off",
-    "react/jsx-curly-spacing": "off",
     "space-infix-ops": "off",
     "comma-dangle": "off",
     "jsx-a11y/href-no-hash": "off",
@@ -30,7 +26,15 @@
     "no-unused-vars": "off",
     "semi": ["warn", "always"],
     "no-extra-semi": "warn",
-    "quotes": ["warn", "single"]
+    "quotes": ["warn", "single"],
+    "prefer-template": "warn",
+    "function-paren-newline": "off",
+
+    "react/prefer-stateless-function": [0, { "ignorePureComponents": "React.PureComponent" }],
+    "react/no-unescaped-entities": "off",
+    "react/jsx-curly-spacing": "off",
+    "react/self-closing-comp": "off",
+    "react/no-unused-state": "warn"
   },
   "globals": {
     "document": true,
