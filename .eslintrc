@@ -30,6 +30,8 @@
     "quotes": ["warn", "single"],
     "prefer-template": "warn",
     "function-paren-newline": "off",
+    "arrow-parens": "off",
+    "global-require": "off",
 
     "react/prefer-stateless-function": [0, { "ignorePureComponents": "React.PureComponent" }],
     "react/no-unescaped-entities": "off",

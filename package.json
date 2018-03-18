@@ -9,7 +9,8 @@
   "dependencies": {
     "axios": "^0.18.0",
     "react": "^16.2.0",
-    "react-dom": "^16.2.0"
+    "react-dom": "^16.2.0",
+    "react-hot-loader": "^4.0.0"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.41",
@@ -45,7 +46,7 @@
     "webpack-merge": "^4.1.2"
   },
   "scripts": {
-    "start": "webpack-dev-server --inline --progress --mode development --config config/dev.config.js",
+    "start": "webpack-dev-server --inline --hot --progress --mode development --config config/dev.config.js",
     "build": "webpack --progress --mode production --config config/prod.config.js"
   }
 }
