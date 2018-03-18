@@ -17,6 +17,7 @@
     "import/no-unresolved": "off",
     "import/extensions": "off",
     "import/no-extraneous-dependencies": "off",
+    "import/prefer-default-export": "off",
     "no-console": "off",
     "object-curly-spacing": "off",
     "space-infix-ops": "off",
@@ -29,12 +30,15 @@
     "quotes": ["warn", "single"],
     "prefer-template": "warn",
     "function-paren-newline": "off",
+    "arrow-parens": "off",
+    "global-require": "off",
 
     "react/prefer-stateless-function": [0, { "ignorePureComponents": "React.PureComponent" }],
     "react/no-unescaped-entities": "off",
     "react/jsx-curly-spacing": "off",
     "react/self-closing-comp": "off",
-    "react/no-unused-state": "warn"
+    "react/no-unused-state": "warn",
+    "react/prop-types": "warn"
   },
   "globals": {
     "document": true,

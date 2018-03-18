@@ -7,7 +7,7 @@ export default class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Counter />
+        <Counter title="counter" />
         <FetchData />
       </React.Fragment>
     );

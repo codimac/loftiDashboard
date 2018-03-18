@@ -11,6 +11,18 @@ const isProd = process.argv.indexOf('production') > -1;
 const isDev = !isProd;
 
 
+// ALIAS
+const alias = {
+  '@components': path.resolve(paths.SRC, 'components'),
+  '@containers': path.resolve(paths.SRC, 'containers'),
+  '@shared': path.resolve(paths.SRC, 'shared'),
+  '@env': path.resolve(paths.SRC, 'environments'),
+  '@styles': path.resolve(paths.STYLES),
+
+  'images': path.resolve(paths.IMG),
+}
+
+
 // loaders
 const cssLoaders = [
   {
@@ -42,6 +54,11 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: path.join(paths.SRC, 'index.html'),
     filename: 'index.html',
+  }),
+  new webpack.DefinePlugin({
+    'process.env': {
+      NODE_ENV: JSON.stringify(isDev ? 'development' : 'production')
+    }
   })
 ];
 
@@ -56,12 +73,7 @@ module.exports = {
   resolve: {
     modules: ['node_modules', paths.SRC],
     extensions: ['.js', '.jsx'],
-    alias: {
-      '@components': path.resolve(paths.SRC, 'components'),
-      '@containers': path.resolve(paths.SRC, 'containers'),
-      'images': path.resolve(paths.IMG),
-      '@styles': path.resolve(paths.STYLES)
-    }
+    alias
   },
   module: {
     rules: [

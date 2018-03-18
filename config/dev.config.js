@@ -7,6 +7,6 @@ module.exports = merge(baseConfig, {
   devServer: {
     contentBase: paths.SRC,
     port: 8000,
-    open: true,
+    // open: true,
   },
 })
