@@ -1,10 +1,11 @@
 import axios from 'axios';
-import { environment } from '@shared/environment';
+import { environment as dev } from '@env/environment';
+import { environment as prod } from '@env/environment.prod';
 
-const isDev = process.env.NODE_ENV === 'development';
+const environment = process.env.NODE_ENV === 'development' ? dev : prod;
 
 const Http = axios.create({
-  baseURL: isDev ? environment.api.dev : environment.api.prod
+  baseURL: environment.api
 });
 
 export default Http;

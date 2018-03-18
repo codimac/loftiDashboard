@@ -11,6 +11,18 @@ const isProd = process.argv.indexOf('production') > -1;
 const isDev = !isProd;
 
 
+// ALIAS
+const alias = {
+  '@components': path.resolve(paths.SRC, 'components'),
+  '@containers': path.resolve(paths.SRC, 'containers'),
+  '@shared': path.resolve(paths.SRC, 'shared'),
+  '@env': path.resolve(paths.SRC, 'environments'),
+  '@styles': path.resolve(paths.STYLES),
+
+  'images': path.resolve(paths.IMG),
+}
+
+
 // loaders
 const cssLoaders = [
   {
@@ -61,13 +73,7 @@ module.exports = {
   resolve: {
     modules: ['node_modules', paths.SRC],
     extensions: ['.js', '.jsx'],
-    alias: {
-      '@components': path.resolve(paths.SRC, 'components'),
-      '@containers': path.resolve(paths.SRC, 'containers'),
-      'images': path.resolve(paths.IMG),
-      '@shared': path.resolve(paths.SRC, 'shared'),
-      '@styles': path.resolve(paths.STYLES)
-    }
+    alias
   },
   module: {
     rules: [
