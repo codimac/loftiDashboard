@@ -22,7 +22,7 @@
     "autoprefixer": "^8.1.0",
     "babel-eslint": "^8.2.2",
     "babel-loader": "^8.0.0-beta",
-    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-plugin-syntax-object-rest-spread": "^6.13.0",
     "babel-preset-react": "^6.24.1",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^0.28.10",

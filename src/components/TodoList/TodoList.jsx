@@ -2,9 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import TodoItem from '@components/TodoItem/TodoItem';
+
 const mapStateToProps = state => {
-  console.log(state);
-  return { todos: state.todos };
+  return { todos: state.todoList.todos };
 };
 
 class TodoList extends React.Component {
@@ -13,24 +14,18 @@ class TodoList extends React.Component {
     todos: PropTypes.arrayOf(PropTypes.object).isRequired
   };
 
-  constructor(props) {
-    super(props);
-    console.log('pp', this.props);
-  }
-
   render() {
     return (
       <div>
         <h4>Todo List</h4>
         <ul className="list">
           {this.props.todos.map(todo =>
-            <li key={todo.id}>{todo.title}</li>
+            <TodoItem key={todo.id} todo={todo} />
           )}
         </ul>
       </div>
     );
   }
 }
-
 
 export default connect(mapStateToProps)(TodoList);

@@ -1,5 +1,4 @@
-import { constants } from './App.constant';
-
+import { constants } from './TodoList.constants';
 
 export function addTodo(todo) {
   return {

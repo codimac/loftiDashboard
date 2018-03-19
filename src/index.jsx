@@ -25,10 +25,3 @@ if (module.hot) {
     render(require('./components/App/App'));
   });
 }
-
-// import store from '@components/App/App.store';
-// import { addTodo } from '@components/App/App.actions';
-
-// window.store = store;
-// window.addTodo = addTodo;
-

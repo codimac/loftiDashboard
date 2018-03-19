@@ -1,19 +1,9 @@
-import { initialState } from './App.states';
-import { TodoActions } from './App.actions';
-import { constants } from './App.constant';
+import { combineReducers } from 'redux';
 
-const rootReducer = (state = initialState, action) => {
+import TodoListReducer from '@components/TodoList/TodoList.reducers';
 
-  switch (action.type) {
-    case constants.ADD_TODO:
-      return {...state, todos: [
-        ...state.todos, action.payload
-      ]};
-
-    default:
-      return state;
-  }
-
-};
+const rootReducer = combineReducers({
+  todoList: TodoListReducer
+});
 
 export default rootReducer;
