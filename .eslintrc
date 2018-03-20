@@ -11,6 +11,9 @@
     "es6": true,
     "node": true
   },
+  "plugins": [
+    "jsx-a11y"
+  ],
   "rules": {
     "class-methods-use-this": [0],
     "padded-blocks": "off",
@@ -41,13 +44,17 @@
     "arrow-body-style": "off",
     "no-debugger": "off",
     "no-plusplus": "off",
+    "no-return-assign": "off",
 
     "react/prefer-stateless-function": [0, { "ignorePureComponents": "React.PureComponent" }],
     "react/no-unescaped-entities": "off",
     "react/jsx-curly-spacing": "off",
     "react/self-closing-comp": "off",
     "react/no-unused-state": "warn",
-    "react/prop-types": "warn"
+    "react/prop-types": "warn",
+
+    "jsx-a11y/click-events-have-key-events": "off",
+     "jsx-a11y/no-noninteractive-element-interactions": "off"
   },
   "globals": {
     "document": true,
