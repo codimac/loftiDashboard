@@ -13,8 +13,7 @@ const isDev = !isProd;
 
 // ALIAS
 const alias = {
-  '@components': path.resolve(paths.SRC, 'components'),
-  '@containers': path.resolve(paths.SRC, 'containers'),
+  '@modules': path.resolve(paths.SRC, 'modules'),
   '@shared': path.resolve(paths.SRC, 'shared'),
   '@env': path.resolve(paths.SRC, 'environments'),
   '@styles': path.resolve(paths.STYLES),
