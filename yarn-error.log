@@ -38,7 +38,7 @@ npm manifest:
       "autoprefixer": "^8.1.0",
       "babel-eslint": "^8.2.2",
       "babel-loader": "^8.0.0-beta",
-      "babel-plugin-transform-object-rest-spread": "^6.26.0",
+      "babel-plugin-syntax-object-rest-spread": "^6.13.0",
       "babel-preset-react": "^6.24.1",
       "clean-webpack-plugin": "^0.1.19",
       "css-loader": "^0.28.10",
@@ -56,6 +56,7 @@ npm manifest:
       "node-sass": "^4.7.2",
       "postcss-loader": "^2.1.1",
       "prop-types": "^15.6.1",
+      "react-redux": "^5.0.7",
       "sass-loader": "^6.0.7",
       "style-loader": "^0.20.3",
       "url-loader": "^1.0.1",
@@ -1303,7 +1304,7 @@ Lockfile:
     version "6.18.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-syntax-jsx/-/babel-plugin-syntax-jsx-6.18.0.tgz#0af32a9a6e13ca7a3fd5069e62d7b0f58d0d8946"
   
-  babel-plugin-syntax-object-rest-spread@^6.8.0:
+  babel-plugin-syntax-object-rest-spread@^6.13.0, babel-plugin-syntax-object-rest-spread@^6.8.0:
     version "6.13.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-syntax-object-rest-spread/-/babel-plugin-syntax-object-rest-spread-6.13.0.tgz#fd6536f2bce13836ffa3a5458c4903a597bb3bf5"
   
@@ -1544,7 +1545,7 @@ Lockfile:
       babel-plugin-syntax-flow "^6.18.0"
       babel-runtime "^6.22.0"
   
-  babel-plugin-transform-object-rest-spread@^6.22.0, babel-plugin-transform-object-rest-spread@^6.26.0:
+  babel-plugin-transform-object-rest-spread@^6.22.0:
     version "6.26.0"
     resolved "https://registry.yarnpkg.com/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.26.0.tgz#0f36692d50fef6b7e2d4b3ac1478137a963b7b06"
     dependencies:
@@ -4981,7 +4982,7 @@ Lockfile:
       from2 "^2.1.1"
       p-is-promise "^1.1.0"
   
-  invariant@^2.2.0, invariant@^2.2.1:
+  invariant@^2.0.0, invariant@^2.2.0, invariant@^2.2.1:
     version "2.2.4"
     resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
     dependencies:
@@ -5705,7 +5706,7 @@ Lockfile:
       p-locate "^2.0.0"
       path-exists "^3.0.0"
   
-  lodash-es@^4.2.1:
+  lodash-es@^4.17.5, lodash-es@^4.2.1:
     version "4.17.7"
     resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.7.tgz#db240a3252c3dd8360201ac9feef91ac977ea856"
   
@@ -7414,6 +7415,17 @@ Lockfile:
       hoist-non-react-statics "^2.5.0"
       prop-types "^15.6.0"
       shallowequal "^1.0.2"
+  
+  react-redux@^5.0.7:
+    version "5.0.7"
+    resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-5.0.7.tgz#0dc1076d9afb4670f993ffaef44b8f8c1155a4c8"
+    dependencies:
+      hoist-non-react-statics "^2.5.0"
+      invariant "^2.0.0"
+      lodash "^4.17.5"
+      lodash-es "^4.17.5"
+      loose-envify "^1.1.0"
+      prop-types "^15.6.0"
   
   react-router-dom@^4.2.2:
     version "4.2.2"
@@ -9599,7 +9611,7 @@ Lockfile:
 
 Trace: 
   Error: Command failed.
-  Exit code: 1
+  Exit signal: SIGHUP
   Command: sh
   Arguments: -c webpack-dev-server --inline --hot --progress --mode development --config config/dev.config.js
   Directory: /home/florian/Documents/Projets/LoftiWebS4/loftiDashboard

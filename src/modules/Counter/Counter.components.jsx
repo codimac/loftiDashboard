@@ -9,7 +9,9 @@ import * as actions from '@modules/Counter/Counter.actions';
 class Counter extends React.Component {
 
   static propTypes = {
-    count: PropTypes.number.isRequired
+    count: PropTypes.number.isRequired,
+    increment: PropTypes.func.isRequired,
+    decrement: PropTypes.func.isRequired
   };
 
   render() {
