@@ -1,6 +1,7 @@
 import constants from '@modules/TodoList/constants/TodoList.constants';
+import { initialTodoListState } from '@modules/TodoList/states/TodoList.states';
 
-const todoListReducer = (state = [], action) => {
+const todoListReducer = (state = initialTodoListState, action) => {
   switch (action.type) {
 
     case constants.ADD_TODO:

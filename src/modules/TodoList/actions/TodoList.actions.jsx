@@ -1,4 +1,4 @@
-import constants from '@modules/TodoList/TodoList.constants';
+import constants from '@modules/TodoList/constants/TodoList.constants';
 
 let nextTotoId = 0;
 export const addTodo = text => ({

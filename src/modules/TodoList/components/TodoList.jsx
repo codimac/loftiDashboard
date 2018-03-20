@@ -1,12 +1,16 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
-export default class TodoList extends React.Component {
+class TodoList extends React.Component {
 
   render() {
+    const { todos, toggleTodo } = this.props;
+    console.log('todo', todos);
     return (
-      <h1>Bonjour</h1>
+      <h1>cou</h1>
     );
   }
 
 }
+
+export default TodoList;
