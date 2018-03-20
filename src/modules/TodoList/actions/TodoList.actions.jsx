@@ -1,16 +1,16 @@
 import types from '@modules/TodoList/constants/TodoList.constants';
 
-const nextTodoId = 0;
+let nextTodoId = 1;
 export const addTodo = todo => ({
-  type: this.ADD_TODO,
+  type: types.ADD_TODO,
   payload: {
-    id: this.nextTodoId++,
-    ...todo
+    id: nextTodoId++,
+    title: todo
   }
 });
 
 export const removeTodo = id => ({
-  type: this.ADD_TODO,
+  type: types.ADD_TODO,
   payload: {
     id
   }
