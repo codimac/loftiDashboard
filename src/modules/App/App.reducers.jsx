@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 
-import todoListReducer from '@components/TodoList/TodoList.reducers';
-import visibilityReducer from '@components/TodoList/Visibility/Visibility.reducers';
+import todoListReducer from '@modules/TodoList/reducers/TodoList.reducers';
+import visibilityReducer from '@modules/TodoList/reducers/Visibility.reducers';
 
 const rootReducer = combineReducers({
   todoList: todoListReducer,

@@ -1,4 +1,4 @@
-import constants from '@components/TodoList/Visibility/Visibility.constants';
+import constants from '@modules/TodoList/constants/Visibility.constants';
 
 const visibilityReducer = (state = constants.SHOW_ALL, action) => {
 

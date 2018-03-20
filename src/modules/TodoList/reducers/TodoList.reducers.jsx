@@ -1,4 +1,4 @@
-import constants from '@components/TodoList/TodoList.constants';
+import constants from '@modules/TodoList/constants/TodoList.constants';
 
 const todoListReducer = (state = [], action) => {
   switch (action.type) {

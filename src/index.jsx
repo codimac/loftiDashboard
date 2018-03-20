@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 
-import App from '@components/App/App';
-import store from '@components/App/App.store';
+import App from '@modules/App/App';
+import store from '@modules/App/App.store';
 
 const render = Component => {
   ReactDOM.render(
@@ -20,8 +20,8 @@ const render = Component => {
 render(App);
 
 if (module.hot) {
-  module.hot.accept('./components/App/App', () => {
+  module.hot.accept('./modules/App/App', () => {
     render(App);
-    render(require('./components/App/App'));
+    render(require('./modules/App/App'));
   });
 }
