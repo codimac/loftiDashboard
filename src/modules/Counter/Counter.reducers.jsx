@@ -8,7 +8,7 @@ const counterReducer = (state = initialCounterState, action) => {
       return state + 1;
 
     case types.DECREMENT:
-      return state - 1;
+      return state - 1 < 0 ? 0 : state - 1;
 
     default:
       return state;

@@ -1,3 +1,3 @@
-const initialCounterState = 0;
+const initialCounterState = 5;
 
 export default initialCounterState;

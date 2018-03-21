@@ -14,7 +14,8 @@ class TodoList extends React.Component {
       title: PropTypes.string.isRequired
     }).isRequired
     ).isRequired,
-    removeTodo: PropTypes.func.isRequired
+    removeTodo: PropTypes.func.isRequired,
+    count: PropTypes.number.isRequired
   };
 
   render() {
@@ -22,7 +23,7 @@ class TodoList extends React.Component {
       <React.Fragment>
         <h1>TodoList</h1>
         <ul>
-          {this.props.todos.map(todo =>
+          {this.props.todos.slice(0, this.props.count).map(todo =>
             <Todo key={todo.id} todo={todo} onClick={() => this.props.removeTodo(todo.id)} />
           )}
         </ul>
@@ -33,7 +34,8 @@ class TodoList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  todos: state.todos
+  todos: state.todos,
+  count: state.count
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators({removeTodo}, dispatch);
