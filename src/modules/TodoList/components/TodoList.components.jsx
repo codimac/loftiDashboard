@@ -1,23 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
-import Todo from './Todo.components';
+import Todo from '@modules/TodoList/components/Todo.components';
+import { removeTodo } from '@modules/TodoList/actions/TodoList.actions';
 
 class TodoList extends React.Component {
 
   static propTypes = {
-    todos: PropTypes.arrayOf(PropTypes.object).isRequired
-  }
+    todos: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired
+    }).isRequired
+    ).isRequired,
+    removeTodo: PropTypes.func.isRequired
+  };
 
   render() {
-    const { todos } = this.props;
     return (
       <React.Fragment>
         <h1>TodoList</h1>
         <ul>
-          {todos.map(todo =>
-            <Todo key={todo.id} {...todo} />
+          {this.props.todos.map(todo =>
+            <Todo key={todo.id} todo={todo} onClick={() => this.props.removeTodo(todo.id)} />
           )}
         </ul>
       </React.Fragment>
@@ -30,4 +36,6 @@ const mapStateToProps = state => ({
   todos: state.todos
 });
 
-export default connect(mapStateToProps)(TodoList);
+const mapDispatchToProps = dispatch => bindActionCreators({removeTodo}, dispatch);
+
+export default connect(mapStateToProps, mapDispatchToProps)(TodoList);

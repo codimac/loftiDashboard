@@ -4,15 +4,19 @@ import PropTypes from 'prop-types';
 class Todo extends React.Component {
 
   static propTypes = {
-    title: PropTypes.string.isRequired
+    onClick: PropTypes.func.isRequired,
+    todo: PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired
+    }).isRequired
   };
 
   render() {
+    const { onClick, todo } = this.props;
     return (
-      <li>{this.props.title}</li>
+      <li onClick={onClick}>{todo.title}</li>
     );
   }
 
 }
-
 export default Todo;
