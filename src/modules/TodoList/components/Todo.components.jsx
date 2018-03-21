@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Todo.styles.scss';
 
 class Todo extends React.Component {
 
   static propTypes = {
-    onClick: PropTypes.func.isRequired,
+    // onClick: PropTypes.func.isRequired,
     todo: PropTypes.shape({
       id: PropTypes.number.isRequired,
       title: PropTypes.string.isRequired
@@ -12,9 +13,9 @@ class Todo extends React.Component {
   };
 
   render() {
-    const { onClick, todo } = this.props;
+    const { todo } = this.props;
     return (
-      <li onClick={onClick}>{todo.title}</li>
+      <li>{todo.title}</li>
     );
   }
 

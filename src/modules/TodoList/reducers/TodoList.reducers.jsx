@@ -23,3 +23,5 @@ const todoListReducer = (state = initialTodoListState, action) => {
 };
 
 export default todoListReducer;
+
+export const getTodos = state => state.todos;

@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import { getTodos } from '@modules/TodoList/reducers/TodoList.reducers';
+
 import Todo from '@modules/TodoList/components/Todo.components';
-import { removeTodo } from '@modules/TodoList/actions/TodoList.actions';
+// import { removeTodo } from '@modules/TodoList/actions/TodoList.actions';
 
 class TodoList extends React.Component {
 
@@ -14,7 +16,7 @@ class TodoList extends React.Component {
       title: PropTypes.string.isRequired
     }).isRequired
     ).isRequired,
-    removeTodo: PropTypes.func.isRequired,
+    // removeTodo: PropTypes.func.isRequired,
     count: PropTypes.number.isRequired
   };
 
@@ -24,7 +26,7 @@ class TodoList extends React.Component {
         <h1>TodoList</h1>
         <ul>
           {this.props.todos.slice(0, this.props.count).map(todo =>
-            <Todo key={todo.id} todo={todo} onClick={() => this.props.removeTodo(todo.id)} />
+            <Todo key={todo.id} todo={todo} />
           )}
         </ul>
       </React.Fragment>
@@ -34,12 +36,12 @@ class TodoList extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  todos: state.todos,
+  todos: getTodos(state),
   count: state.count
 });
 
-const mapDispatchToProps = dispatch => ({
+/* const mapDispatchToProps = dispatch => ({
   removeTodo: id => dispatch(removeTodo(id))
-});
+}); */
 
-export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
+export default connect(mapStateToProps)(TodoList);
