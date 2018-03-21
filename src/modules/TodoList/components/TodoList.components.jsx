@@ -38,6 +38,8 @@ const mapStateToProps = state => ({
   count: state.count
 });
 
-const mapDispatchToProps = dispatch => bindActionCreators({removeTodo}, dispatch);
+const mapDispatchToProps = dispatch => ({
+  removeTodo: id => dispatch(removeTodo(id))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(TodoList);
