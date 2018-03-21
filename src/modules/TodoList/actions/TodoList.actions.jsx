@@ -10,7 +10,7 @@ export const addTodo = todo => ({
 });
 
 export const removeTodo = id => ({
-  type: types.removeTodo,
+  type: types.REMOVE_TODO,
   payload: {
     id
   }

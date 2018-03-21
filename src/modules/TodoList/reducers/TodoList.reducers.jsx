@@ -12,8 +12,9 @@ const todoListReducer = (state = initialTodoListState, action) => {
         }
       ];
 
-    case types.REMOVE_TODO:
-      return 'ok';
+    case types.REMOVE_TODO: {
+      return state.filter(todo => todo.id !== action.payload.id);
+    }
 
     default:
       return state;
