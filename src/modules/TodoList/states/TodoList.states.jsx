@@ -1,8 +1,3 @@
-const initialTodoListState = [
-  {
-    id: 0,
-    title: 'Aller manger'
-  }
-];
+const initialTodoListState = [];
 
 export default initialTodoListState;

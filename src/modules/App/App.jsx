@@ -1,7 +1,6 @@
 import React from 'react';
 import Counter from '@modules/Counter/Counter.components';
-import TodoList from '@modules/TodoList/components/TodoList.components';
-import AddTodo from '@modules/TodoList/containers/AddTodo.containers';
+import TodoListModule from '@modules/TodoList/TodoListModule';
 
 export default class App extends React.Component {
 
@@ -9,8 +8,7 @@ export default class App extends React.Component {
     return (
       <main>
         <Counter />
-        <AddTodo />
-        <TodoList />
+        <TodoListModule />
       </main>
     );
   }
