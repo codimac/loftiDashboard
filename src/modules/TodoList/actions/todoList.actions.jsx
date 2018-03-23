@@ -11,18 +11,14 @@ export const addTodo = todo => ({
 
 export const toggleTodo = id => ({
   type: types.TOGGLE_TODO,
+  payload: {
+    id
+  }
 });
-/*
+
 export const setVisibilityFilter = filter => ({
   type: types.SET_VISIBILITY_FILTER,
   payload: {
     filter
   }
-}); */
-
-export const setVisibilityFilter = filter => {
-  console.log('ici set');
-  return {
-    type: types.SET_VISIBILITY_FILTER,
-  };
-};
+});

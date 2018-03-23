@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import Todo from './Todo.components';
+
 class TodoList extends React.Component {
 
   static propTypes = {
@@ -16,14 +18,17 @@ class TodoList extends React.Component {
     const { todos, toggleTodo } = this.props;
     return (
       <div>
-        <h1>Bonjour</h1>
+        <h1>TodoList</h1>
         <ul>
           {
             todos.map(todo =>
-              <li key={todo.id}>{todo.title}</li>
+              <Todo key={todo.id} todo={todo} onClick={() => toggleTodo(todo.id)} />
             )
           }
         </ul>
+        {
+          todos.length === 0 && <p>Pas de todos</p>
+        }
       </div>
     );
   }
