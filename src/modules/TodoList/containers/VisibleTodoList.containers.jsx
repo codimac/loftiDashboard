@@ -1,8 +1,10 @@
 import { connect } from 'react-redux';
 
+import { getCounter } from '@modules/Counter/Counter.reducers';
 import { toggleTodo } from '../actions/todoList.actions';
 import { getTodos } from '../reducers/todos.reducers';
 import { getFilter } from '../reducers/visibilityFilter.reducers';
+
 import TodoList from '../components/TodoList.components';
 import types from '../constants/visibilityFilter.constants';
 
@@ -25,7 +27,8 @@ const getVisibleTodos = (todos, filter) => {
 };
 
 const mapStateToProps = state => ({
-  todos: getVisibleTodos(getTodos(state), getFilter(state))
+  todos: getVisibleTodos(getTodos(state), getFilter(state)),
+  counter: getCounter(state)
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -11,17 +11,18 @@ class TodoList extends React.Component {
       completed: PropTypes.bool.isRequired,
       title: PropTypes.string.isRequired
     }).isRequired).isRequired,
-    toggleTodo: PropTypes.func.isRequired
+    toggleTodo: PropTypes.func.isRequired,
+    counter: PropTypes.number.isRequired
   };
 
   render() {
-    const { todos, toggleTodo } = this.props;
+    const { todos, toggleTodo, counter } = this.props;
     return (
       <div>
         <h1>TodoList</h1>
         <ul>
           {
-            todos.map(todo =>
+            todos.slice(0, counter).map(todo =>
               <Todo key={todo.id} todo={todo} onClick={() => toggleTodo(todo.id)} />
             )
           }

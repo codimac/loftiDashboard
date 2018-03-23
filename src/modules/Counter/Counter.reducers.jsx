@@ -15,4 +15,6 @@ const counterReducer = (state = initialCounterState, action) => {
   }
 };
 
+export const getCounter = state => state.count;
+
 export default counterReducer;

@@ -9,9 +9,7 @@ const todosReducer = (state = todoListInitialState, action) => {
       return [
         ...state,
         {
-          id: action.payload.id,
-          title: action.payload.todo,
-          completed: false
+          ...action.payload
         }
       ];
 
