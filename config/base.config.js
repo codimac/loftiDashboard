@@ -21,7 +21,6 @@ const alias = {
   'images': path.resolve(paths.IMG),
 }
 
-
 // loaders
 const cssLoaders = [
   {

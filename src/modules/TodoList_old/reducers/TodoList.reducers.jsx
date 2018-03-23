@@ -1,5 +1,5 @@
-import initialTodoListState from '@modules/TodoList/states/TodoList.states';
-import types from '@modules/TodoList/constants/TodoList.constants';
+import initialTodoListState from '@modules/TodoList_old/states/TodoList.states';
+import types from '@modules/TodoList_old/constants/TodoList.constants';
 
 const todoListReducer = (state = initialTodoListState, action) => {
 

@@ -15,7 +15,10 @@ class Todo extends React.Component {
   render() {
     const { onClick, todo } = this.props;
     return (
-      <li onClick={onClick}>{todo.title}</li>
+      <li>
+        <p>{todo.title}</p>
+        <button onClick={onClick}>Delete</button>
+      </li>
     );
   }
 

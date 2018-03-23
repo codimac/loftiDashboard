@@ -1,3 +1,7 @@
-const initialTodoListState = [];
+const todoListInitialState = [{
+  id: 0,
+  completed: false,
+  title: 'je suis nul'
+}];
 
-export default initialTodoListState;
+export default todoListInitialState;
