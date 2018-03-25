@@ -29,3 +29,14 @@ export const getData = () => dispatch => {
     .then(dispatch(fetchPosts(false)))
     .catch(err => dispatch(fetchPostsFailed(err)));
 };
+
+export const authentification = () => dispatch => {
+  dispatch(fetchPosts(true));
+  Http.post('/auth/signin', {
+    email: 'root@root.fr',
+    password: 'root'
+  })
+    .then(res => console.log(res))
+    .then(dispatch(fetchPosts(true)))
+    .catch(err => dispatch(fetchPostsFailed(err)));
+};
