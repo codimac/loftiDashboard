@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class ListPost extends React.Component {
 
@@ -22,9 +23,11 @@ class ListPost extends React.Component {
         <h1>Posts</h1>
         <ul>
           {
-            postsList.posts.map(el =>
-              <li key={el.id}>{el.title}</li>
-            )
+            postsList.posts.map(el => (
+              <li key={el.id}>
+                <Link to={`/posts/${el.id}`}>{el.title}</Link>
+              </li>
+            ))
           }
         </ul>
       </div>

@@ -52,6 +52,7 @@ const plugins = [
   new HtmlWebpackPlugin({
     template: path.join(paths.SRC, 'index.html'),
     filename: 'index.html',
+    inject: 'body'
   }),
   new webpack.DefinePlugin({
     'process.env': {
