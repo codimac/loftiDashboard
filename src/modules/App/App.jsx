@@ -1,17 +1,14 @@
 import React from 'react';
 
-import Counter from '@modules/Counter/Counter.components';
-import TodoListModule from '@modules/TodoList/TodoListModule';
-import ListPost from '@modules/Post/containers/List.containers';
+import Nav from './components/Nav.components';
+import Main from './components/Main.components';
 
 export default class App extends React.Component {
-
   render() {
     return (
       <main>
-        <Counter />
-        <TodoListModule />
-        <ListPost />
+        <Nav />
+        <Main />
       </main>
     );
   }
