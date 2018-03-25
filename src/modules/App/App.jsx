@@ -2,7 +2,7 @@ import React from 'react';
 
 import Counter from '@modules/Counter/Counter.components';
 import TodoListModule from '@modules/TodoList/TodoListModule';
-import Post from '@modules/Post/components/Post.components';
+import ListPost from '@modules/Post/containers/List.containers';
 
 export default class App extends React.Component {
 
@@ -11,7 +11,7 @@ export default class App extends React.Component {
       <main>
         <Counter />
         <TodoListModule />
-        <Post />
+        <ListPost />
       </main>
     );
   }

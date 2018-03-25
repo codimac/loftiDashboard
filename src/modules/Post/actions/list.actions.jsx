@@ -1,5 +1,5 @@
 import Http from '@shared/Http';
-import types from '../constants';
+import types from '../constants/list.constants';
 
 export const fetchPosts = isLoading => ({
   type: types.FETCHING_DATA,
@@ -27,5 +27,5 @@ export const getData = () => dispatch => {
   Http.get('posts')
     .then(res => dispatch(fetchPostsSucceed(res.data)))
     .then(dispatch(fetchPosts(false)))
-    .catch(err => dispatch(fetchPostsFailed(err)))
+    .catch(err => dispatch(fetchPostsFailed(err)));
 };
