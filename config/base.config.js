@@ -17,9 +17,8 @@ const alias = {
   '@shared': path.resolve(paths.SRC, 'shared'),
   '@env': path.resolve(paths.SRC, 'environments'),
   '@styles': path.resolve(paths.STYLES),
-
-  'images': path.resolve(paths.IMG),
-}
+  images: path.resolve(paths.IMG)
+};
 
 // loaders
 const cssLoaders = [
@@ -80,12 +79,12 @@ module.exports = {
         test: /\.(jsx|js)$/,
         exclude: /(node_modules|bower_components)/,
         use: [{
-            loader: 'babel-loader',
-            options: {
-              presets: ['@babel/preset-env']
-            }
-          },
-          'eslint-loader'
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        },
+        'eslint-loader'
         ]
       },
       {

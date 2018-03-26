@@ -5,17 +5,17 @@ import { Link } from 'react-router-dom';
 class ListPost extends React.Component {
 
   static propTypes = {
-    // getData: PropTypes.func.isRequired,
+    getData: PropTypes.func.isRequired,
     postsList: PropTypes.shape({
       isLoading: PropTypes.bool.isRequired,
       posts: PropTypes.arrayOf(PropTypes.object).isRequired
     }).isRequired,
-    authentification: PropTypes.func.isRequired
+    // authentification: PropTypes.func.isRequired
   };
 
   componentDidMount() {
-    // this.props.getData();
-    this.props.authentification();
+    this.props.getData();
+    // this.props.authentification();
   }
 
   render() {
