@@ -70,7 +70,7 @@ module.exports = {
   },
   resolve: {
     modules: ['node_modules', paths.SRC],
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.css', '.scss'],
     alias
   },
   module: {
@@ -117,9 +117,9 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,
-              name (file) {
-                if (isProd) return 'assets/[hash:16].[ext]'
-                return '[name].[ext]'
+              name(file) {
+                if (isProd) return 'assets/[hash:16].[ext]';
+                return '[name].[ext]';
               }
             }
           },
