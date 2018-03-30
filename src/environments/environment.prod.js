@@ -1,3 +1,3 @@
 export const environment = {
-  api: 'https://jsonplaceholder.typicode.com'
+  api: 'http://api-imacboard.alwaysdata.net/api/v1'
 };
