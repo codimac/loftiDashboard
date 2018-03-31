@@ -1,7 +1,7 @@
 import React from 'react';
 import Http from '@shared/Http';
 
-import AuthModule from '@modules/Auth/Auth.module';
+import AuthModule from '@modules/Auth/AUth.module';
 
 export default class App extends React.Component {
 

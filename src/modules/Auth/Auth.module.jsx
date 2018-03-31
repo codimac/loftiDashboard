@@ -1,7 +1,8 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
+import { PrivateRoute } from '@shared/components/PrivateRoute.components';
 
-import Public from './components/Public.components';
-import Protected from './components/Protected.components';
+import Home from './components/Home.components';
 import Login from './components/Login.components';
 
 class AuthModule extends React.Component {
@@ -9,7 +10,8 @@ class AuthModule extends React.Component {
   render() {
     return (
       <div>
-        <Login />
+        <PrivateRoute exact path='/' component={Home} />
+        <Route path='/login' component={Login} />
       </div>
     );
   }
