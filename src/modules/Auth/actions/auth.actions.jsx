@@ -1,7 +1,10 @@
 import Http from '@shared/Http';
 import { history } from '@shared/helpers/history.helpers';
+import { storageSvc } from '@shared/services/storage.services';
 import types from '../constants/auth.constants';
 
+
+console.log(storageSvc.getItem('token'));
 
 export const fetchAuth = (isFetching = true) => ({
   type: types.FETCHING_AUTH,
