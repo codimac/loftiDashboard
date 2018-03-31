@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import { getAuth } from '../reducers/auth.reducers';
-import { signin } from '../actions/auth.actions';
+import { signin } from '../effects/auth.effects';
 
 class Login extends React.Component {
 
