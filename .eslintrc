@@ -45,6 +45,8 @@
     "no-debugger": "off",
     "no-plusplus": "off",
     "no-return-assign": "off",
+    "camelcase": "off",
+    "no-underscore-dangle": "off",
 
     "react/prefer-stateless-function": [0, { "ignorePureComponents": "React.PureComponent" }],
     "react/no-unescaped-entities": "off",

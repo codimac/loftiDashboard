@@ -1,5 +1,7 @@
 const authInitialState = {
-  token: null
+  isFetching: false,
+  token: null,
+  loggedIn: false
 };
 
 export default authInitialState;

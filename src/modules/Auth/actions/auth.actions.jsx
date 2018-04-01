@@ -10,14 +10,16 @@ export const fetchAuth = (isFetching = true) => ({
 export const fetchAuthSucceed = token => ({
   type: types.FETCHING_AUTH_SUCCES,
   payload: {
-    token
+    token,
+    loggedIn: true
   }
 });
 
 export const fetchAuthFailed = error => ({
   type: types.FETCHING_AUTH_FAILURE,
   payload: {
-    error
+    error,
+    loggedIn: false
   }
 });
 

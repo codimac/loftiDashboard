@@ -16,6 +16,14 @@ class StorageService {
     localStorage.removeItem(`${this.prefix}_${key}`);
   }
 
+  has(key) {
+    return this.getItem(key) !== null;
+  }
+
+  hasToken() {
+    return this.has('token') && this.getItem('token').split('.').length === 3;
+  }
+
 }
 
 export const storageSvc = new StorageService();
