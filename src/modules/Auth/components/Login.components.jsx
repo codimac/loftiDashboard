@@ -1,10 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
-
-import { getAuth } from '../reducers/auth.reducers';
-import { signin } from '../effects/auth.effects';
 
 class Login extends React.Component {
 
@@ -24,7 +19,6 @@ class Login extends React.Component {
   handleSubmit = ev => {
     ev.preventDefault();
     this.setState({submitted: true});
-
 
     const { email, password } = this.state;
     // if (email && password) {
@@ -52,10 +46,4 @@ class Login extends React.Component {
 
 }
 
-const mapStateToProps = state => getAuth(state);
-
-const mapDispatchToProps = dispatch => ({
-  signin: (email, password) => dispatch(signin(email, password))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default Login;
