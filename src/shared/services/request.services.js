@@ -1,11 +1,14 @@
 import axios from 'axios';
 import Http from '@shared/Http';
+import { storageSvc } from '@services/storage.services';
 
 class RequestService {
 
-  addBearerHeaders(token) {
-    Http.defaults.headers.common.Authorization = `Bearer ${token}`;
-  }
+  generateOptions = () => {
+    return {headers: {
+      Authorization: `Bearer ${storageSvc.getItem('token')}`
+    }};
+  };
 
 }
 

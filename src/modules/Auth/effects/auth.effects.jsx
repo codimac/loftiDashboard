@@ -11,7 +11,6 @@ export const signin = (email, password) => dispatch => {
       const { token } = res.data;
       dispatch(actions.fetchAuthSucceed(token));
       storageSvc.setItem('token', token);
-      requestSvc.addBearerHeaders(token);
       history.push('/');
     })
     .then(dispatch(actions.fetchAuth(false)))

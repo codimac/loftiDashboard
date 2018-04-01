@@ -6,10 +6,7 @@ import { storageSvc } from '@services/storage.services';
 const environment = process.env.NODE_ENV === 'development' ? dev : prod;
 
 const Http = axios.create({
-  baseURL: environment.api,
-  headers: {
-    Authorization: `Bearer ${storageSvc.getItem('token')}`
-  }
+  baseURL: environment.api
 });
 
 export default Http;

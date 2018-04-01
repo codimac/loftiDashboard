@@ -2,6 +2,7 @@ import React from 'react';
 import Http from '@shared/Http';
 import { history } from '@shared/helpers/history.helpers';
 import { storageSvc } from '@services/storage.services';
+import { requestSvc } from '@services/request.services';
 
 class Home extends React.Component {
 
@@ -13,7 +14,7 @@ class Home extends React.Component {
   }
 
   componentDidMount() {
-    Http.get('/users/me')
+    Http.get('/users/me', requestSvc.generateOptions())
       .then(res => this.setState({name: res.data.email}))
       .catch(err => console.error(err));
   }
