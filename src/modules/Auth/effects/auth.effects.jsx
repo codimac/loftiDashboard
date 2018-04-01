@@ -6,7 +6,7 @@ import * as actions from '../actions/auth.actions';
 
 export const signin = (email, password) => dispatch => {
   dispatch(actions.fetchAuth());
-  Http.post('/auth/signin', { email: 'root@root.fr', password: 'root' })
+  Http.post('/auth/signin', { email, password })
     .then(res => {
       const { token } = res.data;
       dispatch(actions.fetchAuthSucceed(token));

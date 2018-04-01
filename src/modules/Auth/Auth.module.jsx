@@ -3,7 +3,7 @@ import { Route } from 'react-router-dom';
 import { PrivateRoute } from '@shared/components/PrivateRoute.components';
 
 import Home from './components/Home.components';
-import Login from './components/Login.components';
+import Login from './containers/Login.containers';
 
 class AuthModule extends React.Component {
 
