@@ -13,7 +13,6 @@ class AuthService {
   }
 
   _tokenExpired(token) {
-    // console.log(jwt_decode(token));
     return jwt_decode(token).exp < this._now();
   }
 

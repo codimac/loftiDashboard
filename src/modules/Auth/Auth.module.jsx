@@ -12,9 +12,7 @@ class AuthModule extends React.Component {
     return (
       <div>
         <PrivateRoute exact path='/' component={Home} />
-        <Switch>
-          <PrivateRoute path='/dashboard' component={Dashboard} />
-        </Switch>
+        <PrivateRoute path='/dashboard' component={Dashboard} />
         <Route path='/login' component={Login} />
       </div>
     );

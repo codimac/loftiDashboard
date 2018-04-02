@@ -8,7 +8,6 @@ export default class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h1>App</h1>
         <div>
           <AuthModule />
         </div>
