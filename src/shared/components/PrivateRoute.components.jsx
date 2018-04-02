@@ -6,7 +6,7 @@ import { authSvc } from '@services/auth.services';
 
 /* eslint-disable react/prop-types */
 export const PrivateRoute = ({ component: Component, ...rest }) => {
-  console.log('ddffds');
+  console.log({Component});
   return (<Route {...rest} render={props => (
     authSvc.isAuth()
       ? <Component {...props} />

@@ -8,7 +8,7 @@ import { signin } from '../effects/auth.effects';
 const mapStateToProps = state => getAuth(state);
 
 const mapDispatchToProps = dispatch => ({
-  signin: (email, password) => dispatch(signin(email, password))
+  signin: (username, password) => dispatch(signin(username, password))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);

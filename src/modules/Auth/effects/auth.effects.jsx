@@ -4,9 +4,9 @@ import { storageSvc } from '@services/storage.services';
 import { requestSvc } from '@services/request.services';
 import * as actions from '../actions/auth.actions';
 
-export const signin = (email, password) => dispatch => {
+export const signin = (name, password) => dispatch => {
   dispatch(actions.fetchAuth());
-  Http.post('/auth/signin', { email, password })
+  Http.post('/auth/signin', { name, password })
     .then(res => {
       const { token } = res.data;
       dispatch(actions.fetchAuthSucceed(token));

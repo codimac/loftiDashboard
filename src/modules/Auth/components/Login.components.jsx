@@ -10,7 +10,7 @@ class Login extends React.Component {
   constructor() {
     super();
     this.state = {
-      email: '',
+      username: '',
       password: '',
       submitted: false
     };
@@ -20,9 +20,9 @@ class Login extends React.Component {
     ev.preventDefault();
     this.setState({submitted: true});
 
-    const { email, password } = this.state;
-    if (email && password) {
-      this.props.signin(email, password);
+    const { username, password } = this.state;
+    if (username && password) {
+      this.props.signin(username, password);
     }
   }
 
@@ -31,13 +31,13 @@ class Login extends React.Component {
   }
 
   render() {
-    const { email, password, submitted } = this.state;
+    const { username, password, submitted } = this.state;
     return (
       <div>
         <h2>Login</h2>
         <form onSubmit={this.handleSubmit}>
-          <input type="email" placeholder="Email" name="email" value={email} onChange={this.handleChange} />
-          <input type="password" placeholder="password" name="password" value={password} onChange={this.handleChange} />
+          <input type="text" placeholder="username" name="username" value={username} onChange={this.handleChange} />
+          <input type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange} />
           <button type="submit">Connexion</button>
         </form>
       </div>
