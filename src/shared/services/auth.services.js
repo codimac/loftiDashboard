@@ -3,13 +3,8 @@ import jwt_decode from 'jwt-decode';
 
 class AuthService {
 
-  constructor() {
-    this.token = storageSvc.getItem('token');
-  }
-
   isAuth() {
-    if (storageSvc.hasToken()) this.token = storageSvc.getItem('token');
-    return storageSvc.hasToken() && !this._tokenExpired(this.token);
+    return storageSvc.hasToken() && !this._tokenExpired(storageSvc.getItem('token'));
   }
 
   _tokenExpired(token) {
