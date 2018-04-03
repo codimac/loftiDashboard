@@ -11,8 +11,8 @@ class PermissionsService {
     return storageSvc.hasToken() && this._getRole(storageSvc.getItem('token')) === 'STUDENT';
   }
 
-  is(role) {
-    return storageSvc.hasToken() && this._getRole(storageSvc.getItem('token')) === role.toUpperCase();
+  is(roles) {
+    return storageSvc.hasToken() && roles.map(el => el.toUpperCase()).includes(this._getRole(storageSvc.getItem('token')).toUpperCase());
   }
 
   _getRole(token) {

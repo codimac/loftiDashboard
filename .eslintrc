@@ -47,6 +47,7 @@
     "no-return-assign": "off",
     "camelcase": "off",
     "no-underscore-dangle": "off",
+    "max-len": "off",
 
     "react/prefer-stateless-function": [0, { "ignorePureComponents": "React.PureComponent" }],
     "react/no-unescaped-entities": "off",

@@ -11,7 +11,7 @@ class AuthModule extends React.Component {
   render() {
     return (
       <div>
-        <PrivateRoute exact path='/' component={Home} />
+        <PrivateRoute exact path='/' allowed={['admin']} component={Home} />
         {/* <PrivateRoute path='/dashboard' component={Dashboard} /> */}
         <Route path='/login' component={Login} />
       </div>

@@ -19,7 +19,7 @@ class Home extends React.Component {
       .then(res => this.setState({username: res.data.username}))
       .catch(err => console.error(err));
 
-    console.log(permissionsSvc.is('admin'));
+    // console.log(permissionsSvc.is('admin'));
   }
 
   disconnect = ev => {
