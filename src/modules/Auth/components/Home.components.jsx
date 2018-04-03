@@ -15,7 +15,7 @@ class Home extends React.Component {
 
   componentDidMount() {
     Http.get('/users/me', requestSvc.generateOptions())
-      .then(res => this.setState({name: res.data.name}))
+      .then(res => this.setState({name: res.data.username}))
       .catch(err => console.error(err));
   }
 
