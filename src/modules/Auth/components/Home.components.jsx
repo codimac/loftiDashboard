@@ -7,21 +7,6 @@ import { permissionsSvc } from '@services/permissions.services';
 
 class Home extends React.Component {
 
-  constructor() {
-    super();
-    this.state = {
-      username: ''
-    };
-  }
-
-  componentDidMount() {
-    Http.get('/users/me', requestSvc.generateOptions())
-      .then(res => this.setState({username: res.data.username}))
-      .catch(err => console.error(err));
-
-    // console.log(permissionsSvc.is('admin'));
-  }
-
   disconnect = ev => {
     storageSvc.removeItem('token');
     history.push('/');
@@ -30,7 +15,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h4>Hello {this.state.username}</h4>
+        <h4>Hello</h4>
         <button onClick={this.disconnect}>Deco</button>
       </div>
     );
