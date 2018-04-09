@@ -16,6 +16,15 @@ body: {
   box-sizing: border-box;
 }
 
+.flex {
+  display: flex !important;
+  flex-wrap: wrap !important;
+}
+
+.flex-column {
+  flex-direction: column !important;
+}
+
 .content-align-start{
     justify-content:flex-start !important;
 }
@@ -57,4 +66,15 @@ body: {
     .pb-#{$i}{ padding-bottom:$size !important; }
     .pl-#{$i}{ padding-left:$size !important; }
     .pr-#{$i}{ padding-right:$size !important; }
+}
+
+.wrapper {
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  & > *{
+    width:inherit;
+    flex-grow:0;
+    align-self:flex-start;
+  }
 }

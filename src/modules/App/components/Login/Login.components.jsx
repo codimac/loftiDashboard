@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './Login.styles';
 
 class Login extends React.Component {
 
@@ -33,7 +34,7 @@ class Login extends React.Component {
   render() {
     const { username, password, submitted } = this.state;
     return (
-      <div className="form-container login">
+      <div className="flex flex-column content-align-center item-align-center wrapper login">
         <form className="form" onSubmit={this.handleSubmit}>
           <input type="text" placeholder="username" name="username" value={username} onChange={this.handleChange} />
           <input type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange} />

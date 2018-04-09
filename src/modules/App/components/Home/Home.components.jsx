@@ -5,6 +5,8 @@ import { storageSvc } from '@services/storage.services';
 import { requestSvc } from '@services/request.services';
 import { permissionsSvc } from '@services/permissions.services';
 
+import Sidebar from '@App/components/Sidebar//Sidebar.components';
+
 class Home extends React.Component {
 
   disconnect = ev => {
@@ -14,10 +16,11 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <h4>Hello</h4>
-        <button onClick={this.disconnect}>Deco</button>
-      </div>
+      <React.Fragment>
+        <div className="sidebar-wrapper">
+          <Sidebar />
+        </div>
+      </React.Fragment>
     );
   }
 
