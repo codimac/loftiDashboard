@@ -17,7 +17,7 @@ const alias = {
   '@services': path.resolve(paths.SRC, 'shared', 'services'),
   '@env': path.resolve(paths.SRC, 'environments'),
   '@styles': path.resolve(paths.STYLES),
-  images: path.resolve(paths.IMG),
+  '@images': path.resolve(paths.IMG),
 
   '@modules': path.resolve(paths.SRC, 'modules'),
   '@App': path.resolve(paths.SRC, 'modules', 'App'),

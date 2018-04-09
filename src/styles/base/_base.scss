@@ -64,3 +64,11 @@ $spacing-sizes: 0px, 8px, 16px, 32px, 48px, 64px;
   min-height: 100vh;
   height: 100%;
 }
+
+.main-wrapper {
+  position: absolute;
+  right: 0;
+  top: 10%;
+  width: 80%;
+  padding: 2.5%;
+}
