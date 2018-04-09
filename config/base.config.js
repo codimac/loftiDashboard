@@ -20,7 +20,7 @@ const alias = {
   images: path.resolve(paths.IMG),
 
   '@modules': path.resolve(paths.SRC, 'modules'),
-  '@App': path.resolve(paths.SRC, 'modules', 'App')
+  '@App': path.resolve(paths.SRC, 'modules', 'App'),
 };
 
 // loaders
@@ -105,13 +105,15 @@ module.exports = {
           fallback: 'style-loader',
           use: [
             ...cssLoaders,
-            'sass-loader'
+            {
+              loader: 'sass-loader',
+              options: {
+                data: '@import "_colours";',
+                includePaths: [path.resolve(paths.STYLES, 'abstracts')]
+              }
+            }
           ]
         })
-      },
-      {
-        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
-        loader: 'file-loader'
       },
       {
         test: /\.(png|jpg|gif|svg)?$/,

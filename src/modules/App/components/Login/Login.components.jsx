@@ -35,6 +35,7 @@ class Login extends React.Component {
     const { username, password, submitted } = this.state;
     return (
       <div className="flex flex-column justify-content-center align-items-center wrapper login">
+        <h1>Imacboard</h1>
         <form className="form" onSubmit={this.handleSubmit}>
           <input type="text" placeholder="username" name="username" value={username} onChange={this.handleChange} />
           <input type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange} />

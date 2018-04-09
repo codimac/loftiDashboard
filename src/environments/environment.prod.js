@@ -1,3 +1,3 @@
 export const environment = {
-  api: 'http://imacboard-jwt.alwaysdata.net/api/v1'
+  api: 'http://api-imacboard.alwaysdata.net/api/v1'
 };
