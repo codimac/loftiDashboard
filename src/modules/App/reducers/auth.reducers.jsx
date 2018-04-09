@@ -1,5 +1,5 @@
-import types from '../constants/auth.constants';
-import authInitialState from '../states/auth.states';
+import types from '@App/constants/auth.constants';
+import authInitialState from '@App/states/auth.states';
 
 const authReducer = (state = authInitialState, action) => {
 

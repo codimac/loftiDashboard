@@ -1,4 +1,4 @@
-import types from '../constants/auth.constants';
+import types from '@App/constants/auth.constants';
 
 export const fetchAuth = (isFetching = true) => ({
   type: types.FETCHING_AUTH,

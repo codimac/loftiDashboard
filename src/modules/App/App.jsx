@@ -1,16 +1,18 @@
 import React from 'react';
 import Http from '@shared/Http';
+import { Route } from 'react-router-dom';
 
-import AuthModule from '@modules/Auth/Auth.module';
+import Home from '@App/components/Home/Home.components';
+import Login from '@App/containers/Login.containers';
+import { PrivateRoute } from '@shared/components/PrivateRoute.components';
 
 export default class App extends React.Component {
 
   render() {
     return (
       <React.Fragment>
-        <div>
-          <AuthModule />
-        </div>
+        <PrivateRoute exact path='/' allowed={['admin']} component={Home} />
+        <Route path='/login' component={Login} />
       </React.Fragment>
     );
   }

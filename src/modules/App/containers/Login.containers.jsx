@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Login from '../components/Login.components';
+import Login from '@App/components/Login/Login.components';
 
-import { getAuth } from '../reducers/auth.reducers';
-import { signin } from '../effects/auth.effects';
+import { getAuth } from '@App/reducers/auth.reducers';
+import { signin } from '@App/effects/auth.effects';
 
 const mapStateToProps = state => getAuth(state);
 
