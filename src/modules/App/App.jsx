@@ -8,9 +8,7 @@ export default class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div>
-          <AuthModule />
-        </div>
+        <AuthModule />
       </React.Fragment>
     );
   }

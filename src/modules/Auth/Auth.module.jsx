@@ -10,11 +10,11 @@ class AuthModule extends React.Component {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <PrivateRoute exact path='/' allowed={['admin']} component={Home} />
         {/* <PrivateRoute path='/dashboard' component={Dashboard} /> */}
         <Route path='/login' component={Login} />
-      </div>
+      </React.Fragment>
     );
   }
 
