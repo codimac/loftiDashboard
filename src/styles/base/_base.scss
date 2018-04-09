@@ -5,7 +5,7 @@ html {
   font-family: $font-main;
   background: $main-background;
   overflow-x: hidden;
-  color: $main-font-colour;
+  color: $font-colour;
 }
 
 body: {
@@ -44,18 +44,19 @@ body: {
     justify-content:space-evenly !important;
 }
 
+$spacing-sizes: 0px, 8px, 16px, 32px, 48px, 64px;
 @each $size in $spacing-sizes{
-    $i : index($spacing-sizes, $size) - 1;
+  $i : index($spacing-sizes, $size) - 1;
 
-    .mt-#{$i}{ margin-top:$size !important; }
-    .mb-#{$i}{ margin-bottom:$size !important; }
-    .ml-#{$i}{ margin-left:$size !important; }
-    .mr-#{$i}{ margin-right:$size !important; }
+  .mt-#{$i}{ margin-top:$size !important; }
+  .mb-#{$i}{ margin-bottom:$size !important; }
+  .ml-#{$i}{ margin-left:$size !important; }
+  .mr-#{$i}{ margin-right:$size !important; }
 
-    .pt-#{$i}{ padding-top:$size !important; }
-    .pb-#{$i}{ padding-bottom:$size !important; }
-    .pl-#{$i}{ padding-left:$size !important; }
-    .pr-#{$i}{ padding-right:$size !important; }
+  .pt-#{$i}{ padding-top:$size !important; }
+  .pb-#{$i}{ padding-bottom:$size !important; }
+  .pl-#{$i}{ padding-left:$size !important; }
+  .pr-#{$i}{ padding-right:$size !important; }
 }
 
 .wrapper {

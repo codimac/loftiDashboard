@@ -35,11 +35,11 @@ class Login extends React.Component {
     const { username, password, submitted } = this.state;
     return (
       <div className="flex flex-column justify-content-center align-items-center wrapper login">
-        <h1>Imacboard</h1>
+        <h1 className="mb-3">Imacboard</h1>
         <form className="form" onSubmit={this.handleSubmit}>
-          <input type="text" placeholder="username" name="username" value={username} onChange={this.handleChange} />
-          <input type="password" placeholder="Password" name="password" value={password} onChange={this.handleChange} />
-          <button type="submit">Connexion</button>
+          <input className="mb-2" type="text" placeholder="Identifiant" name="username" value={username} onChange={this.handleChange} />
+          <input className="mb-2" type="password" placeholder="Mot de passe" name="password" value={password} onChange={this.handleChange} />
+          <button className="button" type="submit">Connexion</button>
         </form>
       </div>
     );
