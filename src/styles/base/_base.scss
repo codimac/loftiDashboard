@@ -1,0 +1,60 @@
+html {
+  width: 100vw;
+  height: 100%;
+  font-size: 15px;
+  font-family: $font-main;
+  background: $main-background;
+  overflow-x: hidden;
+  color: $main-font-colour;
+}
+
+body: {
+  min-height: 100%;
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+.content-align-start{
+    justify-content:flex-start !important;
+}
+.content-align-end{
+    justify-content:flex-start !important;
+}
+.content-align-center{
+    justify-content:center !important;
+}
+.content-align-sb{
+    justify-content:space-between !important;
+}
+.content-align-sa{
+    justify-content:space-around !important;
+}
+.content-align-evenly{
+    justify-content:space-evenly !important;
+}
+
+.item-align-end{
+    align-self:flex-end !important;
+}
+.item-align-start{
+    align-self:flex-start !important;
+}
+.item-align-center{
+    align-self:center !important;
+}
+
+@each $size in $spacing-sizes{
+    $i : index($spacing-sizes, $size) - 1;
+
+    .mt-#{$i}{ margin-top:$size !important; }
+    .mb-#{$i}{ margin-bottom:$size !important; }
+    .ml-#{$i}{ margin-left:$size !important; }
+    .mr-#{$i}{ margin-right:$size !important; }
+
+    .pt-#{$i}{ padding-top:$size !important; }
+    .pb-#{$i}{ padding-bottom:$size !important; }
+    .pl-#{$i}{ padding-left:$size !important; }
+    .pr-#{$i}{ padding-right:$size !important; }
+}
