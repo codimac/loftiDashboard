@@ -44,16 +44,6 @@ body: {
     justify-content:space-evenly !important;
 }
 
-.item-align-end{
-    align-self:flex-end !important;
-}
-.item-align-start{
-    align-self:flex-start !important;
-}
-.item-align-center{
-    align-self:center !important;
-}
-
 @each $size in $spacing-sizes{
     $i : index($spacing-sizes, $size) - 1;
 
@@ -72,9 +62,4 @@ body: {
   width: 100%;
   min-height: 100vh;
   height: 100%;
-  & > *{
-    width:inherit;
-    flex-grow:0;
-    align-self:flex-start;
-  }
 }
