@@ -5,6 +5,10 @@ import './Topbar.styles';
 
 class Topbar extends React.Component {
 
+  componentDidMount() {
+    this.props.getUser();
+  }
+
   render() {
     return (
       <div className="topbar flex justify-content-sb align-items-center">

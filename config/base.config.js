@@ -16,7 +16,7 @@ const alias = {
   '@env': path.resolve(paths.SRC, 'environments'),
   '@styles': path.resolve(paths.STYLES),
   '@images': path.resolve(paths.IMG),
-  '@services': path.resolve(paths.SRC, 'modules', 'shared', 'services'),
+  '@services': path.resolve(paths.SRC, 'modules', 'Shared', 'services'),
 
   '@modules': path.resolve(paths.SRC, 'modules'),
   '@App': path.resolve(paths.SRC, 'modules', 'App'),
@@ -73,7 +73,7 @@ module.exports = {
   },
   resolve: {
     modules: ['node_modules', paths.SRC],
-    extensions: ['.js', '.jsx', '.css', '.scss'],
+    extensions: ['.js', '.jsx', 'json', '.css', '.scss'],
     alias
   },
   module: {
