@@ -13,14 +13,14 @@ const isDev = !isProd;
 
 // ALIAS
 const alias = {
-  '@shared': path.resolve(paths.SRC, 'shared'),
-  '@services': path.resolve(paths.SRC, 'shared', 'services'),
   '@env': path.resolve(paths.SRC, 'environments'),
   '@styles': path.resolve(paths.STYLES),
   '@images': path.resolve(paths.IMG),
+  '@services': path.resolve(paths.SRC, 'modules', 'shared', 'services'),
 
   '@modules': path.resolve(paths.SRC, 'modules'),
   '@App': path.resolve(paths.SRC, 'modules', 'App'),
+  '@Shared': path.resolve(paths.SRC, 'modules', 'Shared'),
 };
 
 // loaders

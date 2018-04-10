@@ -8,12 +8,12 @@
     "moduleResolution": "node",
     "baseUrl": "./src",
     "paths": {
-      "@shared/*": ["shared/*"],
-      "@services/*": ["shared/services/*"],
       "@env/*": ["environments/*"],
       "@styles/*": ["styles/*"],
       "@images/*": ["public/images/*"],
+      "@services/*": ["modules/Shared/services/*"],
 
+      "@Shared/*": ["modules/Shared/*"],
       "@modules/*": ["modules/*"],
       "@App/*": ["modules/App/*"]
     },

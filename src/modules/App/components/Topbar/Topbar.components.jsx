@@ -1,8 +1,7 @@
 import React from 'react';
 
-import Identity from '@shared/components/Identity/Identity.components';
+import Identity from '@Shared/components/Identity/Identity.components';
 import './Topbar.styles';
-
 
 class Topbar extends React.Component {
 

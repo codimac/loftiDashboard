@@ -1,5 +1,5 @@
-import Http from '@shared/Http';
-import { history } from '@shared/helpers/history.helpers';
+import Http from '@Shared/Http';
+import { history } from '@Shared/helpers/history.helpers';
 import { storageSvc } from '@services/storage.services';
 import { requestSvc } from '@services/request.services';
 import * as actions from '@App/actions/auth.actions';

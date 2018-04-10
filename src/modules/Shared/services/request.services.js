@@ -1,5 +1,5 @@
 import axios from 'axios';
-import Http from '@shared/Http';
+import Http from '@Shared/Http';
 import { storageSvc } from '@services/storage.services';
 
 class RequestService {

@@ -1,6 +1,6 @@
 import React from 'react';
-import Http from '@shared/Http';
-import { history } from '@shared/helpers/history.helpers';
+import Http from '@Shared/Http';
+import { history } from '@Shared/helpers/history.helpers';
 import { storageSvc } from '@services/storage.services';
 import { requestSvc } from '@services/request.services';
 import { permissionsSvc } from '@services/permissions.services';
@@ -23,6 +23,7 @@ class Home extends React.Component {
         <Sidebar />
         <Topbar />
         <div className="main-wrapper">
+          <button onClick={this.disconnect}>Deco</button>
           <Main />
         </div>
       </React.Fragment>

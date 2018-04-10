@@ -1,6 +1,6 @@
 import React from 'react';
 
-import ProfilePicture from '@shared/components/ProfilePicture/ProfilePicture.components';
+import ProfilePicture from '@Shared/components/ProfilePicture/ProfilePicture.components';
 import './Identity.styles';
 
 class Identity extends React.Component {
