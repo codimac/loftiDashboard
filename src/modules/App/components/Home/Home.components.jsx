@@ -6,7 +6,7 @@ import { requestSvc } from '@services/request.services';
 import { permissionsSvc } from '@services/permissions.services';
 
 import Sidebar from '@App/components/Sidebar//Sidebar.components';
-import Topbar from '@App/containers/User.containers';
+import Topbar from '@App/components/Topbar/Topbar.components';
 import Main from '@App/components/Main/Main.components';
 import './Home.styles';
 

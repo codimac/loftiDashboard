@@ -1,4 +1,5 @@
 const userInitialState = {
+  isLoading: false,
   userId: null,
   firstname: null,
   username: null,

@@ -1,13 +1,9 @@
 import React from 'react';
 
-import Identity from '@Shared/components/Identity/Identity.components';
+import Identity from '@App/containers/User.containers';
 import './Topbar.styles';
 
 class Topbar extends React.Component {
-
-  componentDidMount() {
-    this.props.getUser();
-  }
 
   render() {
     return (

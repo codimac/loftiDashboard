@@ -5,6 +5,10 @@ import './Identity.styles';
 
 class Identity extends React.Component {
 
+  componentDidMount() {
+    this.props.getUser();
+  }
+
   render() {
     return (
       <div className="identity">
