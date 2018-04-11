@@ -1,10 +1,16 @@
 import Http from '@Shared/Http';
-import { userMock } from '@mocks/user.mocks';
 import * as actions from '@App/actions/user.actions';
+import { requestSvc } from '@services/request.services';
 
 export const getUser = () => dispatch => {
   dispatch(actions.fetchUser());
-  Http.get('/users/me')
-    .then(res => console.log(res))
-    .catch(err => console.error(err));
+  Http.get('/users/me', requestSvc.generateOptions())
+    .then(res => {
+      dispatch(actions.fetchUserSucceed(res.data));
+      dispatch(actions.fetchUser(false));
+    })
+    .catch(err => {
+      console.error(err);
+      dispatch(actions.fetchUserFailed(err));
+    });
 };

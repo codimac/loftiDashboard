@@ -10,9 +10,12 @@ export const signin = (username, password) => dispatch => {
     .then(res => {
       const { token } = res.data;
       dispatch(actions.fetchAuthSucceed(token));
+      dispatch(actions.fetchAuth(false));
       storageSvc.setItem('token', token);
       history.push('/');
     })
-    .then(dispatch(actions.fetchAuth(false)))
-    .catch(err => dispatch(actions.fetchAuthFailed(err)));
+    .catch(err => {
+      dispatch(actions.fetchAuthFailed(err));
+      console.error(err);
+    });
 };

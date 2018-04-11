@@ -17,7 +17,6 @@ const alias = {
   '@styles': path.resolve(paths.STYLES),
   '@images': path.resolve(paths.IMG),
   '@services': path.resolve(paths.SRC, 'modules', 'Shared', 'services'),
-  '@mocks': path.resolve(paths.SRC, 'modules', 'Shared', 'mocks'),
 
   '@modules': path.resolve(paths.SRC, 'modules'),
   '@App': path.resolve(paths.SRC, 'modules', 'App'),
@@ -72,6 +71,7 @@ module.exports = {
       path.join(paths.SRC, 'index.jsx')
     ]
   },
+  devtool: 'eval-source-map',
   resolve: {
     modules: ['node_modules', paths.SRC],
     extensions: ['.js', '.jsx', 'json', '.css', '.scss'],

@@ -1,10 +1,12 @@
 const userInitialState = {
-  isLoading: false,
+  isFetching: false,
   userId: null,
-  firstname: null,
-  username: null,
+  firstname: '',
+  lastname: '',
+  username: '',
   roleId: null,
-  roleLabel: null
+  roleLabel: null,
+  picture: null
 };
 
 export default userInitialState;

@@ -13,3 +13,10 @@ export const fetchUserSucceed = data => ({
     data
   }
 });
+
+export const fetchUserFailed = error => ({
+  type: types.FETCHING_USER_FAILURE,
+  payload: {
+    error
+  }
+});

@@ -6,7 +6,7 @@ class RequestService {
 
   generateOptions = () => {
     return {headers: {
-      Authorization: `Bearer ${storageSvc.getItem('token')}`
+      Authorization: `Bearer ${storageSvc.getItem('token')}`,
     }};
   };
 
