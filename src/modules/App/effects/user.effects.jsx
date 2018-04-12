@@ -9,8 +9,5 @@ export const getUser = () => dispatch => {
       dispatch(actions.fetchUserSucceed(res.data));
       dispatch(actions.fetchUser(false));
     })
-    .catch(err => {
-      console.error(err);
-      dispatch(actions.fetchUserFailed(err));
-    });
+    .catch(err => dispatch(actions.fetchUserFailed(err)));
 };

@@ -14,8 +14,5 @@ export const signin = (username, password) => dispatch => {
       storageSvc.setItem('token', token);
       history.push('/');
     })
-    .catch(err => {
-      dispatch(actions.fetchAuthFailed(err));
-      console.error(err);
-    });
+    .catch(err => dispatch(actions.fetchAuthFailed(err)));
 };

@@ -4,13 +4,14 @@ import authInitialState from '@App/states/auth.states';
 const authReducer = (state = authInitialState, action) => {
 
   switch (action.type) {
+
     case types.FETCHING_AUTH:
       return {
         ...state,
         ...action.payload
       };
 
-    case types.FETCHING_AUTH_SUCCES:
+    case types.FETCHING_AUTH_SUCCESS:
       return {
         ...state,
         ...action.payload
@@ -22,7 +23,6 @@ const authReducer = (state = authInitialState, action) => {
     default:
       return state;
   }
-
 };
 
 export default authReducer;
