@@ -20,4 +20,4 @@ class Ue extends React.Component {
   }
 }
 
-export default Ue
+export default Ue;
