@@ -6,6 +6,7 @@ import { requestSvc } from '@services/request.services';
 import { permissionsSvc } from '@services/permissions.services';
 
 import Sidebar from '@App/components/Sidebar//Sidebar.components';
+import Ue from '@App/components/Courses//Ue.components';
 
 class Home extends React.Component {
 
@@ -19,6 +20,7 @@ class Home extends React.Component {
       <React.Fragment>
         <div className="sidebar-wrapper">
           <Sidebar />
+          <Ue />
         </div>
       </React.Fragment>
     );
