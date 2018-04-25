@@ -15,7 +15,8 @@
       "images/*": ["public/images/*"],
 
       "@modules/*": ["modules/*"],
-      "@App/*": ["modules/App/*"]
+      "@App/*": ["modules/App/*"],
+      "@Courses/*": ["modules/Courses/*"]
     },
     "lib": [
       "dom", "es2015", "es2017"

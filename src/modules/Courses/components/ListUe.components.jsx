@@ -21,7 +21,7 @@ class ListUe extends React.Component {
 
   /**
    * TODO :
-   * récup les datas
+   * récup les datas, les VRAIS <3
    * les filtres
    */
   renderList() {
