@@ -11,7 +11,7 @@ export default class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <PrivateRoute exact path='/' allowed={['admin']} component={Home} />
+        <PrivateRoute exact path='/' allowed={['admin', 'student']} component={Home} />
         <Route path='/login' component={Login} />
       </React.Fragment>
     );
