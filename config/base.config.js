@@ -109,7 +109,9 @@ module.exports = {
             {
               loader: 'sass-loader',
               options: {
-                data: '@import "_colours";',
+                data: [
+                  '@import "_variables";'
+                ],
                 includePaths: [path.resolve(paths.STYLES, 'abstracts')]
               }
             }
