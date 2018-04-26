@@ -1,5 +1,6 @@
 import React from 'react';
 import Courses from './Courses.components';
+import './Courses.styles';
 
 class ListCourses extends React.Component {
   constructor(props) {
@@ -13,15 +14,17 @@ class ListCourses extends React.Component {
 
     return (
       <React.Fragment>
-        {courses.map(course => <Courses key={course.id} course={course} />)}
+        {courses.map(course => (
+          <Courses key={course.id} course={course} />
+        ))}
       </React.Fragment>
     );
   }
   render() {
     return (
-      <React.Fragment>
+      <div className="list-courses">
         {this.renderList()}
-      </React.Fragment>
+      </div>
     );
   }
 }

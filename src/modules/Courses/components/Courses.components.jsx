@@ -9,10 +9,10 @@ class Courses extends React.Component {
   render() {
     const course = this.state;
     return (
-      <React.Fragment>
+      <div className="courses">
         <h3>{course.name}</h3>
         <p> {course.description} </p>
-      </React.Fragment>
+      </div>
     );
   }
 }
