@@ -1,20 +1,21 @@
 import React from 'react';
 import Courses from './Courses.components';
+import ListCourses from './ListCourses.components';
+
 
 class Ue extends React.Component {
+  constructor(props) {
+    super();
+    this.state = props.ue;
 
-  renderCourses() {
-    return (
-      <React.Fragment>
-        <Courses />
-      </React.Fragment>
-    );
   }
+
   render() {
+    const ue = this.state;
     return (
       <React.Fragment>
-        <h2> nom UE </h2>
-        {this.renderCourses()}
+        <h2> UE - {ue.name} </h2>
+        <ListCourses courses={ue.courses} />
       </React.Fragment>
     );
   }

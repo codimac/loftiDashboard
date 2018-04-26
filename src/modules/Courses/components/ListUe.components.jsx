@@ -5,15 +5,15 @@ class ListUe extends React.Component {
   constructor() {
     super();
     // when you fake data ... but the ugly way.
-    this.test = {
+    this.state= {
       ues: [
         {id: 'ue1', name: 'dessin', description: 'boum ba da boum', courses: [
-          {id: '1', name: 'coucou'},
-          {id: '2', name: 'test'}
+          {id: '1', name: 'coucou', description: 'hop hop hop'},
+          {id: '2', name: 'test', description: 'hip hip hip'}
         ]},
         {id: 'ue2', name: 'dessin 2', description: 'boum ba da boum 2', courses: [
-          {id: '1', name: 'hello'},
-          {id: '2', name: 'world'}
+          {id: '1', name: 'hello', description: 'hap hap hap'},
+          {id: '2', name: 'world', description: 'hep hep hep'}
         ]}
       ]
     };
@@ -24,25 +24,10 @@ class ListUe extends React.Component {
    * récup les datas, les VRAIS <3
    * les filtres
    */
-  renderList() {
-    const { ues } = this.test;
-
-    return (
-      <React.Fragment>
-        {ues.map(ue => <Ue key={ue.id} />)}
-      </React.Fragment>
-    );
-
-    // return (
-    //   <React.Fragment>
-    //     <Ue />
-    //   </React.Fragment>
-    // );
-  }
   render() {
     return (
       <React.Fragment>
-        {this.renderList()}
+        {ues.map(ue => <React.Fragment> <Ue key={ue.id} ue={ue} /> <hr /> </React.Fragment>)}
       </React.Fragment>
     );
   }
