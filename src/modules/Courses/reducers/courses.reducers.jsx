@@ -1,5 +1,7 @@
-const coursesReducer = (state = authInitialState, action) => {
-  switch (action.type){
+import courseInitialState from '@Courses/states/courses.states';
+
+const coursesReducer = (state = courseInitialState, action) => {
+  switch (action.type) {
     default:
       return state;
   }

@@ -4,7 +4,6 @@ import Courses from './Courses.components';
 class ListCourses extends React.Component {
   constructor(props) {
     super();
-    console.log(props);
     this.state = props;
   }
 

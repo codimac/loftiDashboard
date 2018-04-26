@@ -8,7 +8,6 @@ class Courses extends React.Component {
   }
   render() {
     const course = this.state;
-    console.log(course)
     return (
       <React.Fragment>
         <h3>{course.name}</h3>
