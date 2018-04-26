@@ -6,7 +6,7 @@ import { requestSvc } from '@services/request.services';
 import { permissionsSvc } from '@services/permissions.services';
 
 import Sidebar from '@App/components/Sidebar//Sidebar.components';
-import ListUe from '@App/components/Courses//ListUe.components';
+import ListUe from '@modules/Courses/components//ListUe.components';
 
 class Home extends React.Component {
 
