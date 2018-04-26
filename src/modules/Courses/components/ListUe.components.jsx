@@ -1,6 +1,6 @@
 import React from 'react';
 import Ue from './Ue.components';
-import './Courses.styles';
+import './ues.styles.scss';
 
 class ListUe extends React.Component {
   constructor() {
@@ -26,11 +26,11 @@ class ListUe extends React.Component {
    * les filtres
    */
   render() {
-    const { ues } = this.test;
+    const { ues } = this.state;
     return (
-      <React.Fragment>
-        {ues.map(ue => <React.Fragment> <Ue key={ue.id} ue={ue} /> <hr /> </React.Fragment>)}
-      </React.Fragment>
+      <div className='list-ues'>
+        {ues.map(ue => <Ue key={ue.id} ue={ue} />)}
+      </div>
     );
   }
 }

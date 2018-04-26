@@ -13,10 +13,10 @@ class Ue extends React.Component {
   render() {
     const ue = this.state;
     return (
-      <React.Fragment>
+      <div className='ue'>
         <h2> UE - {ue.name} </h2>
         <ListCourses courses={ue.courses} />
-      </React.Fragment>
+      </div>
     );
   }
 }
