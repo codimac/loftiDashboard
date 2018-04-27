@@ -7,21 +7,25 @@
     "sourceMap": true,
     "moduleResolution": "node",
     "baseUrl": "./src",
+    "jsx": "react",
     "paths": {
-      "@shared/*": ["shared/*"],
-      "@services/*": ["shared/services/*"],
       "@env/*": ["environments/*"],
       "@styles/*": ["styles/*"],
+      "@services/*": ["modules/Shared/services/*"],
       "images/*": ["public/images/*"],
 
       "@modules/*": ["modules/*"],
-      "@App/*": ["modules/App/*"],
       "@Courses/*": ["modules/Courses/*"]
+      "@Shared/*": ["modules/Shared/*"],
+      "@App/*": ["modules/App/*"]
     },
     "lib": [
       "dom", "es2015", "es2017"
     ]
   },
+  "include": [
+    "./src/**/*"
+  ],
   "exclude": [
     "node_modules", "dist"
   ],

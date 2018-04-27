@@ -13,14 +13,14 @@ const isDev = !isProd;
 
 // ALIAS
 const alias = {
-  '@shared': path.resolve(paths.SRC, 'shared'),
-  '@services': path.resolve(paths.SRC, 'shared', 'services'),
   '@env': path.resolve(paths.SRC, 'environments'),
   '@styles': path.resolve(paths.STYLES),
-  images: path.resolve(paths.IMG),
+  '@images': path.resolve(paths.IMG),
+  '@services': path.resolve(paths.SRC, 'modules', 'Shared', 'services'),
 
   '@modules': path.resolve(paths.SRC, 'modules'),
   '@App': path.resolve(paths.SRC, 'modules', 'App'),
+  '@Shared': path.resolve(paths.SRC, 'modules', 'Shared'),
 };
 
 // loaders
@@ -71,9 +71,10 @@ module.exports = {
       path.join(paths.SRC, 'index.jsx')
     ]
   },
+  devtool: 'eval-source-map',
   resolve: {
     modules: ['node_modules', paths.SRC],
-    extensions: ['.js', '.jsx', '.css', '.scss'],
+    extensions: ['.js', '.jsx', 'json', '.css', '.scss'],
     alias
   },
   module: {
@@ -108,7 +109,9 @@ module.exports = {
             {
               loader: 'sass-loader',
               options: {
-                data: '@import "_colours";',
+                data: [
+                  '@import "_variables";'
+                ],
                 includePaths: [path.resolve(paths.STYLES, 'abstracts')]
               }
             }

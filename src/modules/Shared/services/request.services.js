@@ -1,12 +1,12 @@
 import axios from 'axios';
-import Http from '@shared/Http';
+import Http from '@Shared/Http';
 import { storageSvc } from '@services/storage.services';
 
 class RequestService {
 
   generateOptions = () => {
     return {headers: {
-      Authorization: `Bearer ${storageSvc.getItem('token')}`
+      Authorization: `Bearer ${storageSvc.getItem('token')}`,
     }};
   };
 

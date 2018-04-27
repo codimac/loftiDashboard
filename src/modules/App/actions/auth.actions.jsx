@@ -8,7 +8,7 @@ export const fetchAuth = (isFetching = true) => ({
 });
 
 export const fetchAuthSucceed = token => ({
-  type: types.FETCHING_AUTH_SUCCES,
+  type: types.FETCHING_AUTH_SUCCESS,
   payload: {
     token,
     loggedIn: true

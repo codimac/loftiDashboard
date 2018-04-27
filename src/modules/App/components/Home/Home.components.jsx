@@ -1,11 +1,14 @@
 import React from 'react';
-import Http from '@shared/Http';
-import { history } from '@shared/helpers/history.helpers';
+import Http from '@Shared/Http';
+import { history } from '@Shared/helpers/history.helpers';
 import { storageSvc } from '@services/storage.services';
 import { requestSvc } from '@services/request.services';
 import { permissionsSvc } from '@services/permissions.services';
 
 import Sidebar from '@App/components/Sidebar//Sidebar.components';
+import Topbar from '@App/components/Topbar/Topbar.components';
+import Main from '@App/components/Main/Main.components';
+import './Home.styles';
 import ListUe from '@modules/Courses/components//ListUe.components';
 
 class Home extends React.Component {
@@ -18,8 +21,11 @@ class Home extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <div className="sidebar-wrapper">
-          <Sidebar />
+        <Sidebar />
+        <Topbar />
+        <div className="main-wrapper">
+          <button onClick={this.disconnect}>Deco</button>
+          <Main />
         </div>
         <ListUe />
       </React.Fragment>
