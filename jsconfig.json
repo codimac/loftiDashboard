@@ -15,7 +15,7 @@
       "images/*": ["public/images/*"],
 
       "@modules/*": ["modules/*"],
-      "@Courses/*": ["modules/Courses/*"]
+      "@Courses/*": ["modules/Courses/*"],
       "@Shared/*": ["modules/Shared/*"],
       "@App/*": ["modules/App/*"]
     },

@@ -9,7 +9,6 @@ import Sidebar from '@App/components/Sidebar//Sidebar.components';
 import Topbar from '@App/components/Topbar/Topbar.components';
 import Main from '@App/components/Main/Main.components';
 import './Home.styles';
-import ListUe from '@modules/Courses/components//ListUe.components';
 
 class Home extends React.Component {
 
@@ -27,7 +26,6 @@ class Home extends React.Component {
           <button onClick={this.disconnect}>Deco</button>
           <Main />
         </div>
-        <ListUe />
       </React.Fragment>
     );
   }
