@@ -1,4 +1,5 @@
 import React from 'react';
+import ListPromos from '@Promos/components/Promos//ListPromos.components';
 
 import { permissionsSvc } from '@services/permissions.services';
 import './Sidebar.styles';
@@ -9,6 +10,7 @@ class Sidebar extends React.Component {
     return (
       <React.Fragment>
         <li>Admin</li>
+        <ListPromos />
       </React.Fragment>
     );
   }

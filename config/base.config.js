@@ -1,7 +1,7 @@
 // requires
 const webpack = require('webpack');
 const path = require('path');
-const paths = require('./paths')
+const paths = require('./paths');
 
 // plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -39,7 +39,7 @@ const cssLoaders = [
     options: {
       plugins: () => [
         require('autoprefixer')({
-          browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9', /* React doesn't support IE8 anyway*/],
+          browsers: ['>1%', 'last 4 versions', 'Firefox ESR', 'not ie < 9', /* React doesn't support IE8 anyway */],
           flexbox: 'no-2009',
         })
       ]
