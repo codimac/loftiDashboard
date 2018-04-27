@@ -2,6 +2,10 @@
     .courses{
         display: inline-block;
         width:100%;
+        padding: 2%;
+        border-left: $color-grey-light 2px solid ;
+        margin-bottom: 20px;
+        box-sizing: border-box;
         h3{
             font-size: 1.5em;
         }

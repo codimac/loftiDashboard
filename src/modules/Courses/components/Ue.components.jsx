@@ -14,7 +14,7 @@ class Ue extends React.Component {
     const ue = this.state;
     return (
       <div className='ue'>
-        <h2> UE - {ue.name} </h2>
+        <h2> UE {ue.name} </h2>
         <ListCourses courses={ue.courses} />
       </div>
     );
