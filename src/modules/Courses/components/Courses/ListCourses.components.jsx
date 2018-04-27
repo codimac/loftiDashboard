@@ -8,22 +8,13 @@ class ListCourses extends React.Component {
     this.state = props;
   }
 
-
-  renderList() {
+  render() {
     const { courses } = this.state;
-
     return (
-      <React.Fragment>
+      <div className="list-courses">
         {courses.map(course => (
           <Courses key={course.id} course={course} />
         ))}
-      </React.Fragment>
-    );
-  }
-  render() {
-    return (
-      <div className="list-courses">
-        {this.renderList()}
       </div>
     );
   }

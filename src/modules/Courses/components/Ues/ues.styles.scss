@@ -1,13 +1,13 @@
 .list-ues{
     width: 100%;
-    padding: 2%;
     .ue{
         display: inline-block;
         width: 25%;
+        padding: 10px;
         box-sizing: border-box;
         h2{
             font-size: 2em;
-            line-height: 2.5em;
+            margin-bottom: 10px;
         }
     }
 }

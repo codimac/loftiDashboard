@@ -1,6 +1,6 @@
 import React from 'react';
-import Courses from './Courses.components';
-import ListCourses from './ListCourses.components';
+import Courses from '../Courses/Courses.components';
+import ListCourses from '../Courses/ListCourses.components';
 
 
 class Ue extends React.Component {
