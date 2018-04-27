@@ -16,6 +16,7 @@
 
       "@modules/*": ["modules/*"],
       "@Courses/*": ["modules/Courses/*"],
+      "@Promos/*": ["modules/Promos/*"],
       "@Shared/*": ["modules/Shared/*"],
       "@App/*": ["modules/App/*"]
     },

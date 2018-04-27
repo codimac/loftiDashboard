@@ -22,6 +22,7 @@ const alias = {
   '@App': path.resolve(paths.SRC, 'modules', 'App'),
   '@Shared': path.resolve(paths.SRC, 'modules', 'Shared'),
   '@Courses': path.resolve(paths.SRC, 'modules', 'Courses'),
+  '@Promos': path.resolve(paths.SRC, 'modules', 'Promos'),
 };
 
 // loaders
