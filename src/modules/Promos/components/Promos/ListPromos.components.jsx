@@ -16,6 +16,7 @@ class ListPromos extends React.Component {
     const { promos } = this.state;
     return (
       <React.Fragment>
+        <h1>Promotions</h1>
         {promos.map(promo => (
           <li key={promo.id}>
             {promo.label}

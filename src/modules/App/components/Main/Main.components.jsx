@@ -8,7 +8,7 @@ class Main extends React.Component {
     return (
       <div>
         {/* <ListUe /> */}
-        <Promos />
+        {/* <Promos /> */}
       </div>
     );
   }

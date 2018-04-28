@@ -13,7 +13,7 @@ class Promos extends React.Component {
   createFakeStudents(number = 2) {
     const students = Array(number);
     for (let i = 0; i < students.length; i++) {
-      students[i] = {id: i, name: 'name'+i, surname: 'surname'+i, uersname: 'username'+i}
+      students[i] = { id: i, name: `name${i}`, surname: `surname${i}`, uersname: `username${i}`}
     }
     return students;
   }

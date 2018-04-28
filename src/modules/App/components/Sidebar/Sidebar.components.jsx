@@ -1,5 +1,5 @@
 import React from 'react';
-import ListPromos from '@Promos/components/Promos//ListPromos.components';
+import ListPromos from '@Promos/containers/List.containers';
 
 import { permissionsSvc } from '@services/permissions.services';
 import './Sidebar.styles';
@@ -9,7 +9,6 @@ class Sidebar extends React.Component {
   renderAdmin() {
     return (
       <React.Fragment>
-        <li>Admin</li>
         <ListPromos />
       </React.Fragment>
     );
@@ -28,13 +27,11 @@ class Sidebar extends React.Component {
     return (
       <nav className="flex justify-content-center sidebar">
         <ul>
-          <li>Test 1</li>
-          <li>Test 2</li>
           { permissionsSvc.isAdmin() &&
             this.renderAdmin()
           }
           { permissionsSvc.isStudent() &&
-          this.renderStudent()
+            this.renderStudent()
           }
         </ul>
       </nav>
