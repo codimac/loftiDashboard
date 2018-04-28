@@ -4,22 +4,32 @@ class Promos extends React.Component {
   constructor() {
     super();
     this.state = {
-      id: 1,
-      label: '2018',
-      students: [
-        {id: 1, name: 'Mary', surname: 'Sue', uersname: 'marysue'}
-      ]
+      promos: {id: 1, label: '2018'},
+      students: this.createFakeStudents(35)
 
     };
   }
 
+  createFakeStudents(number = 2) {
+    const students = Array(number);
+    for (let i = 0; i < students.length; i++) {
+      students[i] = {id: i, name: 'name'+i, surname: 'surname'+i, uersname: 'username'+i}
+    }
+    return students;
+  }
+
   render() {
     const {students} = this.state;
-    const promos = this.state;
+    const {promos} = this.state;
+    // students part wil be moved to ListStudents component soon.
     return (
       <React.Fragment>
-        {students.id}
-        {promos.label}
+        <h2> Promo {promos.label} </h2>
+        {students.map(student => (
+          <li key={student.username}>
+            {student.name} {student.surname} {student.username}
+          </li>)
+        )}
       </React.Fragment>
     );
   }
