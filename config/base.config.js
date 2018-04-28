@@ -2,6 +2,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const paths = require('./paths');
+const alias = require('./alias');
 
 // plugins
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -10,20 +11,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const isProd = process.argv.indexOf('production') > -1;
 const isDev = !isProd;
 
-
-// ALIAS
-const alias = {
-  '@env': path.resolve(paths.SRC, 'environments'),
-  '@styles': path.resolve(paths.STYLES),
-  '@images': path.resolve(paths.IMG),
-  '@services': path.resolve(paths.SRC, 'modules', 'Shared', 'services'),
-
-  '@modules': path.resolve(paths.SRC, 'modules'),
-  '@App': path.resolve(paths.SRC, 'modules', 'App'),
-  '@Shared': path.resolve(paths.SRC, 'modules', 'Shared'),
-  '@Courses': path.resolve(paths.SRC, 'modules', 'Courses'),
-  '@Promos': path.resolve(paths.SRC, 'modules', 'Promos'),
-};
 
 // loaders
 const cssLoaders = [
