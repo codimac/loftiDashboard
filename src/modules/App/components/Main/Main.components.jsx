@@ -1,15 +1,11 @@
 import React from 'react';
-import ListUe from '@Courses/components/Ues//ListUe.components';
-import Promos from '@Promos/components/Promos/Promos.components';
+import Promotion from '@Promos/containers/Details.containers';
 
 class Main extends React.Component {
 
   render() {
     return (
-      <div>
-        {/* <ListUe /> */}
-        {/* <Promos /> */}
-      </div>
+      <Promotion />
     );
   }
 

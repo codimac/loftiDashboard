@@ -1,5 +1,6 @@
 import React from 'react';
 import Proptypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class ListPromotions extends React.Component {
 
@@ -22,8 +23,8 @@ class ListPromotions extends React.Component {
         <h1>Promotions</h1>
         <ul>
           { promotionsList.map(promo => (
-            <li key={promo.id}>{promo.label}</li>
-          ))}
+            <li key={promo.id}><Link to={`/promos/${promo.id}`}>{promo.label}</Link></li>
+          )) }
         </ul>
       </React.Fragment>
     );
