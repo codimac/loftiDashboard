@@ -19,7 +19,7 @@ class Sidebar extends React.Component {
     return (
       <React.Fragment>
         <ListPromos />
-        <li><Link to='/courses'> Enseignements </Link> </li>
+        <li><Link className="link" to='/courses'> Enseignements </Link> </li>
       </React.Fragment>
     );
   }
