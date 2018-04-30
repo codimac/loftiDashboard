@@ -1,6 +1,6 @@
 import React from 'react';
 import Promotion from '@Promos/containers/Details.containers';
-import { Switch, Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom';
 
 import { PrivateRoute } from '@Shared/components/PrivateRoute.components';
 
