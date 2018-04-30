@@ -1,19 +1,10 @@
 import React from 'react';
 
 class ListPromos extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      promos: [
-        {id: 1, label: '2018'},
-        {id: 2, label: '2019'},
-        {id: 3, label: '2020'}
-      ]
-    };
-  }
 
   render() {
     const { promos } = this.state;
+    console.log('ok')
     return (
       <React.Fragment>
         <h1>Promotions</h1>

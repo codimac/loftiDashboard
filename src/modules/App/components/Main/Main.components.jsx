@@ -15,7 +15,7 @@ class Main extends React.Component {
         <Switch>
           <Route exact path='/courses' component={ListUe} />
           <Route exact path='/grades' component={GradesList} />
-          <Route exact path='/promotions' component={Promotion} />
+          <Route path='/promotions/:id' component={Promotion} />
         </Switch>
       </React.Fragment>
     );

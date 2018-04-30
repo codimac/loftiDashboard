@@ -16,14 +16,18 @@ class ListPromotions extends React.Component {
     this.props.getPromotionsList();
   }
 
+  getCurrentPromotions = (promotions) => {
+    return promotions.slice(0, 3);
+  }
+
   render() {
-    const { promotionsList } = this.props;
+    const currentPromotions = this.getCurrentPromotions(this.props.promotionsList);
     return (
       <React.Fragment>
         <h1>Promotions</h1>
         <ul>
-          { promotionsList.map(promo => (
-            <li key={promo.id}><Link to={`/promos/${promo.id}`}>{promo.label}</Link></li>
+          { currentPromotions.map(promo => (
+            <li key={promo.id}><Link className="link" to={`/promotions/${promo.id}`}>{promo.label}</Link></li>
           )) }
         </ul>
       </React.Fragment>
