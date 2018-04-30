@@ -1,6 +1,8 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 
+import { parseFloat } from '@Shared/helpers/number.helpers';
+
 class ListGrades extends React.Component {
 
   static propTypes = {
@@ -17,7 +19,7 @@ class ListGrades extends React.Component {
 
   moyenne = () => {
     const { gradesList } = this.props;
-    return Number.parseFloat(gradesList.reduce((acc, grade) => acc + grade.value, 0) / gradesList.length).toFixed(2);
+    return parseFloat(gradesList.reduce((acc, grade) => acc + grade.value, 0) / gradesList.length);
   }
 
   render() {
