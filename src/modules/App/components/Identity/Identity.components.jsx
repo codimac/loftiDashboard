@@ -17,10 +17,13 @@ class Identity extends React.Component {
   }
 
   render() {
-    const { firstname, lastname, picture } = this.props;
+    const { firstname, lastname, picture, roleLabel } = this.props;
     return (
       <div className="identity">
-        <h4>{ firstname } { lastname }</h4>
+        <div>
+          <h4>{firstname} {lastname}</h4>
+          <h5>{roleLabel}</h5>
+        </div>
         <ProfilePicture picture={picture} />
       </div>
     );
