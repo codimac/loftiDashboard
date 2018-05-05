@@ -17,9 +17,9 @@ class ListGrades extends React.Component {
     this.props.getGradesList();
   }
 
-  moyenne = () => {
-    const { gradesList } = this.props;
-    return parseFloat(gradesList.reduce((acc, grade) => acc + grade.value, 0) / gradesList.length);
+  average = (grades) => {
+    const average = grades.reduce((acc, grade) => acc + grade.value, 0) / grades.length;
+    return parseFloat(average);
   }
 
   render() {
@@ -32,7 +32,7 @@ class ListGrades extends React.Component {
             <li key={grade.id}>{grade.value}</li>
           ))}
         </ul>
-        <h4>Moyenne = { this.moyenne() }</h4>
+        <h4>Moyenne = { this.average(gradesList) }</h4>
       </React.Fragment>
     );
   }
