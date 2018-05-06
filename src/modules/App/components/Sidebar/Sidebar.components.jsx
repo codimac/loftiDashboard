@@ -2,11 +2,18 @@ import React from 'react';
 import ListPromos from '@Promos/containers/List.containers';
 
 import { permissionsSvc } from '@services/permissions.services';
+import { history } from '@Shared/helpers/history.helpers';
+import { storageSvc } from '@services/storage.services';
 import { Link } from 'react-router-dom';
 
 import './Sidebar.styles';
 
 class Sidebar extends React.Component {
+
+  disconnect = ev => {
+    storageSvc.removeItem('token');
+    history.push('/');
+  }
 
   renderAdmin() {
     return (
@@ -28,7 +35,7 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <nav className="flex justify-content-center sidebar">
+      <nav className="flex flex-column justify-content-sb align-items-center sidebar">
         <ul>
           { permissionsSvc.isAdmin() &&
             this.renderAdmin()
@@ -37,6 +44,7 @@ class Sidebar extends React.Component {
             this.renderStudent()
           }
         </ul>
+        <button onClick={this.disconnect}>Deco</button>
       </nav>
     );
   }
