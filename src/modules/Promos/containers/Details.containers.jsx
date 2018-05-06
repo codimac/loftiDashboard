@@ -8,13 +8,10 @@ import * as actions from '@Promos/effects/details.effects';
 
 const filterStudent = (students, val) => students.tempPromotion.filter(student => student.username.toLowerCase().indexOf(val) !== -1 || !val);
 
-const getVisibleStudents = (students, filter) => {
-  const val = filter.value.toLowerCase();
-  return {
-    ...students,
-    promotion: filterStudent(students, val)
-  }
-};
+const getVisibleStudents = (students, filter) => ({
+  ...students,
+  promotion: filterStudent(students, filter.value.toLowerCase())
+});
 
 const mapStateToProps = state => getVisibleStudents(getPromotion(state), getFilter(state));
 

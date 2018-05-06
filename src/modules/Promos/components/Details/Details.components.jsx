@@ -29,6 +29,9 @@ class DetailsPromotion extends React.Component {
             <li key={student.id}>{student.firstname} - {student.lastname} - {student.username}</li>
           ))}
         </ul>
+        { !promotion.length &&
+        <h4>Pas d'users</h4> // IMPROVE THIS MESSAGE
+        }
       </React.Fragment>
     );
   }
