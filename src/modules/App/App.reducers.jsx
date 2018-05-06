@@ -8,9 +8,13 @@ import promotionsDetailsReducer from '@Promos/reducers/details.reducers';
 
 import gradesListReducer from '@Grades/reducers/list.reducers';
 
+import filterReducer from '@Shared/reducers/filter.reducers';
+
 const rootReducer = combineReducers({
   // auth
   auth: authReducer,
+
+  // users
   user: userReducer,
 
   // promos
@@ -18,7 +22,10 @@ const rootReducer = combineReducers({
   promotionsDetails: promotionsDetailsReducer,
 
   // grades
-  gradesList: gradesListReducer
+  gradesList: gradesListReducer,
+
+  // others
+  filter: filterReducer
 });
 
 export default rootReducer;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import { authSvc } from '@services/auth.services';
-import { history } from '@Shared/helpers/history.helpers';
+import { history } from '@helpers/history.helpers';
 import './Login.styles';
 
 class Login extends React.Component {

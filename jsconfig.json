@@ -12,6 +12,7 @@
       "@env/*": ["environments/*"],
       "@styles/*": ["styles/*"],
       "@services/*": ["modules/Shared/services/*"],
+      "@helpers/*": ["modules/Shared/helpers/*"],
       "images/*": ["public/images/*"],
 
       "@modules/*": ["modules/*"],

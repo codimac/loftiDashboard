@@ -6,6 +6,7 @@ const alias = {
   '@styles': path.resolve(paths.STYLES),
   '@images': path.resolve(paths.IMG),
   '@services': path.resolve(paths.SRC, 'modules', 'Shared', 'services'),
+  '@helpers': path.resolve(paths.SRC, 'modules', 'Shared', 'helpers'),
 
   '@modules': path.resolve(paths.SRC, 'modules'),
   '@App': path.resolve(paths.SRC, 'modules', 'App'),

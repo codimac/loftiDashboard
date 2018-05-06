@@ -1,6 +1,8 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 
+import Filter from '@Shared/containers/Filter.containers';
+
 class DetailsPromotion extends React.Component {
 
   static propTypes = {
@@ -20,10 +22,11 @@ class DetailsPromotion extends React.Component {
     const { promotion } = this.props;
     return (
       <React.Fragment>
+        <Filter />
         <h1>Détails d'une promo</h1>
         <ul>
           { promotion.map(student => (
-            <li key={student.id}>{student.firstname} {student.lastname}</li>
+            <li key={student.id}>{student.firstname} - {student.lastname} - {student.username}</li>
           ))}
         </ul>
       </React.Fragment>

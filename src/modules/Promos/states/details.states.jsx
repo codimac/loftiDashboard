@@ -1,6 +1,7 @@
 const promotionsDetailsListInitialState = {
   isFetching: false,
-  promotion: []
+  promotion: [],
+  tempPromotion: []
 };
 
 export default promotionsDetailsListInitialState;

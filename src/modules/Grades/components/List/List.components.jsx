@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 
-import { parseFloat } from '@Shared/helpers/number.helpers';
+import { parseFloat } from '@helpers/number.helpers';
 
 class ListGrades extends React.Component {
 
