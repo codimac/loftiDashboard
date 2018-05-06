@@ -6,6 +6,8 @@ import userReducer from '@App/reducers/user.reducers';
 import promotionsListReducer from '@Promos/reducers/list.reducers';
 import promotionsDetailsReducer from '@Promos/reducers/details.reducers';
 
+import uesListReducer from '@Courses/reducers/uesList.reducers';
+
 const rootReducer = combineReducers({
   // auth
   auth: authReducer,
@@ -13,7 +15,10 @@ const rootReducer = combineReducers({
 
   // promos
   promotionsList: promotionsListReducer,
-  promotionsDetails: promotionsDetailsReducer
+  promotionsDetails: promotionsDetailsReducer,
+
+  // courses
+  uesList: uesListReducer
 });
 
 export default rootReducer;
