@@ -18,11 +18,18 @@ class Main extends React.Component {
       <React.Fragment>
         <Switch>
           <Route path='/courses' component={ListUe} />
+
           <Switch>
-            <PrivateRoute path='/promotions' allowed={['admin']} component={ListPromotions} />
             <PrivateRoute path='/promotions/:id' allowed={['admin']} component={Promotion} />
+            <PrivateRoute path='/promotions' allowed={['admin']} component={ListPromotions} />
           </Switch>
-          <PrivateRoute path='/students/:username' allowed={['admin']} component={StudentDetails} />
+
+          {/* STUDENTS */}
+          <Switch>
+            <PrivateRoute path='/students/:username' allowed={['admin']} component={StudentDetails} />
+
+          </Switch>
+
           <Route path='/grades' component={GradesList} />
         </Switch>
       </React.Fragment>
