@@ -2,7 +2,7 @@ import React from 'react';
 import ListPromos from '@Promos/containers/List.containers';
 
 import { permissionsSvc } from '@services/permissions.services';
-import { history } from '@Shared/helpers/history.helpers';
+import { history } from '@helpers/history.helpers';
 import { storageSvc } from '@services/storage.services';
 import { Link } from 'react-router-dom';
 
@@ -18,8 +18,13 @@ class Sidebar extends React.Component {
   renderAdmin() {
     return (
       <React.Fragment>
-        <ListPromos />
-        <li><Link className="link" to='/courses'> Enseignements </Link> </li>
+        <div className="sidebar-section">
+          <h2><Link className="link link__sidebar__title" to='/promotions'>Promotions</Link></h2>
+          <ListPromos sidebar={true} />
+        </div>
+        <div className="sidebar-section">
+          <h2><Link className="link link__sidebar__title" to='/courses'>Enseignements</Link></h2>
+        </div>
       </React.Fragment>
     );
   }
@@ -36,15 +41,17 @@ class Sidebar extends React.Component {
   render() {
     return (
       <nav className="flex flex-column justify-content-sb align-items-center sidebar">
-        <ul>
+        <div>
           { permissionsSvc.isAdmin() &&
             this.renderAdmin()
           }
           { permissionsSvc.isStudent() &&
             this.renderStudent()
           }
-        </ul>
-        <button onClick={this.disconnect}>Deco</button>
+        </div>
+        <div>
+          <button onClick={this.disconnect}>Deco</button>
+        </div>
       </nav>
     );
   }

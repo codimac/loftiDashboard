@@ -5,7 +5,6 @@ import { Route, Redirect } from 'react-router-dom';
 import { authSvc } from '@services/auth.services';
 import { permissionsSvc } from '@services/permissions.services';
 
-/* eslint-disable react/prop-types */
 export const PrivateRoute = ({ component: Component, allowed, ...rest }) => (
   <Route {...rest} render={props => (
     authSvc.isAuth() && permissionsSvc.is(allowed)
@@ -14,8 +13,6 @@ export const PrivateRoute = ({ component: Component, allowed, ...rest }) => (
     )}
   />
 );
-/* eslint-enable */
 
 PrivateRoute.propTypes = {
-  component: PropTypes.func.isRequired
 };

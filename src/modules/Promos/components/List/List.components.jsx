@@ -2,38 +2,63 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-class ListPromotions extends React.Component {
+class List extends React.Component {
 
   static propTypes = {
     getPromotionsList: Proptypes.func.isRequired,
     promotionsList: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       label: Proptypes.string.isRequired
-    })).isRequired
+    })).isRequired,
+    sidebar: Proptypes.bool
   };
 
   componentDidMount() {
     this.props.getPromotionsList();
   }
 
-  getCurrentPromotions = (promotions) => {
+  getCurrentPromotions = promotions => {
     return promotions.slice(0, 3);
   }
 
-  render() {
-    const currentPromotions = this.getCurrentPromotions(this.props.promotionsList);
+  renderSidebar = promotions => {
+    const currentPromotions = this.getCurrentPromotions(promotions);
     return (
       <React.Fragment>
-        <h1>Promotions</h1>
         <ul>
           { currentPromotions.map(promo => (
-            <li key={promo.id}><Link className="link" to={`/promotions/${promo.id}`}>{promo.label}</Link></li>
+            <li key={promo.id}><Link className="link link__sidebar" to={`/promotions/${promo.id}`}>{promo.label}</Link></li>
           )) }
         </ul>
       </React.Fragment>
     );
   }
 
+  renderList = promotions => {
+    return (
+      <React.Fragment>
+        <h3>Toutes les promos</h3>
+        <ul>
+          { promotions.map(promo => (
+            <li key={promo.id}><Link className="link link__black" to={`/promotions/${promo.id}`}>{promo.label}</Link></li>
+          ))}
+        </ul>
+      </React.Fragment>
+    );
+  }
+
+  render() {
+    const { sidebar, promotionsList } = this.props;
+    return (
+      <React.Fragment>
+        { sidebar
+          ? this.renderSidebar(promotionsList)
+          : this.renderList(promotionsList)
+        }
+      </React.Fragment>
+    );
+  }
+
 }
 
-export default ListPromotions;
+export default List;

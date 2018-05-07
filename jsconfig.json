@@ -12,14 +12,17 @@
       "@env/*": ["environments/*"],
       "@styles/*": ["styles/*"],
       "@services/*": ["modules/Shared/services/*"],
+      "@helpers/*": ["modules/Shared/helpers/*"],
       "images/*": ["public/images/*"],
 
       "@modules/*": ["modules/*"],
       "@Courses/*": ["modules/Courses/*"],
       "@Grades/*": ["modules/Grades/*"],
       "@Promos/*": ["modules/Promos/*"],
+      "@Students/*": ["modules/Students/*"],
+
       "@Shared/*": ["modules/Shared/*"],
-      "@App/*": ["modules/App/*"]
+      "@App/*": ["modules/App/*"],
     },
     "lib": [
       "dom", "es2015", "es2017"
