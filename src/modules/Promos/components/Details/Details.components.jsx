@@ -15,7 +15,12 @@ class DetailsPromotion extends React.Component {
       id: Proptypes.number.isRequired,
       firstname: Proptypes.string.isRequired,
       lastname: Proptypes.string.isRequired
-    })).isRequired
+    })).isRequired,
+    match: Proptypes.shape({
+      params: Proptypes.shape({
+        id: Proptypes.string.isRequired
+      }).isRequired
+    }).isRequired,
   };
 
   componentDidMount() {
@@ -28,6 +33,7 @@ class DetailsPromotion extends React.Component {
       <React.Fragment>
         <div className="promotions">
           <h1>Détails d'une promo</h1>
+          <Filter placeholder="Rechercher un étudiant" />
           <table>
             <thead>
               <tr>
@@ -46,7 +52,7 @@ class DetailsPromotion extends React.Component {
                   <td>
                     {/* data missing for absence */}
                     0
-                    <Link to={`/absence/${student.id}`}>
+                    <Link to={`/absences/${student.id}`}>
                       <img className="icon-plus" src={ plus } alt="ajouter une absence" />
                     </Link>
                   </td>
@@ -58,7 +64,7 @@ class DetailsPromotion extends React.Component {
                     </Link>
                   </td>
                   <td className='icon-access'>
-                    <Link to={`/student/${student.id}`}>
+                    <Link to={`/students/${student.username}`}>
                       >
                     </Link>
                   </td>

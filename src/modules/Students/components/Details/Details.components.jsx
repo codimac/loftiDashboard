@@ -24,13 +24,11 @@ class Details extends React.Component {
   };
 
   componentDidMount() {
-    this.props.getStudent(this.props.match.params);
+    this.props.getStudent(this.props.match.params.username);
   }
 
-  /**
-   * Return an array with grades sorted by UE
-   */
   render() {
+    console.log(this.props);
     const { identity, grades } = this.props;
     return (
       <React.Fragment>
