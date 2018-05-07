@@ -8,13 +8,21 @@
     thead {
       border-bottom: 2px solid $color-grey;
     }
+    th {
+      padding: 0 25px ;
+    }
+    tr:hover {
+      background-color: $color-grey-light;
+    }
     td {
     border-bottom: 2px solid $color-grey-light;
     line-height: 2em;
-    padding: 5px auto;
-    min-width: 100px;
     text-align: center;
     }
+    td:last-child a{
+      text-decoration: none;
+    }
+
   }
 }
 
