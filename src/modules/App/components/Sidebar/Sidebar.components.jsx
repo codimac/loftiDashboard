@@ -2,7 +2,7 @@ import React from 'react';
 import ListPromos from '@Promos/containers/List.containers';
 
 import { permissionsSvc } from '@services/permissions.services';
-import { history } from '@Shared/helpers/history.helpers';
+import { history } from '@helpers/history.helpers';
 import { storageSvc } from '@services/storage.services';
 import { Link } from 'react-router-dom';
 
@@ -19,7 +19,7 @@ class Sidebar extends React.Component {
     return (
       <React.Fragment>
         <ListPromos />
-        <li><Link to='/courses'> Enseignements </Link> </li>
+        <li><Link className="link" to='/courses'> Enseignements </Link> </li>
       </React.Fragment>
     );
   }

@@ -1,0 +1,4 @@
+export default {
+  FILTERING: 'FILTERING',
+  CHANGE_FILTER_TYPE: 'CHANGE_FILTER_TYPE'
+};

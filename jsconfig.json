@@ -12,10 +12,12 @@
       "@env/*": ["environments/*"],
       "@styles/*": ["styles/*"],
       "@services/*": ["modules/Shared/services/*"],
+      "@helpers/*": ["modules/Shared/helpers/*"],
       "images/*": ["public/images/*"],
 
       "@modules/*": ["modules/*"],
       "@Courses/*": ["modules/Courses/*"],
+      "@Grades/*": ["modules/Grades/*"],
       "@Promos/*": ["modules/Promos/*"],
       "@Shared/*": ["modules/Shared/*"],
       "@App/*": ["modules/App/*"]

@@ -60,7 +60,6 @@ module.exports = {
       path.join(paths.SRC, 'index.jsx')
     ]
   },
-  devtool: 'eval-source-map',
   resolve: {
     modules: ['node_modules', paths.SRC],
     extensions: ['.js', '.jsx', 'json', '.css', '.scss'],

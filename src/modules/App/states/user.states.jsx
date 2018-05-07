@@ -6,7 +6,7 @@ const userInitialState = {
   username: '',
   roleId: null,
   roleLabel: null,
-  picture: null
+  picture: ''
 };
 
 export default userInitialState;

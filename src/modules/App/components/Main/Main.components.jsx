@@ -1,10 +1,11 @@
 import React from 'react';
-import Promotion from '@Promos/containers/Details.containers';
 import { Switch, Route } from 'react-router-dom';
 
 import { PrivateRoute } from '@Shared/components/PrivateRoute.components';
 
 import ListUe from '@Courses/containers/uesList.containers';
+import Promotion from '@Promos/containers/Details.containers';
+import GradesList from '@Grades/containers/List.containers';
 
 class Main extends React.Component {
 
@@ -13,7 +14,8 @@ class Main extends React.Component {
       <React.Fragment>
         <Switch>
           <Route exact path='/courses' component={ListUe} />
-          <PrivateRoute exact path='/promotions' allowed={['admin']} component={Promotion} />
+          <PrivateRoute exact path='/promotions/:id' allowed={['admin']} component={Promotion} />
+          <Route exact path='/grades' component={GradesList} />
         </Switch>
       </React.Fragment>
     );
