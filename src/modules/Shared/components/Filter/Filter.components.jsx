@@ -4,8 +4,13 @@ import Proptypes from 'prop-types';
 class Filter extends React.Component {
 
   static propTypes = {
-    onChange: Proptypes.func.isRequired
+    onChange: Proptypes.func.isRequired,
+    resetFilter: Proptypes.func.isRequired
   };
+
+  componentWillUnmount() {
+    this.props.resetFilter();
+  }
 
   render() {
     const { onChange } = this.props;
@@ -13,6 +18,7 @@ class Filter extends React.Component {
       <input type="text" placeholder="filter" onChange={onChange} />
     );
   }
+
 
 }
 

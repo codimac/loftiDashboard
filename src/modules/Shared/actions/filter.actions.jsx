@@ -13,3 +13,10 @@ export const changeFilterType = type => ({
     type
   }
 });
+
+export const resetFilter = () => ({
+  type: types.RESET_FILTER,
+  payload: {
+    value: ''
+  }
+});
