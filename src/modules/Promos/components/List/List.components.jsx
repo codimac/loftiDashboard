@@ -9,7 +9,8 @@ class ListPromotions extends React.Component {
     promotionsList: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       label: Proptypes.string.isRequired
-    })).isRequired
+    })).isRequired,
+    sidebar: Proptypes.bool.isRequired
   };
 
   componentDidMount() {
@@ -20,16 +21,33 @@ class ListPromotions extends React.Component {
     return promotions.slice(0, 3);
   }
 
-  render() {
+  renderSidebar() {
     const currentPromotions = this.getCurrentPromotions(this.props.promotionsList);
     return (
       <React.Fragment>
-        <h1>Promotions</h1>
         <ul>
           { currentPromotions.map(promo => (
             <li key={promo.id}><Link className="link" to={`/promotions/${promo.id}`}>{promo.label}</Link></li>
           )) }
         </ul>
+      </React.Fragment>
+    );
+  }
+
+  renderList() {
+    return (
+      <h1>Liste</h1>
+    );
+  }
+
+  render() {
+    const { sidebar, promotionsList } = this.props;
+    return (
+      <React.Fragment>
+        { sidebar
+          ? this.renderSidebar()
+          : this.renderList()
+        }
       </React.Fragment>
     );
   }

@@ -18,7 +18,8 @@ class Sidebar extends React.Component {
   renderAdmin() {
     return (
       <React.Fragment>
-        <ListPromos />
+        <li><Link className="link" to='/promotions'>Promotions</Link></li>
+        <ListPromos sidebar />
         <li><Link className="link" to='/courses'> Enseignements </Link> </li>
       </React.Fragment>
     );
@@ -36,14 +37,12 @@ class Sidebar extends React.Component {
   render() {
     return (
       <nav className="flex flex-column justify-content-sb align-items-center sidebar">
-        <ul>
-          { permissionsSvc.isAdmin() &&
-            this.renderAdmin()
-          }
-          { permissionsSvc.isStudent() &&
-            this.renderStudent()
-          }
-        </ul>
+        { permissionsSvc.isAdmin() &&
+          this.renderAdmin()
+        }
+        { permissionsSvc.isStudent() &&
+          this.renderStudent()
+        }
         <button onClick={this.disconnect}>Deco</button>
       </nav>
     );
