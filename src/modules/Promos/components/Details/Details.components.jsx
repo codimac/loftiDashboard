@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Proptypes from 'prop-types';
 
 import Filter from '@Shared/containers/Filter.containers';
@@ -26,7 +27,7 @@ class DetailsPromotion extends React.Component {
         <h1>Détails d'une promo</h1>
         <ul>
           { promotion.map(student => (
-            <li key={student.id}>{student.firstname} - {student.lastname} - {student.username}</li>
+            <li key={student.id}><Link className="link link__black" to={`/students/${student.username}`} >{student.firstname} - {student.lastname} - {student.username}</Link></li>
           ))}
         </ul>
         { !promotion.length &&
