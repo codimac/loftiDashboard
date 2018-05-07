@@ -15,7 +15,7 @@ class DetailsPromotion extends React.Component {
   };
 
   componentDidMount() {
-    this.props.getPromotion();
+    this.props.getPromotion(this.props.match.params.id);
   }
 
   render() {
