@@ -17,6 +17,12 @@ const filterReducer = (state = filterInitialState, action) => {
         ...action.payload
       };
 
+    case types.RESET_FILTER:
+      return {
+        ...state,
+        ...action.payload
+      };
+
     default:
       return state;
   }
