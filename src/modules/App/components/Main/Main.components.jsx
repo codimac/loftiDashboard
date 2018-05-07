@@ -14,6 +14,7 @@ class Main extends React.Component {
         <Switch>
           <Route exact path='/courses' component={ListUe} />
           <PrivateRoute exact path='/promotions' allowed={['admin']} component={Promotion} />
+          {/* <PrivateRoute path='/promotions/:id' allowed={['admin']} component={Promotion} /> */}
         </Switch>
       </React.Fragment>
     );

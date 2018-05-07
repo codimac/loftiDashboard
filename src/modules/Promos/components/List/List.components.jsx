@@ -23,7 +23,7 @@ class ListPromotions extends React.Component {
         <h1>Promotions</h1>
         <ul>
           { promotionsList.map(promo => (
-            <li key={promo.id}><Link to={`/promos/${promo.id}`}>{promo.label}</Link></li>
+            <li key={promo.id}><Link to={`/promotions/${promo.id}`}>{promo.label}</Link></li>
           )) }
         </ul>
       </React.Fragment>
