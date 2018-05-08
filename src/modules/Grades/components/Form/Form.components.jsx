@@ -1,4 +1,10 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import store from '@App/App.store';
+
+import { getPromotionsList } from '@Promos/reducers/list.reducers';
+import * as effects from '@Promos/effects/list.effects';
 
 import SelectInput from '@Shared/components/SelectInput/SelectInput.components';
 
@@ -9,15 +15,29 @@ class Form extends React.Component {
   // ajout devoir (nom, coeff)
   // ajout notes
 
+  static propTypes = {
+    promotionsList: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      label: PropTypes.string.isRequired
+    })).isRequired
+  };
+
   change = ev => {
     console.log(ev.target.value);
   }
 
+  parsedPromotions = promotions => {
+    return promotions.map(promo => {
+      return {
+        ...promo,
+        value: promo.label
+      };
+    });
+  }
+
   render() {
-    const items = [
-      {id: 0, value: 'test', label: 'test'},
-      {id: 1, value: 'test2', label: 'test2'}
-    ];
+    const { promotionsList } = this.props;
+    const items = this.parsedPromotions(promotionsList);
 
     return (
       <React.Fragment>
@@ -29,4 +49,6 @@ class Form extends React.Component {
 
 }
 
-export default Form;
+const mapStateToProps = state => getPromotionsList(state);
+
+export default connect(mapStateToProps)(Form);

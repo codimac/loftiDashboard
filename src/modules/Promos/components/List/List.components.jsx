@@ -17,9 +17,7 @@ class List extends React.Component {
     this.props.getPromotionsList();
   }
 
-  getCurrentPromotions = promotions => {
-    return promotions.slice(0, 3);
-  }
+  getCurrentPromotions = promotions => promotions.slice(0, 3);
 
   renderSidebar = promotions => {
     const currentPromotions = this.getCurrentPromotions(promotions);

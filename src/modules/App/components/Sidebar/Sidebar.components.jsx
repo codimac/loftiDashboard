@@ -25,6 +25,9 @@ class Sidebar extends React.Component {
         <div className="sidebar-section">
           <h2><Link className="link link__sidebar__title" to='/courses'>Enseignements</Link></h2>
         </div>
+        <div className="sidebar-section">
+          <h2><Link className="link link__sidebar__title" to='/grades/add'>Add notes</Link></h2>
+        </div>
       </React.Fragment>
     );
   }
