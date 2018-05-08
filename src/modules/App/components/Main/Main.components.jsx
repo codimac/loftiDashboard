@@ -11,7 +11,7 @@ import ListPromotions from '@Promos/containers/List.containers';
 import DetailsStudent from '@Students/containers/Details.containers';
 
 import GradesList from '@Grades/containers/List.containers';
-import Form from '@Grades/components/Form/Form.components'
+import Form from '@Grades/components/Form/Form.components';
 
 class Main extends React.Component {
 
