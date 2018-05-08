@@ -25,7 +25,7 @@ class List extends React.Component {
       <React.Fragment>
         <ul>
           { currentPromotions.map(promo => (
-            <li key={promo.id}><Link className="link link__sidebar" to={`/promotions/${promo.id}`}>{promo.label}</Link></li>
+            <li key={promo.id}><Link className="link link__sidebar" to={`/promotions/${promo.label}`}>{promo.label}</Link></li>
           )) }
         </ul>
       </React.Fragment>
@@ -38,7 +38,7 @@ class List extends React.Component {
         <h3>Toutes les promos</h3>
         <ul>
           { promotions.map(promo => (
-            <li key={promo.id}><Link className="link link__black" to={`/promotions/${promo.id}`}>{promo.label}</Link></li>
+            <li key={promo.id}><Link className="link link__black" to={`/promotions/${promo.label}`}>{promo.label}</Link></li>
           ))}
         </ul>
       </React.Fragment>

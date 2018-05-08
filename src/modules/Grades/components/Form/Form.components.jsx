@@ -4,26 +4,31 @@ import { connect } from 'react-redux';
 import store from '@App/App.store';
 
 import { getPromotionsList } from '@Promos/reducers/list.reducers';
-import * as effects from '@Promos/effects/list.effects';
+import { getPromotion as getPromotionDetails } from '@Promos/reducers/details.reducers';
+
+import { getPromotion } from '@Promos/effects/details.effects';
 
 import SelectInput from '@Shared/components/SelectInput/SelectInput.components';
 
 class Form extends React.Component {
 
-  // getAllPromotions
-  // select a prom and get All Pr
-  // ajout devoir (nom, coeff)
-  // ajout notes
-
   static propTypes = {
     promotionsList: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      label: PropTypes.string.isRequired
+      id: PropTypes.number,
+      label: PropTypes.string
     })).isRequired
   };
 
+  constructor() {
+    super();
+    this.state = {
+      selectedPromo: null
+    };
+  }
+
   change = ev => {
-    console.log(ev.target.value);
+    store.dispatch(getPromotion(ev.target.value));
+    this.setState({selectedPromo: ev.target.value});
   }
 
   parsedPromotions = promotions => {
@@ -36,19 +41,49 @@ class Form extends React.Component {
   }
 
   render() {
-    const { promotionsList } = this.props;
+    const { promotionsList, promotionsDetails } = this.props;
     const items = this.parsedPromotions(promotionsList);
 
     return (
       <React.Fragment>
         <h1>Form</h1>
         <SelectInput items={items} placeholder="Sélectionner une promotion" onChange={this.change} />
+        {
+          this.state.selectedPromo &&
+            <div>
+              <h2>La promotion sélectionnée est {this.state.selectedPromo}</h2>
+
+              <div className="tab">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Elève</th>
+                      <th>Note</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    { promotionsDetails.map(student => (
+                      <tr key={student.id}>
+                        <td> {student.firstname } { student.lastname }</td>
+                        <td><input type="number" placeholder={10} /></td>
+                      </tr>
+                    )) }
+                  </tbody>
+                </table>
+              </div>
+
+            </div>
+         }
+
       </React.Fragment>
     );
   }
 
 }
 
-const mapStateToProps = state => getPromotionsList(state);
+const mapStateToProps = state => ({
+  promotionsList: getPromotionsList(state).promotionsList,
+  promotionsDetails: getPromotionDetails(state).promotion
+});
 
 export default connect(mapStateToProps)(Form);

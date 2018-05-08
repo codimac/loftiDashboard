@@ -7,7 +7,10 @@ class SelectInput extends React.Component {
     items: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       label: Proptypes.string.isRequired,
-      value: Proptypes.string.isRequired
+      value: Proptypes.oneOfType([
+        Proptypes.string.isRequired,
+        Proptypes.number.isRequired
+      ]).isRequired,
     })).isRequired,
     placeholder: Proptypes.string.isRequired,
     onChange: Proptypes.func.isRequired
