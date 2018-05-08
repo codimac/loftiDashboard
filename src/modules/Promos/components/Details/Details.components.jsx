@@ -1,7 +1,10 @@
 import React from 'react';
 import Proptypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import plus from '@images/icon-plus.png';
-import { Link } from 'react-router-dom';
+import Filter from '@Shared/containers/Filter.containers';
+
 import './styles.scss';
 
 class DetailsPromotion extends React.Component {
@@ -12,7 +15,12 @@ class DetailsPromotion extends React.Component {
       id: Proptypes.number.isRequired,
       firstname: Proptypes.string.isRequired,
       lastname: Proptypes.string.isRequired
-    })).isRequired
+    })).isRequired,
+    match: Proptypes.shape({
+      params: Proptypes.shape({
+        id: Proptypes.string.isRequired
+      }).isRequired
+    }).isRequired,
   };
 
   componentDidMount() {
@@ -25,6 +33,7 @@ class DetailsPromotion extends React.Component {
       <React.Fragment>
         <div className="promotions">
           <h1>Détails de la promo {this.props.match.params.id}</h1>
+          <Filter placeholder="Rechercher un étudiant" />
           <table>
             <thead>
               <tr>
@@ -55,8 +64,8 @@ class DetailsPromotion extends React.Component {
                     </Link>
                   </td>
                   <td className='icon-access'>
-                    <Link to={`/students/${student.id}`}>
-                      >
+                    <Link to={`/students/${student.username}`}>
+
                     </Link>
                   </td>
                 </tr>
