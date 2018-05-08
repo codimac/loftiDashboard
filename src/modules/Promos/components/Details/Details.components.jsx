@@ -24,7 +24,7 @@ class DetailsPromotion extends React.Component {
     return (
       <React.Fragment>
         <div className="promotions">
-          <h1>Détails d'une promo</h1>
+          <h1>Détails de la promo {this.props.match.params.id}</h1>
           <table>
             <thead>
               <tr>
@@ -43,7 +43,7 @@ class DetailsPromotion extends React.Component {
                   <td>
                     {/* data missing for absence */}
                     0
-                    <Link to={`/absence/${student.id}`}>
+                    <Link to={`/absences/${student.id}`}>
                       <img className="icon-plus" src={ plus } alt="ajouter une absence" />
                     </Link>
                   </td>
@@ -55,7 +55,7 @@ class DetailsPromotion extends React.Component {
                     </Link>
                   </td>
                   <td className='icon-access'>
-                    <Link to={`/student/${student.id}`}>
+                    <Link to={`/students/${student.id}`}>
                       >
                     </Link>
                   </td>
