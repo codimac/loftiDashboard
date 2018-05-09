@@ -22,13 +22,19 @@ class Form extends React.Component {
   constructor() {
     super();
     this.state = {
-      selectedPromo: null
+      selectedPromo: null,
+      selectedUE: null,
+      selectedCourse: null
     };
   }
 
-  change = ev => {
+  selectPromo = ev => {
     store.dispatch(getPromotion(ev.target.value));
     this.setState({selectedPromo: ev.target.value});
+  }
+
+  selectUE = ev => {
+    this.setState({selectedUE: ev.value.target});
   }
 
   parsedPromotions = promotions => {
@@ -47,10 +53,21 @@ class Form extends React.Component {
     return (
       <React.Fragment>
         <h1>Form</h1>
-        <SelectInput items={items} placeholder="Sélectionner une promotion" onChange={this.change} />
+
+        {/*         <h2>Ajouter un devoir</h2>
+        <form>
+          <input type="text" placeholder="Nom du devoir" />
+          <input type="number" placeholder="coeff" min={1} />
+          <button>Ajouter</button>
+        </form> */}
+
+        <SelectInput items={items} placeholder="Sélectionner une promotion" onChange={this.selectPromo} />
         {
           this.state.selectedPromo &&
             <div>
+              <SelectInput items={items} placeholder="Sélectionner une UE" onChange={this.selectUE} />
+            </div>
+            /* <div>
               <h2>La promotion sélectionnée est {this.state.selectedPromo}</h2>
 
               <div className="tab">
@@ -72,7 +89,7 @@ class Form extends React.Component {
                 </table>
               </div>
 
-            </div>
+            </div> */
          }
 
       </React.Fragment>
