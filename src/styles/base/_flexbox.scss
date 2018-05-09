@@ -3,6 +3,11 @@
   flex-wrap: wrap !important;
 }
 
+.flex-inline {
+  display: inline-flex !important;
+  flex-wrap: wrap !important;
+}
+
 .flex-column {
   flex-direction: column !important;
 }

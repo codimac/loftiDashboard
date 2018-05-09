@@ -29,7 +29,7 @@ class Main extends React.Component {
         </Switch>
 
         <Switch>
-          <PrivateRoute path='/grades/add' allowed={['admin']} component={Form} />
+
           <PrivateRoute path='/grades' allowed={['admin']} component={GradesList} />
         </Switch>
 
@@ -40,6 +40,7 @@ class Main extends React.Component {
 
         {/* PROMOTIONS */}
         <Switch>
+          <PrivateRoute path='/promotions/:id/addGrade' allowed={['admin']} component={Form} />
           <PrivateRoute path='/promotions/:id' allowed={['admin']} component={DetailsPromotion} />
           <PrivateRoute path='/promotions' allowed={['admin']} component={ListPromotions} />
         </Switch>
