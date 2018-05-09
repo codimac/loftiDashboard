@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import { PrivateRoute } from '@Shared/components/PrivateRoute.components';
 
-import ListUe from '@Courses/containers/uesList.containers';
+import ListUe from '@Ues/containers/List.containers';
 
 import DetailsPromotion from '@Promos/containers/Details.containers';
 import ListPromotions from '@Promos/containers/List.containers';

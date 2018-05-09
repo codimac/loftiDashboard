@@ -15,7 +15,7 @@ const alias = {
   '@Promos': path.resolve(paths.SRC, 'modules', 'Promos'),
   '@Grades': path.resolve(paths.SRC, 'modules', 'Grades'),
   '@Students': path.resolve(paths.SRC, 'modules', 'Students'),
-  "@ues": path.resolve(paths.SRC, 'modules', 'Ues')
+  "@Ues": path.resolve(paths.SRC, 'modules', 'Ues')
 };
 
 module.exports = alias;
