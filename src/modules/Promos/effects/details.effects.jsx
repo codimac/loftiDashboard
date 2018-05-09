@@ -3,7 +3,7 @@ import * as actions from '@Promos/actions/details.actions';
 import mocks from '@Promos/mocks/details.mocks';
 import { requestSvc } from '@services/request.services';
 
-export const getPromotion = () => dispatch => {
+export const getPromotion = (id) => dispatch => {
   dispatch(actions.fetchPromotion());
   Http.get('/always/true', requestSvc.generateOptions())
     .then(res => {

@@ -1,0 +1,23 @@
+.link {
+  color: $white;
+  text-decoration: none;
+  margin: 3px 0;
+  display: inline-block;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.link__black {
+  color: $font-colour;
+}
+
+.link__sidebar {
+  margin-left: 12%;
+}
+
+.link__sidebar__title {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 12px;
+}

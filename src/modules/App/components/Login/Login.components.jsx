@@ -1,5 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
+import { authSvc } from '@services/auth.services';
+import { history } from '@helpers/history.helpers';
 import './Login.styles';
 
 class Login extends React.Component {
@@ -15,6 +18,12 @@ class Login extends React.Component {
       password: '',
       submitted: false
     };
+  }
+
+  componentWillMount() {
+    if (authSvc.isAuth()) {
+      history.push('/');
+    }
   }
 
   handleSubmit = ev => {
