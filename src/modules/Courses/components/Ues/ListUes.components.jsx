@@ -2,7 +2,7 @@ import React from 'react';
 import Proptypes from 'prop-types';
 
 import Ue from './Ue.components';
-import './ues.styles.scss';
+import './ues.styles';
 
 
 class ListUe extends React.Component {

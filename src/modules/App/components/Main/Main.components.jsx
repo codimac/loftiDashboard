@@ -21,9 +21,12 @@ class Main extends React.Component {
 
         {/*
         <Switch>
-            <Route path='/courses' component={ListUe} />
             <Route path='/grades' component={GradesList} />
           </Switch> */}
+
+        <Switch>
+          <PrivateRoute path='/courses' allowed={['admin']} component={ListUe} />
+        </Switch>
 
         <Switch>
           <PrivateRoute path='/grades/add' allowed={['admin']} component={Form} />
