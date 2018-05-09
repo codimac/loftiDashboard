@@ -1,6 +1,8 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 
+import Details from '@Ues/components/Details/Details.components';
+
 class List extends React.Component {
 
   static propTypes = {
@@ -26,7 +28,14 @@ class List extends React.Component {
 
     return (
       <div className='list-ues'>
-        {/* {ues.map(ue => <Ue key={ue.id} ue={ue} />)} */}
+        <ul>
+          {
+            ues.map(ue => (
+              <li key={ue.id}>
+                <Details {...ue} />
+              </li>
+          ))}
+        </ul>
       </div>
     );
   }
