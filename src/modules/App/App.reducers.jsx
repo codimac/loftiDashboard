@@ -8,7 +8,7 @@ import studentDetailsReducer from '@Students/reducers/details.reducers';
 import promotionsListReducer from '@Promos/reducers/list.reducers';
 import promotionsDetailsReducer from '@Promos/reducers/details.reducers';
 
-import uesListReducer from '@Courses/reducers/uesList.reducers';
+import uesListReducer from '@Ues/reducers/list.reducers';
 
 import gradesListReducer from '@Grades/reducers/list.reducers';
 
@@ -28,7 +28,7 @@ const rootReducer = combineReducers({
   promotionsList: promotionsListReducer,
   promotionsDetails: promotionsDetailsReducer,
 
-  // courses
+  // ues
   uesList: uesListReducer,
 
   // grades

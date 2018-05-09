@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 
 import { PrivateRoute } from '@Shared/components/PrivateRoute.components';
 
-import ListUe from '@Courses/containers/uesList.containers';
+import ListUe from '@Ues/containers/List.containers';
 
 import DetailsPromotion from '@Promos/containers/Details.containers';
 import ListPromotions from '@Promos/containers/List.containers';
@@ -21,9 +21,12 @@ class Main extends React.Component {
 
         {/*
         <Switch>
-            <Route path='/courses' component={ListUe} />
             <Route path='/grades' component={GradesList} />
           </Switch> */}
+
+        <Switch>
+          <PrivateRoute path='/courses' allowed={['admin']} component={ListUe} />
+        </Switch>
 
         <Switch>
           <PrivateRoute path='/grades/add' allowed={['admin']} component={Form} />

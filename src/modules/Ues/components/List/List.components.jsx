@@ -1,16 +1,14 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 
-import Ue from './Ue.components';
-import './ues.styles.scss';
+import Details from '@Ues/components/Details/Details.components';
 
-
-class ListUe extends React.Component {
+class List extends React.Component {
 
   static propTypes = {
     getUesList: Proptypes.func.isRequired,
     ues: Proptypes.arrayOf(Proptypes.shape({
-      id: Proptypes.string.isRequired,
+      id: Proptypes.number.isRequired,
       name: Proptypes.string.isRequired,
       description: Proptypes.string.isRequired
     })).isRequired
@@ -30,10 +28,17 @@ class ListUe extends React.Component {
 
     return (
       <div className='list-ues'>
-        {ues.map(ue => <Ue key={ue.id} ue={ue} />)}
+        <ul>
+          {
+            ues.map(ue => (
+              <li key={ue.id}>
+                <Details {...ue} />
+              </li>
+          ))}
+        </ul>
       </div>
     );
   }
 }
 
-export default ListUe;
+export default List;

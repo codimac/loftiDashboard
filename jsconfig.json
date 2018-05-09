@@ -20,6 +20,7 @@
       "@Grades/*": ["modules/Grades/*"],
       "@Promos/*": ["modules/Promos/*"],
       "@Students/*": ["modules/Students/*"],
+      "@Ues/*": ["modules/Ues/*"],
 
       "@Shared/*": ["modules/Shared/*"],
       "@App/*": ["modules/App/*"],
