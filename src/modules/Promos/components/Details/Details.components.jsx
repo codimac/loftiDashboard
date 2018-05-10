@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 
 import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
-import FilterInput from '@Shared/containers/FilterInput.containers'
+import FilterInput from '@Shared/containers/FilterInput.containers';
 
 import plus from '@images/icon-plus.png';
 import './styles';
