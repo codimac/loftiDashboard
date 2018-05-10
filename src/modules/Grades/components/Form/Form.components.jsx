@@ -32,7 +32,8 @@ class Form extends React.Component {
     })).isRequired,
     match: Proptypes.shape({
       params: Proptypes.shape({
-        id: Proptypes.string.isRequired
+        promotionId: Proptypes.string.isRequired,
+        subjectId: Proptypes.string.isRequired
       }).isRequired
     }).isRequired,
     createSubjectWithGrades: Proptypes.func.isRequired
@@ -53,9 +54,9 @@ class Form extends React.Component {
   componentDidMount() {
     // à voir si le if est pertinent
     if (this.props.match.params.id !== getPromotion(store.getState()).year) {
-      store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.id));
+      store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
     }
-    store.dispatch(semestersListEffects.getSemesterForPromo(this.props.match.params.id));
+    store.dispatch(semestersListEffects.getSemesterForPromo(this.props.match.params.promotionId));
   }
 
   selectSemester = ev => {
@@ -153,7 +154,7 @@ class Form extends React.Component {
 
   render() {
     const { year, promotion, semesters, ues } = this.props;
-
+    console.log(this.props);
     return (
       <React.Fragment>
         <h1>Form</h1>
@@ -195,7 +196,7 @@ class Form extends React.Component {
                         promotion.map(student => (
                           <tr key={student.id}>
                             <td>{student.firstname} {student.lastname}</td>
-                            <td><input type="number" placeholder="Note" min={0} step="any" name={`${student.username}`} onChange={this.handleGradeChange} /></td>
+                            <td><input type="number" placeholder="Note" min={0} step="any" name={`${student.id}`} onChange={this.handleGradeChange} /></td>
                           </tr>
                         ))
                       }
