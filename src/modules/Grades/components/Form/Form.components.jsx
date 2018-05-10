@@ -3,10 +3,7 @@ import Proptypes from 'prop-types';
 import { connect } from 'react-redux';
 import store from '@App/App.store';
 
-import { getPromotionsList } from '@Promos/reducers/list.reducers';
 import { getPromotion } from '@Promos/reducers/details.reducers';
-import { getSemestersList } from '@Semesters/reducers/list.reducers';
-import { getUesList } from '@Ues/reducers/list.reducers';
 
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 import * as semestersListEffects from '@Semesters/effects/list.effects';
@@ -38,6 +35,7 @@ class Form extends React.Component {
         id: Proptypes.string.isRequired
       }).isRequired
     }).isRequired,
+    createSubjectWithGrades: Proptypes.func.isRequired
   };
 
   constructor() {
@@ -47,8 +45,8 @@ class Form extends React.Component {
       selectedUE: null,
       selectedCourse: null,
       validForm: false,
-      subject: null,
-      grades: null
+      subject: {},
+      grades: {}
     };
   }
 
@@ -59,7 +57,6 @@ class Form extends React.Component {
     }
     store.dispatch(semestersListEffects.getSemesterForPromo(this.props.match.params.id));
   }
-
 
   selectSemester = ev => {
     this.setState({selectedSemester: +ev.target.value});
@@ -111,9 +108,8 @@ class Form extends React.Component {
       subject: {
         ...this.state.subject,
         [ev.target.name]: ev.target.value
-      },
-      validForm: true
-    });
+      }
+    }, () => this.validForm());
   }
 
   handleGradeChange = ev => {
@@ -121,13 +117,12 @@ class Form extends React.Component {
       grades: {
         ...this.state.grades,
         [ev.target.name]: +ev.target.value
-      },
-      validForm: true
-    })
+      }
+    }, () => this.validForm());
   }
 
   prepareSave = () => {
-    const subjectAndGrades = {
+    const subjectWithGrades = {
       promoYear: this.props.year,
       semesterId: this.state.selectedSemester,
       ueId: this.state.selectedUE,
@@ -138,12 +133,22 @@ class Form extends React.Component {
       },
       grades: this.state.grades
     };
-    console.log(subjectAndGrades);
+    this.props.createSubjectWithGrades(subjectWithGrades);
   }
 
   submit = ev => {
     ev.preventDefault();
     this.prepareSave();
+  }
+
+  validForm = () => {
+    const { subject, grades } = this.state;
+    const subjectValues = Object.values(subject);
+    const gradesValues = Object.values(grades);
+    this.setState({
+      validForm: subjectValues.length === 3 && subjectValues.every(value => value.length !== 0) &&
+        gradesValues.length !== 0 && gradesValues.every(grade => grade !== 0)
+    });
   }
 
   render() {
@@ -169,10 +174,9 @@ class Form extends React.Component {
         {
           this.state.selectedCourse &&
             <div>
-              <form onSubmit={this.submit}>
+              <form onSubmit={this.submit} >
                 <div>
                   <h2>Ajout du devoir</h2>
-                  <button type="submit" disabled={!this.state.validForm}>Submit</button>
                   <input type="text" placeholder="Nom du devoir" name="subjectName" onChange={this.handleSubjectChange} />
                   <textarea name="subjectDesc" cols="30" placeholder="Description" onChange={this.handleSubjectChange} ></textarea>
                   <input type="number" name="coefficient" placeholder="coeff" min={0} step="any" onChange={this.handleSubjectChange} />
@@ -198,6 +202,7 @@ class Form extends React.Component {
                     </tbody>
                   </table>
                 </div>
+                <button type="submit" disabled={!this.state.validForm}>Submit</button>
               </form>
             </div>
         }
@@ -207,11 +212,4 @@ class Form extends React.Component {
 
 }
 
-const mapStateToProps = state => ({
-  year: getPromotion(state).year,
-  promotion: getPromotion(state).promotion,
-  semesters: getSemestersList(state).semesters,
-  ues: getUesList(state).ues
-});
-
-export default connect(mapStateToProps)(Form);
+export default Form;
