@@ -28,6 +28,11 @@ class Form extends React.Component {
       id: Proptypes.number.isRequired,
       label: Proptypes.string.isRequired
     })).isRequired,
+    ues: Proptypes.arrayOf(Proptypes.shape({
+      id: Proptypes.number.isRequired,
+      name: Proptypes.string.isRequired,
+      description: Proptypes.string.isRequired
+    })).isRequired,
     match: Proptypes.shape({
       params: Proptypes.shape({
         id: Proptypes.string.isRequired
@@ -40,7 +45,10 @@ class Form extends React.Component {
     this.state = {
       selectedSemester: null,
       selectedUE: null,
-      selectedCourse: null
+      selectedCourse: null,
+      validForm: false,
+      subject: null,
+      grades: null
     };
   }
 
@@ -52,13 +60,18 @@ class Form extends React.Component {
     store.dispatch(semestersListEffects.getSemesterForPromo(this.props.match.params.id));
   }
 
-  selectUE = ev => {
-    this.setState({selectedUE: ev.target.value});
-  }
 
   selectSemester = ev => {
     this.setState({selectedSemester: +ev.target.value});
     store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
+  }
+
+  selectUE = ev => {
+    this.setState({selectedUE: +ev.target.value});
+  }
+
+  selectCourse = ev => {
+    this.setState({selectedCourse: +ev.target.value});
   }
 
   parsedPromotions = promotions => {
@@ -78,12 +91,64 @@ class Form extends React.Component {
   }
 
   parsedUes = ues => {
+    return ues.map(ue => ({
+      ...ue,
+      value: ue.id,
+      label: ue.name
+    }));
+  }
 
+  parsedCourses = ues => {
+    return ues.find(ue => ue.id === this.state.selectedUE).courses.map(course => ({
+      ...course,
+      value: course.id,
+      label: course.name
+    }));
+  }
+
+  handleSubjectChange = ev => {
+    this.setState({
+      subject: {
+        ...this.state.subject,
+        [ev.target.name]: ev.target.value
+      },
+      validForm: true
+    });
+  }
+
+  handleGradeChange = ev => {
+    this.setState({
+      grades: {
+        ...this.state.grades,
+        [ev.target.name]: +ev.target.value
+      },
+      validForm: true
+    })
+  }
+
+  prepareSave = () => {
+    const subjectAndGrades = {
+      promoYear: this.props.year,
+      semesterId: this.state.selectedSemester,
+      ueId: this.state.selectedUE,
+      courseId: this.state.selectedCourse,
+      subject: {
+        ...this.state.subject,
+        coefficient: +this.state.subject.coefficient,
+      },
+      grades: this.state.grades
+    };
+    console.log(subjectAndGrades);
+  }
+
+  submit = ev => {
+    ev.preventDefault();
+    this.prepareSave();
   }
 
   render() {
-    const { year, promotion, semesters } = this.props;
-    console.log(this.props);
+    const { year, promotion, semesters, ues } = this.props;
+
     return (
       <React.Fragment>
         <h1>Form</h1>
@@ -91,11 +156,51 @@ class Form extends React.Component {
 
         <SelectInput items={this.parsedSemesters(semesters)} placeholder='Sélectionner un semestre' onChange={this.selectSemester} />
 
-        {/* {
+        {
           this.state.selectedSemester &&
             <SelectInput items={this.parsedUes(ues)} placeholder='Sélectionner une UE' onChange={this.selectUE} />
-         } */}
+        }
 
+        {
+          this.state.selectedUE &&
+            <SelectInput items={this.parsedCourses(ues)} placeholder='Sélectionner une matière' onChange={this.selectCourse} />
+        }
+
+        {
+          this.state.selectedCourse &&
+            <div>
+              <form onSubmit={this.submit}>
+                <div>
+                  <h2>Ajout du devoir</h2>
+                  <button type="submit" disabled={!this.state.validForm}>Submit</button>
+                  <input type="text" placeholder="Nom du devoir" name="subjectName" onChange={this.handleSubjectChange} />
+                  <textarea name="subjectDesc" cols="30" placeholder="Description" onChange={this.handleSubjectChange} ></textarea>
+                  <input type="number" name="coefficient" placeholder="coeff" min={0} step="any" onChange={this.handleSubjectChange} />
+                </div>
+
+                <div className="flex justify-content-sb">
+                  <table>
+                    <thead>
+                      <tr>
+                        <th>Elèves</th>
+                        <th>Notes</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {
+                        promotion.map(student => (
+                          <tr key={student.id}>
+                            <td>{student.firstname} {student.lastname}</td>
+                            <td><input type="number" placeholder="Note" min={0} step="any" name={`${student.username}`} onChange={this.handleGradeChange} /></td>
+                          </tr>
+                        ))
+                      }
+                    </tbody>
+                  </table>
+                </div>
+              </form>
+            </div>
+        }
       </React.Fragment>
     );
   }
@@ -103,10 +208,10 @@ class Form extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  promotion: getPromotion(state).promotion,
   year: getPromotion(state).year,
+  promotion: getPromotion(state).promotion,
   semesters: getSemestersList(state).semesters,
-  ues: getUesList(state).uesList
+  ues: getUesList(state).ues
 });
 
 export default connect(mapStateToProps)(Form);
