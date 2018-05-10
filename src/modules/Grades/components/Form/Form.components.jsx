@@ -33,7 +33,7 @@ class Form extends React.Component {
     match: Proptypes.shape({
       params: Proptypes.shape({
         promotionId: Proptypes.string.isRequired,
-        subjectId: Proptypes.string.isRequired
+        subjectId: Proptypes.string
       }).isRequired
     }).isRequired,
     createSubjectWithGrades: Proptypes.func.isRequired
@@ -124,7 +124,7 @@ class Form extends React.Component {
 
   prepareSave = () => {
     const subjectWithGrades = {
-      promoYear: this.props.year,
+      promotionYear: this.props.year,
       semesterId: this.state.selectedSemester,
       ueId: this.state.selectedUE,
       courseId: this.state.selectedCourse,
@@ -134,6 +134,7 @@ class Form extends React.Component {
       },
       grades: this.state.grades
     };
+    console.log(subjectWithGrades);
     this.props.createSubjectWithGrades(subjectWithGrades);
   }
 
@@ -154,7 +155,7 @@ class Form extends React.Component {
 
   render() {
     const { year, promotion, semesters, ues } = this.props;
-    console.log(this.props);
+
     return (
       <React.Fragment>
         <h1>Form</h1>
@@ -178,8 +179,8 @@ class Form extends React.Component {
               <form onSubmit={this.submit} >
                 <div>
                   <h2>Ajout du devoir</h2>
-                  <input type="text" placeholder="Nom du devoir" name="subjectName" onChange={this.handleSubjectChange} />
-                  <textarea name="subjectDesc" cols="30" placeholder="Description" onChange={this.handleSubjectChange} ></textarea>
+                  <input type="text" placeholder="Nom du devoir" name="name" onChange={this.handleSubjectChange} />
+                  <textarea name="description" cols="30" placeholder="Description" onChange={this.handleSubjectChange} ></textarea>
                   <input type="number" name="coefficient" placeholder="coeff" min={0} step="any" onChange={this.handleSubjectChange} />
                 </div>
 
