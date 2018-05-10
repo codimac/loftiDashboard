@@ -8,7 +8,6 @@ class List extends React.Component {
     getAbsencesList: Proptypes.func.isRequired
   };
 
-
   componentDidMount() {
     this.props.getAbsencesList();
   }

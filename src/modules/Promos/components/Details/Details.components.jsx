@@ -88,6 +88,8 @@ class DetailsPromotion extends React.Component {
               <h1>Les actions</h1>
               <ul>
                 <li><Link to={`/promotions/${this.props.match.params.id}/addGrade`} className="link link__black" >Ajouter un devoir</Link></li>
+                <li><Link to={`/promotions/${this.props.match.params.id}/addAbsences`} className="link link__black" >Ajouter une absence</Link></li>
+                <li><Link to={`/promotions/${this.props.match.params.id}/absences`} className="link link__black" >Consulter les absences</Link></li>
               </ul>
             </section>
           </div>

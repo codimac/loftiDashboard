@@ -31,32 +31,23 @@ class Main extends React.Component {
 
         <Switch>
           <PrivateRoute path='/semesters' allowed={['admin']} component={SemestersList} />
-        </Switch>
 
-        <Switch>
           <PrivateRoute path='/courses' allowed={['admin']} component={ListUe} />
-        </Switch>
-
-        <Switch>
 
           <PrivateRoute path='/grades' allowed={['admin']} component={GradesList} />
-        </Switch>
 
-        {/* STUDENTS */}
-        <Switch>
+          {/* STUDENTS */}
           <PrivateRoute path='/students/:username' allowed={['admin']} component={DetailsStudent} />
-        </Switch>
 
-        {/* PROMOTIONS */}
-        <Switch>
+          {/* ABSENCES */}
+
+          <PrivateRoute path='/promotions/:id/absences' allowed={['admin']} component={AbsencesList} />
+          <PrivateRoute path='/promotions/:id/addAbsences' allowed={['admin']} component={AbsencesList} />
+          <PrivateRoute path='/absences' allowed={['admin']} component={AbsencesList} />
+          {/* PROMOTIONS */}
           <PrivateRoute path='/promotions/:id/addGrade' allowed={['admin']} component={Form} />
           <PrivateRoute path='/promotions/:id' allowed={['admin']} component={DetailsPromotion} />
           <PrivateRoute path='/promotions' allowed={['admin']} component={ListPromotions} />
-        </Switch>
-
-        {/* ABSENCES */}
-        <Switch>
-          <PrivateRoute path='/absences' allowed={['admin']} component={AbsencesList} />
         </Switch>
 
       </React.Fragment>
