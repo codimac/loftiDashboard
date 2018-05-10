@@ -14,8 +14,8 @@ const alias = {
   '@Courses': path.resolve(paths.SRC, 'modules', 'Courses'),
   '@Promos': path.resolve(paths.SRC, 'modules', 'Promos'),
   '@Grades': path.resolve(paths.SRC, 'modules', 'Grades'),
-  '@Absences': path.resolve(paths.SRC, 'modules', 'Absences')
-  "@Semesters": path.resolve(paths.SRC, 'modules', 'Semesters')
+  '@Absences': path.resolve(paths.SRC, 'modules', 'Absences'),
+  "@Semesters": path.resolve(paths.SRC, 'modules', 'Semesters'),
   "@Ues": path.resolve(paths.SRC, 'modules', 'Ues'),
   '@Students': path.resolve(paths.SRC, 'modules', 'Students'),
 };

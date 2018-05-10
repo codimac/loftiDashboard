@@ -25,7 +25,7 @@
       "@Absences/*": ["modules/Absences/*"],
 
       "@Shared/*": ["modules/Shared/*"],
-      "@App/*": ["modules/App/*"],
+      "@App/*": ["modules/App/*"]
     },
     "lib": [
       "dom", "es2015", "es2017"
