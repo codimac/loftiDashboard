@@ -2,9 +2,6 @@
   .actions {
     width: 45%;
   }
-  .liste {
-    width: 50%;
-  }
   .centered-col{
     text-align: center;
   }
@@ -34,12 +31,12 @@
 
   }
 }
-
+a {
+  text-decoration: none;
+}
 .icon-plus {
   width: 20px;
   height: 20px;
   vertical-align: middle;
-  a {
-    text-decoration: none;
-  }
+  float: right;
 }

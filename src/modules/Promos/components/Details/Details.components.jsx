@@ -50,7 +50,7 @@ class DetailsPromotion extends React.Component {
           </React.Fragment>
         )
       },
-      {Header: 'Notes', accessor: 'grades', width: 75,
+      {Header: 'Notes', accessor: 'grades', width: 75, className: 'centered-col',
         Cell: row => (
           <React.Fragment>
             {row.value}
@@ -60,7 +60,7 @@ class DetailsPromotion extends React.Component {
           </React.Fragment>
         )
       },
-      {Header: 'Page', accessor: 'username', width: 50,
+      {Header: 'Page', accessor: 'username', width: 50, className: 'centered-col',
         Cell: row => (<span className='icon-access'><Link to={`/students/${row.value}`}> > </Link> </span>)}
     ];
 
@@ -70,8 +70,8 @@ class DetailsPromotion extends React.Component {
           <h1>Détails d'une promo</h1>
 
 
-          <div className="flex justify-content-sb">
-            <section className="section liste">
+          <div className="flex flex-wrap-reverse justify-content-sb">
+            <section className="alig-items-start">
               <Filter placeholder="Rechercher un étudiant" />
               <ReactTable
                 data={promotion}
@@ -83,7 +83,7 @@ class DetailsPromotion extends React.Component {
 
             </section>
 
-            <section className="section actions">
+            <section className="alig-items-start actions">
               <h1>Les actions</h1>
               <ul>
                 <li><Link to={`/promotions/${this.props.match.params.id}/subjects`} className="link link__black" >Ajouter un devoir</Link></li>
