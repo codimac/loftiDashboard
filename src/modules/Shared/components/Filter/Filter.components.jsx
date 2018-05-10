@@ -5,7 +5,8 @@ class Filter extends React.Component {
 
   static propTypes = {
     onChange: Proptypes.func.isRequired,
-    resetFilter: Proptypes.func.isRequired
+    resetFilter: Proptypes.func.isRequired,
+    placeholder: Proptypes.string.isRequired
   };
 
   componentWillUnmount() {
@@ -13,9 +14,9 @@ class Filter extends React.Component {
   }
 
   render() {
-    const { onChange } = this.props;
+    const { onChange, placeholder } = this.props;
     return (
-      <input type="text" placeholder="filter" onChange={onChange} />
+      <input type="text" onChange={onChange} placeholder={placeholder} />
     );
   }
 

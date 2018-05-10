@@ -3,24 +3,59 @@ import { Switch, Route } from 'react-router-dom';
 
 import { PrivateRoute } from '@Shared/components/PrivateRoute.components';
 
-import Promotion from '@Promos/containers/Details.containers';
+import ListUe from '@Ues/containers/List.containers';
+
+import DetailsPromotion from '@Promos/containers/Details.containers';
+import ListPromotions from '@Promos/containers/List.containers';
+
+import DetailsStudent from '@Students/containers/Details.containers';
+
 import GradesList from '@Grades/containers/List.containers';
-import ListUe from '@Courses/components/Ues/ListUe.components';
+
+import SemestersList from '@Semesters/containers/List.containers';
+
+import GradesForm from '@Grades/containers/Form.containers';
 
 class Main extends React.Component {
 
   render() {
     return (
       <React.Fragment>
+
+        {/*
         <Switch>
-          <Route exact path='/courses' component={ListUe} />
-          <Route exact path='/grades' component={GradesList} />
-          <Route path='/promotions/:id' component={Promotion} />
+            <Route path='/grades' component={GradesList} />
+          </Switch> */}
+
+        <Switch>
+          <PrivateRoute path='/semesters' allowed={['admin']} component={SemestersList} />
         </Switch>
+
+        <Switch>
+          <PrivateRoute path='/courses' allowed={['admin']} component={ListUe} />
+        </Switch>
+
+        <Switch>
+
+          <PrivateRoute path='/grades' allowed={['admin']} component={GradesList} />
+        </Switch>
+
+        {/* STUDENTS */}
+        <Switch>
+          <PrivateRoute path='/students/:username' allowed={['admin']} component={DetailsStudent} />
+        </Switch>
+
+        {/* PROMOTIONS */}
+        <Switch>
+          <PrivateRoute path='/promotions/:promotionId/subjects/:subjectId' allowed={['admin']} component={GradesForm} />
+          <PrivateRoute path='/promotions/:promotionId/subjects' allowed={['admin']} component={GradesForm} />
+          <PrivateRoute path='/promotions/:id' allowed={['admin']} component={DetailsPromotion} />
+          <PrivateRoute path='/promotions' allowed={['admin']} component={ListPromotions} />
+        </Switch>
+
       </React.Fragment>
     );
   }
-
 }
 
 export default Main;

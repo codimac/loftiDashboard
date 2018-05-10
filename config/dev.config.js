@@ -9,6 +9,7 @@ module.exports = merge(baseConfig, {
   },
   devServer: {
     contentBase: paths.SRC,
+    publicPath: '/',
     port: 8000,
     historyApiFallback: true,
     open: true,

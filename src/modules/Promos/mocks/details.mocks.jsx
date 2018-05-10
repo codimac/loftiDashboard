@@ -3,7 +3,13 @@ const createFakeStudents = (number = 25) => {
   for (let i = 0; i < students.length; i++) {
     students[i] = { id: i, firstname: `name${i}`, lastname: `surname${i}`, username: `username${i}`};
   }
-  return {promotion: students, tempPromotion: students};
+  students.push({id: number+1, firstname: 'François', lastname: 'Hollande', username: 'fhollande'});
+  return students;
 };
 
-export default createFakeStudents();
+const students = createFakeStudents();
+
+export default {
+  promotion: students,
+  tempPromotion: students
+};

@@ -6,7 +6,10 @@ import { getPromotion } from '@Promos/reducers/details.reducers';
 import { getFilter } from '@Shared/reducers/filter.reducers';
 import * as actions from '@Promos/effects/details.effects';
 
-const filterStudent = (students, val) => students.tempPromotion.filter(student => student.username.toLowerCase().indexOf(val) !== -1 || !val);
+const filterStudent = (students, val) => students.tempPromotion.filter(student => {
+  const user = `${student.firstname} ${student.lastname}`;
+  return user.toLowerCase().indexOf(val) !== -1 || !val;
+});
 
 const getVisibleStudents = (students, filter) => ({
   ...students,

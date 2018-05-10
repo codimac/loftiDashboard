@@ -1,6 +1,6 @@
 const gradesListInitialState = {
   isFetching: false,
-  gradesList: []
+  grades: []
 };
 
 export default gradesListInitialState;
