@@ -13,7 +13,7 @@ const semestersListReducer = (state = semestersListInitialState, action) => {
     case types.FETCHING_SEMESTERS_LIST_SUCCESS:
       return {
         ...state,
-        semestersList: action.payload.data
+        ...action.payload
       };
 
     case types.FETCHING_SEMESTERS_LIST_FAILURE:

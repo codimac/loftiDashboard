@@ -7,10 +7,10 @@ export const fetchUesList = (isFetching = true) => ({
   }
 });
 
-export const fetchUesListSucceed = data => ({
+export const fetchUesListSucceed = ues => ({
   type: types.FETCHING_UES_LIST_SUCCESS,
   payload: {
-    ues: data
+    ues
   }
 });
 

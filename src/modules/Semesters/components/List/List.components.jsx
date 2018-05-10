@@ -4,7 +4,7 @@ import Proptypes from 'prop-types';
 class List extends React.Component {
 
   static propTypes = {
-    semestersList: Proptypes.arrayOf(Proptypes.shape({
+    semesters: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       label: Proptypes.string.isRequired
     })).isRequired,
@@ -16,7 +16,7 @@ class List extends React.Component {
   }
 
   render() {
-    const { semestersList } = this.props;
+    const { semesters } = this.props;
 
     return (
       <h2>Semesters List Works</h2>

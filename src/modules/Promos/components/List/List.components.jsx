@@ -6,7 +6,7 @@ class List extends React.Component {
 
   static propTypes = {
     getPromotionsList: Proptypes.func.isRequired,
-    promotionsList: Proptypes.arrayOf(Proptypes.shape({
+    promotions: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       label: Proptypes.string.isRequired
     })).isRequired,
@@ -46,12 +46,12 @@ class List extends React.Component {
   }
 
   render() {
-    const { sidebar, promotionsList } = this.props;
+    const { sidebar, promotions } = this.props;
     return (
       <React.Fragment>
         { sidebar
-          ? this.renderSidebar(promotionsList)
-          : this.renderList(promotionsList)
+          ? this.renderSidebar(promotions)
+          : this.renderList(promotions)
         }
       </React.Fragment>
     );

@@ -6,9 +6,11 @@ import store from '@App/App.store';
 import { getPromotionsList } from '@Promos/reducers/list.reducers';
 import { getPromotion } from '@Promos/reducers/details.reducers';
 import { getSemestersList } from '@Semesters/reducers/list.reducers';
+import { getUesList } from '@Ues/reducers/list.reducers';
 
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 import * as semestersListEffects from '@Semesters/effects/list.effects';
+import * as uesListEffects from '@Ues/effects/list.effects';
 
 import SelectInput from '@Shared/components/SelectInput/SelectInput.components';
 
@@ -47,7 +49,7 @@ class Form extends React.Component {
     if (this.props.match.params.id !== getPromotion(store.getState()).year) {
       store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.id));
     }
-    store.dispatch(semestersListEffects.getSemestersList());
+    store.dispatch(semestersListEffects.getSemesterForPromo(this.props.match.params.id));
   }
 
   selectUE = ev => {
@@ -56,6 +58,7 @@ class Form extends React.Component {
 
   selectSemester = ev => {
     this.setState({selectedSemester: +ev.target.value});
+    store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
   }
 
   parsedPromotions = promotions => {
@@ -67,60 +70,31 @@ class Form extends React.Component {
     });
   }
 
-  parsedSemester = semesters => {
+  parsedSemesters = semesters => {
     return semesters.map(semester => ({
       ...semester,
       value: semester.id
     }));
   }
 
+  parsedUes = ues => {
+
+  }
+
   render() {
     const { year, promotion, semesters } = this.props;
-
+    console.log(this.props);
     return (
       <React.Fragment>
         <h1>Form</h1>
         <h2>La promo sélectionnée est { year }</h2>
 
-        <SelectInput items={this.parsedSemester(semesters)} placeholder='Sélectionner un semestre' onChange={this.selectSemester} />
+        <SelectInput items={this.parsedSemesters(semesters)} placeholder='Sélectionner un semestre' onChange={this.selectSemester} />
 
-        {/*         <h2>Ajouter un devoir</h2>
-        <form>
-          <input type="text" placeholder="Nom du devoir" />
-          <input type="number" placeholder="coeff" min={1} />
-          <button>Ajouter</button>
-        </form> */}
-
-        {
+        {/* {
           this.state.selectedSemester &&
-            <div>
-              coucou
-              {/* <SelectInput items={items} placeholder="Sélectionner une UE" onChange={this.selectUE} /> */}
-            </div>
-            /* <div>
-              <h2>La promotion sélectionnée est {this.state.selectedPromo}</h2>
-
-              <div className="tab">
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Elève</th>
-                      <th>Note</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    { promotionsDetails.map(student => (
-                      <tr key={student.id}>
-                        <td> {student.firstname } { student.lastname }</td>
-                        <td><input type="number" placeholder={10} /></td>
-                      </tr>
-                    )) }
-                  </tbody>
-                </table>
-              </div>
-
-            </div> */
-         }
+            <SelectInput items={this.parsedUes(ues)} placeholder='Sélectionner une UE' onChange={this.selectUE} />
+         } */}
 
       </React.Fragment>
     );
@@ -131,7 +105,8 @@ class Form extends React.Component {
 const mapStateToProps = state => ({
   promotion: getPromotion(state).promotion,
   year: getPromotion(state).year,
-  semesters: getSemestersList(state).semestersList
+  semesters: getSemestersList(state).semesters,
+  ues: getUesList(state).uesList
 });
 
 export default connect(mapStateToProps)(Form);

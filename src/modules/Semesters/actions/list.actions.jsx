@@ -7,10 +7,10 @@ export const fetchSemestersList = (isFetching = true) => ({
   }
 });
 
-export const fetchSemestersListSucceed = data => ({
+export const fetchSemestersListSucceed = semesters => ({
   type: types.FETCHING_SEMESTERS_LIST_SUCCESS,
   payload: {
-    data
+    semesters
   }
 });
 

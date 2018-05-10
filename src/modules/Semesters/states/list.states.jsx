@@ -1,6 +1,6 @@
 const semestersListInitialState = {
   isFetching: false,
-  semestersList: []
+  semesters: []
 };
 
 export default semestersListInitialState;
