@@ -1,6 +1,12 @@
 .promotions {
-  .section {
-    width: 40%;
+  .actions {
+    width: 45%;
+  }
+  .liste {
+    width: 50%;
+  }
+  .centered-col{
+    text-align: center;
   }
   h1{
     font-size: 1.5em;
@@ -32,5 +38,8 @@
 .icon-plus {
   width: 20px;
   height: 20px;
-  vertical-align: middle
+  vertical-align: middle;
+  a {
+    text-decoration: none;
+  }
 }
