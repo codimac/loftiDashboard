@@ -14,7 +14,7 @@ const promotionsDetailsReducer = (state = promotionsDetailsListInitialState, act
     case types.FETCHING_PROMOTIONS_DETAILS_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload.data
       };
 
     case types.FETCHING_PROMOTIONS_DETAILS_FAILURE:

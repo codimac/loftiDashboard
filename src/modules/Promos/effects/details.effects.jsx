@@ -7,7 +7,7 @@ export const getPromotion = (id) => dispatch => {
   dispatch(actions.fetchPromotion());
   Http.get('/always/true', requestSvc.generateOptions())
     .then(res => {
-      dispatch(actions.fetchPromotionDetailsSucceed(mocks));
+      dispatch(actions.fetchPromotionDetailsSucceed({...mocks, year: +id}));
       dispatch(actions.fetchPromotion(false));
     })
     .catch(err => dispatch(actions.fetchPromotionDetailsFailed(err)));
