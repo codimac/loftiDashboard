@@ -8,7 +8,7 @@ import Login from '@App/containers/Login.containers';
 
 import { PrivateRoute } from '@Shared/components/PrivateRoute.components';
 
-export default class App extends React.Component {
+class App extends React.Component {
 
   render() {
     return (
@@ -23,3 +23,5 @@ export default class App extends React.Component {
     );
   }
 }
+
+export default App;

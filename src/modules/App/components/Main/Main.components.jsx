@@ -14,7 +14,7 @@ import GradesList from '@Grades/containers/List.containers';
 
 import SemestersList from '@Semesters/containers/List.containers';
 
-import Form from '@Grades/components/Form/Form.components';
+import GradesForm from '@Grades/containers/Form.containers';
 
 class Main extends React.Component {
 
@@ -47,7 +47,8 @@ class Main extends React.Component {
 
         {/* PROMOTIONS */}
         <Switch>
-          <PrivateRoute path='/promotions/:id/addGrade' allowed={['admin']} component={Form} />
+          <PrivateRoute path='/promotions/:promotionId/subjects/:subjectId' allowed={['admin']} component={GradesForm} />
+          <PrivateRoute path='/promotions/:promotionId/subjects' allowed={['admin']} component={GradesForm} />
           <PrivateRoute path='/promotions/:id' allowed={['admin']} component={DetailsPromotion} />
           <PrivateRoute path='/promotions' allowed={['admin']} component={ListPromotions} />
         </Switch>

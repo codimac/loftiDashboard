@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import ListGrades from '@Grades/components/List/List.components';
+import List from '@Grades/components/List/List.components';
 
 
 import { getGradesList } from '@Grades/reducers/list.reducers';
@@ -10,4 +10,4 @@ const mapStateToProps = state => getGradesList(state);
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(ListGrades);
+export default connect(mapStateToProps, mapDispatchToProps)(List);

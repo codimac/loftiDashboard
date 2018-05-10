@@ -3,7 +3,7 @@ import Proptypes from 'prop-types';
 
 import { parseFloat } from '@helpers/number.helpers';
 
-class ListGrades extends React.Component {
+class List extends React.Component {
 
   static propTypes = {
     getGradesList: Proptypes.func.isRequired,
@@ -40,4 +40,4 @@ class ListGrades extends React.Component {
 
 }
 
-export default ListGrades;
+export default List;
