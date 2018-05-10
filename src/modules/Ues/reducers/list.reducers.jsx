@@ -1,7 +1,8 @@
-import types from '@Courses/constants/uesList.constants';
-import uesListInitialState from '@Courses/states/uesList.states';
+import types from '@Ues/constants/list.constants';
+import uesListInitialState from '@Ues/states/list.states';
 
 const uesListReducer = (state = uesListInitialState, action) => {
+
   switch (action.type) {
 
     case types.FETCHING_UES_LIST:

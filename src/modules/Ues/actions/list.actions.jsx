@@ -1,4 +1,4 @@
-import types from '@Courses/constants/uesList.constants';
+import types from '@Ues/constants/list.constants';
 
 export const fetchUesList = (isFetching = true) => ({
   type: types.FETCHING_UES_LIST,
@@ -7,10 +7,10 @@ export const fetchUesList = (isFetching = true) => ({
   }
 });
 
-export const fetchUesListSucceed = data => ({
+export const fetchUesListSucceed = ues => ({
   type: types.FETCHING_UES_LIST_SUCCESS,
   payload: {
-    ues: data
+    ues
   }
 });
 

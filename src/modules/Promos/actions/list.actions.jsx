@@ -7,10 +7,10 @@ export const fetchPromotionsList = (isFetching = true) => ({
   }
 });
 
-export const fetchPromotionsListSucceed = data => ({
+export const fetchPromotionsListSucceed = promotions => ({
   type: types.FETCHING_PROMOTIONS_LIST_SUCCESS,
   payload: {
-    promotionsList: data
+    promotions
   }
 });
 

@@ -1,6 +1,6 @@
 const promotionsListInitialState = {
   isFetching: false,
-  promotionsList: []
+  promotions: []
 };
 
 export default promotionsListInitialState;

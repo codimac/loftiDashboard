@@ -7,7 +7,7 @@ class ListGrades extends React.Component {
 
   static propTypes = {
     getGradesList: Proptypes.func.isRequired,
-    gradesList: Proptypes.arrayOf(Proptypes.shape({
+    grades: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       value: Proptypes.number.isRequired
     })).isRequired
@@ -23,16 +23,17 @@ class ListGrades extends React.Component {
   }
 
   render() {
-    const { gradesList } = this.props;
+    const { grades } = this.props;
+    console.log(this.props);
     return (
       <React.Fragment>
         <h1>LES NOTES</h1>
         <ul>
-          { gradesList.map(grade => (
+          {grades.map(grade => (
             <li key={grade.id}>{grade.value}</li>
           ))}
         </ul>
-        <h4>Moyenne = { this.average(gradesList) }</h4>
+        <h4>Moyenne = { this.average(grades) }</h4>
       </React.Fragment>
     );
   }
