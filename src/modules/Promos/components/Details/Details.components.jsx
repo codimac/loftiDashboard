@@ -39,48 +39,6 @@ class DetailsPromotion extends React.Component {
     return (
       <React.Fragment>
         <div className="promotions">
-<<<<<<< HEAD
-          <h1>Détails de la promo {this.props.match.params.id}</h1>
-          <Filter placeholder="Rechercher un étudiant" />
-          <table>
-            <thead>
-              <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Absences</th>
-                <th>Notes</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              { promotion.map(student => (
-                <tr key={student.id}>
-                  <td> {student.firstname} </td>
-                  <td> {student.lastname} </td>
-                  <td>
-                    {/* data missing for absence */}
-                    0
-                    <Link to={`/absences/${student.id}`}>
-                      <img className="icon-plus" src={ plus } alt="ajouter une absence" />
-                    </Link>
-                  </td>
-                  <td>
-                    {/* data missing for notes */}
-                    0
-                    <Link to={`/grades/${student.id}`}>
-                      <img className="icon-plus" src={ plus } alt="ajouter une note" />
-                    </Link>
-                  </td>
-                  <td className='icon-access'>
-                    <Link to={`/students/${student.username}`}>
-
-                    </Link>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-=======
           <h1>Détails d'une promo</h1>
 
           <div className="flex justify-content-sb">
@@ -134,7 +92,6 @@ class DetailsPromotion extends React.Component {
             </section>
           </div>
 
->>>>>>> FormGrades
         </div>
       </React.Fragment>
     );
