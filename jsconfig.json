@@ -20,8 +20,9 @@
       "@Grades/*": ["modules/Grades/*"],
       "@Promos/*": ["modules/Promos/*"],
       "@Students/*": ["modules/Students/*"],
-      "@Ues/*": ["modules/Ues/*"],
       "@Semesters/*": ["modules/Semesters/*"],
+      "@Ues/*": ["modules/Ues/*"],
+      "@Absences/*": ["modules/Absences/*"],
 
       "@Shared/*": ["modules/Shared/*"],
       "@App/*": ["modules/App/*"],
