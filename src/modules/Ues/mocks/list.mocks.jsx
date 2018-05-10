@@ -2,19 +2,19 @@ export default [
   {
     id: 1,
     name: 'Design et Médias numériques',
-    description: 'boum ba da boum',
+    description: 'Des cours de webdesign et de numérique',
     courses: [
-      {id: 1, name: 'coucou', description: 'hop hop hop'},
-      {id: 2, name: 'test', description: 'hip hip hip'}
+      {id: 1, name: 'Webdesing', description: 'Faire des maquettes de burger'},
+      {id: 2, name: 'Ecriture pour les médias numériques', description: 'Des articles sur l\'europe'}
     ]
   },
   {
     id: 2,
     name: 'Culture et entreprise I',
-    description: 'boum ba da boum 2',
+    description: 'Savoir gérer une entreprise',
     courses: [
-      {id: 1, name: 'hello', description: 'hap hap hap'},
-      {id: 2, name: 'world', description: 'hep hep hep'}
+      {id: 1, name: 'Anglais', description: 'We speak english'},
+      {id: 2, name: 'Communication', description: 'On fait de la comm'}
     ]
   }
 ];

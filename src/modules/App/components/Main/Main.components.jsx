@@ -14,7 +14,7 @@ import GradesList from '@Grades/containers/List.containers';
 
 import SemestersList from '@Semesters/containers/List.containers';
 
-import Form from '@Grades/components/Form/Form.components';
+import GradesForm from '@Grades/containers/Form.containers';
 
 import AbsencesList from '@Absences/containers/List.containers';
 
@@ -40,12 +40,13 @@ class Main extends React.Component {
           <PrivateRoute path='/students/:username' allowed={['admin']} component={DetailsStudent} />
 
           {/* ABSENCES */}
-
+          <PrivateRoute path='/absences' allowed={['admin']} component={AbsencesList} />
           <PrivateRoute path='/promotions/:id/absences' allowed={['admin']} component={AbsencesList} />
           <PrivateRoute path='/promotions/:id/addAbsences' allowed={['admin']} component={AbsencesList} />
-          <PrivateRoute path='/absences' allowed={['admin']} component={AbsencesList} />
           {/* PROMOTIONS */}
-          <PrivateRoute path='/promotions/:id/addGrade' allowed={['admin']} component={Form} />
+
+          <PrivateRoute path='/promotions/:promotionId/subjects/:subjectId' allowed={['admin']} component={GradesForm} />
+          <PrivateRoute path='/promotions/:promotionId/subjects' allowed={['admin']} component={GradesForm} />
           <PrivateRoute path='/promotions/:id' allowed={['admin']} component={DetailsPromotion} />
           <PrivateRoute path='/promotions' allowed={['admin']} component={ListPromotions} />
         </Switch>
