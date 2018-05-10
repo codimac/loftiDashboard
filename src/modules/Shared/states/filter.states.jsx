@@ -1,6 +1,8 @@
 const filterInitialState = {
-  type: 'users',
-  value: ''
+  value: '',
+  visibilityFilter: null,
+  showAll: true,
+  showedTd: null
 };
 
 export default filterInitialState;

@@ -1,4 +1,4 @@
-button {
+.button {
   width: 100%;
   padding: 16px;
   color: white;
@@ -14,5 +14,10 @@ button {
     background-color: $white;
     color: $font-main;
   }
+}
+
+.button__white {
+  background-color: $white;
+  color: $font-colour;
 }
 

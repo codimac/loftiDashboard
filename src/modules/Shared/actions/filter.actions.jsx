@@ -7,16 +7,16 @@ export const filter = value => ({
   }
 });
 
-export const changeFilterType = type => ({
-  type: types.CHANGE_FILTER_TYPE,
-  payload: {
-    type
-  }
-});
-
 export const resetFilter = () => ({
   type: types.RESET_FILTER,
   payload: {
     value: ''
+  }
+});
+
+export const setVisibilityFilter = visibilityFilter => ({
+  type: types.SET_VISIBILITY_FILTER,
+  payload: {
+    visibilityFilter
   }
 });

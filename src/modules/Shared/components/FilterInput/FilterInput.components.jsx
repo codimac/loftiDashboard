@@ -1,7 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 
-class Filter extends React.Component {
+class FilterInput extends React.Component {
 
   static propTypes = {
     onChange: Proptypes.func.isRequired,
@@ -15,6 +15,7 @@ class Filter extends React.Component {
 
   render() {
     const { onChange, placeholder } = this.props;
+
     return (
       <input type="text" onChange={onChange} placeholder={placeholder} />
     );
@@ -23,4 +24,4 @@ class Filter extends React.Component {
 
 }
 
-export default Filter;
+export default FilterInput;
