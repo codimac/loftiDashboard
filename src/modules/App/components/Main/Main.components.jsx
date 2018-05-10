@@ -11,6 +11,9 @@ import ListPromotions from '@Promos/containers/List.containers';
 import DetailsStudent from '@Students/containers/Details.containers';
 
 import GradesList from '@Grades/containers/List.containers';
+
+import SemestersList from '@Semesters/containers/List.containers';
+
 import Form from '@Grades/components/Form/Form.components';
 
 class Main extends React.Component {
@@ -23,6 +26,10 @@ class Main extends React.Component {
         <Switch>
             <Route path='/grades' component={GradesList} />
           </Switch> */}
+
+        <Switch>
+          <PrivateRoute path='/semesters' allowed={['admin']} component={SemestersList} />
+        </Switch>
 
         <Switch>
           <PrivateRoute path='/courses' allowed={['admin']} component={ListUe} />

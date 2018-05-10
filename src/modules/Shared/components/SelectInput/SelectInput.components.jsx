@@ -13,7 +13,7 @@ class SelectInput extends React.Component {
       ]).isRequired,
     })).isRequired,
     placeholder: Proptypes.string.isRequired,
-    onChange: Proptypes.func.isRequired
+    onChange: Proptypes.func
   };
 
   render() {
