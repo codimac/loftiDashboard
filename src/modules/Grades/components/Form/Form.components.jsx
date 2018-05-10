@@ -4,33 +4,38 @@ import { connect } from 'react-redux';
 import store from '@App/App.store';
 
 import { getPromotionsList } from '@Promos/reducers/list.reducers';
-import { getPromotion as getPromotionDetails } from '@Promos/reducers/details.reducers';
+import { getPromotion } from '@Promos/reducers/details.reducers';
 
-import { getPromotion } from '@Promos/effects/details.effects';
+import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 
 import SelectInput from '@Shared/components/SelectInput/SelectInput.components';
 
 class Form extends React.Component {
 
   static propTypes = {
-    promotionsList: PropTypes.arrayOf(PropTypes.shape({
-      id: PropTypes.number,
-      label: PropTypes.string
+    year: PropTypes.number.isRequired,
+    promotion: PropTypes.arrayOf(PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      firstname: PropTypes.string.isRequired,
+      lastname: PropTypes.string.isRequired,
+      username: PropTypes.string.isRequired
     })).isRequired
   };
 
   constructor() {
     super();
     this.state = {
-      selectedPromo: null,
+      selectedSemester: null,
       selectedUE: null,
       selectedCourse: null
     };
   }
 
-  selectPromo = ev => {
-    store.dispatch(getPromotion(ev.target.value));
-    this.setState({selectedPromo: ev.target.value});
+  componentDidMount() {
+    // à voir si le if est pertinent
+    if (this.props.match.params.id !== getPromotion(store.getState()).year) {
+      store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.id));
+    }
   }
 
   selectUE = ev => {
@@ -47,12 +52,12 @@ class Form extends React.Component {
   }
 
   render() {
-    const { promotionsList, promotionsDetails } = this.props;
-    const items = this.parsedPromotions(promotionsList);
+    const { year, promotion } = this.props;
 
     return (
       <React.Fragment>
         <h1>Form</h1>
+        <h2>La promo sélectionnée est { year }</h2>
 
         {/*         <h2>Ajouter un devoir</h2>
         <form>
@@ -61,11 +66,10 @@ class Form extends React.Component {
           <button>Ajouter</button>
         </form> */}
 
-        <SelectInput items={items} placeholder="Sélectionner une promotion" onChange={this.selectPromo} />
         {
           this.state.selectedPromo &&
             <div>
-              <SelectInput items={items} placeholder="Sélectionner une UE" onChange={this.selectUE} />
+              {/* <SelectInput items={items} placeholder="Sélectionner une UE" onChange={this.selectUE} /> */}
             </div>
             /* <div>
               <h2>La promotion sélectionnée est {this.state.selectedPromo}</h2>
@@ -99,8 +103,8 @@ class Form extends React.Component {
 }
 
 const mapStateToProps = state => ({
-  promotionsList: getPromotionsList(state).promotionsList,
-  promotionsDetails: getPromotionDetails(state).promotion
+  promotion: getPromotion(state).promotion,
+  year: getPromotion(state).year
 });
 
 export default connect(mapStateToProps)(Form);

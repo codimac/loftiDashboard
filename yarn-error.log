@@ -67,7 +67,7 @@ npm manifest:
       "webpack-merge": "^4.1.2"
     },
     "scripts": {
-      "start": "webpack-dev-server --inline --hot --progress --mode development --config config/dev.config.js",
+      "start": "webpack-dev-server --progress --inline --hot --mode development --config config/dev.config.js",
       "build": "webpack --progress --mode production --config config/prod.config.js"
     }
   }
@@ -9615,7 +9615,7 @@ Trace:
   Error: Command failed.
   Exit code: 3221225786
   Command: C:\WINDOWS\system32\cmd.exe
-  Arguments: /d /s /c webpack-dev-server --inline --hot --progress --mode development --config config/dev.config.js
+  Arguments: /d /s /c webpack-dev-server --progress --inline --hot --mode development --config config/dev.config.js
   Directory: D:\Documents\IMAC\PROJETS\IMAC2\LotfiWebS4\loftiDashboard
   Output:
   

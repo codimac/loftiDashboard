@@ -30,14 +30,12 @@ class DetailsPromotion extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.id !== nextProps.match.params.id) {
       this.props.getPromotion(nextProps.match.params.id);
-      console.log('re render');
     }
   }
 
   render() {
-    console.log(this.props);
     const { promotion } = this.props;
-    console.log('render');
+
     return (
       <React.Fragment>
         <div className="promotions">
