@@ -87,7 +87,7 @@ class DetailsPromotion extends React.Component {
             <section className="section actions">
               <h1>Les actions</h1>
               <ul>
-                <li><Link to={`/promotions/${this.props.match.params.id}/addGrade`} className="link link__black" >Ajouter un devoir</Link></li>
+                <li><Link to={`/promotions/${this.props.match.params.id}/subjects`} className="link link__black" >Ajouter un devoir</Link></li>
               </ul>
             </section>
           </div>
