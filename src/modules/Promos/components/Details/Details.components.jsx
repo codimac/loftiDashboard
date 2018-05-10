@@ -64,6 +64,7 @@ class DetailsPromotion extends React.Component {
         Cell: row => (<span className='icon-access'><Link to={`/students/${row.value}`}> > </Link> </span>)}
     ];
 
+    const len = promotion.length;
     return (
       <React.Fragment>
         <div className="promotions">
@@ -74,13 +75,15 @@ class DetailsPromotion extends React.Component {
             <section className="alig-items-start">
               <Filter placeholder="Rechercher un étudiant" />
               <ReactTable
+                defaultPageSize={len}
                 data={promotion}
+                noDataText="Aucun élève trouvé."
                 columns={columns}
                 showPagination={false}
                 className="-highlight"
                 resizable={false}
+                pageSize={len}
               />
-
             </section>
 
             <section className="alig-items-start actions">
