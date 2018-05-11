@@ -40,6 +40,9 @@ class DetailsPromotion extends React.Component {
   render() {
     const { promotion } = this.props;
     const columns = [
+      {Header: 'TD', accessor: 'td', width: 30,
+        Cell: row => row.value
+      },
       {Header: 'Nom', accessor: 'lastname'},
       {Header: 'Prénom', accessor: 'firstname'},
       {Header: 'Absences', accessor: 'absences', width: 75, className: 'centered-col',

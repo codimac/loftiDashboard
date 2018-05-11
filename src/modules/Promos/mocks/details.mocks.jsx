@@ -13,7 +13,7 @@ const createFakeStudents = (number = 25) => {
       grades: +`${faker.random.number({min: 0, max: 20})}`
     };
   }
-  students.push({id: number+1, firstname: 'François', lastname: 'Hollande', username: 'fhollande', td: 10, absences: 3, grades: 13.2});
+  students.push({id: number+1, firstname: 'François', lastname: 'Hollande', username: 'fhollande', td: 1, absences: 3, grades: 13.2});
   return students;
 };
 
