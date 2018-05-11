@@ -8,16 +8,16 @@ const createFakeStudents = (number = 25) => {
       firstname: `${faker.name.firstName()}`,
       lastname: `${faker.name.lastName()}`,
       username: `${faker.internet.userName()}`,
-      td: +`${faker.random.number({min: 1, max: 2})}`
+      td: +`${faker.random.number({min: 1, max: 2})}`,
+      absences: +`${faker.random.number({min: 0, max: 30})}`,
+      grades: +`${faker.random.number({min: 0, max: 20})}`
     };
   }
-  students.push({id: number+1, firstname: 'François', lastname: 'Hollande', username: 'fhollande', td: 1});
+  students.push({id: number+1, firstname: 'François', lastname: 'Hollande', username: 'fhollande', td: 10, absences: 3, grades: 13.2});
   return students;
 };
 
 const students = createFakeStudents();
-
-console.log(students);
 
 export default {
   promotion: students,
