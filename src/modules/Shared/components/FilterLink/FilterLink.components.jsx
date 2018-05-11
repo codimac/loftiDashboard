@@ -1,6 +1,12 @@
 import React from 'react';
+import Proptypes from 'prop-types';
 
 class FilterLink extends React.Component {
+
+  static propTypes = {
+    children: Proptypes.string.isRequired,
+    onClick: Proptypes.func.isRequired
+  };
 
   render() {
     const { children, onClick } = this.props;
