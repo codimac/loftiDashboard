@@ -48,8 +48,8 @@ class Main extends React.Component {
         {/* PROMOTIONS */}
         <Switch>
           <PrivateRoute path='/promotions/:promotionId/subjects/:subjectId' allowed={['admin']} component={GradesForm} />
-          <PrivateRoute path='/promotions/:promotionId/subjects' allowed={['admin']} component={GradesForm} />
-          <PrivateRoute path='/promotions/:id' allowed={['admin']} component={DetailsPromotion} />
+          <PrivateRoute path='/promotions/:promotionId/subjects/add' allowed={['admin']} component={GradesForm} />
+          <PrivateRoute path='/promotions/:promotionId' allowed={['admin']} component={DetailsPromotion} />
           <PrivateRoute path='/promotions' allowed={['admin']} component={ListPromotions} />
         </Switch>
 

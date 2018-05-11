@@ -22,18 +22,18 @@ class DetailsPromotion extends React.Component {
     })).isRequired,
     match: Proptypes.shape({
       params: Proptypes.shape({
-        id: Proptypes.string.isRequired
+        promotionId: Proptypes.string.isRequired
       }).isRequired
     }).isRequired,
   };
 
   componentDidMount() {
-    this.props.getPromotion(this.props.match.params.id);
+    this.props.getPromotion(this.props.match.params.promotionId);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.id !== nextProps.match.params.id) {
-      this.props.getPromotion(nextProps.match.params.id);
+    if (this.props.match.params.promotionId !== nextProps.match.params.promotionId) {
+      this.props.getPromotion(nextProps.match.params.promotionId);
     }
   }
 
@@ -92,7 +92,8 @@ class DetailsPromotion extends React.Component {
           <section className="alig-items-start actions">
             <h1>Les actions</h1>
             <ul>
-              <li><Link to={`/promotions/${this.props.match.params.id}/subjects`} className="link link__black" >Ajouter un devoir</Link></li>
+              <li><Link to={`/promotions/${this.props.match.params.promotionId}/subjects/add`} className="link link__black" >Ajouter un devoir</Link></li>
+              <li><Link to={`/promotions/${this.props.match.params.promotionId}/subjects`} className="link link__black">Lister les devoirs</Link></li>
             </ul>
           </section>
         </div>
