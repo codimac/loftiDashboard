@@ -4,7 +4,7 @@ import { Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { AppContainer } from 'react-hot-loader';
 
-import { history } from '@Shared/helpers/history.helpers';
+import { history } from '@helpers/history.helpers';
 import App from '@modules/App/App';
 import store from '@modules/App/App.store';
 
@@ -24,7 +24,7 @@ const render = Component => {
 render(App);
 
 if (module.hot) {
-  module.hot.accept('./modules/App/App', () => {
+  module.hot.accept('modules/App/App', () => {
     render(App);
     render(require('./modules/App/App'));
   });

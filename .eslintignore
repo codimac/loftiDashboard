@@ -1,0 +1,3 @@
+build/*.js
+config/*.js
+src/modules/Shared/components/PrivateRoute.components.jsx

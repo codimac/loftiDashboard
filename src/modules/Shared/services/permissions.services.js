@@ -4,18 +4,19 @@ import jwt_decode from 'jwt-decode';
 class PermissionsService {
 
   isAdmin() {
-    return storageSvc.hasToken() && this._getRole(storageSvc.getItem('token')) === 'ADMIN';
+    return storageSvc.hasToken() && this.getRole(storageSvc.getItem('token')) === 'ADMIN';
   }
 
   isStudent() {
-    return storageSvc.hasToken() && this._getRole(storageSvc.getItem('token')) === 'STUDENT';
+    return storageSvc.hasToken() && this.getRole(storageSvc.getItem('token')) === 'STUDENT';
   }
 
   is(roles) {
-    return storageSvc.hasToken() && roles.map(el => el.toUpperCase()).includes(this._getRole(storageSvc.getItem('token')).toUpperCase());
+    return storageSvc.hasToken() && roles.map(el => el.toUpperCase()).includes(this.getRole(storageSvc.getItem('token')).toUpperCase());
   }
 
-  _getRole(token) {
+
+  getRole(token = storageSvc.getItem('token')) {
     return jwt_decode(token).role_label;
   }
 

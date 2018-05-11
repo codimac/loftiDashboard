@@ -1,0 +1,42 @@
+.promotions {
+  .actions {
+    width: 45%;
+  }
+  .centered-col{
+    text-align: center;
+  }
+  h1{
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  table {
+    line-height: 2em;
+    thead {
+      border-bottom: 2px solid $color-grey;
+    }
+    th {
+      padding: 0 25px ;
+    }
+    tr:hover {
+      background-color: $color-grey-light;
+    }
+    td {
+    border-bottom: 2px solid $color-grey-light;
+    line-height: 2em;
+    text-align: left;
+    }
+    td:last-child a{
+      text-decoration: none;
+    }
+
+  }
+}
+a {
+  text-decoration: none;
+}
+.icon-plus {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  float: right;
+}

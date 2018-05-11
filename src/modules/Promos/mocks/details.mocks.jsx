@@ -1,14 +1,24 @@
+import faker from 'faker';
+
 const createFakeStudents = (number = 25) => {
   const students = Array(number);
   for (let i = 0; i < students.length; i++) {
-    students[i] = { id: i, firstname: `name${i}`, lastname: `surname${i}`, uersname: `username${i}`};
+    students[i] = {
+      id: i,
+      firstname: `${faker.name.firstName()}`,
+      lastname: `${faker.name.lastName()}`,
+      username: `${faker.internet.userName()}`,
+      td: +`${faker.random.number({min: 1, max: 2})}`,
+      absences: +`${faker.random.number({min: 0, max: 30})}`,
+      grades: +`${faker.random.number({min: 0, max: 20})}`
+    };
   }
   return students;
 };
 
-export default createFakeStudents();
+const students = createFakeStudents();
 
-// export default [
-//   { id: 1, firstname: 'Florian', lastname: 'Zobèle' },
-//   { id: 2, firstname: 'Lila', lastname: 'Gazeau'}
-// ];
+export default {
+  promotion: students,
+  tempPromotion: students
+};

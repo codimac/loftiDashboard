@@ -1,8 +1,8 @@
-button {
+.button {
   width: 100%;
   padding: 16px;
-  color: $font-colour;
-  background: $white;
+  color: white;
+  background: $blue-1;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -10,4 +10,14 @@ button {
   font-family: $font-main;
   font-weight: bold;
   font-size: 1.1em;
+  &:disabled {
+    background-color: $white;
+    color: $font-main;
+  }
 }
+
+.button__white {
+  background-color: $white;
+  color: $font-colour;
+}
+

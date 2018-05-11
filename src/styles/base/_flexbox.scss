@@ -3,6 +3,15 @@
   flex-wrap: wrap !important;
 }
 
+.flex-wrap-reverse {
+  flex-wrap: wrap-reverse !important;
+}
+
+.flex-inline {
+  display: inline-flex !important;
+  flex-wrap: wrap !important;
+}
+
 .flex-column {
   flex-direction: column !important;
 }

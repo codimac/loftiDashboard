@@ -10,7 +10,7 @@ export const fetchPromotion = (isFetching = false) => ({
 export const fetchPromotionDetailsSucceed = data => ({
   type: types.FETCHING_PROMOTIONS_DETAILS_SUCCESS,
   payload: {
-    promotion: data
+    data
   }
 });
 

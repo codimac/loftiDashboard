@@ -48,6 +48,7 @@
     "camelcase": "off",
     "no-underscore-dangle": "off",
     "max-len": "off",
+    "import/no-named-default": "off",
 
     "react/prefer-stateless-function": [0, { "ignorePureComponents": "React.PureComponent" }],
     "react/no-unescaped-entities": "off",
@@ -55,6 +56,8 @@
     "react/self-closing-comp": "off",
     "react/no-unused-state": "warn",
     "react/prop-types": "warn",
+    "react/jsx-boolean-value": "off",
+    "react/require-default-props": "off",
 
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-quotes": "off",
