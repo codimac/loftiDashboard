@@ -18,7 +18,6 @@ class StudentDetails extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { student } = this.props;
     const {absencesList} = this.props;
     const columns = [

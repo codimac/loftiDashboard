@@ -1,6 +1,5 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import store from '@App/App.store';
 import ReactTable from 'react-table';
 import Filter from '@Shared/containers/Filter.containers';
@@ -9,6 +8,7 @@ import { getPromotion } from '@Promos/reducers/details.reducers';
 
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 import StudentDetails from '@modules/Absences/containers/StudentDetails.containers';
+import PodiumStudient from '@modules/Absences/containers/PromoPodiumStudent.containers';
 
 class List extends React.Component {
 
@@ -52,7 +52,6 @@ class List extends React.Component {
   render() {
     const { promotion } = this.props;
     const year = this.props.match.params.id; // à améliorer
-    console.log(this.state);
 
     const columns = [
       {Header: 'Nom', accessor: 'lastname'},
@@ -82,6 +81,10 @@ class List extends React.Component {
               {
                 this.state.selectedStudent===true &&
                   <StudentDetails id={this.state.selectedStudent} student={this.state.student} onClose={this.closeStudent} />
+              }
+              {
+                this.state.selectedStudent!==true &&
+                  <PodiumStudient />
               }
             </section>
           </div>
