@@ -3,6 +3,7 @@ import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import store from '@App/App.store';
 import ReactTable from 'react-table';
+import Filter from '@Shared/containers/Filter.containers';
 
 import { getPromotion } from '@Promos/reducers/details.reducers';
 
@@ -32,6 +33,7 @@ class List extends React.Component {
       selectedStudent: false,
       student: null,
     };
+    this.closeStudent = this.closeStudent.bind(this)
   }
 
   componentDidMount() {
@@ -43,9 +45,14 @@ class List extends React.Component {
     this.setState({selectedStudent: true, student: {firstname, lastname, id}});
   }
 
+  closeStudent() {
+    this.setState({selectedStudent: false, student: null});
+  }
+
   render() {
     const { promotion } = this.props;
     const year = this.props.match.params.id; // à améliorer
+    console.log(this.state);
 
     const columns = [
       {Header: 'Nom', accessor: 'lastname'},
@@ -74,7 +81,7 @@ class List extends React.Component {
             <section>
               {
                 this.state.selectedStudent===true &&
-                  <StudentDetails id={this.state.selectedStudent} student={this.state.student} />
+                  <StudentDetails id={this.state.selectedStudent} student={this.state.student} onClose={this.closeStudent} />
               }
             </section>
           </div>

@@ -5,12 +5,20 @@ import ReactTable from 'react-table';
 import './styles';
 
 class StudentDetails extends React.Component {
-
+  constructor() {
+    super();
+    this.close = this.close.bind(this)
+  }
   componentDidMount() {
     this.props.getAbsencesList();
   }
 
+  close() {
+    this.props.onClose();
+  }
+
   render() {
+    console.log(this.props);
     const { student } = this.props;
     const {absencesList} = this.props;
     const columns = [
@@ -20,7 +28,6 @@ class StudentDetails extends React.Component {
         className: 'centered-col',
         Cell: row => (row.value ? '\u2714' : '\u2716')}
     ];
-    console.log();
     const len = absencesList.length;
     return (
       <div className="student-absences">
@@ -36,6 +43,9 @@ class StudentDetails extends React.Component {
             resizable={false}
             pageSize={len}
           />
+          <button onClick={this.close}>
+            Fermer
+          </button>
         </section>
       </div>
     );
