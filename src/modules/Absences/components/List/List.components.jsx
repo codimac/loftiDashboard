@@ -28,6 +28,7 @@ class List extends React.Component {
 
   componentDidMount() {
     this.props.getAbsencesList();
+    console.log(this.props);
     store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
   }
 
@@ -38,6 +39,7 @@ class List extends React.Component {
   render() {
     const { promotion } = this.props;
     const {year} = this.props;
+    console.log(this.props);
 
     const columns = [
       {Header: 'Nom', accessor: 'lastname'},

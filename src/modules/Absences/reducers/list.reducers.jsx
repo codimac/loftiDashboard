@@ -1,5 +1,5 @@
-import types from '@Promos/constants/list.constants';
-import absencesListInitialState from '@Promos/states/list.states';
+import types from '@Absences/constants/list.constants';
+import absencesListInitialState from '@Absences/states/list.states';
 
 const absencesListReducer = (state = absencesListInitialState, action) => {
 

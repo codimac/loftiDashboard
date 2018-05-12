@@ -10,6 +10,7 @@ import * as actions from '@Absences/effects/list.effects';
 const mapStateToProps = state => ({
   year: getPromotion(state).year,
   promotion: getPromotion(state).promotion,
+  absences: getAbsencesList(state).absencesList
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
