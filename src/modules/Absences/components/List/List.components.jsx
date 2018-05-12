@@ -25,21 +25,25 @@ class List extends React.Component {
       }).isRequired
     }).isRequired,
   };
+  constructor() {
+    super();
+    this.state = {
+      selectedStudent: null,
+    };
+  }
 
   componentDidMount() {
     this.props.getAbsencesList();
-    console.log(this.props);
     store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
   }
 
   getStudentDetails(event, id) {
-    console.log(id);
+    this.state.selectedStudent = id;
   }
 
   render() {
     const { promotion } = this.props;
     const {year} = this.props;
-    console.log(this.props);
 
     const columns = [
       {Header: 'Nom', accessor: 'lastname'},
