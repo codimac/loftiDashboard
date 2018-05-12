@@ -12,7 +12,7 @@ import StudentDetails from '@modules/Absences/containers/StudentDetails.containe
 class List extends React.Component {
 
   static propTypes = {
-    year: Proptypes.number.isRequired,
+    // year: Proptypes.number.isRequired,
     promotion: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       firstname: Proptypes.string.isRequired,
@@ -45,7 +45,8 @@ class List extends React.Component {
 
   render() {
     const { promotion } = this.props;
-    const {year} = this.props;
+    const year = this.props.match.params.id; // à améliorer
+
     const columns = [
       {Header: 'Nom', accessor: 'lastname'},
       {Header: 'Prénom', accessor: 'firstname'},

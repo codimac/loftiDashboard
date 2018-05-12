@@ -2,6 +2,8 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import ReactTable from 'react-table';
 
+import './styles';
+
 class StudentDetails extends React.Component {
 
   componentDidMount() {
@@ -11,15 +13,17 @@ class StudentDetails extends React.Component {
   render() {
     const { student } = this.props;
     const {absencesList} = this.props;
-    console.log(absencesList);
     const columns = [
       {Header: 'début ', accessor: 'beginning'},
       {Header: 'fin', accessor: 'end'},
-      {Header: 'justifiée', accessor: 'justified', width: 75, className: 'centered-col'}
+      {Header: 'justifiée', accessor: 'justified', width: 75,
+        className: 'centered-col',
+        Cell: row => (row.value ? '\u2714' : '\u2716')}
     ];
+    console.log();
     const len = absencesList.length;
     return (
-      <div>
+      <div className="student-absences">
         <h3> Les absences de {student.firstname} {student.lastname} </h3>
         <section className="alig-items-start">
           <ReactTable
