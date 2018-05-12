@@ -6,9 +6,7 @@ import { getAbsencesList } from '@Absences/reducers/studentDetails.reducers';
 
 import * as actions from '@Absences/effects/studentDetails.effects';
 
-const mapStateToProps = state => ({
-  absences: getAbsencesList(state).absencesList
-});
+const mapStateToProps = state => (getAbsencesList(state));
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 

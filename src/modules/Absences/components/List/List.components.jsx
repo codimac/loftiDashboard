@@ -29,7 +29,7 @@ class List extends React.Component {
   constructor() {
     super();
     this.state = {
-      selectedStudentToggle: false,
+      selectedStudent: false,
       student: null,
     };
   }
@@ -39,7 +39,6 @@ class List extends React.Component {
   }
 
   getStudentDetails(event, row) {
-    console.log(row);
     const {firstname, lastname, id} = row;
     this.setState({selectedStudent: true, student: {firstname, lastname, id}});
   }
@@ -47,7 +46,6 @@ class List extends React.Component {
   render() {
     const { promotion } = this.props;
     const {year} = this.props;
-    console.log(this.state.selectedStudent);
     const columns = [
       {Header: 'Nom', accessor: 'lastname'},
       {Header: 'Prénom', accessor: 'firstname'},
