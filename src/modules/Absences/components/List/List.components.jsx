@@ -25,10 +25,12 @@ class List extends React.Component {
       }).isRequired
     }).isRequired,
   };
+
   constructor() {
     super();
     this.state = {
-      selectedStudent: null,
+      selectedStudentToggle: false,
+      student: null,
     };
   }
 
@@ -36,8 +38,10 @@ class List extends React.Component {
     store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
   }
 
-  getStudentDetails(event, id) {
-    this.setState({selectedStudent: id});
+  getStudentDetails(event, row) {
+    console.log(row);
+    const {firstname, lastname, id} = row;
+    this.setState({selectedStudent: true, student: {firstname, lastname, id}});
   }
 
   render() {
@@ -48,7 +52,7 @@ class List extends React.Component {
       {Header: 'Nom', accessor: 'lastname'},
       {Header: 'Prénom', accessor: 'firstname'},
       {Header: 'Page', accessor: 'id', width: 50, className: 'centered-col',
-        Cell: row => (<span role='none' className='icon-access' onClick={(e) => this.getStudentDetails(e, row.row.id)}> > </span>)}
+        Cell: row => (<span role='none' className='icon-access' onClick={(e) => this.getStudentDetails(e, row.row)}> > </span>)}
     ];
     const len = promotion.length;
     return (
@@ -70,8 +74,8 @@ class List extends React.Component {
             </section>
             <section>
               {
-                this.state.selectedStudent!==null &&
-                  <StudentDetails />
+                this.state.selectedStudent===true &&
+                  <StudentDetails id={this.state.selectedStudent} student={this.state.student} />
               }
             </section>
           </div>
