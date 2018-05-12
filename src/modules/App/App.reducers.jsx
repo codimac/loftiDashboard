@@ -17,7 +17,7 @@ import gradesFormReducer from '@Grades/reducers/form.reducers';
 
 import filterReducer from '@Shared/reducers/filter.reducers';
 
-import absencesListReducer from '@Absences/reducers/list.reducers';
+import absencesListReducer from '@Absences/reducers/studentDetails.reducers';
 
 const rootReducer = combineReducers({
   // auth

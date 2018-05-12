@@ -1,4 +1,4 @@
-import types from '@Absences/constants/list.constants';
+import types from '@Absences/constants/studentDetails.constants';
 import absencesListInitialState from '@Absences/states/list.states';
 
 const absencesListReducer = (state = absencesListInitialState, action) => {

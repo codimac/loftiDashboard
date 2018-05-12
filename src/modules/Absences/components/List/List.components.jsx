@@ -7,11 +7,11 @@ import ReactTable from 'react-table';
 import { getPromotion } from '@Promos/reducers/details.reducers';
 
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
+import StudentDetails from '@modules/Absences/containers/StudentDetails.containers';
 
 class List extends React.Component {
 
   static propTypes = {
-    getAbsencesList: Proptypes.func.isRequired,
     year: Proptypes.number.isRequired,
     promotion: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
@@ -33,18 +33,17 @@ class List extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getAbsencesList();
     store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
   }
 
   getStudentDetails(event, id) {
-    this.state.selectedStudent = id;
+    this.setState({selectedStudent: id});
   }
 
   render() {
     const { promotion } = this.props;
     const {year} = this.props;
-
+    console.log(this.state.selectedStudent);
     const columns = [
       {Header: 'Nom', accessor: 'lastname'},
       {Header: 'Prénom', accessor: 'firstname'},
@@ -68,6 +67,12 @@ class List extends React.Component {
                 resizable={false}
                 pageSize={len}
               />
+            </section>
+            <section>
+              {
+                this.state.selectedStudent &&
+                  <StudentDetails />
+              }
             </section>
           </div>
 
