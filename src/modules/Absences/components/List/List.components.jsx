@@ -70,7 +70,7 @@ class List extends React.Component {
             </section>
             <section>
               {
-                this.state.selectedStudent &&
+                this.state.selectedStudent!==null &&
                   <StudentDetails />
               }
             </section>
