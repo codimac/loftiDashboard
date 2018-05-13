@@ -8,7 +8,6 @@ import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
 import FilterInput from '@Shared/containers/FilterInput.containers';
 
 import plus from '@images/icon-plus.png';
-import 'react-table/react-table.css';
 import './styles';
 
 class DetailsPromotion extends React.Component {
