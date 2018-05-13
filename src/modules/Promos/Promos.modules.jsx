@@ -5,7 +5,7 @@ import { PrivateRoute } from '@Shared/components/PrivateRoute.components';
 import DetailsPromotion from '@Promos/containers/Details.containers';
 import ListPromotions from '@Promos/containers/List.containers';
 
-import GradesForm from '@Grades/containers/Form.containers';
+import GradesForm from '@Assignments/containers/Form.containers';
 
 
 class PromosModule extends React.Component {

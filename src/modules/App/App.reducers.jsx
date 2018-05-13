@@ -13,7 +13,8 @@ import semestersListReducer from '@Semesters/reducers/list.reducers';
 import uesListReducer from '@Ues/reducers/list.reducers';
 
 import gradesListReducer from '@Grades/reducers/list.reducers';
-import gradesFormReducer from '@Grades/reducers/form.reducers';
+
+import assignmentsFormReducer from '@Assignments/reducers/form.reducers';
 
 import filterReducer from '@Shared/reducers/filter.reducers';
 
@@ -39,7 +40,9 @@ const rootReducer = combineReducers({
 
   // grades
   gradesList: gradesListReducer,
-  gradesForm: gradesFormReducer,
+
+  // assignments
+  assignmentsForm: assignmentsFormReducer,
 
   // others
   filter: filterReducer
