@@ -23,6 +23,7 @@
       "@Ues/*": ["modules/Ues/*"],
       "@Semesters/*": ["modules/Semesters/*"],
       "@Subjects/*": ["modules/Subjects/*"],
+      "@Assignments/*": ["modules/Assignments/*"],
 
       "@Shared/*": ["modules/Shared/*"],
       "@App/*": ["modules/App/*"],
