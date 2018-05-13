@@ -1,6 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import ReactTable from 'react-table';
 
 import './style';
 
@@ -23,7 +24,7 @@ class PodiumStudients extends React.Component {
               <Link to={`/students/${podium[1].username}`}>
                 {podium[1].firstname} {podium[1].lastname}
                 <div className="p-second">
-                  2
+                  {podium[1].absences}
                 </div>
               </Link>
             </li>
@@ -31,7 +32,7 @@ class PodiumStudients extends React.Component {
               <Link to={`/students/${podium[0].username}`}>
                 {podium[0].firstname} {podium[0].lastname}
                 <div className="p-first">
-                  1
+                  {podium[0].absences}
                 </div>
               </Link>
             </li>
@@ -39,18 +40,31 @@ class PodiumStudients extends React.Component {
               <Link to={`/students/${podium[2].username}`}>
                 {podium[2].firstname} {podium[2].lastname}
                 <div className="p-third">
-                  3
+                  {podium[2].absences}
                 </div>
               </Link>
             </li>
-            {others.map(student => (
+            <ReactTable
+              defaultPageSize={others.length}
+              data={others}
+              noDataText="Aucun élève trouvé."
+              columns={[
+                {Header: 'Nom', accessor: 'lastname', headerStyle: { display: "none" }, className: 'centered-col'},
+                {Header: 'Prénom', accessor: 'firstname', headerStyle: { display: "none" }, className: 'centered-col'}
+              ]
+              }
+              showPagination={false}
+              className="-highlight"
+              resizable={false}
+            />
+            {/* {others.map(student => (
               <li>
                 <Link to={`/students/${student.username}`}>
                   {student.firstname} {student.lastname}
                 </Link>
               </li>
               )
-            )}
+            )} */}
           </React.Fragment>
         }
       </React.Fragment>

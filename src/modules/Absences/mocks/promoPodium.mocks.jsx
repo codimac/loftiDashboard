@@ -1,7 +1,10 @@
 const createFakeStudents = (number = 10) => {
   const students = Array(number);
+  const absences = Math.floor(Math.random() * 30)+25;
+  let downby = 3;
   for (let i = 0; i < students.length; i++) {
-    students[i] = { id: i, firstname: `name${i}`, lastname: `surname${i}`, username: `username${i}`, absences: Math.floor(Math.random() * 30)};
+    students[i] = { id: i, firstname: `Name${i}`, lastname: `Surname${i}`, username: `username${i}`, absences: absences - downby };
+    downby += Math.floor(Math.random() * 10)+1;
   }
   students.push({id: number+1, firstname: 'François', lastname: 'Hollande', username: 'fhollande'});
   return students;
