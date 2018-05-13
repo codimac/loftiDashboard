@@ -2,6 +2,7 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
 import { PrivateRoute } from '@Shared/components/PrivateRoute.components';
+import Error from '@App/components/Error/Error.components';
 
 import ListUe from '@Ues/containers/List.containers';
 
@@ -25,8 +26,8 @@ class Router extends React.Component {
 
         {/*
         <Switch>
-            <Route path='/grades' component={GradesList} />
-          </Switch> */}
+        <Route path='/grades' component={GradesList} />
+      </Switch> */}
 
         <Switch>
           <PrivateRoute path='/semesters' allowed={['admin']} component={SemestersList} />
@@ -47,12 +48,15 @@ class Router extends React.Component {
         </Switch>
 
         <Switch>
-          <PrivateRoute path='/promotions/:promotionId/assignments/add' allowed={['admin']} component={AssignmentsForm} />
-          <PrivateRoute path='/promotions/:promotionId/assignments/:assignmentId' allowed={['admin']} component={AssignmentsForm} />
-          <PrivateRoute path='/promotions/:promotionId/assignments' allowed={['admin']} component={AssignmentsList} />
-          <PrivateRoute path='/promotions/:promotionId' allowed={['admin']} component={DetailsPromotion} />
-          <PrivateRoute path='/promotions' allowed={['admin']} component={ListPromotions} />
+          <PrivateRoute exact path='/promotions/:promotionId/assignments/add' allowed={['admin']} component={AssignmentsForm} />
+          <PrivateRoute exact path='/promotions/:promotionId/assignments/:assignmentId' allowed={['admin']} component={AssignmentsForm} />
+          <PrivateRoute exact path='/promotions/:promotionId/assignments' allowed={['admin']} component={AssignmentsList} />
+          <PrivateRoute exact path='/promotions/:promotionId' allowed={['admin']} component={DetailsPromotion} />
+          <PrivateRoute exact path='/promotions' allowed={['admin']} component={ListPromotions} />
+
+          <Route exact path='*' component={Error} />
         </Switch>
+
 
       </React.Fragment>
     );

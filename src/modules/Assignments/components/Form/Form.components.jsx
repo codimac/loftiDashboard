@@ -34,7 +34,7 @@ class Form extends React.Component {
     match: Proptypes.shape({
       params: Proptypes.shape({
         promotionId: Proptypes.string.isRequired,
-        subjectId: Proptypes.string
+        assignmentId: Proptypes.string
       }).isRequired
     }).isRequired,
     createSubjectWithGrades: Proptypes.func.isRequired
@@ -43,6 +43,8 @@ class Form extends React.Component {
   constructor() {
     super();
     this.state = {
+      isEditing: null,
+      promotionId: null,
       selectedSemester: null,
       selectedUE: null,
       selectedCourse: null,
@@ -52,11 +54,21 @@ class Form extends React.Component {
     };
   }
 
+  componentWillMount() {
+    this.setState({
+      isEditing: !!+this.props.match.params.assignmentId,
+      promotionId: +this.props.match.params.promotionId
+    });
+  }
+
   componentDidMount() {
-    // à voir si le if est pertinent
-    if (this.props.match.params.promotionId !== getPromotion(store.getState()).year) {
+    if (this.state.promotionId !== getPromotion(store.getState()).year) {
       store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
     }
+    if (this.state.isEditing) {
+      console.log('TO DO');
+    }
+
     store.dispatch(semestersListEffects.getSemesterForPromo(this.props.match.params.promotionId));
   }
 
