@@ -1,6 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { connect } from 'react-redux';
+import ReactTable from 'react-table';
 import store from '@App/App.store';
 
 import { getPromotion } from '@Promos/reducers/details.reducers';
@@ -134,7 +135,6 @@ class Form extends React.Component {
       },
       grades: this.state.grades
     };
-    console.log(subjectWithGrades);
     this.props.createSubjectWithGrades(subjectWithGrades);
   }
 
@@ -155,6 +155,16 @@ class Form extends React.Component {
 
   render() {
     const { year, promotion, semesters, ues } = this.props;
+    const columns = [
+      {Header: 'Elève', accessor: 'firstname', width: 200,
+        Cell: row => `${row.original.firstname} ${row.original.lastname}`
+      },
+      {Header: 'Note', width: 200,
+        Cell: row => (
+          <input type="number" placeholder="Note" min={0} step="any" name={`${row.original.id}`} onChange={this.handleGradeChange} />
+        )
+      }
+    ];
 
     return (
       <React.Fragment>
@@ -185,7 +195,7 @@ class Form extends React.Component {
                 </div>
 
                 <div className="flex justify-content-sb">
-                  <table>
+                  {/* <table>
                     <thead>
                       <tr>
                         <th>Elèves</th>
@@ -202,7 +212,17 @@ class Form extends React.Component {
                         ))
                       }
                     </tbody>
-                  </table>
+                  </table> */}
+                  <ReactTable
+                    defaultPageSize={promotion.length}
+                    data={promotion}
+                    noDataText="Aucun élève trouvé."
+                    columns={columns}
+                    showPagination={false}
+                    className="-highlight"
+                    resizable={false}
+                    pageSize={promotion.length}
+                  />
                 </div>
                 <button className="button" type="submit" disabled={!this.state.validForm}>Submit</button>
               </form>
