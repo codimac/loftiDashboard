@@ -22,43 +22,23 @@ class Router extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <Switch>
+        <PrivateRoute path='/semesters' allowed={['admin']} component={SemestersList} />
 
-        {/*
-        <Switch>
-        <Route path='/grades' component={GradesList} />
-      </Switch> */}
+        <PrivateRoute path='/courses' allowed={['admin']} component={ListUe} />
 
-        <Switch>
-          <PrivateRoute path='/semesters' allowed={['admin']} component={SemestersList} />
-        </Switch>
+        <PrivateRoute path='/students/:username' allowed={['admin']} component={DetailsStudent} />
 
-        <Switch>
-          <PrivateRoute path='/courses' allowed={['admin']} component={ListUe} />
-        </Switch>
+        <PrivateRoute path='/grades' allowed={['admin']} component={GradesList} />
 
-        <Switch>
+        <PrivateRoute exact path='/promotions/:promotionId/assignments/add' allowed={['admin']} component={AssignmentsForm} />
+        <PrivateRoute exact path='/promotions/:promotionId/assignments/:assignmentId' allowed={['admin']} component={AssignmentsForm} />
+        <PrivateRoute exact path='/promotions/:promotionId/assignments' allowed={['admin']} component={AssignmentsList} />
+        <PrivateRoute exact path='/promotions/:promotionId' allowed={['admin']} component={DetailsPromotion} />
+        <PrivateRoute exact path='/promotions' allowed={['admin']} component={ListPromotions} />
 
-          <PrivateRoute path='/grades' allowed={['admin']} component={GradesList} />
-        </Switch>
-
-        {/* STUDENTS */}
-        <Switch>
-          <PrivateRoute path='/students/:username' allowed={['admin']} component={DetailsStudent} />
-        </Switch>
-
-        <Switch>
-          <PrivateRoute exact path='/promotions/:promotionId/assignments/add' allowed={['admin']} component={AssignmentsForm} />
-          <PrivateRoute exact path='/promotions/:promotionId/assignments/:assignmentId' allowed={['admin']} component={AssignmentsForm} />
-          <PrivateRoute exact path='/promotions/:promotionId/assignments' allowed={['admin']} component={AssignmentsList} />
-          <PrivateRoute exact path='/promotions/:promotionId' allowed={['admin']} component={DetailsPromotion} />
-          <PrivateRoute exact path='/promotions' allowed={['admin']} component={ListPromotions} />
-
-          <Route exact path='*' component={Error} />
-        </Switch>
-
-
-      </React.Fragment>
+        <Route exact path='*' component={Error} />
+      </Switch>
     );
   }
 

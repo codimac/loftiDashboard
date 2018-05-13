@@ -9,6 +9,7 @@ import { getPromotion } from '@Promos/reducers/details.reducers';
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 import * as semestersListEffects from '@Semesters/effects/list.effects';
 import * as uesListEffects from '@Ues/effects/list.effects';
+import * as assignmentsDetailsEffects from '@Assignments/effects/details.effects';
 
 import SelectInput from '@Shared/components/SelectInput/SelectInput.components';
 
@@ -37,7 +38,7 @@ class Form extends React.Component {
         assignmentId: Proptypes.string
       }).isRequired
     }).isRequired,
-    createSubjectWithGrades: Proptypes.func.isRequired
+    createAssignmentWithGrades: Proptypes.func.isRequired
   };
 
   constructor() {
@@ -47,9 +48,9 @@ class Form extends React.Component {
       promotionId: null,
       selectedSemester: null,
       selectedUE: null,
-      selectedCourse: null,
+      selectedSubject: null,
       validForm: false,
-      subject: {},
+      assignment: {},
       grades: {}
     };
   }
@@ -66,9 +67,8 @@ class Form extends React.Component {
       store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
     }
     if (this.state.isEditing) {
-      console.log('TO DO');
+      store.dispatch(assignmentsDetailsEffects.getAssignment(this.props.match.params.assignmentId));
     }
-
     store.dispatch(semestersListEffects.getSemesterForPromo(this.props.match.params.promotionId));
   }
 
@@ -82,7 +82,7 @@ class Form extends React.Component {
   }
 
   selectCourse = ev => {
-    this.setState({selectedCourse: +ev.target.value});
+    this.setState({selectedSubject: +ev.target.value});
   }
 
   parsedPromotions = promotions => {
@@ -119,8 +119,8 @@ class Form extends React.Component {
 
   handleSubjectChange = ev => {
     this.setState({
-      subject: {
-        ...this.state.subject,
+      assignment: {
+        ...this.state.assignment,
         [ev.target.name]: ev.target.value
       }
     }, () => this.validForm());
@@ -136,18 +136,18 @@ class Form extends React.Component {
   }
 
   prepareSave = () => {
-    const subjectWithGrades = {
+    const assignmentWithGrades = {
       promotionYear: this.props.year,
       semesterId: this.state.selectedSemester,
       ueId: this.state.selectedUE,
-      courseId: this.state.selectedCourse,
-      subject: {
-        ...this.state.subject,
-        coefficient: +this.state.subject.coefficient,
+      subjectId: this.state.selectedSubject,
+      assignment: {
+        ...this.state.assignment,
+        coefficient: +this.state.assignment.coefficient,
       },
       grades: this.state.grades
     };
-    this.props.createSubjectWithGrades(subjectWithGrades);
+    this.props.createAssignmentWithGrades(assignmentWithGrades);
   }
 
   submit = ev => {
@@ -196,7 +196,7 @@ class Form extends React.Component {
         }
 
         {
-          this.state.selectedCourse &&
+          this.state.selectedSubject &&
             <div>
               <form onSubmit={this.submit} >
                 <div>
