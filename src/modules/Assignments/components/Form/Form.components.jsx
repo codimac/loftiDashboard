@@ -195,24 +195,6 @@ class Form extends React.Component {
                 </div>
 
                 <div className="flex justify-content-sb">
-                  {/* <table>
-                    <thead>
-                      <tr>
-                        <th>Elèves</th>
-                        <th>Notes</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {
-                        promotion.map(student => (
-                          <tr key={student.id}>
-                            <td>{student.firstname} {student.lastname}</td>
-                            <td><input type="number" placeholder="Note" min={0} step="any" name={`${student.id}`} onChange={this.handleGradeChange} /></td>
-                          </tr>
-                        ))
-                      }
-                    </tbody>
-                  </table> */}
                   <ReactTable
                     defaultPageSize={promotion.length}
                     data={promotion}
