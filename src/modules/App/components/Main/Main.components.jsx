@@ -5,9 +5,11 @@ import { PrivateRoute } from '@Shared/components/PrivateRoute.components';
 
 import ListUe from '@Ues/containers/List.containers';
 
-import PromosModule from '@Promos/Promos.modules';
-// import DetailsPromotion from '@Promos/containers/Details.containers';
-// import ListPromotions from '@Promos/containers/List.containers';
+import DetailsPromotion from '@Promos/containers/Details.containers';
+import ListPromotions from '@Promos/containers/List.containers';
+
+import AssignmentsForm from '@Assignments/containers/Form.containers';
+import AssignmentsList from '@Assignments/containers/List.containers';
 
 import DetailsStudent from '@Students/containers/Details.containers';
 
@@ -45,15 +47,12 @@ class Main extends React.Component {
           <PrivateRoute path='/students/:username' allowed={['admin']} component={DetailsStudent} />
         </Switch>
 
-        {/* PROMOTIONS
         <Switch>
-          <PrivateRoute path='/promotions/:promotionId/subjects/:subjectId' allowed={['admin']} component={GradesForm} />
-          <PrivateRoute path='/promotions/:promotionId/subjects/add' allowed={['admin']} component={GradesForm} />
-
-        </Switch> */}
-        <Route>
-          <PrivateRoute path='/promotions' allowed={['admin']} component={PromosModule} />
-        </Route>
+          <PrivateRoute path='/promotions/:promotionId/assignments/add' allowed={['admin']} component={AssignmentsForm} />
+          <PrivateRoute path='/promotions/:promotionId/assignments' allowed={['admin']} component={AssignmentsList} />
+          <PrivateRoute path='/promotions/:promotionId' allowed={['admin']} component={DetailsPromotion} />
+          <PrivateRoute path='/promotions' allowed={['admin']} component={ListPromotions} />
+        </Switch>
 
       </React.Fragment>
     );
