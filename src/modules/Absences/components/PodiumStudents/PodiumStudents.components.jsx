@@ -60,7 +60,6 @@ class PodiumStudients extends React.Component {
               getTrProps={(state, rowInfo, column) => {
                 return {
                   onClick: (e, handleOriginal) => {
-                    console.log(rowInfo);
                     window.location = `/students/${rowInfo.original.username}`;
                   },
                   style: {

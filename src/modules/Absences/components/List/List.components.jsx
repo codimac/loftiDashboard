@@ -41,6 +41,7 @@ class List extends React.Component {
   }
 
   getStudentDetails(event, row) {
+    console.log(row);
     const {firstname, lastname, id} = row;
     this.setState({selectedStudent: true, student: {firstname, lastname, id}});
   }
@@ -52,11 +53,12 @@ class List extends React.Component {
   render() {
     const { promotion } = this.props;
     const year = this.props.match.params.id; // à améliorer
+    console.log(this.state);
 
     const columns = [
       {Header: 'Nom', accessor: 'lastname'},
       {Header: 'Prénom', accessor: 'firstname'},
-      {Header: 'Page', accessor: 'id', width: 50, className: 'centered-col',
+      {Header: 'Voir', accessor: 'id', width: 50, className: 'centered-col',
         Cell: row => (<span role='none' className='icon-access' onClick={(e) => this.getStudentDetails(e, row.row)}> > </span>)}
     ];
     const len = promotion.length;
@@ -75,6 +77,16 @@ class List extends React.Component {
                 className="-highlight"
                 resizable={false}
                 pageSize={len}
+                getTrProps={(state, rowInfo, column) => {
+                return {
+                  onClick: (e, handleOriginal) => {
+                    this.getStudentDetails(e, rowInfo.original);
+                  },
+                  style: {
+                    cursor: 'pointer'
+                  }
+                };
+              }}
               />
             </section>
             <section>
