@@ -6,15 +6,17 @@ import { getPromotion } from '@Promos/reducers/details.reducers';
 import { getFilter } from '@Shared/reducers/filter.reducers';
 import * as actions from '@Promos/effects/details.effects';
 
-const filterStudent = (students, val) => students.tempPromotion.filter(student => {
+const filterStudent = (students, val, td) => students.tempPromotion.filter(student => {
   const user = `${student.firstname} ${student.lastname}`;
-  return user.toLowerCase().indexOf(val) !== -1 || !val;
+  return (user.toLowerCase().indexOf(val) !== -1 || !val) && (td ? student.td === td : true);
 });
 
-const getVisibleStudents = (students, filter) => ({
-  ...students,
-  promotion: filterStudent(students, filter.value.toLowerCase())
-});
+const getVisibleStudents = (students, filter) => {
+  return {
+    ...students,
+    promotion: filterStudent(students, filter.value.toLowerCase(), filter.showedTd)
+  };
+};
 
 const mapStateToProps = state => getVisibleStudents(getPromotion(state), getFilter(state));
 

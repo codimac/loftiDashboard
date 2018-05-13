@@ -31,10 +31,9 @@ class List extends React.Component {
         <ul>
           {
             ues.map(ue => (
-              <li key={ue.id}>
-                <Details {...ue} />
-              </li>
-          ))}
+              <Details key={ue.id} {...ue} />
+            ))
+          }
         </ul>
       </div>
     );

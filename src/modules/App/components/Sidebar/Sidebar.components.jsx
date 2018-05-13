@@ -50,7 +50,7 @@ class Sidebar extends React.Component {
           }
         </div>
         <div>
-          <button onClick={this.disconnect}>Deco</button>
+          <button className="button button__white" onClick={this.disconnect}>Deco</button>
         </div>
       </nav>
     );

@@ -53,7 +53,7 @@ class Form extends React.Component {
 
   componentDidMount() {
     // à voir si le if est pertinent
-    if (this.props.match.params.id !== getPromotion(store.getState()).year) {
+    if (this.props.match.params.promotionId !== getPromotion(store.getState()).year) {
       store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
     }
     store.dispatch(semestersListEffects.getSemesterForPromo(this.props.match.params.promotionId));
@@ -204,7 +204,7 @@ class Form extends React.Component {
                     </tbody>
                   </table>
                 </div>
-                <button type="submit" disabled={!this.state.validForm}>Submit</button>
+                <button className="button" type="submit" disabled={!this.state.validForm}>Submit</button>
               </form>
             </div>
         }
