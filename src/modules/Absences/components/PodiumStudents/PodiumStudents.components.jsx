@@ -50,7 +50,8 @@ class PodiumStudients extends React.Component {
               noDataText="Aucun élève trouvé."
               columns={[
                 {Header: 'Nom', accessor: 'lastname', headerStyle: { display: "none" }, className: 'centered-col'},
-                {Header: 'Prénom', accessor: 'firstname', headerStyle: { display: "none" }, className: 'centered-col'}
+                {Header: 'Prénom', accessor: 'firstname', headerStyle: { display: "none" }, className: 'centered-col'},
+                {Header: '', accessor: 'absences', headerStyle: { display: "none" }, className: 'centered-col', width: 50}
               ]
               }
               showPagination={false}
@@ -76,7 +77,7 @@ class PodiumStudients extends React.Component {
   render() {
     return (
       <div className="podium">
-        le podium des meilleurs absents
+        <h3> Le podium des meilleurs absents</h3>
         <ol >
           {this.renderPodium()}
 

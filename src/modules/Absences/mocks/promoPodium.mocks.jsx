@@ -4,9 +4,8 @@ const createFakeStudents = (number = 10) => {
   let downby = 3;
   for (let i = 0; i < students.length; i++) {
     students[i] = { id: i, firstname: `Name${i}`, lastname: `Surname${i}`, username: `username${i}`, absences: absences - downby };
-    downby += Math.floor(Math.random() * 10)+1;
+    downby += Math.floor(Math.random() * 5)+1;
   }
-  students.push({id: number+1, firstname: 'François', lastname: 'Hollande', username: 'fhollande'});
   return students;
 };
 

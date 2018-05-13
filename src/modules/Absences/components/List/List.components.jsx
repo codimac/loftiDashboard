@@ -82,10 +82,9 @@ class List extends React.Component {
                 this.state.selectedStudent===true &&
                   <StudentDetails id={this.state.selectedStudent} student={this.state.student} onClose={this.closeStudent} />
               }
-              {
-                this.state.selectedStudent!==true &&
-                  <PodiumStudient />
-              }
+            </section>
+            <section>
+              <PodiumStudient />
             </section>
           </div>
 
