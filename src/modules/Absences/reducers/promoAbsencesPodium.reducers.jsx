@@ -27,4 +27,4 @@ const promoAbsencesPodiumReducer = (state = promoAbsencesPodiumInitialState, act
 
 export default promoAbsencesPodiumReducer;
 
-export const getPromoPodiumAbsences = state => state.absencesPodium;
+export const getPromoPodiumAbsences = state => state.promoAbsencesPodium;
