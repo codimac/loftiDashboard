@@ -56,15 +56,18 @@ class PodiumStudients extends React.Component {
               showPagination={false}
               className="-highlight"
               resizable={false}
+              getTrProps={(state, rowInfo, column) => {
+                return {
+                  onClick: (e, handleOriginal) => {
+                    console.log(rowInfo);
+                    window.location = `/students/${rowInfo.original.username}`;
+                  },
+                  style: {
+                    cursor: 'pointer'
+                  }
+                };
+              }}
             />
-            {/* {others.map(student => (
-              <li>
-                <Link to={`/students/${student.username}`}>
-                  {student.firstname} {student.lastname}
-                </Link>
-              </li>
-              )
-            )} */}
           </React.Fragment>
         }
       </React.Fragment>
