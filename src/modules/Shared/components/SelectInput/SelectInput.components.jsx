@@ -13,13 +13,16 @@ class SelectInput extends React.Component {
       ]).isRequired,
     })).isRequired,
     placeholder: Proptypes.string.isRequired,
-    onChange: Proptypes.func
+    required: Proptypes.bool,
+    selected: Proptypes.number,
+    onChange: Proptypes.func,
   };
 
   render() {
-    const { items, placeholder, onChange } = this.props;
+    const { items, placeholder, onChange, required, selected } = this.props;
+
     return (
-      <select defaultValue={0} onChange={onChange}>
+      <select defaultValue={selected || 0} onChange={onChange} required>
         <option value="0" disabled>{placeholder}</option>
         { items.map(item => (
           <option key={item.id+1} value={item.value}>{item.label}</option>

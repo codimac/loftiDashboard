@@ -70,8 +70,8 @@ class Form extends React.Component {
       selectedUE: null,
       selectedSubject: null,
       validForm: false,
-      assignment: null,
-      grades: null
+      assignment: {},
+      grades: {}
     };
   }
 
@@ -102,6 +102,11 @@ class Form extends React.Component {
           selectedSemester: assignment.semesterId,
           selectedUE: assignment.ueId,
           selectedSubject: assignment.subjectId,
+          assignment: assignment.assignment,
+          grades: assignment.grades
+        }, () => {
+          store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
+          store.dispatch(subjectsListEffects.getSubjectsListForUe(this.state.selectedSubject));
         });
       }
     }
@@ -184,8 +189,8 @@ class Form extends React.Component {
   }
 
   validForm = () => {
-    const { subject, grades } = this.state;
-    const subjectValues = Object.values(subject);
+    const { assignment, grades } = this.state;
+    const subjectValues = Object.values(assignment);
     const gradesValues = Object.values(grades);
     this.setState({
       validForm: subjectValues.length === 3 && subjectValues.every(value => value.length !== 0) &&
@@ -193,10 +198,24 @@ class Form extends React.Component {
     });
   }
 
-  render() {
+  initForm = () => {
+    const bool = !!this.props.assignment;
     console.log(this.props);
-    const { year, promotion, semesters, ues, assignment, subjects } = this.props;
+    return {
+      assignment: {
+        name: bool ? this.props.assignment.assignment.name : '',
+        description: bool ? this.props.assignment.assignment.description : '',
+        coefficient: bool ? this.props.assignment.assignment.coefficient : '',
+      },
+      grades: bool ? this.props.assignment.grades : null,
+      semesterId: bool ? this.props.assignment.semesterId : null,
+      ueId: bool ? this.props.assignment.ueId : null,
+      subjectId: bool ? this.props.assignment.subjectId : null
+    };
+  }
 
+  render() {
+    const { year, promotion, semesters, ues, assignment, subjects } = this.props;
     const columns = [
       {Header: 'Elève', accessor: 'firstname', width: 200,
         Cell: row => `${row.original.firstname} ${row.original.lastname}`
@@ -208,21 +227,23 @@ class Form extends React.Component {
       }
     ];
 
+    const values = this.initForm();
+
     return (
       <React.Fragment>
         <h1>Form</h1>
         <h2>La promo sélectionnée est { year }</h2>
 
-        <SelectInput items={this.parsedSemesters(semesters)} placeholder='Sélectionner un semestre' onChange={this.selectSemester} />
+        <SelectInput items={this.parsedSemesters(semesters)} placeholder='Sélectionner un semestre' selected={values.semesterId} onChange={this.selectSemester} required />
 
         {
           this.state.selectedSemester &&
-            <SelectInput items={this.parsedItems(ues)} placeholder='Sélectionner une item' onChange={this.selectUE} />
+            <SelectInput items={this.parsedItems(ues)} placeholder='Sélectionner une item' selected={values.ueId} onChange={this.selectUE} required />
         }
 
         {
           this.state.selectedUE &&
-            <SelectInput items={this.parsedItems(subjects)} placeholder='Sélectionner une matière' onChange={this.selectSubject} />
+            <SelectInput items={this.parsedItems(subjects)} placeholder='Sélectionner une matière' selected={values.subjectId} onChange={this.selectSubject} required />
         }
 
         {
@@ -231,9 +252,9 @@ class Form extends React.Component {
               <form onSubmit={this.submit} >
                 <div>
                   <h2>Ajout du devoir</h2>
-                  <input type="text" placeholder="Nom du devoir" name="name" onChange={this.handleSubjectChange} />
-                  <textarea name="description" cols="30" placeholder="Description" onChange={this.handleSubjectChange} ></textarea>
-                  <input type="number" name="coefficient" placeholder="coeff" min={0} step="any" onChange={this.handleSubjectChange} />
+                  <input type="text" placeholder="Nom du devoir" name="name" defaultValue={values.assignment.name} onChange={this.handleSubjectChange} required />
+                  <textarea name="description" cols="30" placeholder="Description" defaultValue={values.assignment.description} onChange={this.handleSubjectChange} required></textarea>
+                  <input type="number" name="coefficient" placeholder="coeff" min={0} step="any" defaultValue={values.assignment.coefficient} onChange={this.handleSubjectChange} required />
                 </div>
 
                 <div className="flex justify-content-sb">
