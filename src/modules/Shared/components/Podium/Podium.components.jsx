@@ -5,10 +5,18 @@ import ReactTable from 'react-table';
 import './styles';
 
 class Podium extends React.Component {
+  static propTypes = {
+    podium: Proptypes.arrayOf(Proptypes.shape({
+      id: Proptypes.number.isRequired,
+      firstname: Proptypes.string.isRequired,
+      lastname: Proptypes.string.isRequired,
+      username: Proptypes.string.isRequired
+    })).isRequired,
+    accessor: Proptypes.string.isRequired
+  };
   render() {
     const {podium} = this.props;
     const {accessor} = this.props;
-
     if (podium) {
       const first = podium[0];
       const seconde = podium[1];
@@ -17,7 +25,7 @@ class Podium extends React.Component {
       return (
         <div className="podium-absence">
           {podium.length > 0 &&
-            <React.Fragment>
+            <ul>
               <li className="li-podium">
                 <Link to={`/students/${seconde.username}`}>
                   {first.firstname} {seconde.lastname}
@@ -42,7 +50,7 @@ class Podium extends React.Component {
                   </div>
                 </Link>
               </li>
-            </React.Fragment>
+            </ul>
           }
         </div>
       );

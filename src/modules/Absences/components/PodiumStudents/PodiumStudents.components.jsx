@@ -18,7 +18,7 @@ class PodiumStudients extends React.Component {
     const others = absencesPodium.slice(3);
     return (
       <React.Fragment>
-        {podium.length > 0 &&
+        {podium.length >= 3 &&
           <React.Fragment>
             <Podium podium={podium} accessor='absences' />
             <ReactTable
@@ -56,9 +56,8 @@ class PodiumStudients extends React.Component {
     return (
       <div className="podium">
         <h3> Le podium des meilleurs absents</h3>
-        <ol >
-          {this.renderPodium()}
-        </ol>
+        {this.renderPodium()}
+
       </div>
     );
   }
