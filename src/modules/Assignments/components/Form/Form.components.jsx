@@ -109,10 +109,6 @@ class Form extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    console.log('unmout');
-  }
-
   selectSemester = ev => {
     this.setState({selectedSemester: +ev.target.value});
     store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
