@@ -5,10 +5,30 @@ import ReactTable from 'react-table';
 import './styles';
 
 class StudentDetails extends React.Component {
+
+
+  static propTypes = {
+    getAbsencesList: Proptypes.func.isRequired,
+    onClose: Proptypes.func.isRequired,
+    absencesList: Proptypes.arrayOf(Proptypes.shape({
+      id: Proptypes.number.isRequired,
+      begining: Proptypes.instanceOf(Date).isRequired,
+      end: Proptypes.instanceOf(Date).isRequired,
+      justified: Proptypes.bool.isRequired
+    })).isRequired,
+    student: Proptypes.shape({
+      id: Proptypes.number.isRequired,
+      firstname: Proptypes.string.isRequired,
+      lastname: Proptypes.string.isRequired,
+      username: Proptypes.string.isRequired
+    }).isRequired,
+  };
+
   constructor() {
     super();
-    this.close = this.close.bind(this)
+    this.close = this.close.bind(this);
   }
+
   componentDidMount() {
     this.props.getAbsencesList();
   }
@@ -31,14 +51,14 @@ class StudentDetails extends React.Component {
     return (
       <div className="student-absences">
         <h3> Les absences de {student.firstname} {student.lastname} </h3>
-        <section className="alig-items-start">
+        <section className='alig-items-start'>
           <ReactTable
             defaultPageSize={len}
             data={absencesList}
-            noDataText="Aucune absence trouvé."
+            noDataText='Aucune absence trouvé.'
             columns={columns}
             showPagination={false}
-            className="-highlight"
+            className='-highlight'
             resizable={false}
             pageSize={len}
           />

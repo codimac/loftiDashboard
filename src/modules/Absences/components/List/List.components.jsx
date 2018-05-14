@@ -22,7 +22,8 @@ class List extends React.Component {
     })).isRequired,
     match: Proptypes.shape({
       params: Proptypes.shape({
-        id: Proptypes.string.isRequired
+        id: Proptypes.string.isRequired,
+        promotionId: Proptypes.string.isRequired
       }).isRequired
     }).isRequired,
   };
@@ -33,7 +34,7 @@ class List extends React.Component {
       selectedStudent: false,
       student: null,
     };
-    this.closeStudent = this.closeStudent.bind(this)
+    this.closeStudent = this.closeStudent.bind(this);
   }
 
   componentDidMount() {

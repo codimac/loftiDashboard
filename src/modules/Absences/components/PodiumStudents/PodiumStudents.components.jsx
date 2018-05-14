@@ -34,9 +34,9 @@ class PodiumStudients extends React.Component {
               data={others}
               noDataText="Aucun élève trouvé."
               columns={[
-                {Header: 'Nom', accessor: 'lastname', headerStyle: { display: "none" }, className: 'centered-col'},
-                {Header: 'Prénom', accessor: 'firstname', headerStyle: { display: "none" }, className: 'centered-col'},
-                {Header: '', accessor: 'absences', headerStyle: { display: "none" }, className: 'centered-col', width: 50}
+                {Header: 'Nom', accessor: 'lastname', headerStyle: { display: 'none' }, className: 'centered-col'},
+                {Header: 'Prénom', accessor: 'firstname', headerStyle: { display: 'none' }, className: 'centered-col'},
+                {Header: '', accessor: 'absences', headerStyle: { display: 'none' }, className: 'centered-col', width: 50}
               ]
               }
               showPagination={false}
