@@ -23,7 +23,7 @@ class Sidebar extends React.Component {
           <ListPromos sidebar={true} />
         </div>
         <div className="sidebar-section">
-          <h2><Link className="link link__sidebar__title" to='/courses'>Enseignements</Link></h2>
+          <h2><Link className="link link__sidebar__title" to='/subjects'>Enseignements</Link></h2>
         </div>
       </React.Fragment>
     );

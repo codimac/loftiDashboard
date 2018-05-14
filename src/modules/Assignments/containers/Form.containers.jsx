@@ -6,6 +6,7 @@ import { getPromotionsList } from '@Promos/reducers/list.reducers';
 import { getPromotion } from '@Promos/reducers/details.reducers';
 import { getSemestersList } from '@Semesters/reducers/list.reducers';
 import { getUesList } from '@Ues/reducers/list.reducers';
+import { getAssignmentsDetails } from '@Assignments/reducers/details.reducers';
 
 import { getGradesForm } from '@Assignments/reducers/form.reducers';
 
@@ -16,7 +17,8 @@ const mapStateToProps = state => ({
   year: getPromotion(state).year,
   promotion: getPromotion(state).promotion,
   semesters: getSemestersList(state).semesters,
-  ues: getUesList(state).ues
+  ues: getUesList(state).ues,
+  assignment: getAssignmentsDetails(state).assignment
 });
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);

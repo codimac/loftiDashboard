@@ -14,6 +14,8 @@ import uesListReducer from '@Ues/reducers/list.reducers';
 
 import gradesListReducer from '@Grades/reducers/list.reducers';
 
+import subjectsListReducer from '@Subjects/reducers/list.reducers';
+
 import assignmentsFormReducer from '@Assignments/reducers/form.reducers';
 import assignmentsDetailsReducer from '@Assignments/reducers/details.reducers';
 import assignmentsListReducer from '@Assignments/reducers/list.reducers';
@@ -42,6 +44,9 @@ const rootReducer = combineReducers({
 
   // grades
   gradesList: gradesListReducer,
+
+  // subjects
+  subjectsList: subjectsListReducer,
 
   // assignments
   assignmentsList: assignmentsListReducer,

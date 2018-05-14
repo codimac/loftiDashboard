@@ -11,13 +11,12 @@ const alias = {
   '@modules': path.resolve(paths.SRC, 'modules'),
   '@App': path.resolve(paths.SRC, 'modules', 'App'),
   '@Shared': path.resolve(paths.SRC, 'modules', 'Shared'),
-  '@Courses': path.resolve(paths.SRC, 'modules', 'Courses'),
   '@Promos': path.resolve(paths.SRC, 'modules', 'Promos'),
   '@Grades': path.resolve(paths.SRC, 'modules', 'Grades'),
   '@Students': path.resolve(paths.SRC, 'modules', 'Students'),
   "@Ues": path.resolve(paths.SRC, 'modules', 'Ues'),
   "@Semesters": path.resolve(paths.SRC, 'modules', 'Semesters'),
-  "@Subjects": path.resolve(paths.SRC, 'modules', 'Subjects'),  // matières
+  "@Subjects": path.resolve(paths.SRC, 'modules', 'Subjects'),
   "@Assignments": path.resolve(paths.SRC, 'modules', 'Assignments')
 };
 

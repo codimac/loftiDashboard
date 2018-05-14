@@ -1,6 +1,6 @@
 const assignmentsDetailsInitialState = {
   isFetching: false,
-  assignment: {}
+  assignment: null
 };
 
 export default assignmentsDetailsInitialState;

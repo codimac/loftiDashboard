@@ -16,7 +16,6 @@
       "images/*": ["public/images/*"],
 
       "@modules/*": ["modules/*"],
-      "@Courses/*": ["modules/Courses/*"],
       "@Grades/*": ["modules/Grades/*"],
       "@Promos/*": ["modules/Promos/*"],
       "@Students/*": ["modules/Students/*"],

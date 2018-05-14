@@ -32,6 +32,20 @@ class Form extends React.Component {
       name: Proptypes.string.isRequired,
       description: Proptypes.string.isRequired
     })).isRequired,
+    assignment: Proptypes.shape({
+      promotionYear: Proptypes.number,
+      semesterId: Proptypes.number,
+      ueId: Proptypes.number,
+      subjectId: Proptypes.number,
+      assignment: Proptypes.shape({
+        name: Proptypes.string,
+        description: Proptypes.string,
+        coefficient: Proptypes.number
+      }),
+      grades: Proptypes.shape({
+        [Proptypes.number]: Proptypes.number
+      })
+    }),
     match: Proptypes.shape({
       params: Proptypes.shape({
         promotionId: Proptypes.string.isRequired,
@@ -50,8 +64,8 @@ class Form extends React.Component {
       selectedUE: null,
       selectedSubject: null,
       validForm: false,
-      assignment: {},
-      grades: {}
+      assignment: null,
+      grades: null
     };
   }
 
@@ -61,6 +75,7 @@ class Form extends React.Component {
       promotionId: +this.props.match.params.promotionId
     });
   }
+
 
   componentDidMount() {
     if (this.state.promotionId !== getPromotion(store.getState()).year) {
@@ -72,6 +87,21 @@ class Form extends React.Component {
     store.dispatch(semestersListEffects.getSemesterForPromo(this.props.match.params.promotionId));
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.assignment !== this.props.assignment) {
+      const { assignment } = nextProps;
+      console.log(assignment);
+      if (this.state.isEditing) {
+        this.setState({
+          promotionId: assignment.promotionYear,
+          selectedSemester: assignment.semesterId,
+          selectedUE: assignment.ueId,
+          selectedSubject: assignment.subjectId,
+        });
+      }
+    }
+  }
+
   selectSemester = ev => {
     this.setState({selectedSemester: +ev.target.value});
     store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
@@ -81,7 +111,7 @@ class Form extends React.Component {
     this.setState({selectedUE: +ev.target.value});
   }
 
-  selectCourse = ev => {
+  selectSUbject = ev => {
     this.setState({selectedSubject: +ev.target.value});
   }
 
@@ -109,7 +139,7 @@ class Form extends React.Component {
     }));
   }
 
-  parsedCourses = ues => {
+  parsedSubjects = ues => {
     return ues.find(ue => ue.id === this.state.selectedUE).courses.map(course => ({
       ...course,
       value: course.id,
@@ -166,7 +196,8 @@ class Form extends React.Component {
   }
 
   render() {
-    const { year, promotion, semesters, ues } = this.props;
+    const { year, promotion, semesters, ues, assignment } = this.props;
+
     const columns = [
       {Header: 'Elève', accessor: 'firstname', width: 200,
         Cell: row => `${row.original.firstname} ${row.original.lastname}`
@@ -192,7 +223,7 @@ class Form extends React.Component {
 
         {
           this.state.selectedUE &&
-            <SelectInput items={this.parsedCourses(ues)} placeholder='Sélectionner une matière' onChange={this.selectCourse} />
+            <SelectInput items={this.parsedSubjects(ues)} placeholder='Sélectionner une matière' onChange={this.selectSUbject} />
         }
 
         {

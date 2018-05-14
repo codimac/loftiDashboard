@@ -25,7 +25,7 @@ class Router extends React.Component {
       <Switch>
         <PrivateRoute path='/semesters' allowed={['admin']} component={SemestersList} />
 
-        <PrivateRoute path='/courses' allowed={['admin']} component={ListUe} />
+        <PrivateRoute path='/subjects' allowed={['admin']} component={ListUe} />
 
         <PrivateRoute path='/students/:username' allowed={['admin']} component={DetailsStudent} />
 
