@@ -200,7 +200,6 @@ class Form extends React.Component {
 
   initForm = () => {
     const bool = !!this.props.assignment;
-    console.log(this.props);
     return {
       assignment: {
         name: bool ? this.props.assignment.assignment.name : '',
@@ -216,21 +215,19 @@ class Form extends React.Component {
 
   render() {
     const { year, promotion, semesters, ues, assignment, subjects } = this.props;
+    const values = this.initForm();
     const columns = [
-      {Header: 'Elève', accessor: 'firstname', width: 200,
+      {Header: 'Elève', accessor: 'lastname', width: 200,
         Cell: row => `${row.original.firstname} ${row.original.lastname}`
       },
       {Header: 'Note', width: 200,
         Cell: row => (
-          <input type="number" placeholder="Note" min={0} step="any" name={`${row.original.id}`} onChange={this.handleGradeChange} />
+          <input type="number" placeholder="Note" min={0} step="any" defaultValue={values.grades ? values.grades[row.original.id] : ''} name={row.original.id} onChange={this.handleGradeChange} />
         )
       }
     ];
-
-    const values = this.initForm();
-
     return (
-      <React.Fragment>
+      <div>
         <h1>Form</h1>
         <h2>La promo sélectionnée est { year }</h2>
 
@@ -238,7 +235,7 @@ class Form extends React.Component {
 
         {
           this.state.selectedSemester &&
-            <SelectInput items={this.parsedItems(ues)} placeholder='Sélectionner une item' selected={values.ueId} onChange={this.selectUE} required />
+            <SelectInput items={this.parsedItems(ues)} placeholder='Sélectionner une UE' selected={values.ueId} onChange={this.selectUE} required />
         }
 
         {
@@ -260,6 +257,7 @@ class Form extends React.Component {
                 <div className="flex justify-content-sb">
                   <ReactTable
                     defaultPageSize={promotion.length}
+                    defaultSorted={[{id: 'lastname', desc: false}]}
                     data={promotion}
                     noDataText="Aucun élève trouvé."
                     columns={columns}
@@ -267,13 +265,14 @@ class Form extends React.Component {
                     className="-highlight"
                     resizable={false}
                     pageSize={promotion.length}
+                    sortable={false}
                   />
                 </div>
                 <button className="button" type="submit" disabled={!this.state.validForm}>Submit</button>
               </form>
             </div>
         }
-      </React.Fragment>
+      </div>
     );
   }
 

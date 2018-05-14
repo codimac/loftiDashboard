@@ -1,6 +1,6 @@
 export default {
   promotionYear: 2018,
-  semesterId: 1,
+  semesterId: 2,
   ueId: 2,
   subjectId: 3,
   assignment: {

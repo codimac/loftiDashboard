@@ -2,7 +2,7 @@ import faker from 'faker';
 
 const createFakeStudents = (number = 25) => {
   const students = Array(number);
-  for (let i = 0; i < students.length; i++) {
+  for (let i = 1; i < students.length; i++) {
     students[i] = {
       id: i,
       firstname: `${faker.name.firstName()}`,
