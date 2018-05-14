@@ -2,6 +2,7 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
+import Podium from '@modules/Shared/components/Podium/Podium.components';
 
 import './style';
 
@@ -15,35 +16,11 @@ class PodiumStudients extends React.Component {
     const {absencesPodium} = this.props;
     const podium = absencesPodium.slice(0, 3);
     const others = absencesPodium.slice(3);
-    console.log(podium);
     return (
       <React.Fragment>
         {podium.length > 0 &&
           <React.Fragment>
-            <li className="li-podium">
-              <Link to={`/students/${podium[1].username}`}>
-                {podium[1].firstname} {podium[1].lastname}
-                <div className="p-second">
-                  {podium[1].absences}
-                </div>
-              </Link>
-            </li>
-            <li className="li-podium">
-              <Link to={`/students/${podium[0].username}`}>
-                {podium[0].firstname} {podium[0].lastname}
-                <div className="p-first">
-                  {podium[0].absences}
-                </div>
-              </Link>
-            </li>
-            <li className="li-podium">
-              <Link to={`/students/${podium[2].username}`}>
-                {podium[2].firstname} {podium[2].lastname}
-                <div className="p-third">
-                  {podium[2].absences}
-                </div>
-              </Link>
-            </li>
+            <Podium podium={podium} accessor='absences' />
             <ReactTable
               defaultPageSize={others.length}
               data={others}
@@ -74,12 +51,13 @@ class PodiumStudients extends React.Component {
     );
   }
   render() {
+    const {absencesPodium} = this.props;
+    const podium = absencesPodium.slice(0, 3);
     return (
       <div className="podium">
         <h3> Le podium des meilleurs absents</h3>
         <ol >
           {this.renderPodium()}
-
         </ol>
       </div>
     );

@@ -1,51 +1,55 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import ReactTable from 'react-table';
 
 class Podium extends React.Component {
-  constructor(props) {
-    super();
-    this.state = {
-      data: props.data,
-      title: props.title,
-      link: props.link,
-    }
-  }
-
   render() {
-    const podium = this.state.data.slice(0, 3);
-    const others = this.state.data.slice(3);
-    return (
-      <React.Fragment>
-        {podium.length > 0 &&
-          <React.Fragment>
-            <li className="li-podium">
-              {podium[1].firstname} {podium[1].lastname}
-              <div className="p-second">
-                2
-              </div>
-            </li>
-            <li className="li-podium">
-              {podium[0].firstname} {podium[0].lastname}
-              <div className="p-first">
-                1
-              </div>
-            </li>
-            <li className="li-podium">
-              {podium[2].firstname} {podium[2].lastname}
-              <div className="p-third">
-                3
-              </div>
-            </li>
-            {others.map(student => (
-              <li>
-                {student.firstname} {student.lastname}
+    const {podium} = this.props;
+    const {accessor} = this.props;
+
+    if (podium) {
+      const first = podium[0];
+      const seconde = podium[1];
+      const third = podium[2];
+      console.log(podium);
+      return (
+        <React.Fragment>
+          {podium.length > 0 &&
+            <React.Fragment>
+              <li className="li-podium">
+                <Link to={`/students/${seconde.username}`}>
+                  {first.firstname} {seconde.lastname}
+                  <div className="p-second">
+                    {seconde[accessor]}
+                  </div>
+                </Link>
               </li>
-              )
-            )}
-          </React.Fragment>
-        }
-      </React.Fragment>
+              <li className="li-podium">
+                <Link to={`/students/${first.username}`}>
+                  {first.firstname} {first.lastname}
+                  <div className="p-first">
+                    {first[accessor]}
+                  </div>
+                </Link>
+              </li>
+              <li className="li-podium">
+                <Link to={`/students/${third.username}`}>
+                  {third.firstname} {third.lastname}
+                  <div className="p-third">
+                    {third[accessor]}
+                  </div>
+                </Link>
+              </li>
+            </React.Fragment>
+          }
+        </React.Fragment>
+      );
+    }
+    return (
+      <p>
+        pas de podium
+      </p>
     );
   }
 }

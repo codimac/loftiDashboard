@@ -41,7 +41,6 @@ class List extends React.Component {
   }
 
   getStudentDetails(event, row) {
-    console.log(row);
     const {firstname, lastname, id} = row;
     this.setState({selectedStudent: true, student: {firstname, lastname, id}});
   }
@@ -53,8 +52,6 @@ class List extends React.Component {
   render() {
     const { promotion } = this.props;
     const year = this.props.match.params.id; // à améliorer
-    console.log(this.state);
-
     const columns = [
       {Header: 'Nom', accessor: 'lastname'},
       {Header: 'Prénom', accessor: 'firstname'},
