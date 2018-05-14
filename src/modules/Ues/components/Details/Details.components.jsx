@@ -17,9 +17,6 @@ class Details extends React.Component {
     // })).isRequired
   };
 
-  componentDidMount() {
-  }
-
   render() {
     const { id, name, description } = this.props;
 

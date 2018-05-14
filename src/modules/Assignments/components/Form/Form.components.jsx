@@ -10,6 +10,7 @@ import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 import * as semestersListEffects from '@Semesters/effects/list.effects';
 import * as uesListEffects from '@Ues/effects/list.effects';
 import * as assignmentsDetailsEffects from '@Assignments/effects/details.effects';
+import * as subjectsListEffects from '@Subjects/effects/list.effects';
 
 import SelectInput from '@Shared/components/SelectInput/SelectInput.components';
 
@@ -28,6 +29,11 @@ class Form extends React.Component {
       label: Proptypes.string.isRequired
     })).isRequired,
     ues: Proptypes.arrayOf(Proptypes.shape({
+      id: Proptypes.number.isRequired,
+      name: Proptypes.string.isRequired,
+      description: Proptypes.string.isRequired
+    })).isRequired,
+    subjects: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       name: Proptypes.string.isRequired,
       description: Proptypes.string.isRequired
@@ -90,7 +96,6 @@ class Form extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (nextProps.assignment !== this.props.assignment) {
       const { assignment } = nextProps;
-      console.log(assignment);
       if (this.state.isEditing) {
         this.setState({
           promotionId: assignment.promotionYear,
@@ -109,9 +114,10 @@ class Form extends React.Component {
 
   selectUE = ev => {
     this.setState({selectedUE: +ev.target.value});
+    store.dispatch(subjectsListEffects.getSubjectsListForUe(this.state.selectedSubject));
   }
 
-  selectSUbject = ev => {
+  selectSubject = ev => {
     this.setState({selectedSubject: +ev.target.value});
   }
 
@@ -131,19 +137,11 @@ class Form extends React.Component {
     }));
   }
 
-  parsedUes = ues => {
-    return ues.map(ue => ({
-      ...ue,
-      value: ue.id,
-      label: ue.name
-    }));
-  }
-
-  parsedSubjects = ues => {
-    return ues.find(ue => ue.id === this.state.selectedUE).courses.map(course => ({
-      ...course,
-      value: course.id,
-      label: course.name
+  parsedItems = items => {
+    return items.map(item => ({
+      ...item,
+      value: item.id,
+      label: item.name
     }));
   }
 
@@ -196,7 +194,8 @@ class Form extends React.Component {
   }
 
   render() {
-    const { year, promotion, semesters, ues, assignment } = this.props;
+    console.log(this.props);
+    const { year, promotion, semesters, ues, assignment, subjects } = this.props;
 
     const columns = [
       {Header: 'Elève', accessor: 'firstname', width: 200,
@@ -218,12 +217,12 @@ class Form extends React.Component {
 
         {
           this.state.selectedSemester &&
-            <SelectInput items={this.parsedUes(ues)} placeholder='Sélectionner une UE' onChange={this.selectUE} />
+            <SelectInput items={this.parsedItems(ues)} placeholder='Sélectionner une item' onChange={this.selectUE} />
         }
 
         {
           this.state.selectedUE &&
-            <SelectInput items={this.parsedSubjects(ues)} placeholder='Sélectionner une matière' onChange={this.selectSUbject} />
+            <SelectInput items={this.parsedItems(subjects)} placeholder='Sélectionner une matière' onChange={this.selectSubject} />
         }
 
         {
