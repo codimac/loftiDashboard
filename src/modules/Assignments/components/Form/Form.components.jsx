@@ -82,7 +82,6 @@ class Form extends React.Component {
     });
   }
 
-
   componentDidMount() {
     if (this.state.promotionId !== getPromotion(store.getState()).year) {
       store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
@@ -94,22 +93,24 @@ class Form extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.assignment !== this.props.assignment) {
-      const { assignment } = nextProps;
-      if (this.state.isEditing) {
-        this.setState({
-          promotionId: assignment.promotionYear,
-          selectedSemester: assignment.semesterId,
-          selectedUE: assignment.ueId,
-          selectedSubject: assignment.subjectId,
-          assignment: assignment.assignment,
-          grades: assignment.grades
-        }, () => {
-          store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
-          store.dispatch(subjectsListEffects.getSubjectsListForUe(this.state.selectedSubject));
-        });
-      }
+    const { assignment } = nextProps;
+    if (assignment) {
+      this.setState({
+        promotionId: assignment.promotionYear,
+        selectedSemester: assignment.semesterId,
+        selectedUE: assignment.ueId,
+        selectedSubject: assignment.subjectId,
+        assignment: assignment.assignment,
+        grades: assignment.grades
+      }, () => {
+        store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
+        store.dispatch(subjectsListEffects.getSubjectsListForUe(this.state.selectedSubject));
+      });
     }
+  }
+
+  componentWillUnmount() {
+    console.log('unmout');
   }
 
   selectSemester = ev => {
