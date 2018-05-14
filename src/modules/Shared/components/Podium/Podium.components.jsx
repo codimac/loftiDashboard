@@ -2,6 +2,7 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
+import './styles';
 
 class Podium extends React.Component {
   render() {
@@ -14,7 +15,7 @@ class Podium extends React.Component {
       const third = podium[2];
       console.log(podium);
       return (
-        <React.Fragment>
+        <div className="podium-absence">
           {podium.length > 0 &&
             <React.Fragment>
               <li className="li-podium">
@@ -43,7 +44,7 @@ class Podium extends React.Component {
               </li>
             </React.Fragment>
           }
-        </React.Fragment>
+        </div>
       );
     }
     return (
