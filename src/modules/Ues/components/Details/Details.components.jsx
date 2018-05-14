@@ -1,7 +1,8 @@
 import React from 'react';
 import Proptypes from 'prop-types';
+import store from '@App/App.store';
 
-import { default as ListCourses } from '@Courses/components/List/List.components';
+import ListSubjects from '@Subjects/containers/List.containers';
 
 class Details extends React.Component {
 
@@ -9,22 +10,22 @@ class Details extends React.Component {
     id: Proptypes.number.isRequired,
     name: Proptypes.string.isRequired,
     description: Proptypes.string.isRequired,
-    courses: Proptypes.arrayOf(Proptypes.shape({
-      id: Proptypes.number.isRequired,
-      name: Proptypes.string.isRequired,
-      description: Proptypes.string.isRequired
-    })).isRequired
+    // courses: Proptypes.arrayOf(Proptypes.shape({
+    //   id: Proptypes.number.isRequired,
+    //   name: Proptypes.string.isRequired,
+    //   description: Proptypes.string.isRequired
+    // })).isRequired
   };
 
   render() {
-    const { id, name, description, courses } = this.props;
+    const { id, name, description } = this.props;
 
     return (
       <div className="detail mb-2">
         <h1>UE : {name}</h1>
         <p>Desc : {description}</p>
         <div className="courses">
-          <ListCourses courses={courses} />
+          <ListSubjects subjectId={id} />
         </div>
       </div>
     );

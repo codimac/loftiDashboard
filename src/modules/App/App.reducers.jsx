@@ -13,7 +13,12 @@ import semestersListReducer from '@Semesters/reducers/list.reducers';
 import uesListReducer from '@Ues/reducers/list.reducers';
 
 import gradesListReducer from '@Grades/reducers/list.reducers';
-import gradesFormReducer from '@Grades/reducers/form.reducers';
+
+import subjectsListReducer from '@Subjects/reducers/list.reducers';
+
+import assignmentsFormReducer from '@Assignments/reducers/form.reducers';
+import assignmentsDetailsReducer from '@Assignments/reducers/details.reducers';
+import assignmentsListReducer from '@Assignments/reducers/list.reducers';
 
 import filterReducer from '@Shared/reducers/filter.reducers';
 
@@ -42,7 +47,14 @@ const rootReducer = combineReducers({
 
   // grades
   gradesList: gradesListReducer,
-  gradesForm: gradesFormReducer,
+
+  // subjects
+  subjectsList: subjectsListReducer,
+
+  // assignments
+  assignmentsList: assignmentsListReducer,
+  assignmentsDetails: assignmentsDetailsReducer,
+  assignmentsForm: assignmentsFormReducer,
 
   // absences
   absencesList: absencesListReducer,

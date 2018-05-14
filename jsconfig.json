@@ -16,7 +16,6 @@
       "images/*": ["public/images/*"],
 
       "@modules/*": ["modules/*"],
-      "@Courses/*": ["modules/Courses/*"],
       "@Grades/*": ["modules/Grades/*"],
       "@Promos/*": ["modules/Promos/*"],
       "@Students/*": ["modules/Students/*"],
@@ -24,6 +23,7 @@
       "@Ues/*": ["modules/Ues/*"],
       "@Absences/*": ["modules/Absences/*"],
       "@Subjects/*": ["modules/Subjects/*"],
+      "@Assignments/*": ["modules/Assignments/*"],
 
       "@Shared/*": ["modules/Shared/*"],
       "@App/*": ["modules/App/*"]

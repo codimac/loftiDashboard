@@ -8,7 +8,6 @@ import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
 import FilterInput from '@Shared/containers/FilterInput.containers';
 
 import plus from '@images/icon-plus.png';
-import 'react-table/react-table.css';
 import './styles';
 
 class DetailsPromotion extends React.Component {
@@ -92,10 +91,10 @@ class DetailsPromotion extends React.Component {
           <section className="alig-items-start actions">
             <h1>Les actions</h1>
             <ul>
+              <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignments/add`} className="link link__black" >Ajouter un devoir</Link></li>
+              <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignments`} className="link link__black">Lister les devoirs</Link></li>
               <li><Link to={`/promotions/${this.props.match.params.promotionId}/absences`} className="link link__black" >Consulter les absences</Link></li>
               <li><Link to={`/promotions/${this.props.match.params.promotionId}/addAbsences`} className="link link__black" >Ajouter une absence</Link></li>
-              <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignements/add`} className="link link__black" >Ajouter un devoir</Link></li>
-              <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignements`} className="link link__black">Lister les devoirs</Link></li>
             </ul>
           </section>
         </div>
