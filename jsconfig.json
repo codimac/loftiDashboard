@@ -20,12 +20,13 @@
       "@Grades/*": ["modules/Grades/*"],
       "@Promos/*": ["modules/Promos/*"],
       "@Students/*": ["modules/Students/*"],
-      "@Ues/*": ["modules/Ues/*"],
       "@Semesters/*": ["modules/Semesters/*"],
+      "@Ues/*": ["modules/Ues/*"],
+      "@Absences/*": ["modules/Absences/*"],
       "@Subjects/*": ["modules/Subjects/*"],
 
       "@Shared/*": ["modules/Shared/*"],
-      "@App/*": ["modules/App/*"],
+      "@App/*": ["modules/App/*"]
     },
     "lib": [
       "dom", "es2015", "es2017"

@@ -16,6 +16,8 @@ import GradesList from '@Grades/containers/List.containers';
 import SemestersList from '@Semesters/containers/List.containers';
 
 
+import AbsencesList from '@Absences/containers/List.containers';
+
 class Main extends React.Component {
 
   render() {
@@ -29,28 +31,21 @@ class Main extends React.Component {
 
         <Switch>
           <PrivateRoute path='/semesters' allowed={['admin']} component={SemestersList} />
-        </Switch>
 
-        <Switch>
           <PrivateRoute path='/courses' allowed={['admin']} component={ListUe} />
-        </Switch>
-
-        <Switch>
 
           <PrivateRoute path='/grades' allowed={['admin']} component={GradesList} />
-        </Switch>
 
-        {/* STUDENTS */}
-        <Switch>
+          {/* STUDENTS */}
           <PrivateRoute path='/students/:username' allowed={['admin']} component={DetailsStudent} />
+
+
+          {/* ABSENCES */}
+          <PrivateRoute path='/absences' allowed={['admin']} component={AbsencesList} />
+          <PrivateRoute path='/promotions/:id/absences' allowed={['admin']} component={AbsencesList} />
+          <PrivateRoute path='/promotions/:id/addAbsences' allowed={['admin']} component={AbsencesList} />
+          {/* PROMOTIONS */}
         </Switch>
-
-        {/* PROMOTIONS
-        <Switch>
-          <PrivateRoute path='/promotions/:promotionId/subjects/:subjectId' allowed={['admin']} component={GradesForm} />
-          <PrivateRoute path='/promotions/:promotionId/subjects/add' allowed={['admin']} component={GradesForm} />
-
-        </Switch> */}
         <Route>
           <PrivateRoute path='/promotions' allowed={['admin']} component={PromosModule} />
         </Route>

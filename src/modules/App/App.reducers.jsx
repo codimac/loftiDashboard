@@ -17,6 +17,9 @@ import gradesFormReducer from '@Grades/reducers/form.reducers';
 
 import filterReducer from '@Shared/reducers/filter.reducers';
 
+import absencesListReducer from '@Absences/reducers/studentDetails.reducers';
+import promoAbsencesPodiumReducer from '@Absences/reducers/promoAbsencesPodium.reducers';
+
 const rootReducer = combineReducers({
   // auth
   auth: authReducer,
@@ -40,6 +43,10 @@ const rootReducer = combineReducers({
   // grades
   gradesList: gradesListReducer,
   gradesForm: gradesFormReducer,
+
+  // absences
+  absencesList: absencesListReducer,
+  promoAbsencesPodium: promoAbsencesPodiumReducer,
 
   // others
   filter: filterReducer
