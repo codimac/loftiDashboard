@@ -103,7 +103,7 @@ class Form extends React.Component {
         assignment: assignment.assignment,
         grades: convertArrayToObjet(assignment.grades, 'id', 'grades')
       }, () => {
-        console.log(this.state);
+        this.validForm();
         store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
         store.dispatch(subjectsListEffects.getSubjectsListForUe(this.state.selectedSubject));
       });
@@ -161,7 +161,7 @@ class Form extends React.Component {
     this.setState({
       grades: {
         ...this.state.grades,
-        [ev.target.name]: +ev.target.value
+        [ev.target.name]: ev.target.value !== '' ? +ev.target.value : null
       }
     }, () => this.validForm());
   }
@@ -192,11 +192,12 @@ class Form extends React.Component {
 
   validForm = () => {
     const { assignment, grades } = this.state;
+    console.log(this.state);
     const subjectValues = Object.values(assignment);
     const gradesValues = Object.values(grades);
     this.setState({
       validForm: subjectValues.length === 3 && subjectValues.every(value => value.length !== 0) &&
-        gradesValues.length !== 0
+        gradesValues.length !== 0 && gradesValues.every(grade => grade !== null)
     });
   }
 
