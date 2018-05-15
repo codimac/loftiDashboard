@@ -185,7 +185,6 @@ class Form extends React.Component {
       },
       grades: this.state.grades
     };
-    console.log(assignmentWithGrades);
     if (this.state.isEditing) {
       this.props.editAssignmentWithGrades(assignmentWithGrades);
     } else {

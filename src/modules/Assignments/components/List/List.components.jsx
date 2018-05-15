@@ -1,5 +1,6 @@
 import React from 'react';
 import Proptypes from 'prop-types';
+import ReactTable from 'react-table';
 
 import { Link } from 'react-router-dom';
 
@@ -36,20 +37,48 @@ class List extends React.Component {
             <section className='ue' key={ue.id}>
               <h1>{ue.id} - {ue.name}</h1>
               {
-                ue.subjects.map(subject => (
-                  <article className='subject' key={subject.id}>
-                    <h2>Matière: {subject.name}</h2>
-                    {
-                      subject.assignments.map(assignment => (
-                        <ul key={assignment.id}>
-                          <li className='link link__black'>
-                            <Link to={`assignments/${assignment.id}`}>{assignment.name}</Link>
-                          </li>
-                        </ul>
-                      ))
+                ue.subjects.map(subject => {
+                  const columns = [
+                    {Header: 'Devoir', accessor: 'name', width: 150,
+                      Cell: row => <Link to={`assignments/${row.original.id}`}>{row.value}</Link>
+                    },
+                    {Header: 'Description', accessor: 'description',
+                      Cell: row => row.value
+                    },
+                    {Header: 'Edition', accessor: 'id',
+                      Cell: row => <Link to={`assignments/${row.value}/edit`}>Editer</Link>
                     }
-                  </article>
-                ))
+                  ];
+                  return (
+                    <React.Fragment key={subject.id}>
+                      <h2>{subject.name}</h2>
+                      <ReactTable
+                        defaultPageSize={subject.assignments.length}
+                        data={subject.assignments}
+                        columns={columns}
+                        noDataText="Aucun élève trouvé."
+                        showPagination={false}
+                        className="-highlight"
+                        resizable={false}
+                        pageSize={subject.assignments.length}
+                        sortable={false}
+                      />
+                    </React.Fragment>
+
+                    // <article className='subject' key={subject.id}>
+                    //   <h2>Matière: {subject.name}</h2>
+                    //   {
+                    //     subject.assignments.map(assignment => (
+                    //       <ul key={assignment.id}>
+                    //         <li className='link link__black'>
+                    //
+                    //         </li>
+                    //       </ul>
+                    //     ))
+                    //   }
+                    // </article>
+                  );
+                })
               }
             </section>
           ))
