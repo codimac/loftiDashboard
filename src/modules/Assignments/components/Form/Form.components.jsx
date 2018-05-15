@@ -2,7 +2,9 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactTable from 'react-table';
+
 import store from '@App/App.store';
+import { convertArrayToObjet } from '@helpers/array.helpers';
 
 import { getPromotion } from '@Promos/reducers/details.reducers';
 
@@ -99,8 +101,9 @@ class Form extends React.Component {
         selectedUE: assignment.ueId,
         selectedSubject: assignment.subjectId,
         assignment: assignment.assignment,
-        grades: assignment.grades
+        grades: convertArrayToObjet(assignment.grades, 'id', 'grades')
       }, () => {
+        console.log(this.state);
         store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
         store.dispatch(subjectsListEffects.getSubjectsListForUe(this.state.selectedSubject));
       });
@@ -193,7 +196,7 @@ class Form extends React.Component {
     const gradesValues = Object.values(grades);
     this.setState({
       validForm: subjectValues.length === 3 && subjectValues.every(value => value.length !== 0) &&
-        gradesValues.length !== 0 && gradesValues.every(grade => grade !== 0)
+        gradesValues.length !== 0
     });
   }
 
@@ -224,7 +227,7 @@ class Form extends React.Component {
           const student = values.grades.find(user => user.id === row.original.id);
           return (
             <input type="number" placeholder="Note" min={0} step="any" defaultValue={student.grades} name={row.original.id} onChange={this.handleGradeChange} />
-          )
+          );
         }
       }
     ];
