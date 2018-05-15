@@ -20,7 +20,7 @@ class List extends React.Component {
     })).isRequired,
     match: Proptypes.shape({
       params: Proptypes.shape({
-        id: Proptypes.string.isRequired,
+        promotionId: Proptypes.string.isRequired,
       }).isRequired
     }).isRequired,
   };
@@ -49,7 +49,7 @@ class List extends React.Component {
 
   render() {
     const { promotion } = this.props;
-    const year = this.props.match.params.id; // à améliorer
+    const year = this.props.match.params.promotionId; // à améliorer
     const columns = [
       {Header: 'Nom', accessor: 'lastname'},
       {Header: 'Prénom', accessor: 'firstname'},

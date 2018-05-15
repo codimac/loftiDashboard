@@ -10,3 +10,11 @@ export const createAssignmentWithGrades = assignmentWithGrades => dispatch => {
     })
     .catch(actions.createAssignmentWithGradesFailed(error));
 };
+
+export const editAssignmentWithGrades = assignmentWithGrades => dispatch => {
+  Http.put('/always/true', assignmentWithGrades, requestSvc.generateOptions())
+    .then(res => {
+      dispatch(actions.editAssignmentWithGradesSucceed(success));
+    })
+    .catch(actions.editAssignmentWithGradesFailed(error));
+};

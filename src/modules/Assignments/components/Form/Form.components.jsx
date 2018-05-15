@@ -58,7 +58,8 @@ class Form extends React.Component {
         assignmentId: Proptypes.string
       }).isRequired
     }).isRequired,
-    createAssignmentWithGrades: Proptypes.func.isRequired
+    createAssignmentWithGrades: Proptypes.func.isRequired,
+    editAssignmentWithGrades: Proptypes.func.isRequired
   };
 
   constructor() {
@@ -158,12 +159,18 @@ class Form extends React.Component {
   }
 
   handleGradeChange = ev => {
+    const key = ev.target.name;
     this.setState({
       grades: {
         ...this.state.grades,
-        [ev.target.name]: ev.target.value !== '' ? +ev.target.value : null
+        [key]: ev.target.value !== '' ? +ev.target.value : null
       }
-    }, () => this.validForm());
+    }, () => {
+      if (this.state.grades[key] === null) {
+        delete this.state.grades[key];
+      }
+      this.validForm();
+    });
   }
 
   prepareSave = () => {
@@ -178,8 +185,9 @@ class Form extends React.Component {
       },
       grades: this.state.grades
     };
+    console.log(assignmentWithGrades);
     if (this.state.isEditing) {
-      console.log(assignmentWithGrades);
+      this.props.editAssignmentWithGrades(assignmentWithGrades);
     } else {
       this.props.createAssignmentWithGrades(assignmentWithGrades);
     }
@@ -192,12 +200,11 @@ class Form extends React.Component {
 
   validForm = () => {
     const { assignment, grades } = this.state;
-    console.log(this.state);
     const subjectValues = Object.values(assignment);
     const gradesValues = Object.values(grades);
     this.setState({
       validForm: subjectValues.length === 3 && subjectValues.every(value => value.length !== 0) &&
-        gradesValues.length !== 0 && gradesValues.every(grade => grade !== null)
+        gradesValues.length !== 0
     });
   }
 
@@ -225,9 +232,9 @@ class Form extends React.Component {
       },
       {Header: 'Note', width: 200,
         Cell: row => {
-          const student = values.grades.find(user => user.id === row.original.id);
+          const student = this.state.isEditing ? values.grades.find(user => user.id === row.original.id) : null;
           return (
-            <input type="number" placeholder="Note" min={0} step="any" defaultValue={student.grades} name={row.original.id} onChange={this.handleGradeChange} />
+            <input type="number" placeholder="Note" min={0} step="any" defaultValue={student ? student.grades : ''} name={row.original.id} onChange={this.handleGradeChange} />
           );
         }
       }

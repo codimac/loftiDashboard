@@ -1,6 +1,6 @@
 const assignmentsFormInitialState = {
   isFetching: false,
-  grades: null
+  assignment: null
 };
 
 export default assignmentsFormInitialState;
