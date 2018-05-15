@@ -4,3 +4,5 @@ export const convertArrayToObjet = (array, keyField, value) => {
     return obj;
   }, {});
 };
+
+export const arrayOf = (size, initialValue) => Array(size).fill(initialValue, 0, size);

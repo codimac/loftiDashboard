@@ -12,6 +12,7 @@ const filterStudent = (students, val, td) => students.tempPromotion.filter(stude
 });
 
 const getVisibleStudents = (students, filter) => {
+  console.log(students);
   return {
     ...students,
     promotion: filterStudent(students, filter.value.toLowerCase(), filter.showedTd)

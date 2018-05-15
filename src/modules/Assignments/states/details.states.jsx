@@ -2,7 +2,8 @@ const assignmentsDetailsInitialState = {
   isFetching: false,
   assignment: {
     assignment: {},
-    grades: []
+    grades: [],
+    tempGrades: []
   }
 };
 

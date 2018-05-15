@@ -10,5 +10,6 @@ export default {
     description: 'DM de probabilités conditionnelles',
     coefficient: 2
   },
-  grades: students
+  grades: students,
+  tempGrades: students
 };

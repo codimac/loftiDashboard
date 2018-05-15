@@ -1,8 +1,12 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import ReactTable from 'react-table';
-
 import { Link } from 'react-router-dom';
+import { Line } from 'react-chartjs-2';
+
+import { arrayOf } from '@helpers/array.helpers';
+
+import FilterInput from '@Shared/containers/FilterInput.containers';
 
 class Details extends React.Component {
 
@@ -27,13 +31,68 @@ class Details extends React.Component {
     getAssignment: Proptypes.func.isRequired
   };
 
+  constructor() {
+    super();
+    this.state = {
+      data: {},
+      options: {}
+    };
+  }
+
   componentDidMount() {
     this.props.getAssignment(+this.props.match.params.assignmentId);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.assignment.grades.length) {
+      this.formatChartLineData(nextProps.assignment.grades);
+    }
+  }
+
+  formatChartLineData(grades) {
+
+    let labels = new Set();
+    grades.map(student => labels.add(student.grades));
+    labels = [...labels].sort((a, b) => a - b);
+    const effectif = arrayOf(labels.length, 0);
+    grades.map(student => effectif[labels.indexOf(student.grades)]++);
+
+    const data = {
+      labels,
+      datasets: [
+        {
+          label: 'all',
+          data: effectif
+        },
+        {
+          label: 'test',
+          data: [],
+          backgroundColor: '#AAEEFF'
+        }
+      ]
+    };
+
+    const options = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            stepSize: 1,
+            min: 0,
+            max: Math.max(...effectif)+1
+          }
+        }]
+      }
+    };
+
+    this.setState({data, options});
   }
 
   render() {
     const { assignment: {assignment, grades} } = this.props;
     const columns = [
+      {Header: 'TD', accessor: 'td', width: 30,
+        Cell: row => row.value
+      },
       {Header: 'Elève', accessor: 'lastname', width: 200,
         Cell: row => `${row.original.firstname} ${row.original.lastname}`
       },
@@ -48,10 +107,11 @@ class Details extends React.Component {
         <h2>Coefficient: {assignment.coefficient}</h2>
         <Link to={`${this.props.match.params.assignmentId}/edit`}>Editer</Link>
 
+        <FilterInput placeholder='Eleve' />
         <div className="flex justify-content-sb">
           <ReactTable
             defaultPageSize={grades.length}
-            defaultSorted={[{ id: 'lastname', desc: false }]}
+            defaultSorted={[{ id: 'lastname', desc: false}]}
             data={grades}
             noDataText="Aucun élève trouvé."
             columns={columns}
@@ -61,6 +121,11 @@ class Details extends React.Component {
             pageSize={grades.length}
           />
         </div>
+
+        <div className="chart">
+          <Line data={this.state.data} options={this.state.options} />
+        </div>
+
       </React.Fragment>
     );
   }
