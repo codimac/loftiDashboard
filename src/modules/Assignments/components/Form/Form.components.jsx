@@ -48,9 +48,7 @@ class Form extends React.Component {
         description: Proptypes.string,
         coefficient: Proptypes.number
       }),
-      grades: Proptypes.shape({
-        [Proptypes.number]: Proptypes.number
-      })
+      grades: Proptypes.array
     }),
     match: Proptypes.shape({
       params: Proptypes.shape({
@@ -70,8 +68,8 @@ class Form extends React.Component {
       selectedUE: null,
       selectedSubject: null,
       validForm: false,
-      assignment: {},
-      grades: {}
+      assignment: null,
+      grades: null
     };
   }
 
@@ -177,7 +175,11 @@ class Form extends React.Component {
       },
       grades: this.state.grades
     };
-    this.props.createAssignmentWithGrades(assignmentWithGrades);
+    if (this.state.isEditing) {
+      console.log(assignmentWithGrades);
+    } else {
+      this.props.createAssignmentWithGrades(assignmentWithGrades);
+    }
   }
 
   submit = ev => {
@@ -218,9 +220,12 @@ class Form extends React.Component {
         Cell: row => `${row.original.firstname} ${row.original.lastname}`
       },
       {Header: 'Note', width: 200,
-        Cell: row => (
-          <input type="number" placeholder="Note" min={0} step="any" defaultValue={values.grades ? values.grades[row.original.id] : ''} name={row.original.id} onChange={this.handleGradeChange} />
-        )
+        Cell: row => {
+          const student = values.grades.find(user => user.id === row.original.id);
+          return (
+            <input type="number" placeholder="Note" min={0} step="any" defaultValue={student.grades} name={row.original.id} onChange={this.handleGradeChange} />
+          )
+        }
       }
     ];
     return (
