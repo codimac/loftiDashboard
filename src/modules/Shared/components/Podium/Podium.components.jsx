@@ -27,7 +27,7 @@ class Podium extends React.Component {
             <ul>
               <li className="li-podium">
                 <Link to={`/students/${seconde.username}`}>
-                  {first.firstname} {seconde.lastname}
+                  {seconde.firstname} {seconde.lastname}
                   <div className="p-second">
                     {seconde[accessor]}
                   </div>
