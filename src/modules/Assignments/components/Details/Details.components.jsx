@@ -55,19 +55,33 @@ class Details extends React.Component {
     grades.map(student => labels.add(student.grades));
     labels = [...labels].sort((a, b) => a - b);
     const effectif = arrayOf(labels.length, 0);
-    grades.map(student => effectif[labels.indexOf(student.grades)]++);
+    const td1 = arrayOf(labels.length, 0);
+    const td2 = arrayOf(labels.length, 0);
+    grades.map(student => {
+      const index = labels.indexOf(student.grades);
+      effectif[index]++;
+      if (student.td === 1) td1[index]++;
+      else td2[index]++;
+      return 1;
+    });
 
     const data = {
       labels,
       datasets: [
         {
           label: 'all',
-          data: effectif
+          data: effectif,
+          backgroundColor: 'rgba(250, 0, 0, 0.4)'
         },
         {
-          label: 'test',
-          data: [],
-          backgroundColor: '#AAEEFF'
+          label: 'TD1',
+          data: td1,
+          backgroundColor: 'rgba(250, 250, 0, 0.4)'
+        },
+        {
+          label: 'TD2',
+          data: td2,
+          backgroundColor: 'rgba(0, 0, 250, 0.4)'
         }
       ]
     };
