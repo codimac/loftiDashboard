@@ -53,18 +53,28 @@ class Details extends React.Component {
   formatChartLineData(grades) {
 
     const labels = [0, ...getRange(20)];
-    const dataTd = [arrayOf(labels.length, 0), arrayOf(labels.length, 0)];
+    const dataTd = [];
     grades.map(student => {
-      dataTd[student.td-1][labels.indexOf(student.grades)]++;
+      const tdFounded = dataTd.find(tdGrades => tdGrades.td === student.td);
+      let tdIndex = -1;
+      if (!tdFounded) {
+        tdIndex = dataTd.push({
+          td: student.td,
+          data: arrayOf(labels.length, 0)
+        })-1;
+      }
+      tdIndex = tdIndex === -1 ? dataTd.indexOf(tdFounded) : tdIndex;
+      dataTd[tdIndex].data[labels.indexOf(student.grades)]++;
+      dataTd.sort((a, b) => a.td - b.td);
     });
 
     const data = {
       labels,
       datasets: [
-        ...dataTd.map((td, index) => ({
-          label: `TD${index+1}`,
-          data: td,
-          backgroundColor: `rgba(${index*100}, 0, 0, 0.4)`
+        ...dataTd.map(td => ({
+          label: `TD${td.td}`,
+          data: td.data,
+          backgroundColor: `rgba(${td.td*100}, 0, 0, 0.4)`
         }))
       ]
     };
@@ -75,8 +85,7 @@ class Details extends React.Component {
           ticks: {
             stepSize: 1,
             min: 0,
-            // max: Math.max(...dataTd)+1
-            max: Math.max(...dataTd.map(array => Math.max(...array)))+1
+            max: Math.max(...dataTd.map(array => Math.max(...array.data)))+1
           }
         }]
       }
