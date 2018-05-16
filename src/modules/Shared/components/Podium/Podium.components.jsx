@@ -21,7 +21,6 @@ class Podium extends React.Component {
       const first = podium[0];
       const seconde = podium[1];
       const third = podium[2];
-      console.log(podium);
       return (
         <div className="podium">
           {podium.length > 0 &&
