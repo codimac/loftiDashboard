@@ -7,18 +7,26 @@ import { getFilter } from '@Shared/reducers/filter.reducers';
 import * as actions from '@Assignments/effects/details.effects';
 
 
-const filterStudents = (assignment, val, td) => assignment.assignment.tempGrades.filter(student => {
-  const user = `${student.firstname} ${student.lastname}`;
-  return (user.toLowerCase().indexOf(val) !== -1 || !val) && (td ? student.td === td : true);
-});
+// const filterStudents = (assignment, val, td) => assignment.assignment.tempGrades.filter(student => {
+//   const user = `${student.firstname} ${student.lastname}`;
+//   return (user.toLowerCase().indexOf(val) !== -1 || !val) && (td ? student.td === td : true);
+// });
 
+const filterStudents = (assignment, filter) => assignment.assignment.tempGrades.filter(student => {
+  const user = `${student.firstname} ${student.lastname}`;
+  const filterTexTValue = filter.value.toLowerCase();
+  return (user.toLowerCase().indexOf(filterTexTValue) !== -1 || !filterTexTValue)
+    && (filter.td ? student.td === filter.td : true)
+    && (student.grades >= filter.grades.min && student.grades <= filter.grades.max);
+});
 
 const getVisibleStudents = (assignment, filter) => {
   return {
     ...assignment,
     assignment: {
       ...assignment.assignment,
-      grades: filterStudents(assignment, filter.value.toLowerCase(), filter.showedTd)
+      // grades: filterStudents(assignment, filter.value.toLowerCase(), filter.showedTd)
+      grades: filterStudents(assignment, filter)
     }
   };
 };
