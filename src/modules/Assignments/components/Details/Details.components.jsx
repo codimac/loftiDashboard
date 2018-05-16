@@ -4,7 +4,7 @@ import ReactTable from 'react-table';
 import { Link } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 
-import { arrayOf, getRange } from '@helpers/array.helpers';
+import { arrayOf, getRange, average} from '@helpers/array.helpers';
 
 import FilterInput from '@Shared/containers/FilterInput.containers';
 import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
@@ -118,6 +118,9 @@ class Details extends React.Component {
         <FilterInput placeholder='Eleve' />
         <FilterTd />
         <FilterRange />
+
+        <h1>Moyenne du devoir = {average(grades, 'grades')}</h1>
+
         <div className="chart">
           <Line data={this.state.data} options={this.state.options} />
         </div>
