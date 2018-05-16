@@ -13,7 +13,8 @@ export const resetFilter = () => ({
     value: '',
     visibilityFilter: types.SHOW_ALL,
     showedTd: null,
-    showAll: true
+    showAll: true,
+    grades: {min: 0, max: 20}
   }
 });
 

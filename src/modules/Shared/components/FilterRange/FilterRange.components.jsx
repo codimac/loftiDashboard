@@ -6,20 +6,27 @@ class FilterRange extends React.Component {
 
   static propTypes = {
     onChange: Proptypes.func.isRequired,
+    resetFilter: Proptypes.func.isRequired,
     grades: Proptypes.shape({
       min: Proptypes.number.isRequired,
       max: Proptypes.number.isRequired
     }).isRequired
   };
 
+  componentWillUnmount() {
+    console.log(this.props);
+    this.props.resetFilter();
+  }
+
   render() {
+    const { grades, onChange } = this.props
     return (
       <InputRange
         minValue={0}
         maxValue={20}
         step={1}
-        value={this.props.grades}
-        onChange={this.props.onChange}
+        value={grades}
+        onChange={onChange}
       />
     );
   }
