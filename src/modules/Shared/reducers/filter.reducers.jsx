@@ -36,6 +36,12 @@ const filterReducer = (state = filterInitialState, action) => {
         showedTd: activeTd(action.payload.visibilityFilter)
       };
 
+    case types.FILTER_GRADES:
+      return {
+        ...state,
+        ...action.payload
+      };
+
     default:
       return state;
   }

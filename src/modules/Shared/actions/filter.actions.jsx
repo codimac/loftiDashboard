@@ -24,3 +24,10 @@ export const setVisibilityFilter = visibilityFilter => ({
     value: ''
   }
 });
+
+export const filterGrades = grades => ({
+  type: types.FILTER_GRADES,
+  payload: {
+    grades
+  }
+});

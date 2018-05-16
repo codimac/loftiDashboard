@@ -8,6 +8,7 @@ import { arrayOf, getRange } from '@helpers/array.helpers';
 
 import FilterInput from '@Shared/containers/FilterInput.containers';
 import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
+import FilterRange from '@Shared/containers/FilterRange.containers';
 
 class Details extends React.Component {
 
@@ -116,6 +117,7 @@ class Details extends React.Component {
 
         <FilterInput placeholder='Eleve' />
         <FilterTd />
+        <FilterRange />
         <div className="chart">
           <Line data={this.state.data} options={this.state.options} />
         </div>
