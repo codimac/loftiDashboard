@@ -24,7 +24,6 @@ class List extends React.Component {
 
   render() {
     const { grades } = this.props;
-    console.log(this.props);
     return (
       <React.Fragment>
         <h1>LES NOTES</h1>

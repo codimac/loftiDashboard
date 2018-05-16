@@ -13,7 +13,6 @@ class FilterRange extends React.Component {
   };
 
   render() {
-    console.log(this.props);
     return (
       <InputRange
         minValue={0}
