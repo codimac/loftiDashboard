@@ -40,6 +40,7 @@ class WeekGraph extends React.Component {
       <React.Fragment>
         <Bar
           data={data}
+          height={500}
           options={{
             maintainAspectRatio: false
           }}

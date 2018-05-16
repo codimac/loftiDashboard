@@ -9,6 +9,8 @@ import StudentDetails from '@modules/Absences/containers/StudentDetails.containe
 import PodiumStudient from '@modules/Absences/containers/PromoPodiumStudent.containers';
 import WeekGraph from '@modules/Absences/containers/WeekGraph.containers';
 
+import './styles';
+
 class List extends React.Component {
 
   static propTypes = {
@@ -92,7 +94,7 @@ class List extends React.Component {
               }
               <PodiumStudient />
             </section>
-            <section style={{height: '500px'}}>
+            <section className='graph-high'>
               <h3>Les jours mal aimés</h3>
               <WeekGraph />
             </section>
