@@ -7,6 +7,11 @@ class WeekGraph extends React.Component {
     this.props.getAbsencesWeekGraphList();
   }
 
+  /**
+   * allow us to extract from an array of objects a column
+   * @param {array} arr
+   * @param {string} column
+   */
   extractColumn(arr, column) {
     function reduction(previousValue, currentValue) {
       previousValue.push(currentValue[column]);
@@ -14,6 +19,7 @@ class WeekGraph extends React.Component {
     }
     return arr.reduce(reduction, []);
   }
+
   render() {
     const {graph} = this.props;
     const data = {
