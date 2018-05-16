@@ -113,15 +113,17 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 8192,
+              publicPath: '/',
               name(file) {
                 if (isProd) return 'assets/[hash:16].[ext]';
-                return '[name].[ext]';
+                return '/public/images/[name].[ext]';
               }
             }
           },
           {
             loader: 'img-loader',
             options: {
+              publicPath: '/',
               enabled: isProd
             }
           },
