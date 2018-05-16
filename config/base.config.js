@@ -116,7 +116,7 @@ module.exports = {
               publicPath: '/',
               name(file) {
                 if (isProd) return 'assets/[hash:16].[ext]';
-                return '/public/images/[name].[ext]';
+                return '[name].[ext]';
               }
             }
           },

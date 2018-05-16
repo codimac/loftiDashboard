@@ -4,9 +4,10 @@ import ReactTable from 'react-table';
 import { Link } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 
-import { arrayOf } from '@helpers/array.helpers';
+import { arrayOf, getRange } from '@helpers/array.helpers';
 
 import FilterInput from '@Shared/containers/FilterInput.containers';
+import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
 
 class Details extends React.Component {
 
@@ -51,38 +52,20 @@ class Details extends React.Component {
 
   formatChartLineData(grades) {
 
-    let labels = new Set();
-    grades.map(student => labels.add(student.grades));
-    labels = [...labels].sort((a, b) => a - b);
-    const effectif = arrayOf(labels.length, 0);
-    const td1 = arrayOf(labels.length, 0);
-    const td2 = arrayOf(labels.length, 0);
+    const labels = [0, ...getRange(20)];
+    const dataTd = [arrayOf(labels.length, 0), arrayOf(labels.length, 0)];
     grades.map(student => {
-      const index = labels.indexOf(student.grades);
-      effectif[index]++;
-      if (student.td === 1) td1[index]++;
-      else td2[index]++;
-      return 1;
+      dataTd[student.td-1][labels.indexOf(student.grades)]++;
     });
 
     const data = {
       labels,
       datasets: [
-        {
-          label: 'all',
-          data: effectif,
-          backgroundColor: 'rgba(250, 0, 0, 0.4)'
-        },
-        {
-          label: 'TD1',
-          data: td1,
-          backgroundColor: 'rgba(250, 250, 0, 0.4)'
-        },
-        {
-          label: 'TD2',
-          data: td2,
-          backgroundColor: 'rgba(0, 0, 250, 0.4)'
-        }
+        ...dataTd.map((td, index) => ({
+          label: `TD${index+1}`,
+          data: td,
+          backgroundColor: `rgba(${index*100}, 0, 0, 0.4)`
+        }))
       ]
     };
 
@@ -92,7 +75,8 @@ class Details extends React.Component {
           ticks: {
             stepSize: 1,
             min: 0,
-            max: Math.max(...effectif)+1
+            // max: Math.max(...dataTd)+1
+            max: Math.max(...dataTd.map(array => Math.max(...array)))+1
           }
         }]
       }
@@ -122,6 +106,10 @@ class Details extends React.Component {
         <Link to={`${this.props.match.params.assignmentId}/edit`}>Editer</Link>
 
         <FilterInput placeholder='Eleve' />
+        <FilterTd />
+        <div className="chart">
+          <Line data={this.state.data} options={this.state.options} />
+        </div>
         <div className="flex justify-content-sb">
           <ReactTable
             defaultPageSize={grades.length}
@@ -136,9 +124,6 @@ class Details extends React.Component {
           />
         </div>
 
-        <div className="chart">
-          <Line data={this.state.data} options={this.state.options} />
-        </div>
 
       </React.Fragment>
     );

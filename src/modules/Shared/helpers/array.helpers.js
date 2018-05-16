@@ -6,3 +6,5 @@ export const convertArrayToObjet = (array, keyField, value) => {
 };
 
 export const arrayOf = (size, initialValue) => Array(size).fill(initialValue, 0, size);
+
+export const getRange = size => arrayOf(size, 0).map((x, i) => i + 1);
