@@ -95,7 +95,7 @@ class Form extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     const { assignment } = nextProps;
-    if (assignment) {
+    if (assignment && this.state.isEditing) {
       this.setState({
         promotionId: assignment.promotionYear,
         selectedSemester: assignment.semesterId,
