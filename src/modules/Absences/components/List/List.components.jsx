@@ -7,7 +7,7 @@ import { getPromotion } from '@Promos/reducers/details.reducers';
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 import StudentDetails from '@modules/Absences/containers/StudentDetails.containers';
 import PodiumStudient from '@modules/Absences/containers/PromoPodiumStudent.containers';
-import WeekGraph from '@modules/Absences/components/WeekGraph/WeekGraph.components';
+import WeekGraph from '@modules/Absences/containers/WeekGraph.containers';
 
 class List extends React.Component {
 

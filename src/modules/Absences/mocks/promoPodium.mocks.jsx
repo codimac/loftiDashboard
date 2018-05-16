@@ -1,4 +1,4 @@
-const createFakeStudents = (number = 10) => {
+const createFakeStudents = (number = 5) => {
   const students = Array(number);
   const absences = Math.floor(Math.random() * 30)+25;
   let downby = 3;
@@ -11,4 +11,4 @@ const createFakeStudents = (number = 10) => {
 
 const students = createFakeStudents();
 
-export default createFakeStudents(10);
+export default createFakeStudents(8);
