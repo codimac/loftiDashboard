@@ -6,11 +6,18 @@ class WeekGraph extends React.Component {
   componentDidMount() {
     this.props.getAbsencesWeekGraphList();
   }
+
+  extractColumn(arr, column) {
+    function reduction(previousValue, currentValue) {
+      previousValue.push(currentValue[column]);
+      return previousValue;
+    }
+    return arr.reduce(reduction, []);
+  }
   render() {
     const {graph} = this.props;
-
     const data = {
-      labels: ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'],
+      labels: this.extractColumn(graph, 'day'),
       datasets: [
         {
           label: 'Absences par jour',
@@ -19,7 +26,7 @@ class WeekGraph extends React.Component {
           borderWidth: 1,
           hoverBackgroundColor: 'rgba(255,99,132,0.4)',
           hoverBorderColor: 'rgba(255,99,132,1)',
-          data: [15, 20, 10, 17, 5]
+          data: this.extractColumn(graph, 'absences')
         }
       ]
     };
