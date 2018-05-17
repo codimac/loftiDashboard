@@ -2,7 +2,6 @@
   width: 100%;
   padding: 16px;
   color: white;
-  background: $blue-1;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -12,12 +11,10 @@
   font-size: 1.1em;
   &:disabled {
     background-color: $white;
-    color: $font-main;
   }
 }
 
 .button__white {
   background-color: $white;
-  color: $font-colour;
 }
 

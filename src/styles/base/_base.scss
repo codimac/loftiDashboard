@@ -1,21 +1,33 @@
-html {
-  width: 100vw;
+html, body {
+  width: 100%;
   height: 100%;
-  font-size: 15px;
   font-family: $font-main;
-  background: $main-background;
-  overflow-x: hidden;
-  color: $font-colour;
-}
-
-body: {
-  min-height: 100%;
+  font-size: 1em;
+  color: $black;
 }
 
 *, *:after, *:before {
   box-sizing: border-box;
 }
 
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.bg-black {
+  background: $black;
+}
+.bg-white {
+  background: $white;
+}
+
+/* ----------------------------------- */
 
 @each $size in $spacing-sizes{
   $i : index($spacing-sizes, $size) - 1;
@@ -24,23 +36,12 @@ body: {
   .mb-#{$i}{ margin-bottom:$size !important; }
   .ml-#{$i}{ margin-left:$size !important; }
   .mr-#{$i}{ margin-right:$size !important; }
+  .margin-#{$i}{ margin:$size !important; }
 
   .pt-#{$i}{ padding-top:$size !important; }
   .pb-#{$i}{ padding-bottom:$size !important; }
   .pl-#{$i}{ padding-left:$size !important; }
   .pr-#{$i}{ padding-right:$size !important; }
+  .padding-#{$i}{ padding:$size !important; }
 }
 
-.wrapper {
-  width: 100%;
-  min-height: 100vh;
-  height: 100%;
-}
-
-.main-wrapper {
-  position: absolute;
-  right: 0;
-  top: 10%;
-  width: 100% - $sidebar-width;
-  padding: 2.5%;
-}

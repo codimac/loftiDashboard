@@ -1,20 +1,10 @@
 .login {
-  background: $blue-1;
-  color: $white;
+  width: 40%;
+  border-radius: 8px;
   h1 {
-    font-size: 2em;
-  }
-  .form {
     text-align: center;
-    padding: 0 5%;
-    input {
-      width: 100%;
-      padding: 16px 12px;
-      border-radius: 6px;
-      border: none;
-    }
-    button {
-      width: 100%;
-    }
+    font-size: 2.5em;
+    font-weight: bold;
+    text-transform: uppercase;
   }
 }

@@ -28,7 +28,6 @@ class Details extends React.Component {
   }
 
   render() {
-    console.log(this.props);
     const { identity, grades } = this.props;
     return (
       <React.Fragment>

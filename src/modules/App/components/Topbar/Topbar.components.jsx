@@ -1,7 +1,6 @@
 import React from 'react';
 
 import Identity from '@App/containers/User.containers';
-import './Topbar.styles';
 
 class Topbar extends React.Component {
 
