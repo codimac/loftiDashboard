@@ -10,6 +10,7 @@ import DetailsPromotion from '@Promos/containers/Details.containers';
 import ListPromotions from '@Promos/containers/List.containers';
 
 import AssignmentsForm from '@Assignments/containers/Form.containers';
+import AssignmentsDetails from '@Assignments/containers/Details.containers';
 import AssignmentsList from '@Assignments/containers/List.containers';
 
 import DetailsStudent from '@Students/containers/Details.containers';
@@ -36,10 +37,13 @@ class Router extends React.Component {
 
         <PrivateRoute exact path='/promotions/:promotionId/assignments' allowed={['admin']} component={AssignmentsList} />
         <PrivateRoute exact path='/promotions/:promotionId/assignments/add' allowed={['admin']} component={AssignmentsForm} />
-        <PrivateRoute exact path='/promotions/:promotionId/assignments/:assignmentId' allowed={['admin']} component={AssignmentsForm} />
+        <PrivateRoute exact path='/promotions/:promotionId/assignments/:assignmentId' allowed={['admin']} component={AssignmentsDetails} />
+        <PrivateRoute exact path='/promotions/:promotionId/assignments/:assignmentId/edit' allowed={['admin']} component={AssignmentsForm} />
+
+
         <PrivateRoute exact path='/promotions/:promotionId' allowed={['admin']} component={DetailsPromotion} />
-        <PrivateRoute exact path='/promotions/:id/absences' allowed={['admin']} component={AbsencesList} />
-        <PrivateRoute exact path='/promotions/:id/addAbsences' allowed={['admin']} component={AbsencesList} />
+        <PrivateRoute exact path='/promotions/:promotionId/absences' allowed={['admin']} component={AbsencesList} />
+        <PrivateRoute exact path='/promotions/:promotionId/addAbsences' allowed={['admin']} component={AbsencesList} />
         <PrivateRoute exact path='/promotions' allowed={['admin']} component={ListPromotions} />
 
         <Route exact path='*' component={Error} />

@@ -1,6 +1,10 @@
 const assignmentsDetailsInitialState = {
   isFetching: false,
-  assignment: null
+  assignment: {
+    assignment: {},
+    grades: [],
+    tempGrades: []
+  }
 };
 
 export default assignmentsDetailsInitialState;

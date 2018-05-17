@@ -1,14 +1,8 @@
-const createFakeStudents = (number = 10) => {
-  const students = Array(number);
-  const absences = Math.floor(Math.random() * 30)+25;
-  let downby = 3;
-  for (let i = 0; i < students.length; i++) {
-    students[i] = { id: i, firstname: `Name${i}`, lastname: `Surname${i}`, username: `username${i}`, absences: absences - downby };
-    downby += Math.floor(Math.random() * 5)+1;
-  }
-  return students;
-};
+import mocks from '@Promos/mocks/details.mocks';
 
-const students = createFakeStudents();
+const {promotion} =mocks;
+const s = promotion.sort((a, b) => {
+  return b.absences - a.absences;
+});
 
-export default createFakeStudents(10);
+export default s.slice(0, 8);

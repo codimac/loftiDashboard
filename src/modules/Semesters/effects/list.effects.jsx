@@ -17,7 +17,7 @@ export const getSemesterForPromo = id => dispatch => {
   dispatch(actions.fetchSemestersList());
   Http.get('/always/true', requestSvc.generateOptions())
     .then(res => {
-      dispatch(actions.fetchSemestersListSucceed(mocks.splice(0, 2)));
+      dispatch(actions.fetchSemestersListSucceed(mocks.slice(0, 2)));
       dispatch(actions.fetchSemestersList(false));
     })
     .catch(err => dispatch(actions.fetchSemestersListFailed(err)));
