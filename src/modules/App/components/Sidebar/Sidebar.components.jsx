@@ -40,7 +40,7 @@ class Sidebar extends React.Component {
         </div>
         <div className="sidebar-section">
           {
-            this.state.promotionId !== 0 &&
+            this.state.promotionId !== null &&
               <React.Fragment>
                 <h2><Link to={`/promotions/${this.state.promotionId}/assignments`}>Lister les devoirs</Link></h2>
                 <h2><Link to={`/promotions/${this.state.promotionId}/assignments/add`}>Ajouter un devoir</Link></h2>
