@@ -5,5 +5,7 @@ export default {
 
   SHOW_ALL: 'SHOW_ALL',
   SHOW_TD_1: 'SHOW_TD_1',
-  SHOW_TD_2: 'SHOW_TD_2'
+  SHOW_TD_2: 'SHOW_TD_2',
+
+  FILTER_GRADES: 'FILTER_GRADES'
 };

@@ -13,7 +13,8 @@ export const resetFilter = () => ({
     value: '',
     visibilityFilter: types.SHOW_ALL,
     showedTd: null,
-    showAll: true
+    showAll: true,
+    grades: {min: 0, max: 20}
   }
 });
 
@@ -22,5 +23,12 @@ export const setVisibilityFilter = visibilityFilter => ({
   payload: {
     visibilityFilter,
     value: ''
+  }
+});
+
+export const filterGrades = grades => ({
+  type: types.FILTER_GRADES,
+  payload: {
+    grades
   }
 });

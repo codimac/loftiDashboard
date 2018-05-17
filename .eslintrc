@@ -49,6 +49,8 @@
     "no-underscore-dangle": "off",
     "max-len": "off",
     "import/no-named-default": "off",
+    "no-param-reassign": "off",
+    "array-callback-return": "off",
 
     "react/prefer-stateless-function": [0, { "ignorePureComponents": "React.PureComponent" }],
     "react/no-unescaped-entities": "off",

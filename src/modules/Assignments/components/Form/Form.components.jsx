@@ -2,7 +2,9 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactTable from 'react-table';
+
 import store from '@App/App.store';
+import { convertArrayToObjet } from '@helpers/array.helpers';
 
 import { getPromotion } from '@Promos/reducers/details.reducers';
 
@@ -48,9 +50,7 @@ class Form extends React.Component {
         description: Proptypes.string,
         coefficient: Proptypes.number
       }),
-      grades: Proptypes.shape({
-        [Proptypes.number]: Proptypes.number
-      })
+      grades: Proptypes.array
     }),
     match: Proptypes.shape({
       params: Proptypes.shape({
@@ -58,7 +58,8 @@ class Form extends React.Component {
         assignmentId: Proptypes.string
       }).isRequired
     }).isRequired,
-    createAssignmentWithGrades: Proptypes.func.isRequired
+    createAssignmentWithGrades: Proptypes.func.isRequired,
+    editAssignmentWithGrades: Proptypes.func.isRequired
   };
 
   constructor() {
@@ -70,8 +71,8 @@ class Form extends React.Component {
       selectedUE: null,
       selectedSubject: null,
       validForm: false,
-      assignment: {},
-      grades: {}
+      assignment: null,
+      grades: null
     };
   }
 
@@ -81,7 +82,6 @@ class Form extends React.Component {
       promotionId: +this.props.match.params.promotionId
     });
   }
-
 
   componentDidMount() {
     if (this.state.promotionId !== getPromotion(store.getState()).year) {
@@ -94,21 +94,20 @@ class Form extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.assignment !== this.props.assignment) {
-      const { assignment } = nextProps;
-      if (this.state.isEditing) {
-        this.setState({
-          promotionId: assignment.promotionYear,
-          selectedSemester: assignment.semesterId,
-          selectedUE: assignment.ueId,
-          selectedSubject: assignment.subjectId,
-          assignment: assignment.assignment,
-          grades: assignment.grades
-        }, () => {
-          store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
-          store.dispatch(subjectsListEffects.getSubjectsListForUe(this.state.selectedSubject));
-        });
-      }
+    const { assignment } = nextProps;
+    if (assignment && this.state.isEditing) {
+      this.setState({
+        promotionId: assignment.promotionYear,
+        selectedSemester: assignment.semesterId,
+        selectedUE: assignment.ueId,
+        selectedSubject: assignment.subjectId,
+        assignment: assignment.assignment,
+        grades: convertArrayToObjet(assignment.grades, 'id', 'grades')
+      }, () => {
+        this.validForm();
+        store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
+        store.dispatch(subjectsListEffects.getSubjectsListForUe(this.state.selectedSubject));
+      });
     }
   }
 
@@ -160,12 +159,18 @@ class Form extends React.Component {
   }
 
   handleGradeChange = ev => {
+    const key = ev.target.name;
     this.setState({
       grades: {
         ...this.state.grades,
-        [ev.target.name]: +ev.target.value
+        [key]: ev.target.value !== '' ? +ev.target.value : null
       }
-    }, () => this.validForm());
+    }, () => {
+      if (this.state.grades[key] === null) {
+        delete this.state.grades[key];
+      }
+      this.validForm();
+    });
   }
 
   prepareSave = () => {
@@ -180,7 +185,11 @@ class Form extends React.Component {
       },
       grades: this.state.grades
     };
-    this.props.createAssignmentWithGrades(assignmentWithGrades);
+    if (this.state.isEditing) {
+      this.props.editAssignmentWithGrades(assignmentWithGrades);
+    } else {
+      this.props.createAssignmentWithGrades(assignmentWithGrades);
+    }
   }
 
   submit = ev => {
@@ -194,7 +203,7 @@ class Form extends React.Component {
     const gradesValues = Object.values(grades);
     this.setState({
       validForm: subjectValues.length === 3 && subjectValues.every(value => value.length !== 0) &&
-        gradesValues.length !== 0 && gradesValues.every(grade => grade !== 0)
+        gradesValues.length !== 0
     });
   }
 
@@ -221,9 +230,12 @@ class Form extends React.Component {
         Cell: row => `${row.original.firstname} ${row.original.lastname}`
       },
       {Header: 'Note', width: 200,
-        Cell: row => (
-          <input type="number" placeholder="Note" min={0} step="any" defaultValue={values.grades ? values.grades[row.original.id] : ''} name={row.original.id} onChange={this.handleGradeChange} />
-        )
+        Cell: row => {
+          const student = this.state.isEditing ? values.grades.find(user => user.id === row.original.id) : null;
+          return (
+            <input type="number" placeholder="Note" min={0} step="any" defaultValue={student ? student.grades : ''} name={row.original.id} onChange={this.handleGradeChange} />
+          );
+        }
       }
     ];
     return (
