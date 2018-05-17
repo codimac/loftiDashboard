@@ -1,0 +1,22 @@
+.page {
+  background: red;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .form-container {
+    background: blue;
+    padding: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    .form {
+      width: 100%;
+      input {
+        width: 100%;
+      }
+      button {
+        width: 100%;
+      }
+    }
+  }
+}
