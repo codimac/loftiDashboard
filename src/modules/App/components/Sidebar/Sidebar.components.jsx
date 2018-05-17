@@ -1,14 +1,30 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 import ListPromos from '@Promos/containers/List.containers';
 
 import { permissionsSvc } from '@services/permissions.services';
 import { history } from '@helpers/history.helpers';
 import { storageSvc } from '@services/storage.services';
-import { Link } from 'react-router-dom';
+import { getPromotion } from '@Promos/reducers/details.reducers';
+import store from '@App/App.store';
 
 import './Sidebar.styles';
 
 class Sidebar extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      promotionId: null
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.promotionId !== nextProps.promotionId) {
+      this.setState({promotionId: nextProps.promotionId});
+    }
+  }
 
   disconnect = ev => {
     storageSvc.removeItem('token');
@@ -23,7 +39,14 @@ class Sidebar extends React.Component {
           <ListPromos sidebar={true} />
         </div>
         <div className="sidebar-section">
-          <h2><Link className="link link__sidebar__title" to='/subjects'>Enseignements</Link></h2>
+          {
+            this.state.promotionId !== 0 &&
+              <React.Fragment>
+                <h2><Link to={`/promotions/${this.state.promotionId}/assignments`}>Lister les devoirs</Link></h2>
+                <h2><Link to={`/promotions/${this.state.promotionId}/assignments/add`}>Ajouter un devoir</Link></h2>
+                <h2><Link to={`/promotions/${this.state.promotionId}/absences`}>Consulter les absences</Link></h2>
+              </React.Fragment>
+          }
         </div>
       </React.Fragment>
     );
