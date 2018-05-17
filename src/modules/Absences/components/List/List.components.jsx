@@ -7,6 +7,9 @@ import { getPromotion } from '@Promos/reducers/details.reducers';
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 import StudentDetails from '@modules/Absences/containers/StudentDetails.containers';
 import PodiumStudient from '@modules/Absences/containers/PromoPodiumStudent.containers';
+import WeekGraph from '@modules/Absences/containers/WeekGraph.containers';
+
+import './styles';
 
 class List extends React.Component {
 
@@ -61,7 +64,7 @@ class List extends React.Component {
       <React.Fragment>
         <div className="absences">
           <h1>Les absences de la promos {year}</h1>
-          <div className="flex flex-wrap-reverse justify-content-sb">
+          <div className="flex justify-content-sb">
             <section className="alig-items-start">
               <ReactTable
                 defaultPageSize={len}
@@ -89,9 +92,11 @@ class List extends React.Component {
                 this.state.selectedStudent===true &&
                   <StudentDetails id={this.state.selectedStudent} student={this.state.student} onClose={this.closeStudent} />
               }
-            </section>
-            <section>
               <PodiumStudient />
+            </section>
+            <section className='graph-high'>
+              <h3>Les jours mal aimés</h3>
+              <WeekGraph />
             </section>
           </div>
 
