@@ -1,13 +1,14 @@
 .module-wrapped {
-  grid-column: span 5;
+  margin-top: 20px;
   background: $white;
   border: solid 1px darken($white, 4%);
   border-radius: 5px;
+  height: 100%;
   .head {
     color: $black;
     text-align: left;
     font-size: 1.3em;
-    margin-bottom: 10px;
+    margin-bottom: 24px;
     padding-bottom: 10px;
     position: relative;
     font-weight: 600;

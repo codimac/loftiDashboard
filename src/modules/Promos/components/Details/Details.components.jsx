@@ -3,13 +3,13 @@ import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 
-
 import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
 import FilterInput from '@Shared/containers/FilterInput.containers';
 import Wrapper from '@Shared/components/Wrapper/Wrapper.components';
+import { average } from '@helpers/array.helpers';
 
 import plus from '@images/icon-plus.png';
-import './styles';
+import './Details.styles';
 
 class DetailsPromotion extends React.Component {
 
@@ -72,51 +72,31 @@ class DetailsPromotion extends React.Component {
     const len = promotion.length;
     return (
       <React.Fragment>
-        <h2 className="page-title">Détails d'une promo</h2>
-        <Wrapper title="Liste des élèves" className="promotion">
-          <div className="filters">
-            <FilterTd />
-            <FilterInput placeholder="Elève..." />
-          </div>
-          <ReactTable
-            defaultPageSize={len}
-            data={promotion}
-            noDataText="Aucun élève trouvé."
-            columns={columns}
-            showPagination={false}
-            className="-highlight"
-            resizable={false}
-            pageSize={len}
-          />
-        </Wrapper>
+        <h1 className="page-title">Détails d'une promo</h1>
+        <div className="promotion flex justify-content-sb">
+          <Wrapper title="Liste des élèves" className="promotion__list">
+            <div className="filters">
+              <FilterTd />
+              <FilterInput placeholder="Elève..." />
+            </div>
+            <ReactTable
+              defaultPageSize={len}
+              data={promotion}
+              noDataText="Aucun élève trouvé."
+              columns={columns}
+              showPagination={false}
+              className="-highlight"
+              resizable={false}
+              pageSize={len}
+            />
+          </Wrapper>
+          <Wrapper title="Résumé de la promotion" className="promotion__average">
+            <p className="average">Moyenne de la classe : <span>{average(promotion, 'grades')}</span></p>
+            <p className="average">Moyenne des absences : <span>{average(promotion, 'absences')}</span></p>
+          </Wrapper>
+        </div>
       </React.Fragment>
     );
-    /* <div className="flex flex-wrap-reverse justify-content-sb">
-      <section className="alig-items-start">
-        <FilterInput placeholder="Rechercher un étudiant" />
-        <FilterTd />
-        <ReactTable
-          defaultPageSize={len}
-          data={promotion}
-          noDataText="Aucun élève trouvé."
-          columns={columns}
-          showPagination={false}
-          className="-highlight"
-          resizable={false}
-          pageSize={len}
-        />
-      </section>
-
-      <section className="alig-items-start actions">
-        <h1>Les actions</h1>
-        <ul>
-          <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignments/add`} className="link link__black" >Ajouter un devoir</Link></li>
-          <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignments`} className="link link__black">Lister les devoirs</Link></li>
-          <li><Link to={`/promotions/${this.props.match.params.promotionId}/absences`} className="link link__black" >Consulter les absences</Link></li>
-          <li><Link to={`/promotions/${this.props.match.params.promotionId}/addAbsences`} className="link link__black" >Ajouter une absence</Link></li>
-        </ul>
-      </section>
-    </div> */
   }
 
 }

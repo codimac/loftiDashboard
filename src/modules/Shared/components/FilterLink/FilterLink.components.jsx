@@ -6,7 +6,8 @@ class FilterLink extends React.Component {
   static propTypes = {
     children: Proptypes.string.isRequired,
     onClick: Proptypes.func.isRequired,
-    resetFilter: Proptypes.func.isRequired
+    resetFilter: Proptypes.func.isRequired,
+    className: Proptypes.string
   };
 
   componentWillUnmount() {

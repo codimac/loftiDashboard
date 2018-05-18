@@ -1,10 +1,5 @@
 .main {
   padding: 20px;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;  // 8 columns grid
-  grid-auto-rows: min-content;
-  grid-column-gap: 8px;
-  grid-row-gap: 20px;
   .page-title {
     background: $white;
     grid-column: span 8;
@@ -19,7 +14,7 @@
     &::before {
       content: '';
       position: absolute;
-      left: 0;;
+      left: 0;
       top: 0;
       height: 100%;
       width: 4px;
@@ -36,6 +31,12 @@
         width: 100%;
         transition: width 400ms ease;
       }
+    }
+  }
+  .average {
+    margin: 10px 0;
+    span {
+      font-weight: 600;
     }
   }
 }
