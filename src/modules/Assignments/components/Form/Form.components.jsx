@@ -204,7 +204,7 @@ class Form extends React.Component {
   validForm = () => {
     const { assignment, grades } = this.state;
     const subjectValues = Object.values(assignment);
-    const gradesValues = Object.values(grades);
+    const gradesValues = Object.values(grades || {});
     this.setState({
       validForm: subjectValues.length === 3 && subjectValues.every(value => value.length !== 0) &&
         gradesValues.length !== 0
