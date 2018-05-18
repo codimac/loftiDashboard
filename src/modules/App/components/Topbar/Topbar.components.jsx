@@ -7,10 +7,10 @@ class Topbar extends React.Component {
   render() {
     return (
       <section className="topbar">
+        <div></div>
         <div>
-          la partie de gauche
+          <Identity />
         </div>
-        <Identity />
       </section>
     );
   }

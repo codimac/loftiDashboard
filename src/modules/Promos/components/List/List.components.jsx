@@ -1,6 +1,6 @@
 import React from 'react';
 import Proptypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 class List extends React.Component {
 
@@ -25,7 +25,9 @@ class List extends React.Component {
       <React.Fragment>
         <ul>
           { currentPromotions.map(promo => (
-            <li key={promo.id}><Link className="link link__sidebar" to={`/promotions/${promo.label}`}>{promo.label}</Link></li>
+            <li key={promo.id}>
+              <NavLink className="link link__white link__promotion" activeClassName="active" to={`/promotions/${promo.label}`}>{promo.label}</NavLink>
+            </li>
           )) }
         </ul>
       </React.Fragment>
@@ -38,7 +40,7 @@ class List extends React.Component {
         <h3>Toutes les promos</h3>
         <ul>
           { promotions.map(promo => (
-            <li key={promo.id}><Link className="link link__black" to={`/promotions/${promo.label}`}>{promo.label}</Link></li>
+            <li key={promo.id}><NavLink className="link" to={`/promotions/${promo.label}`}>{promo.label}</NavLink></li>
           ))}
         </ul>
       </React.Fragment>

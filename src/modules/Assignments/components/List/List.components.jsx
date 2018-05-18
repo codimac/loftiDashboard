@@ -2,7 +2,10 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import ReactTable from 'react-table';
 
+import store from '@App/App.store';
 import { Link } from 'react-router-dom';
+import { getPromotionId } from '@Promos/reducers/details.reducers';
+import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 
 class List extends React.Component {
 
@@ -25,6 +28,12 @@ class List extends React.Component {
 
   componentDidMount() {
     this.props.getAssignmentsList();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.promotionId !== getPromotionId(store.getState())) {
+      store.dispatch(promotionsDetailsEffects.getPromotion(+nextProps.match.params.promotionId));
+    }
   }
 
   render() {

@@ -6,6 +6,8 @@ import { Line } from 'react-chartjs-2';
 
 import { arrayOf, getRange, average} from '@helpers/array.helpers';
 
+import store from '@App/App.store';
+import { getPromotionId } from '@Promos/reducers/details.reducers';
 import FilterInput from '@Shared/containers/FilterInput.containers';
 import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
 import FilterRange from '@Shared/containers/FilterRange.containers';

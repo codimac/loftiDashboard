@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 import ListPromos from '@Promos/containers/List.containers';
 
@@ -33,19 +33,25 @@ class Sidebar extends React.Component {
     return (
       <React.Fragment>
         <div className="sidebar-section">
-          <h2><Link className="link link__sidebar__title" to='/promotions'>Promotions</Link></h2>
+          <h2 className="sidebar-section-title"><Link className="link link__white link__sidebar__title" to='/promotions'>Promotions</Link></h2>
           <ListPromos sidebar={true} />
         </div>
-        <div className="sidebar-section">
-          {
-            this.state.promotionId !== null &&
-              <React.Fragment>
-                <h2><Link to={`/promotions/${this.state.promotionId}/assignments`}>Lister les devoirs</Link></h2>
-                <h2><Link to={`/promotions/${this.state.promotionId}/assignments/add`}>Ajouter un devoir</Link></h2>
-                <h2><Link to={`/promotions/${this.state.promotionId}/absences`}>Consulter les absences</Link></h2>
-              </React.Fragment>
-          }
-        </div>
+        {
+          this.state.promotionId !== null &&
+          <React.Fragment>
+            <div className="sidebar-section">
+              <ul>
+                <li><NavLink exact className="link link__white link__sidebar  " activeClassName="active" to={`/promotions/${this.state.promotionId}/assignments`}>Lister les devoirs</NavLink></li>
+                <li><NavLink exact className="link link__white link__sidebar" activeClassName="active" to={`/promotions/${this.state.promotionId}/assignments/add`}>Ajouter un devoir</NavLink></li>
+              </ul>
+            </div>
+            <div className="sidebar-section">
+              <ul>
+                <li><NavLink exact className="link link__white link__sidebar" activeClassName="active" to={`/promotions/${this.state.promotionId}/absences`}>Consulter les absences</NavLink></li>
+              </ul>
+            </div>
+          </React.Fragment>
+        }
       </React.Fragment>
     );
   }
@@ -71,7 +77,11 @@ class Sidebar extends React.Component {
           }
         </div>
         <div>
-          <button className="button button__white" onClick={this.disconnect}>Deco</button>
+          <div className="sidebar-section disconnect">
+            <ul>
+              <li className="link link__white link__sidebar link__disconnect" onClick={this.disconnect}>Déconnexion</li>
+            </ul>
+          </div>
         </div>
       </nav>
     );

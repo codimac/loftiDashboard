@@ -6,7 +6,7 @@ import ReactTable from 'react-table';
 import store from '@App/App.store';
 import { convertArrayToObjet } from '@helpers/array.helpers';
 
-import { getPromotion } from '@Promos/reducers/details.reducers';
+import { getPromotionId } from '@Promos/reducers/details.reducers';
 
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 import * as semestersListEffects from '@Semesters/effects/list.effects';
@@ -84,7 +84,7 @@ class Form extends React.Component {
   }
 
   componentDidMount() {
-    if (this.state.promotionId !== getPromotion(store.getState()).year) {
+    if (this.state.promotionId !== getPromotionId(store.getState())) {
       store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
     }
     if (this.state.isEditing) {
