@@ -21,6 +21,7 @@ import SemestersList from '@Semesters/containers/List.containers';
 
 import AbsencesList from '@Absences/containers/List.containers';
 
+
 class Router extends React.Component {
 
   render() {
@@ -43,7 +44,7 @@ class Router extends React.Component {
 
         <PrivateRoute exact path='/promotions/:promotionId' allowed={['admin']} component={DetailsPromotion} />
         <PrivateRoute exact path='/promotions/:promotionId/absences' allowed={['admin']} component={AbsencesList} />
-        <PrivateRoute exact path='/promotions/:promotionId/addAbsences' allowed={['admin']} component={AbsencesList} />
+        {/* <PrivateRoute exact path='/promotions/:promotionId/add' allowed={['admin']} component={AbsencesForm} /> */}
         <PrivateRoute exact path='/promotions' allowed={['admin']} component={ListPromotions} />
 
         <Route exact path='*' component={Error} />

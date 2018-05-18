@@ -45,6 +45,7 @@ class Sidebar extends React.Component {
                 <h2><Link to={`/promotions/${this.state.promotionId}/assignments`}>Lister les devoirs</Link></h2>
                 <h2><Link to={`/promotions/${this.state.promotionId}/assignments/add`}>Ajouter un devoir</Link></h2>
                 <h2><Link to={`/promotions/${this.state.promotionId}/absences`}>Consulter les absences</Link></h2>
+                {/* <h2><Link to={`/promotions/${this.state.promotionId}/absences/add`}>Consulter les absences</Link></h2> */}
               </React.Fragment>
           }
         </div>

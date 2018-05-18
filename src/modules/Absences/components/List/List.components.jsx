@@ -5,9 +5,10 @@ import ReactTable from 'react-table';
 import { getPromotion } from '@Promos/reducers/details.reducers';
 
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
-import StudentDetails from '@modules/Absences/containers/StudentDetails.containers';
-import PodiumStudient from '@modules/Absences/containers/PromoPodiumStudent.containers';
-import WeekGraph from '@modules/Absences/containers/WeekGraph.containers';
+import StudentDetails from '@Absences/containers/StudentDetails.containers';
+import PodiumStudient from '@Absences/containers/PromoPodiumStudent.containers';
+import WeekGraph from '@Absences/containers/WeekGraph.containers';
+import Form from '@Absences/components/Form/Form.components';
 
 import './styles';
 
@@ -97,6 +98,9 @@ class List extends React.Component {
             <section className='graph-high'>
               <h3>Les jours mal aimés</h3>
               <WeekGraph />
+            </section>
+            <section>
+              <Form />
             </section>
           </div>
 
