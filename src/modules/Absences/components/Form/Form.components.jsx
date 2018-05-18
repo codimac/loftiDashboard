@@ -14,14 +14,14 @@ class Form extends React.Component {
   }
 
 
-  oneAbsence(key) {
+  oneAbsence(data, key) {
     return (
       <React.Fragment>
-        <input type="date" name="date" onChange={(ev) => this.handleDate(ev, key)} />
+        <input type="date" value={data.date} name="date" onChange={(ev) => this.handleDate(ev, key)} />
         <label htmlFor="justified"> Justification
-          <input id="justified" type="checkbox" name="justified" onChange={(ev) => this.handleJustified(ev, key)} />
+          <input id="justified" value={data.justified} type="checkbox" name="justified" onChange={(ev) => this.handleJustified(ev, key)} />
         </label>
-        <button onClick={this.deleteAbsencesInput}>X</button>
+        <button onClick={() => this.deleteAbsencesInput(key)}>X</button>
       </React.Fragment>
 
     );
@@ -55,9 +55,12 @@ class Form extends React.Component {
 
   }
 
-  deleteAbsencesInput() {
+  deleteAbsencesInput(key) {
     if (this.state.nbToAdd > 0) {
-      this.setState({nbToAdd: this.state.nbToAdd-1});
+      // this.setState({nbToAdd: this.state.nbToAdd-1});
+      this.setState({
+        datas: this.state.datas.filter((data, id) => key !== id)
+      });
     }
   }
 
@@ -71,7 +74,7 @@ class Form extends React.Component {
   }
 
   render() {
-    // console.log(this.state.datas);
+    console.log(this.state.datas);
 
     const nbAbs = [];
     for (let i = 0; i < this.state.nbToAdd; i++) {
@@ -83,7 +86,9 @@ class Form extends React.Component {
     return (
       <React.Fragment>
         <h3>Ajouter une absences </h3>
-        { nbAbs }
+        {
+          this.state.datas.map((data, id) => <div> {this.oneAbsence(data, id)} </div>)
+        }
         <button onClick={this.addAbsencesInput} >Ajouter une autre absences </button>
         <button type="submit">Enregistrer </button>
       </React.Fragment>
