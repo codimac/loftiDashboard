@@ -70,36 +70,36 @@ class DetailsPromotion extends React.Component {
 
     const len = promotion.length;
     return (
-      <div className="promotions">
-        <h1>Détails d'une promo</h1>
-        <div className="flex flex-wrap-reverse justify-content-sb">
-          <section className="alig-items-start">
-            <FilterInput placeholder="Rechercher un étudiant" />
-            <FilterTd />
-            <ReactTable
-              defaultPageSize={len}
-              data={promotion}
-              noDataText="Aucun élève trouvé."
-              columns={columns}
-              showPagination={false}
-              className="-highlight"
-              resizable={false}
-              pageSize={len}
-            />
-          </section>
-
-          <section className="alig-items-start actions">
-            <h1>Les actions</h1>
-            <ul>
-              <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignments/add`} className="link link__black" >Ajouter un devoir</Link></li>
-              <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignments`} className="link link__black">Lister les devoirs</Link></li>
-              <li><Link to={`/promotions/${this.props.match.params.promotionId}/absences`} className="link link__black" >Consulter les absences</Link></li>
-              <li><Link to={`/promotions/${this.props.match.params.promotionId}/addAbsences`} className="link link__black" >Ajouter une absence</Link></li>
-            </ul>
-          </section>
-        </div>
-      </div>
+      <React.Fragment>
+        <h1 className="page-title">Détails d'une promo</h1>
+      </React.Fragment>
     );
+    /* <div className="flex flex-wrap-reverse justify-content-sb">
+      <section className="alig-items-start">
+        <FilterInput placeholder="Rechercher un étudiant" />
+        <FilterTd />
+        <ReactTable
+          defaultPageSize={len}
+          data={promotion}
+          noDataText="Aucun élève trouvé."
+          columns={columns}
+          showPagination={false}
+          className="-highlight"
+          resizable={false}
+          pageSize={len}
+        />
+      </section>
+
+      <section className="alig-items-start actions">
+        <h1>Les actions</h1>
+        <ul>
+          <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignments/add`} className="link link__black" >Ajouter un devoir</Link></li>
+          <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignments`} className="link link__black">Lister les devoirs</Link></li>
+          <li><Link to={`/promotions/${this.props.match.params.promotionId}/absences`} className="link link__black" >Consulter les absences</Link></li>
+          <li><Link to={`/promotions/${this.props.match.params.promotionId}/addAbsences`} className="link link__black" >Ajouter une absence</Link></li>
+        </ul>
+      </section>
+    </div> */
   }
 
 }

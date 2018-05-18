@@ -4,7 +4,9 @@ export class Error extends React.Component {
 
   render() {
     return (
-      <h1>ERROR</h1>
+      <React.Fragment>
+        <h1>ERROR</h1>
+      </React.Fragment>
     );
   }
 
