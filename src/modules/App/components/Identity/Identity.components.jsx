@@ -23,8 +23,8 @@ class Identity extends React.Component {
     return (
       <div className="identity">
         <div>
-          <h4>{firstname} {lastname}</h4>
-          <h5>{permissionsSvc.getRole()}</h5>
+          <h4 className="name">{firstname} {lastname}</h4>
+          <h5 className="role">{permissionsSvc.getRole()}</h5>
         </div>
         <ProfilePicture picture={picture} />
       </div>

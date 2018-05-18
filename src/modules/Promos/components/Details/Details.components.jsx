@@ -73,7 +73,7 @@ class DetailsPromotion extends React.Component {
     return (
       <React.Fragment>
         <h2 className="page-title">Détails d'une promo</h2>
-        <Wrapper title="Liste des élèves">
+        <Wrapper title="Liste des élèves" className="promotion">
           <div className="filters">
             <FilterTd />
             <FilterInput placeholder="Elève..." />

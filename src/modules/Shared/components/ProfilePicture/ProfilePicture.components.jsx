@@ -12,7 +12,7 @@ class ProfilePicture extends React.Component {
   render() {
     const { picture } = this.props;
     return (
-      <div className="picture-container ml-2">
+      <div className="picture-container ml-3">
         <img className="picture" src={`/public/images/${picture}`} alt="placeholder" />
       </div>
     );
