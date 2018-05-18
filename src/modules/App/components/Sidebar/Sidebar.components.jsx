@@ -1,4 +1,5 @@
 import React from 'react';
+import Proptypes from 'prop-types';
 import { Link, NavLink } from 'react-router-dom';
 
 import ListPromos from '@Promos/containers/List.containers';
@@ -10,6 +11,10 @@ import { getPromotion } from '@Promos/reducers/details.reducers';
 import store from '@App/App.store';
 
 class Sidebar extends React.Component {
+
+  static propTypes = {
+    promotionId: Proptypes.number
+  };
 
   constructor() {
     super();

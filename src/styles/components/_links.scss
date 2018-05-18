@@ -68,4 +68,12 @@
     text-align: center;
     padding-left: 0;
   }
+  &.link__filter {
+    padding: 6px 14px;
+    margin: 0 1px;
+    &.active {
+      color: $white;
+      background: $yellow;
+    }
+  }
 }

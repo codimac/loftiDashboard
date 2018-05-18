@@ -6,7 +6,7 @@
     }
   }
   input {
-    padding: 14px;
+    padding: 6px 14px;
     position: relative;
     color: $black;
     border: none;
@@ -14,7 +14,7 @@
     outline: none;
     z-index: 2;
     font-family: $font-main;
-    font-size: 1.2em;
+    font-size: 1em;
     transition: color 100ms ease;
     &::placeholder {
       color: rgba($black, 0.5);
@@ -44,6 +44,12 @@
     .input__animation {
       height: 4px;
       transition: height 100ms ease;
+    }
+  }
+  &.input__login {
+    input {
+      padding: 14px;
+      font-size: 1.2em;
     }
   }
 }

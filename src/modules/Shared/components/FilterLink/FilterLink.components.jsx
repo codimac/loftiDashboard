@@ -13,11 +13,17 @@ class FilterLink extends React.Component {
     this.props.resetFilter();
   }
 
+  activeClass = ev => {
+    const current = document.querySelectorAll('.link__filter.active')[0];
+    current.classList.remove('active');
+    this.filterRef.classList.add('active');
+  }
+
   render() {
-    const { children, onClick } = this.props;
+    const { children, onClick, className } = this.props;
 
     return (
-      <h5 onClick={onClick} className="link link__black">{ children }</h5>
+      <h5 onClick={() => { onClick(); this.activeClass(); }} ref={el => this.filterRef = el} className={`link link__black link__filter ${className || ''}`}>{ children }</h5>
     );
   }
 

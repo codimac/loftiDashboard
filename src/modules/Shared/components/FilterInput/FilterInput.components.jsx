@@ -1,5 +1,6 @@
 import React from 'react';
 import Proptypes from 'prop-types';
+import Input from '@Shared/components/Input/Input.components';
 
 class FilterInput extends React.Component {
 
@@ -18,7 +19,9 @@ class FilterInput extends React.Component {
     const { onChange, placeholder, value } = this.props;
 
     return (
-      <input type="text" onChange={onChange} placeholder={placeholder} value={value} />
+      <div>
+        <Input type="text" onChange={onChange} placeholder={placeholder} value={value} />
+      </div>
     );
   }
 

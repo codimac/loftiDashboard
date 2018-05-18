@@ -6,6 +6,7 @@ import ReactTable from 'react-table';
 
 import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
 import FilterInput from '@Shared/containers/FilterInput.containers';
+import Wrapper from '@Shared/components/Wrapper/Wrapper.components';
 
 import plus from '@images/icon-plus.png';
 import './styles';
@@ -71,7 +72,23 @@ class DetailsPromotion extends React.Component {
     const len = promotion.length;
     return (
       <React.Fragment>
-        <h1 className="page-title">Détails d'une promo</h1>
+        <h2 className="page-title">Détails d'une promo</h2>
+        <Wrapper title="Liste des élèves">
+          <div className="filters">
+            <FilterTd />
+            <FilterInput placeholder="Elève..." />
+          </div>
+          <ReactTable
+            defaultPageSize={len}
+            data={promotion}
+            noDataText="Aucun élève trouvé."
+            columns={columns}
+            showPagination={false}
+            className="-highlight"
+            resizable={false}
+            pageSize={len}
+          />
+        </Wrapper>
       </React.Fragment>
     );
     /* <div className="flex flex-wrap-reverse justify-content-sb">

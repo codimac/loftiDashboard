@@ -3,7 +3,8 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;  // 8 columns grid
   grid-auto-rows: min-content;
-  grid-gap: 8px;
+  grid-column-gap: 8px;
+  grid-row-gap: 20px;
   .page-title {
     background: $white;
     grid-column: span 8;
