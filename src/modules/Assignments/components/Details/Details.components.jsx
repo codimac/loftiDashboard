@@ -59,14 +59,14 @@ class Details extends React.Component {
     const dataTd = [];
     grades.map(student => {
       const tdFounded = dataTd.find(tdGrades => tdGrades.td === student.td);
-      let tdIndex = -1;
+      let tdIndex = null;
       if (!tdFounded) {
         tdIndex = dataTd.push({
           td: student.td,
           data: arrayOf(labels.length, 0)
         })-1;
       }
-      tdIndex = tdIndex === -1 ? dataTd.indexOf(tdFounded) : tdIndex;
+      tdIndex = tdIndex === null ? dataTd.indexOf(tdFounded) : tdIndex;
       dataTd[tdIndex].data[labels.indexOf(student.grades)]++;
       dataTd.sort((a, b) => a.td - b.td);
     });
