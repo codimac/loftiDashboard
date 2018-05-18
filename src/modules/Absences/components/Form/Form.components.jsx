@@ -5,9 +5,7 @@ class Form extends React.Component {
   constructor() {
     super();
     this.state = {
-      nbToAdd: 1,
       datas: [{date: '', justified: 'false'}],
-
     };
     this.addAbsencesInput = this.addAbsencesInput.bind(this);
     this.deleteAbsencesInput = this.deleteAbsencesInput.bind(this);
@@ -57,7 +55,6 @@ class Form extends React.Component {
 
   deleteAbsencesInput(key) {
     if (this.state.nbToAdd > 0) {
-      // this.setState({nbToAdd: this.state.nbToAdd-1});
       this.setState({
         datas: this.state.datas.filter((data, id) => key !== id)
       });
@@ -76,13 +73,6 @@ class Form extends React.Component {
   render() {
     console.log(this.state.datas);
 
-    const nbAbs = [];
-    for (let i = 0; i < this.state.nbToAdd; i++) {
-      nbAbs.push(
-        <div key={i}>
-          {this.oneAbsence(i)}
-        </div>);
-    }
     return (
       <React.Fragment>
         <h3>Ajouter une absences </h3>
