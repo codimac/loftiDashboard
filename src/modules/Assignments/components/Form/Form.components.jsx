@@ -64,7 +64,7 @@ class Form extends React.Component {
 
   constructor() {
     super();
-    this.state = {
+    this.initialState = {
       isEditing: null,
       promotionId: null,
       selectedSemester: null,
@@ -74,6 +74,7 @@ class Form extends React.Component {
       assignment: null,
       grades: null
     };
+    this.state = this.initialState;
   }
 
   componentWillMount() {
@@ -108,6 +109,9 @@ class Form extends React.Component {
         store.dispatch(uesListEffects.getUesListFromSemester(this.state.selectedSemester));
         store.dispatch(subjectsListEffects.getSubjectsListForUe(this.state.selectedSubject));
       });
+    }
+    if (nextProps.match !== this.props.match) {
+      this.state(this.initialState);
     }
   }
 
