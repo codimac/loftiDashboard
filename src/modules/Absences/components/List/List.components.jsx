@@ -5,9 +5,9 @@ import ReactTable from 'react-table';
 import { getPromotion } from '@Promos/reducers/details.reducers';
 
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
-import StudentDetails from '@modules/Absences/containers/StudentDetails.containers';
-import PodiumStudient from '@modules/Absences/containers/PromoPodiumStudent.containers';
-import WeekGraph from '@modules/Absences/containers/WeekGraph.containers';
+import StudentDetails from '@Absences/containers/Details.containers';
+import PodiumStudient from '@Absences/containers/PromoPodiumStudent.containers';
+import WeekGraph from '@Absences/containers/WeekGraph.containers';
 
 import './styles';
 

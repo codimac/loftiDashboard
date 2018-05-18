@@ -4,7 +4,7 @@ import ReactTable from 'react-table';
 
 import './styles';
 
-class StudentDetails extends React.Component {
+class Details extends React.Component {
 
 
   static propTypes = {
@@ -71,4 +71,4 @@ class StudentDetails extends React.Component {
 }
 
 
-export default StudentDetails;
+export default Details;
