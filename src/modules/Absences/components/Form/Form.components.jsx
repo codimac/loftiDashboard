@@ -6,7 +6,7 @@ class Form extends React.Component {
     super();
     this.state = {
       nbToAdd: 1,
-      datas: [{date: '', justified: ''}],
+      datas: [{date: '', justified: 'false'}],
 
     };
     this.addAbsencesInput = this.addAbsencesInput.bind(this);
@@ -19,7 +19,7 @@ class Form extends React.Component {
       <React.Fragment>
         <input type="date" name="date" onChange={(ev) => this.handleDate(ev, key)} />
         <label htmlFor="justified"> Justification
-          <input id="justified" type="checkbox" name="justified" />
+          <input id="justified" type="checkbox" name="justified" onChange={(ev) => this.handleJustified(ev, key)} />
         </label>
         <button onClick={this.deleteAbsencesInput}>X</button>
       </React.Fragment>
@@ -30,10 +30,19 @@ class Form extends React.Component {
   handleDate(ev, key) {
     const newDatas = this.state.datas.map((data, id) => {
       if (key !== id) {
-
         return data;
       }
       return {...data, date: ev.target.value};
+    });
+    this.setState({datas: newDatas});
+  }
+
+  handleJustified(ev, key) {
+    const newDatas = this.state.datas.map((data, id) => {
+      if (key !== id) {
+        return data;
+      }
+      return {...data, justified: ev.target.checked};
     });
     this.setState({datas: newDatas});
   }
@@ -62,7 +71,7 @@ class Form extends React.Component {
   }
 
   render() {
-    console.log(this.state.datas);
+    // console.log(this.state.datas);
 
     const nbAbs = [];
     for (let i = 0; i < this.state.nbToAdd; i++) {
