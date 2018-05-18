@@ -6,7 +6,9 @@ class Main extends React.Component {
 
   render() {
     return (
-      <Router />
+      <section className="main">
+        <Router />
+      </section>
     );
   }
 }

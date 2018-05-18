@@ -1,0 +1,22 @@
+.main-grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 2fr 8fr;
+  grid-template-rows: 1fr 9fr;
+  grid-template-areas:
+    "header topbar"
+    "sidebar main";
+  .header {
+    grid-area: header;
+  }
+  .sidebar {
+    grid-area: sidebar;
+  }
+  .topbar {
+    grid-area: topbar;
+  }
+  .main {
+    grid-area: main;
+  }
+
+}

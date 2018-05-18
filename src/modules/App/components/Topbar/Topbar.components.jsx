@@ -6,12 +6,12 @@ class Topbar extends React.Component {
 
   render() {
     return (
-      <div className="topbar flex justify-content-sb align-items-center">
+      <section className="topbar">
         <div>
           la partie de gauche
         </div>
         <Identity />
-      </div>
+      </section>
     );
   }
 

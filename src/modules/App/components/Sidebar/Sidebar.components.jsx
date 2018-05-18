@@ -9,8 +9,6 @@ import { storageSvc } from '@services/storage.services';
 import { getPromotion } from '@Promos/reducers/details.reducers';
 import store from '@App/App.store';
 
-import './Sidebar.styles';
-
 class Sidebar extends React.Component {
 
   constructor() {
@@ -63,7 +61,7 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <nav className="flex flex-column justify-content-sb align-items-center sidebar">
+      <nav className="sidebar">
         <div>
           { permissionsSvc.isAdmin() &&
             this.renderAdmin()
