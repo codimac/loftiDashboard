@@ -14,7 +14,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="main-grid">
-        <header className="header">IMACBOARD</header>
+        <header className="header">Imacboard</header>
         <Sidebar />
         <Topbar />
         <Main />

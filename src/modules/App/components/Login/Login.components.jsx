@@ -2,6 +2,7 @@ import React from 'react';
 import Proptypes from 'prop-types';
 
 import Input from '@Shared/components/Input/Input.components';
+import Button from '@Shared/components/Button/Button.components';
 import { authSvc } from '@services/auth.services';
 import { history } from '@helpers/history.helpers';
 import './Login.styles';
@@ -59,7 +60,7 @@ class Login extends React.Component {
           <form className="form" onSubmit={this.handleSubmit}>
             <Input className="full-size mb-2" type="text" placeholder="Identifiant" name="username" value={username} onChange={this.handleChange} />
             <Input className="full-size mb-2" type="password" placeholder="Mot de passe" name="password" value={password} onChange={this.handleChange} />
-            <button className="button" disabled={!this.state.validForm} type="submit"><span className="wave wave-buttons"></span>Connexion</button>
+            <Button className="button" disabled={!this.state.validForm} type="submit"><span className="wave wave-buttons"></span>Connexion</Button>
           </form>
         </section>
       </div>

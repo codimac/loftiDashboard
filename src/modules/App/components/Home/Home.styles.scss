@@ -1,19 +1,39 @@
+$sidebar-width: 20%;
+$topbar-height: 10%;
+
 .main-grid {
   display: grid;
   height: 100%;
-  grid-template-columns: 2fr 8fr;
-  grid-template-rows: 1fr 9fr;
+  grid-template-columns: $sidebar-width 8fr;
+  grid-template-rows: $topbar-height 9fr;
   grid-template-areas:
     "header topbar"
     "sidebar main";
   .header {
     grid-area: header;
+    position: sticky;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $black;
+    color: $white;
+    border-bottom: solid 1px rgba($white, 0.75);
+    font-size: 2rem;
   }
   .sidebar {
     grid-area: sidebar;
+    position: fixed;
+    left: 0;
+    width: $sidebar-width;
+    top: $topbar-height;
+    height: 100%;
   }
   .topbar {
     grid-area: topbar;
+    position: sticky;
+    top: 0;
+    z-index: 999;
   }
   .main {
     grid-area: main;
