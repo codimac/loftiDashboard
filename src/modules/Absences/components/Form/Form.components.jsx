@@ -62,7 +62,7 @@ class Form extends React.Component {
   }
 
   prepareSave = () => {
-    return 0;
+    this.props.createAbsences(this.state.datas);
   }
 
   submit = ev => {
@@ -71,16 +71,16 @@ class Form extends React.Component {
   }
 
   render() {
-    console.log(this.props);
-
     return (
       <React.Fragment>
         <h3>Ajouter une absences </h3>
-        {
-          this.state.datas.map((data, id) => <div> {this.oneAbsence(data, id)} </div>)
-        }
-        <button onClick={this.addAbsencesInput} >Ajouter une autre absences </button>
-        <button type="submit">Enregistrer </button>
+        <form onSubmit={this.submit} >
+          {
+            this.state.datas.map((data, id) => <div> {this.oneAbsence(data, id)} </div>)
+          }
+          <button onClick={this.addAbsencesInput} >Ajouter une autre absences </button>
+          <button type="submit">Enregistrer </button>
+        </form>
       </React.Fragment>
 
     );
