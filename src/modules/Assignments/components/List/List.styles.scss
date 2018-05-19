@@ -1,0 +1,101 @@
+.assignments-list {
+  .semester {
+    width: 49%;
+    .ue-section {
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+      .ue-title {
+        padding: 10px 30px;
+        font-size: 1.2rem;
+        font-weight: 600;
+        display: inline-block;
+        color: $black;
+        position: relative;
+        transition: color 50ms ease 20ms;
+        z-index: 2;
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 2px;
+          background: $yellow;
+          z-index: -1;
+          transition: height 150ms ease;
+        }
+      }
+      &:hover {
+        & > .ue-title {
+          color: $white;
+          transition: color 50ms ease 20ms;
+          &::after {
+            height: 100%;
+            background: $yellow;
+            transition: height 150ms ease;
+          }
+        }
+      }
+      .subject-article {
+        &:not(:last-child) {
+          margin-bottom: 20px;
+        }
+        .subject-title {
+          display: inline-block;
+          padding: 4px 10px;
+          font-size: 1.05rem;
+          font-weight: 600;
+          position: relative;
+          z-index: 2;
+          transition: color 50ms ease 20ms;
+          &::before {
+            content: '';
+            position: absolute;
+            height: 100%;
+            width: 2px;
+            left: 0;
+            top: 0;
+            background: $yellow;
+            transition: width 50ms ease;
+          }
+        }
+        &:hover {
+          & > .subject-title {
+            color: $white;
+            transition: color 50ms ease 20ms;
+            &::before {
+              width: 100%;
+              transition: width 150ms ease;
+              z-index: -1;
+            }
+          }
+        }
+        .assignment-list {
+          .assignment {
+            margin: 4px 0;
+            font-size: 1.02rem;
+            position: relative;
+            padding-bottom: 2px;
+            display: inline-block;
+            &::after {
+              content: '';
+              position: absolute;
+              left: 0;
+              bottom: 0;
+              width: 100%;
+              height: 1px;
+              background: $yellow;
+              display: none;
+            }
+            &:hover {
+              &::after {
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

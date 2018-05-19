@@ -1,4 +1,4 @@
-import { arrayOf } from "@helpers/array.helpers";
+import { arrayOf } from '@helpers/array.helpers';
 
 export const parsedData = (labels, students, key, callback) => {
   const stacks = [];

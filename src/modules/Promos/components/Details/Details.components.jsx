@@ -153,8 +153,8 @@ class DetailsPromotion extends React.Component {
             />
           </Wrapper>
           <Wrapper title="Résumé de la promotion" className="promotion__average">
-            <p className="average">Moyenne de la classe : <span>{!Number.isNaN(average(promotion, 'grades')) ? average(promotion, 'grades') : '__'}</span></p>
-            <p className="average">Moyenne des absences : <span>{!Number.isNaN(average(promotion, 'absences')) ? average(promotion, 'absences') : '__'}</span></p>
+            <p className="average">Moyenne de la classe : <span>{average(promotion, 'grades')}</span></p>
+            <p className="average">Moyenne des absences : <span>{average(promotion, 'absences')}</span></p>
             <Chart title="moyenne des élèves par TD">
               <Bar data={this.state.grades.data} options={this.state.grades.options} height={200} />
             </Chart>
