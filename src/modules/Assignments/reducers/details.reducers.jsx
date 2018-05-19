@@ -17,6 +17,14 @@ const assignmentsDetailsReducer = (state = assignmentsDetailsInitialState, actio
         ...action.payload
       };
 
+    case types.UPDATE_ABSENCES_SUCCESS:
+      return {
+        ...state,
+        ...action.payload
+      };
+    case types.UPDATE_ABSENCES_FAILURE:
+      return state;
+
     case types.FETCHING_ASSIGNMENTS_DETAILS_FAILURE:
       return state;
 
