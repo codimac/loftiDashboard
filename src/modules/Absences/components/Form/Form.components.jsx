@@ -35,8 +35,7 @@ class Form extends React.Component {
       }
       return {...data, date: ev.target.value};
     });
-    this.setState({datas: newDatas});
-    this.validForm();
+    this.setState({datas: newDatas}, () => this.validForm());
   }
 
   handleJustified(ev, key) {
@@ -46,15 +45,14 @@ class Form extends React.Component {
       }
       return {...data, justified: ev.target.checked};
     });
-    this.setState({datas: newDatas});
-    this.validForm();
+    this.setState({datas: newDatas}, () => this.validForm());
   }
 
   addAbsencesInput() {
     this.setState({
-      nbToAdd: this.state.nbToAdd+1,
       datas: this.state.datas.concat([{date: '', justified: ''}])
-    });
+    },
+    () => this.validForm());
   }
 
   deleteAbsencesInput(key) {
@@ -67,19 +65,18 @@ class Form extends React.Component {
 
   validForm() {
     const {datas} = this.state;
-    console.log(datas);
-
-    const error = datas.find(m => m.date === "");
-    console.log(error);
+    const error = datas.every(value => value.date.length !== 0);
     this.setState({
-      validForm: true
+      validForm: error
     });
   }
 
   submit = ev => {
     ev.preventDefault();
-    console.log('oups');
-    this.props.createAbsences(this.state.datas);
+    this.validForm();
+    if (this.state.validForm) {
+      this.props.createAbsences(this.state.datas);
+    }
   }
 
   render() {
