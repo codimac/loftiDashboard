@@ -14,7 +14,6 @@ class Form extends React.Component {
     this.deleteAbsencesInput = this.deleteAbsencesInput.bind(this);
   }
 
-
   oneAbsence(data, key) {
     return (
       <React.Fragment>
@@ -22,7 +21,7 @@ class Form extends React.Component {
         <label htmlFor="justified"> Justification
           <input id="justified" value={data.justified} type="checkbox" name="justified" onChange={(ev) => this.handleJustified(ev, key)} />
         </label>
-        <button onClick={() => this.deleteAbsencesInput(key)}>X</button>
+        <button onClick={(ev) => this.deleteAbsencesInput(ev, key)}>X</button>
       </React.Fragment>
 
     );
@@ -48,15 +47,17 @@ class Form extends React.Component {
     this.setState({datas: newDatas}, () => this.validForm());
   }
 
-  addAbsencesInput() {
+  addAbsencesInput(ev) {
+    ev.preventDefault();
     this.setState({
       datas: this.state.datas.concat([{date: '', justified: ''}])
     },
     () => this.validForm());
   }
 
-  deleteAbsencesInput(key) {
-    if (this.state.nbToAdd > 0) {
+  deleteAbsencesInput(ev, key) {
+    ev.preventDefault();
+    if (this.state.datas.length > 0) {
       this.setState({
         datas: this.state.datas.filter((data, id) => key !== id)
       });
@@ -87,7 +88,7 @@ class Form extends React.Component {
           {
             this.state.datas.map((data, id) => <div> {this.oneAbsence(data, id)} </div>)
           }
-          <span role='none' onClick={this.addAbsencesInput} >Ajouter une autre absences </span>
+          <button onClick={this.addAbsencesInput} >Ajouter une autre absences </button>
           <button type="submit" disabled={!this.state.validForm}>Enregistrer </button>
         </form>
       </React.Fragment>
