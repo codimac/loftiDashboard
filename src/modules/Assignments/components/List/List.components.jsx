@@ -50,7 +50,6 @@ class List extends React.Component {
 
   render() {
     const { assignments } = this.props;
-    console.log(assignments)
     return (
       <React.Fragment>
         <h1 className="page-title">Liste des devoirs de la promo {this.props.match.params.promotionId}</h1>

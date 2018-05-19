@@ -5,7 +5,6 @@ import { ToastContainer } from 'react-toastify';
 import Input from '@Shared/components/Input/Input.components';
 import Button from '@Shared/components/Button/Button.components';
 import { authSvc } from '@services/auth.services';
-import { toasterSvc } from '@services/toaster.service';
 import { history } from '@helpers/history.helpers';
 import './Login.styles';
 

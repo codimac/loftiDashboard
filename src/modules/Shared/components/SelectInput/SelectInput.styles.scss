@@ -1,0 +1,20 @@
+.select {
+  &.full-size {
+    width: 100%;
+  }
+  font-family: $font-main;
+  font-size: 1rem;
+  background: darken($white, 10%);
+  border: none;
+  padding: 8px 5px;
+  color: $black;
+  transition: all 100ms ease;
+  &:focus {
+    background: $yellow;
+    outline: none;
+    transition: all 100ms ease;
+  }
+  .option {
+    background: darken($white, 6%);
+  }
+}

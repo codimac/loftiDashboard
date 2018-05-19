@@ -1,6 +1,8 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 
+import './SelectInput.styles';
+
 class SelectInput extends React.Component {
 
   static propTypes = {
@@ -16,16 +18,16 @@ class SelectInput extends React.Component {
     required: Proptypes.bool,
     selected: Proptypes.number,
     onChange: Proptypes.func,
+    className: Proptypes.string
   };
 
   render() {
-    const { items, placeholder, onChange, required, selected } = this.props;
-
+    const { items, placeholder, onChange, required, selected, className } = this.props;
     return (
-      <select defaultValue={selected || 0} onChange={onChange} required>
-        <option value="0" disabled>{placeholder}</option>
+      <select defaultValue={selected || 0} onChange={onChange} className={`select ${className}`} required>
+        <option value="0" className="option" disabled>{placeholder}</option>
         { items.map(item => (
-          <option key={item.id+1} value={item.value}>{item.label}</option>
+          <option key={item.id+1} value={item.value} className="option">{item.label}</option>
         ))}
       </select>
     );

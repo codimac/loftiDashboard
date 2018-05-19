@@ -24,6 +24,7 @@ class Details extends React.Component {
   static propTypes = {
     match: Proptypes.shape({
       params: Proptypes.shape({
+        promotionId: Proptypes.string.isRequired,
         assignmentId: Proptypes.string.isRequired
       }).isRequired
     }).isRequired,
@@ -134,7 +135,8 @@ class Details extends React.Component {
                 <li className="details-li"><span>Description : </span>{assignment.description}</li>
                 <li className="details-li"><span>Coefficient : </span>{assignment.coefficient}</li>
                 <li className="details-li"><span>Nombre de notes : </span>{grades.length}</li>
-                <li className="flex-inline align-items-start details-li mt-0"><span>Moyenne : </span>{average(grades, 'grades')}
+                <li className="flex-inline align-items-start details-li mt-0 justify-content-start">
+                  <p><span>TD1 : </span>{average(grades, 'grades')}</p>
                   <p className="ml-4"><span>TD1 : </span>{average(grades.filter(student => student.td === 1), 'grades')}</p>
                   <p className="ml-4"><span>TD2 : </span>{average(grades.filter(student => student.td === 2), 'grades')}</p>
                 </li>
