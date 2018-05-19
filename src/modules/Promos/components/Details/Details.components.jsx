@@ -137,8 +137,10 @@ class DetailsPromotion extends React.Component {
         <div className="promotion-details flex justify-content-sb">
           <Wrapper title="Liste des élèves" className="promotion__list">
             <div className="filters">
-              <FilterTd />
-              <FilterInput placeholder="Elève..." />
+              <div className="students">
+                <FilterTd />
+                <FilterInput placeholder="Elève..." />
+              </div>
             </div>
             <ReactTable
               defaultPageSize={len}

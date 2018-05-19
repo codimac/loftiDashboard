@@ -11,8 +11,11 @@ $topbar-height: 10%;
     "sidebar main";
   .header {
     grid-area: header;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    height: $topbar-height;
+    width: $sidebar-width;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,8 +34,11 @@ $topbar-height: 10%;
   }
   .topbar {
     grid-area: topbar;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: $sidebar-width;
+    width: 100-$sidebar-width;
+    height: $topbar-height;
     z-index: 999;
   }
   .main {

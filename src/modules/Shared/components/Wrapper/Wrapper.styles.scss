@@ -23,9 +23,32 @@
     }
   }
   .filters {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 18px;
+    .students {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 18px;
+    }
+    .range {
+      padding: 16px 0 20px;
+      width: 98%;
+      display: inline-flex;
+      justify-content: space-between;
+      span {
+        width: 15%;
+      }
+      .slider {
+        width: 80%;
+      }
+    }
+  }
+  .details-container {
+    .details-li {
+      font-size: 1.05rem;
+      margin: 5px 0;
+      span {
+        font-weight: 600;
+      }
+    }
   }
 }

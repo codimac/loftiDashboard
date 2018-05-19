@@ -20,16 +20,17 @@ export const parsedData = (labels, students, key, callback) => {
   return stacks;
 };
 
-export const formatData = (labels, rawData) => {
-  const bg = ['rgba(251, 126, 0, 0.6)', 'rgba(255, 204, 63, 0.6)', 'rgba(0, 255, 255, 1)', 'rgba(0, 255, 0, 1)'];
+export const formatData = (labels, rawData, config = {}) => {
+  const bg = ['rgba(251, 126, 0, 0.5)', 'rgba(255, 204, 63, 0.5)', 'rgba(0, 255, 255, 1)', 'rgba(0, 255, 0, 1)'];
   const data = {
     labels,
     datasets: [
       ...rawData.map((td, index) => ({
         label: `TD${td.td}`,
         data: td.data,
-        backgroundColor: bg[index]
-      }))
+        backgroundColor: bg[index],
+        ...config
+      })),
     ]
   };
   return data;

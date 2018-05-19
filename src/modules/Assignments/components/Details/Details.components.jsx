@@ -4,13 +4,20 @@ import ReactTable from 'react-table';
 import { Link } from 'react-router-dom';
 import { Line } from 'react-chartjs-2';
 
-import { arrayOf, getRange, average} from '@helpers/array.helpers';
+import { arrayOf, getRange, average, maxInArray } from '@helpers/array.helpers';
+import { parsedData, formatData } from '@helpers/chart.helpers';
 
 import store from '@App/App.store';
 import { getPromotionId } from '@Promos/reducers/details.reducers';
+import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 import FilterInput from '@Shared/containers/FilterInput.containers';
 import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
 import FilterRange from '@Shared/containers/FilterRange.containers';
+import Wrapper from '@Shared/components/Wrapper/Wrapper.components';
+import Chart from '@Shared/components/Chart/Chart.components';
+import Button from '@Shared/components/Button/Button.components';
+
+import './Details.styles';
 
 class Details extends React.Component {
 
@@ -45,6 +52,9 @@ class Details extends React.Component {
 
   componentDidMount() {
     this.props.getAssignment(+this.props.match.params.assignmentId);
+    if (!getPromotionId(store.getState())) {
+      store.dispatch(promotionsDetailsEffects.getPromotion(+this.props.match.params.promotionId));
+    }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -53,34 +63,11 @@ class Details extends React.Component {
     }
   }
 
-  formatChartLineData(grades) {
-
+  formatChartLineData(students) {
     const labels = [0, ...getRange(20)];
-    const dataTd = [];
-    grades.map(student => {
-      const tdFounded = dataTd.find(tdGrades => tdGrades.td === student.td);
-      let tdIndex = null;
-      if (!tdFounded) {
-        tdIndex = dataTd.push({
-          td: student.td,
-          data: arrayOf(labels.length, 0)
-        })-1;
-      }
-      tdIndex = tdIndex === null ? dataTd.indexOf(tdFounded) : tdIndex;
-      dataTd[tdIndex].data[labels.indexOf(student.grades)]++;
-      dataTd.sort((a, b) => a.td - b.td);
-    });
+    const rawData = parsedData(labels, students, 'grades', value => labels.indexOf(value));
+    const data = formatData(labels, rawData);
 
-    const data = {
-      labels,
-      datasets: [
-        ...dataTd.map(td => ({
-          label: `TD${td.td}`,
-          data: td.data,
-          backgroundColor: `rgba(${td.td*100}, 0, 0, 0.4)`
-        }))
-      ]
-    };
 
     const options = {
       scales: {
@@ -88,7 +75,7 @@ class Details extends React.Component {
           ticks: {
             stepSize: 1,
             min: 0,
-            max: Math.max(...dataTd.map(array => Math.max(...array.data)))+1
+            max: maxInArray(rawData)+1
           }
         }]
       }
@@ -112,34 +99,62 @@ class Details extends React.Component {
     ];
     return (
       <React.Fragment>
-        <h1>{assignment.name}</h1>
-        <h2>{assignment.description}</h2>
-        <h2>Coefficient: {assignment.coefficient}</h2>
-        <Link to={`${this.props.match.params.assignmentId}/edit`}>Editer</Link>
+        <h1 className="page-title">Détails du devoir : {assignment.name}</h1>
+        <div className="assignment-details flex justify-content-sb">
+          <Wrapper title="Liste des élèves" className="assignment__students">
+            <div className="filters">
+              <div className="students">
+                <FilterTd />
+                <FilterInput placeholder="Elève..." />
+              </div>
+              <div className="range">
+                <span>Notes : </span>
+                <div className="slider">
+                  <FilterRange />
+                </div>
+              </div>
+            </div>
+            <ReactTable
+              defaultPageSize={grades.length}
+              defaultSorted={[{ id: 'lastname', desc: false }]}
+              data={grades}
+              noDataText="Aucun élève trouvé."
+              columns={columns}
+              showPagination={false}
+              className="-highlight"
+              resizable={false}
+              pageSize={grades.length}
+            />
+          </Wrapper>
 
-        <FilterInput placeholder='Eleve' />
-        <FilterTd />
-        <FilterRange />
+          <div className="right-side flex">
+            <Wrapper title="Le devoir" className="assignment__details">
+              <ul className="details-container">
+                <li className="details-li"><span>Nom : </span>{assignment.name}</li>
+                <li className="details-li"><span>Description : </span>{assignment.description}</li>
+                <li className="details-li"><span>Coefficient : </span>{assignment.coefficient}</li>
+                <li className="details-li"><span>Nombre de notes : </span>{grades.length}</li>
+                <li className="flex-inline align-items-start details-li mt-0"><span>Moyenne : </span>{average(grades, 'grades')}
+                  <p className="ml-4"><span>TD1 : </span>{average(grades.filter(student => student.td === 1), 'grades')}</p>
+                  <p className="ml-4"><span>TD2 : </span>{average(grades.filter(student => student.td === 2), 'grades')}</p>
+                </li>
+                <li>
+                  <Link to={`${this.props.match.params.assignmentId}/edit`} className="link mt-2">
+                    <Button className="button small pl-4 pr-4">Editer</Button>
+                  </Link>
+                </li>
+              </ul>
+            </Wrapper>
 
-        <h1>Moyenne du devoir = {average(grades, 'grades')}</h1>
 
-        <div className="chart">
-          <Line data={this.state.data} options={this.state.options} />
+            <Wrapper title="Les notes" className="assignment__chart">
+              <Chart title="Les notes du devoir triées par TD">
+                <Line data={this.state.data} options={this.state.options} />
+              </Chart>
+            </Wrapper>
+          </div>
+
         </div>
-        <div className="flex justify-content-sb">
-          <ReactTable
-            defaultPageSize={grades.length}
-            defaultSorted={[{ id: 'lastname', desc: false}]}
-            data={grades}
-            noDataText="Aucun élève trouvé."
-            columns={columns}
-            showPagination={false}
-            className="-highlight"
-            resizable={false}
-            pageSize={grades.length}
-          />
-        </div>
-
 
       </React.Fragment>
     );

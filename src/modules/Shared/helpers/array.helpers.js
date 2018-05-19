@@ -14,6 +14,6 @@ export const getRange = size => arrayOf(size, 0).map((x, i) => i + 1);
 export const average = (grades, key) => {
   const res = parseFloat(grades.reduce((acc, grade) => acc + grade[key], 0) / grades.length);
   return res !== 'NaN' ? res : '__';
-}
+};
 
 export const maxInArray = data => Math.max(...data.map(array => Math.max(...array.data)));

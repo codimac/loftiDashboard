@@ -16,7 +16,7 @@ export class Error extends React.Component {
     return (
       <React.Fragment>
         <div className="flex justify-content-center align-items-center">
-          <Wrapper title="Oups error" className="error">
+          <Wrapper title="Oups !" className="error">
             <div>
               <h3 className="mb-3">La page demandée n'existe pas</h3>
               <Button className="button" type="button" onClick={this.goToHome}>Retourner à l'accueil</Button>
