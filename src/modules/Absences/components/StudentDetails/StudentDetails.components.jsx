@@ -1,6 +1,7 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import ReactTable from 'react-table';
+import Form from '@Absences/containers/Form.containers';
 
 import './styles';
 
@@ -63,6 +64,7 @@ class StudentDetails extends React.Component {
             resizable={false}
             pageSize={len}
           />
+          <Form student={student} />
           <button onClick={this.close}>
             Fermer
           </button>

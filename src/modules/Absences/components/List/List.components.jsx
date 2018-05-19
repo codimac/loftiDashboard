@@ -8,7 +8,6 @@ import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 import StudentDetails from '@Absences/containers/StudentDetails.containers';
 import PodiumStudient from '@Absences/containers/PromoPodiumStudent.containers';
 import WeekGraph from '@Absences/containers/WeekGraph.containers';
-import Form from '@Absences/containers/Form.containers';
 
 import './styles';
 
@@ -98,9 +97,6 @@ class List extends React.Component {
             <section className='graph-high'>
               <h3>Les jours mal aimés</h3>
               <WeekGraph />
-            </section>
-            <section>
-              <Form />
             </section>
           </div>
 
