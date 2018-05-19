@@ -1,5 +1,5 @@
 import Http from '@Shared/Http';
-import * as actions from '@Absences/actions/list.actions';
+import * as actions from '@Absences/actions/form.actions';
 import { success, error } from '@Absences/mocks/form.mocks';
 import { requestSvc } from '@services/request.services';
 

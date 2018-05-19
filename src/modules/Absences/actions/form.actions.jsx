@@ -23,25 +23,3 @@ export const createAbsencesFailed = error => ({
   }
 });
 
-
-// EDIT
-export const editAbsences = absences => ({
-  type: types.EDIT_ABSENCE,
-  payload: {
-    absences
-  }
-});
-
-export const editAbsencesSucceed = data => ({
-  type: types.EDIT_ABSENCE_SUCCESS,
-  payload: {
-    data
-  }
-});
-
-export const editAbsencesFailed = error => ({
-  type: types.EDIT_ABSENCE_FAILURE,
-  payload: {
-    error
-  }
-});

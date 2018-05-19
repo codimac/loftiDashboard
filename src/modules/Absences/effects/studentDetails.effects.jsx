@@ -18,7 +18,7 @@ export const getAbsencesList = (id) => dispatch => {
 export const updateAbsencesJustification = (absencesId, justified = true) => dispatch => {
   const data = {absencesId, justified};
   const storedData = store.getState().absencesList.absencesList;
-  // cheat because I do not have the API
+  // that way I don't have to call again the get. should only be used on request success
   const newData = storedData.map(m => {
     if (m.id === absencesId) {
       m.justified=justified;

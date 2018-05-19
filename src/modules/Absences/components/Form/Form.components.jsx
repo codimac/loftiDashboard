@@ -1,7 +1,10 @@
 import React from 'react';
-import SelectInput from '@Shared/components/SelectInput/SelectInput.components';
+import Proptypes from 'prop-types';
 
 class Form extends React.Component {
+  static propTypes = {
+    createAbsences: Proptypes.func.isRequired
+  }
   constructor() {
     super();
     this.state = {
@@ -33,6 +36,7 @@ class Form extends React.Component {
       return {...data, date: ev.target.value};
     });
     this.setState({datas: newDatas});
+    this.validForm();
   }
 
   handleJustified(ev, key) {
@@ -43,6 +47,7 @@ class Form extends React.Component {
       return {...data, justified: ev.target.checked};
     });
     this.setState({datas: newDatas});
+    this.validForm();
   }
 
   addAbsencesInput() {
@@ -50,7 +55,6 @@ class Form extends React.Component {
       nbToAdd: this.state.nbToAdd+1,
       datas: this.state.datas.concat([{date: '', justified: ''}])
     });
-
   }
 
   deleteAbsencesInput(key) {
@@ -61,13 +65,21 @@ class Form extends React.Component {
     }
   }
 
-  prepareSave = () => {
-    this.props.createAbsences(this.state.datas);
+  validForm() {
+    const {datas} = this.state;
+    console.log(datas);
+
+    const error = datas.find(m => m.date === "");
+    console.log(error);
+    this.setState({
+      validForm: true
+    });
   }
 
   submit = ev => {
     ev.preventDefault();
-    this.prepareSave();
+    console.log('oups');
+    this.props.createAbsences(this.state.datas);
   }
 
   render() {
@@ -78,8 +90,8 @@ class Form extends React.Component {
           {
             this.state.datas.map((data, id) => <div> {this.oneAbsence(data, id)} </div>)
           }
-          <button onClick={this.addAbsencesInput} >Ajouter une autre absences </button>
-          <button type="submit">Enregistrer </button>
+          <span role='none' onClick={this.addAbsencesInput} >Ajouter une autre absences </span>
+          <button type="submit" disabled={!this.state.validForm}>Enregistrer </button>
         </form>
       </React.Fragment>
 
