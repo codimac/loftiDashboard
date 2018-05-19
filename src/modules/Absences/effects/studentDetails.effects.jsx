@@ -15,7 +15,8 @@ export const getAbsencesList = (id) => dispatch => {
 };
 
 export const updateAbsencesJustification = (absencesId, justified = true) => dispatch => {
-  Http.post('/always/true', absencesId, justified, requestSvc.generateOptions())
+  const data = {absencesId, justified};
+  Http.post('/always/true', data, requestSvc.generateOptions())
     .then(res => {
       console.log('absences justification updated, id: ' + absencesId);
       dispatch(actions.updateAbsencesJustificationSucceed(success));

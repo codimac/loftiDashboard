@@ -46,7 +46,7 @@ class StudentDetails extends React.Component {
       {Header: 'fin', accessor: 'end'},
       {Header: 'justifiée', accessor: 'justified', width: 75,
         className: 'centered-col',
-        Cell: row => (row.value ? <span role="none" onClick={() => this.props.updateAbsencesJustification(row.original.id, false)}> {justified} </span> : <span role="none" onClick={() => this.props.updateAbsencesJustification(row.original.id)}> {notJustified} </span>)},
+        Cell: row => (row.value ? <button onClick={() => this.props.updateAbsencesJustification(row.original.id, false)}> {justified} </button> : <button onClick={() => this.props.updateAbsencesJustification(row.original.id)}> {notJustified} </button>)},
     ];
     const len = absencesList.length;
     return (
