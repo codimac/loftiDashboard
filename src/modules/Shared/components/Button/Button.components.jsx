@@ -7,13 +7,14 @@ class Button extends React.Component {
     className: Proptypes.string,
     disabled: Proptypes.bool,
     type: Proptypes.string,
-    children: Proptypes.node.isRequired
+    children: Proptypes.node.isRequired,
+    onClick: Proptypes.func
   };
 
   render() {
-    const { className, disabled, type, children } = this.props;
+    const { className, disabled, type, children, onClick } = this.props;
     return (
-      <button className={className} disabled={disabled} type={type}><span className="wave wave-buttons"></span>{children}</button>
+      <button className={className} disabled={disabled} type={type} onClick={onClick}><span className="wave wave-buttons"></span>{children}</button>
     );
   }
 

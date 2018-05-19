@@ -1,6 +1,9 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import { NavLink } from 'react-router-dom';
+import Wrapper from '@Shared/components/Wrapper/Wrapper.components';
+
+import './List.styles';
 
 class List extends React.Component {
 
@@ -37,12 +40,15 @@ class List extends React.Component {
   renderList = promotions => {
     return (
       <React.Fragment>
-        <h3>Toutes les promos</h3>
-        <ul>
-          { promotions.map(promo => (
-            <li key={promo.id}><NavLink className="link" to={`/promotions/${promo.label}`}>{promo.label}</NavLink></li>
-          ))}
-        </ul>
+        <div className="flex promotion-list">
+          <Wrapper title="Liste des promotions" className="promotion__list">
+            <ul className="link-container">
+              { promotions.map(promo => (
+                <li key={promo.id}><NavLink className="link padding-2" to={`/promotions/${promo.label}`}>{promo.label}</NavLink></li>
+              ))}
+            </ul>
+          </Wrapper>
+        </div>
       </React.Fragment>
     );
   }
@@ -51,6 +57,7 @@ class List extends React.Component {
     const { sidebar, promotions } = this.props;
     return (
       <React.Fragment>
+        <h1 className="page-title">Les promotions</h1>
         { sidebar
           ? this.renderSidebar(promotions)
           : this.renderList(promotions)

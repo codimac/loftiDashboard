@@ -128,7 +128,7 @@ class DetailsPromotion extends React.Component {
     return (
       <React.Fragment>
         <h1 className="page-title">Détails d'une promo</h1>
-        <div className="promotion flex justify-content-sb">
+        <div className="promotion-details flex justify-content-sb">
           <Wrapper title="Liste des élèves" className="promotion__list">
             <div className="filters">
               <FilterTd />

@@ -13,7 +13,7 @@ export const signin = (username, password) => dispatch => {
       dispatch(actions.fetchAuthSucceed(token));
       dispatch(actions.fetchAuth(false));
       storageSvc.setItem('token', token);
-      toasterSvc.success('Vous êtes connecté !');
+      history.push('/');
     })
     .catch(err => {
       dispatch(actions.fetchAuthFailed(err));

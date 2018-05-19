@@ -1,0 +1,15 @@
+.promotion-list {
+  .promotion__list {
+    .link-container {
+      display: inline-flex;
+      li {
+        &:hover {
+          background: $yellow;
+          & > a {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+}

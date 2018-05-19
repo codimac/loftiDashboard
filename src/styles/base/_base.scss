@@ -27,6 +27,10 @@ html, body {
   background: $white;
 }
 
+.height-auto {
+  height: auto !important;
+}
+
 /* ----------------------------------- */
 
 @each $size in $spacing-sizes{
