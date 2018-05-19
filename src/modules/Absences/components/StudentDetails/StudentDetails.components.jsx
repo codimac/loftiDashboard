@@ -10,6 +10,7 @@ class StudentDetails extends React.Component {
 
   static propTypes = {
     getAbsencesList: Proptypes.func.isRequired,
+    updateAbsencesJustification: Proptypes.func.isRequired,
     onClose: Proptypes.func.isRequired,
     absencesList: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
@@ -43,8 +44,8 @@ class StudentDetails extends React.Component {
     const justified = '\u2714';
     const notJustified = '\u2716';
     const columns = [
-      {Header: 'début ', accessor: 'beginning'},
-      {Header: 'fin', accessor: 'end'},
+      {Header: 'date ', accessor: 'beginning', className: 'centered-col'},
+      // {Header: 'fin', accessor: 'end'},
       {Header: 'justifiée', accessor: 'justified', width: 75,
         className: 'centered-col',
         Cell: row => (row.value ? <button onClick={() => this.props.updateAbsencesJustification(row.original.id, false)}> {justified} </button> : <button onClick={() => this.props.updateAbsencesJustification(row.original.id)}> {notJustified} </button>)},
