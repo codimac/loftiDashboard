@@ -8,7 +8,7 @@ import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 import StudentDetails from '@Absences/containers/StudentDetails.containers';
 import PodiumStudient from '@Absences/containers/PromoPodiumStudent.containers';
 import WeekGraph from '@Absences/containers/WeekGraph.containers';
-import Form from '@Absences/components/Form/Form.components';
+import Form from '@Absences/containers/Form.containers';
 
 import './styles';
 
