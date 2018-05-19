@@ -6,6 +6,7 @@ import { requestSvc } from '@services/request.services';
 export const createAbsences = absences => dispatch => {
   Http.post('/always/true', absences, requestSvc.generateOptions())
     .then(res => {
+      console.log('absences created');
       dispatch(actions.createAbsencesSucceed(success));
     })
     .catch(actions.createAbsencesFailed(error));

@@ -20,3 +20,17 @@ export const fetchAbsencesListFailed = error => ({
     error
   }
 });
+
+export const updateAbsencesJustificationSucceed = data => ({
+  type: types.UPDATE_ABSENCES_SUCCESS,
+  payload: {
+    data
+  }
+});
+
+export const updateAbsencesJustificationFailed = error => ({
+  types: types.UPDATE_ABSENCES_FAILURE,
+  payload: {
+    error
+  }
+});

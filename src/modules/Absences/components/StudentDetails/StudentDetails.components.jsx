@@ -39,12 +39,14 @@ class StudentDetails extends React.Component {
   render() {
     const { student } = this.props;
     const {absencesList} = this.props;
+    const justified = '\u2714';
+    const notJustified = '\u2716';
     const columns = [
       {Header: 'début ', accessor: 'beginning'},
       {Header: 'fin', accessor: 'end'},
       {Header: 'justifiée', accessor: 'justified', width: 75,
         className: 'centered-col',
-        Cell: row => (row.value ? '\u2714' : '\u2716')}
+        Cell: row => (row.value ? <span role="none" onClick={() => this.props.updateAbsencesJustification(row.original.id, false)}> {justified} </span> : <span role="none" onClick={() => this.props.updateAbsencesJustification(row.original.id)}> {notJustified} </span>)},
     ];
     const len = absencesList.length;
     return (
