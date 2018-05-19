@@ -7,7 +7,10 @@ import { Bar } from 'react-chartjs-2';
 import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
 import FilterInput from '@Shared/containers/FilterInput.containers';
 import Wrapper from '@Shared/components/Wrapper/Wrapper.components';
-import { average, arrayOf } from '@helpers/array.helpers';
+import Chart from '@Shared/components/Chart/Chart.components';
+
+import { average, arrayOf, maxInArray } from '@helpers/array.helpers';
+import { parsedData, formatData } from '@helpers/chart.helpers';
 
 import plus from '@images/icon-plus.png';
 import './Details.styles';
@@ -31,8 +34,14 @@ class DetailsPromotion extends React.Component {
   constructor() {
     super();
     this.state = {
-      data: {},
-      options: {}
+      grades: {
+        data: {},
+        options: {}
+      },
+      absences: {
+        data: {},
+        options: {}
+      }
     };
   }
 
@@ -50,46 +59,43 @@ class DetailsPromotion extends React.Component {
   }
 
   formatChartData(students) {
-    const labels = ['0 - 5', '5 - 10', '10 - 15', '15 - 20'];
-    const dataStack = [];
-    students.map(student => {
-      const tdFounded = dataStack.find(stud => stud.td === student.td);
-      let tdIndex = null;
-      if (!tdFounded) {
-        tdIndex = dataStack.push({
-          td: student.td,
-          data: arrayOf(labels.length, 0)
-        })-1;
-      }
-      const gradeIndex = Math.floor(student.grades/5) > 3 ? 3 : Math.floor(student.grades/5);
-      tdIndex = tdIndex === null ? dataStack.indexOf(tdFounded) : tdIndex;
-      dataStack[tdIndex].data[gradeIndex]++;
-      dataStack.sort((a, b) => a.td - b.td);
-    });
+    // GRADES
+    const gradesLabels = ['0 - 5', '5 - 10', '10 - 15', '15 - 20'];
+    const gradesRawData = parsedData(gradesLabels, students, 'grades', (value) => (Math.floor(value / 5) > 3 ? 3 : Math.floor(value / 5)));
+    const gradesData = formatData(gradesLabels, gradesRawData);
 
-    const data = {
-      labels,
-      datasets: [
-        ...dataStack.map(td => ({
-          label: `TD${td.td}`,
-          data: td.data,
-          backgroundColor: `rgba(${td.td * 100}, 0, 0, 1)`
-        }))
-      ]
-    };
+    const absencesLabels = ['0 - 5', '5 - 10', '10 - 15', '15 - 20', '20 - 25', '25 - 30'];
+    const absencesRawData = parsedData(absencesLabels, students, 'absences', (value) => (Math.floor(value / 5) > 5 ? 5 : Math.floor(value / 5)));
+    const absencesData = formatData(absencesLabels, absencesRawData);
 
-    const options = {
+    const gradesOptions = {
       scales: {
         yAxes: [{
           ticks: {
             stepSize: 2,
-            min: 0
+            min: 0,
+            max: maxInArray(gradesRawData)+1
           }
         }],
       }
     };
 
-    this.setState({data, options});
+    const absencesOptions = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            stepSize: 2,
+            min: 0,
+            max: maxInArray(absencesRawData) + 1
+          }
+        }],
+      }
+    };
+
+    this.setState({
+      grades: {data: gradesData, options: gradesOptions},
+      absences: {data: absencesData, options: absencesOptions}
+    });
   }
 
   render() {
@@ -147,9 +153,14 @@ class DetailsPromotion extends React.Component {
             />
           </Wrapper>
           <Wrapper title="Résumé de la promotion" className="promotion__average">
-            <p className="average">Moyenne de la classe : <span>{average(promotion, 'grades')}</span></p>
-            <p className="average">Moyenne des absences : <span>{average(promotion, 'absences')}</span></p>
-            <Bar data={this.state.data} options={this.state.options} height={300} />
+            <p className="average">Moyenne de la classe : <span>{!Number.isNaN(average(promotion, 'grades')) ? average(promotion, 'grades') : '__'}</span></p>
+            <p className="average">Moyenne des absences : <span>{!Number.isNaN(average(promotion, 'absences')) ? average(promotion, 'absences') : '__'}</span></p>
+            <Chart title="moyenne des élèves par TD">
+              <Bar data={this.state.grades.data} options={this.state.grades.options} height={200} />
+            </Chart>
+            <Chart title="moyenne des absences">
+              <Bar data={this.state.absences.data} options={this.state.absences.options} height={200} />
+            </Chart>
           </Wrapper>
         </div>
       </React.Fragment>
