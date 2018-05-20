@@ -25,6 +25,7 @@ import filterReducer from '@Shared/reducers/filter.reducers';
 import absencesListReducer from '@Absences/reducers/studentDetails.reducers';
 import promoAbsencesPodiumReducer from '@Absences/reducers/promoAbsencesPodium.reducers';
 import absencesWeekGraphListReducer from '@Absences/reducers/weekGraph.reducers';
+import absencesFormReducer from '@Absences/reducers/form.reducers';
 
 const rootReducer = combineReducers({
   // auth
@@ -61,6 +62,7 @@ const rootReducer = combineReducers({
   absencesList: absencesListReducer,
   promoAbsencesPodium: promoAbsencesPodiumReducer,
   absencesWeekGraphList: absencesWeekGraphListReducer,
+  absencesForm: absencesFormReducer,
 
   // others
   filter: filterReducer

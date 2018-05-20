@@ -1,14 +1,15 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 import ReactTable from 'react-table';
+import Form from '@Absences/containers/Form.containers';
 
 import './styles';
 
 class StudentDetails extends React.Component {
 
-
   static propTypes = {
     getAbsencesList: Proptypes.func.isRequired,
+    updateAbsencesJustification: Proptypes.func.isRequired,
     onClose: Proptypes.func.isRequired,
     absencesList: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
@@ -32,6 +33,9 @@ class StudentDetails extends React.Component {
     this.props.getAbsencesList();
   }
 
+  /**
+   * tell the parent component to close this panel
+   */
   close() {
     this.props.onClose();
   }
@@ -39,12 +43,14 @@ class StudentDetails extends React.Component {
   render() {
     const { student } = this.props;
     const {absencesList} = this.props;
+    const justified = '\u2714';
+    const notJustified = '\u2716';
     const columns = [
-      {Header: 'début ', accessor: 'beginning'},
-      {Header: 'fin', accessor: 'end'},
+      {Header: 'date ', accessor: 'beginning', className: 'centered-col'},
+      // {Header: 'fin', accessor: 'end'},
       {Header: 'justifiée', accessor: 'justified', width: 75,
         className: 'centered-col',
-        Cell: row => (row.value ? '\u2714' : '\u2716')}
+        Cell: row => (row.value ? <button onClick={() => this.props.updateAbsencesJustification(row.original.id, false)}> {justified} </button> : <button onClick={() => this.props.updateAbsencesJustification(row.original.id)}> {notJustified} </button>)},
     ];
     const len = absencesList.length;
     return (
@@ -61,6 +67,7 @@ class StudentDetails extends React.Component {
             resizable={false}
             pageSize={len}
           />
+          <Form student={student} />
           <button onClick={this.close}>
             Fermer
           </button>

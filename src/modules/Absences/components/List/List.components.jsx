@@ -5,9 +5,9 @@ import ReactTable from 'react-table';
 import { getPromotion } from '@Promos/reducers/details.reducers';
 
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
-import StudentDetails from '@modules/Absences/containers/StudentDetails.containers';
-import PodiumStudient from '@modules/Absences/containers/PromoPodiumStudent.containers';
-import WeekGraph from '@modules/Absences/containers/WeekGraph.containers';
+import StudentDetails from '@Absences/containers/StudentDetails.containers';
+import PodiumStudient from '@Absences/containers/PromoPodiumStudent.containers';
+import WeekGraph from '@Absences/containers/WeekGraph.containers';
 
 import './styles';
 
@@ -41,11 +41,19 @@ class List extends React.Component {
     store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
   }
 
+  /**
+   * allow the opening of the student detail
+   * @param {object} event event object
+   * @param {object} row the row of the table data
+   */
   getStudentDetails(event, row) {
     const {firstname, lastname, id} = row;
     this.setState({selectedStudent: true, student: {firstname, lastname, id}});
   }
 
+  /**
+   * close the student details panel
+   */
   closeStudent() {
     this.setState({selectedStudent: false, student: null});
   }
