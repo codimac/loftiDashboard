@@ -154,6 +154,10 @@ class List extends React.Component {
           { /* <div className="absences">
           <div className="flex justify-content-sb">
             <section>
+              {
+                this.state.selectedStudent===true &&
+                  <Details id={this.state.selectedStudent} student={this.state.student} onClose={this.closeStudent} />
+              }
               <PodiumStudient />
             </section>
             <section className='graph-high'>

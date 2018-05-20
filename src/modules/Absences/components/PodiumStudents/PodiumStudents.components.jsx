@@ -7,8 +7,9 @@ import Podium from '@modules/Shared/components/Podium/Podium.components';
 class PodiumStudients extends React.Component {
   static propTypes = {
     getPromoPodiumAbsences: Proptypes.func.isRequired,
+    year: Proptypes.number.isRequired,
     absencesPodium: Proptypes.arrayOf(Proptypes.shape({
-      id: Proptypes.number.isRequired,
+      user_id: Proptypes.number.isRequired,
       firstname: Proptypes.string.isRequired,
       lastname: Proptypes.string.isRequired,
       username: Proptypes.string.isRequired
@@ -22,11 +23,12 @@ class PodiumStudients extends React.Component {
     const {absencesPodium} = this.props;
     const podium = absencesPodium.slice(0, 3);
     const others = absencesPodium.slice(3);
+
     return (
       <React.Fragment>
         {podium.length >= 3 &&
           <React.Fragment>
-            <Podium podium={podium} accessor='absences' />
+            <Podium podium={podium} year={this.props.year} accessor='abs_count' />
             <ReactTable
               defaultPageSize={others.length}
               data={others}
@@ -34,7 +36,7 @@ class PodiumStudients extends React.Component {
               columns={[
                 {Header: 'Nom', accessor: 'lastname', headerStyle: { display: 'none' }, className: 'centered-col'},
                 {Header: 'Prénom', accessor: 'firstname', headerStyle: { display: 'none' }, className: 'centered-col'},
-                {Header: '', accessor: 'absences', headerStyle: { display: 'none' }, className: 'centered-col', width: 50}
+                {Header: '', accessor: 'abs_count', headerStyle: { display: 'none' }, className: 'centered-col', width: 50}
               ]
               }
               showPagination={false}
@@ -43,7 +45,7 @@ class PodiumStudients extends React.Component {
               getTrProps={(state, rowInfo, column) => {
                 return {
                   onClick: (e, handleOriginal) => {
-                    window.location = `/students/${rowInfo.original.username}`;
+                    window.location = `/promotions/${this.props.year}/students/${rowInfo.original.username}`;
                   },
                   style: {
                     cursor: 'pointer'
