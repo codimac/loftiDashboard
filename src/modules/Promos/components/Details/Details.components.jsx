@@ -18,6 +18,7 @@ class DetailsPromotion extends React.Component {
 
   static propTypes = {
     getPromotion: Proptypes.func.isRequired,
+    year: Proptypes.number.isRequired,
     promotion: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       firstname: Proptypes.string.isRequired,
