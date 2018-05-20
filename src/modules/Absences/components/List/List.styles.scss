@@ -1,0 +1,16 @@
+.absences {
+  .middle {
+    width: 32.5%;
+    height: 100%;
+  }
+  .right-side {
+    width: 32.5%;
+    height: 100%;
+    .absences__details, .absences__add {
+      width: 100%;
+    }
+  }
+  .absences__list {
+    width: 32.5%;
+  }
+}

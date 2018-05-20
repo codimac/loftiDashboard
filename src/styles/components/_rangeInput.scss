@@ -1,0 +1,15 @@
+@import '~react-input-range/lib/css/index.css';
+
+.input-range__track--active {
+  background: $yellow !important;
+}
+
+.input-range__slider {
+  background: $yellow !important;
+  border: $yellow !important;
+}
+
+.input-range__label--min, .input-range__label--max {
+  display: none !important;
+}
+

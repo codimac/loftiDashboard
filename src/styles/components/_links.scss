@@ -1,0 +1,85 @@
+.link {
+  display: inline-block;
+  color: $black;
+  text-decoration: none;
+  cursor: pointer;
+  &.link__promotion {
+    padding: 8px 20px;
+    margin: 2px 0;
+    font-size: 1.05rem;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: 100%;
+      width: 2px;
+      background: $yellow;
+      opacity: 0;
+      z-index: -1;
+      transition: width 200ms ease, opacity 100ms linear 300ms;
+    }
+    &:hover {
+      &::before {
+        opacity: 1;
+        width: 100%;
+        transition: width 200ms ease 100ms;
+      }
+    }
+    &.active {
+      background: $yellow;
+      &::before {
+        width: 10%;
+      }
+    }
+  }
+  &.link__sidebar {
+    display: block;
+    text-align: left;
+    padding: 18px 0 18px 40px;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: -10px;
+      top: 0;
+      width: 0px;
+      height: 100%;
+      background: $yellow;
+      transition: width 300ms ease;
+    }
+    &.active {
+      background: rgba(34, 34, 34, 1);
+      box-shadow: inset 0px 0px 8px 0px rgba(0, 0, 0, 0.4);
+    }
+    &:hover, &.active {
+      &::before {
+        width: 14px;
+        transition: width 300ms ease;
+      }
+    }
+  }
+  &.link__white {
+    color: $white;
+  }
+  &.link__yellow {
+    color: $yellow;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  &.link__disconnect {
+    width: 100%;
+    text-align: center;
+    padding-left: 0;
+  }
+  &.link__filter {
+    padding: 6px 14px;
+    margin: 0 1px;
+    &.active {
+      color: $white;
+      background: $yellow;
+    }
+  }
+}

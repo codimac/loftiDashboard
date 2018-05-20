@@ -1,0 +1,17 @@
+.identity {
+  display: inline-flex;
+  align-items: center;
+  .name {
+    font-size: 1.2em;
+    font-weight: 600;
+  }
+  .role {
+    margin-top: 6px;
+    color: $yellow;
+    font-size: 0.9em;
+    text-transform: lowercase;
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+.assignment-details {
+  .assignment__students {
+    width: 39%;
+  }
+  .right-side {
+    width: 59%;
+    height: 100%;
+    .assignment__details {
+      width: 100%;
+    }
+    .assignment__chart {
+      width: 100%;
+    }
+  }
+}

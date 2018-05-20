@@ -1,0 +1,55 @@
+@mixin button-disabled {
+  cursor: default;
+  border-color: darken($yellow, 8%);
+  background: $yellow;
+  color: $white;
+}
+
+.button {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 16px 12px;
+  border-radius: 3px;
+  text-align: center;
+  font-size: 1rem;
+  font-family: $font-main;
+  border: transparent;
+  background-color: $yellow;
+  color: $white;
+  font-weight: 500;
+  outline: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  text-decoration: none;
+  overflow: hidden!important;
+  border: solid 1px darken($yellow, 2%);
+  &:hover {
+    &:not(:disabled) > .wave {
+      animation: ripple-buttons 1s 0.15s;
+    }
+    &:disabled {
+      animation: shake 0.82s cubic-bezier(0.26, 0.11, 0.14, 1) both;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+  }
+  &:disabled {
+    @include button-disabled;
+  }
+  &.small {
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+  &.button__switch {
+    padding: 3px 8px;
+    display: inline-block;
+    width: auto;
+    &.button__delete {
+      background: none;
+      color: red;
+      border: none;
+    }
+  }
+}

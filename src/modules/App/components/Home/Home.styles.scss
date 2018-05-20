@@ -1,0 +1,48 @@
+$sidebar-width: 15%;
+$topbar-height: 10%;
+
+.main-grid {
+  display: grid;
+  height: 100%;
+  grid-template-columns: $sidebar-width 8fr;
+  grid-template-rows: $topbar-height 9fr;
+  grid-template-areas:
+    "header topbar"
+    "sidebar main";
+  .header {
+    grid-area: header;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: $topbar-height;
+    width: $sidebar-width;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $black;
+    color: $white;
+    border-bottom: solid 1px rgba($white, 0.75);
+    font-size: 2rem;
+  }
+  .sidebar {
+    grid-area: sidebar;
+    position: fixed;
+    left: 0;
+    width: $sidebar-width;
+    top: $topbar-height;
+    height: 100% - $topbar-height;
+  }
+  .topbar {
+    grid-area: topbar;
+    position: fixed;
+    top: 0;
+    left: $sidebar-width;
+    width: 100-$sidebar-width;
+    height: $topbar-height;
+    z-index: 999;
+  }
+  .main {
+    grid-area: main;
+  }
+
+}

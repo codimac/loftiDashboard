@@ -1,0 +1,51 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: $font-main !important;
+  font-size: 1em;
+  color: $black;
+}
+
+*, *:after, *:before {
+  box-sizing: border-box;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.bg-black {
+  background: $black;
+}
+.bg-white {
+  background: $white;
+}
+
+.height-auto {
+  height: auto !important;
+}
+
+/* ----------------------------------- */
+
+@each $size in $spacing-sizes{
+  $i : index($spacing-sizes, $size) - 1;
+
+  .mt-#{$i}{ margin-top:$size !important; }
+  .mb-#{$i}{ margin-bottom:$size !important; }
+  .ml-#{$i}{ margin-left:$size !important; }
+  .mr-#{$i}{ margin-right:$size !important; }
+  .margin-#{$i}{ margin:$size !important; }
+
+  .pt-#{$i}{ padding-top:$size !important; }
+  .pb-#{$i}{ padding-bottom:$size !important; }
+  .pl-#{$i}{ padding-left:$size !important; }
+  .pr-#{$i}{ padding-right:$size !important; }
+  .padding-#{$i}{ padding:$size !important; }
+}
+

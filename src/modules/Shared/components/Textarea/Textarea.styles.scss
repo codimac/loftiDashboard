@@ -1,0 +1,56 @@
+.input__animated {
+  position: relative;
+  &.full-size {
+    textarea {
+      width: 100%;
+    }
+  }
+  textarea {
+    padding: 6px 14px;
+    resize: vertical;
+    position: relative;
+    color: $black;
+    border: none;
+    background: transparent;
+    outline: none;
+    z-index: 2;
+    font-family: $font-main;
+    font-size: 1em;
+    transition: color 100ms ease;
+    &::placeholder {
+      color: rgba($black, 0.5);
+    }
+    &:focus {
+      & + .input__animation {
+        height: 100%;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+      }
+      &::placeholder {
+        color: $black;
+      }
+      transition: height 100ms ease, color 100ms ease;
+    }
+  }
+  .input__animation {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: $yellow;
+    width: 100%;
+    height: 2px;
+    transition: height 100ms ease;
+  }
+  &:hover {
+    .input__animation {
+      height: 4px;
+      transition: height 100ms ease;
+    }
+  }
+  &.input__login {
+    input {
+      padding: 14px;
+      font-size: 1.2em;
+    }
+  }
+}

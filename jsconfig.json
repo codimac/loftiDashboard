@@ -1,0 +1,41 @@
+{
+  "compileOnSave": true,
+  "compilerOptions": {
+    "target": "es5",
+    "module": "commonjs",
+    "allowSyntheticDefaultImports": true,
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "baseUrl": "./src",
+    "jsx": "react",
+    "paths": {
+      "@env/*": ["environments/*"],
+      "@styles/*": ["styles/*"],
+      "@services/*": ["modules/Shared/services/*"],
+      "@helpers/*": ["modules/Shared/helpers/*"],
+      "images/*": ["public/images/*"],
+
+      "@modules/*": ["modules/*"],
+      "@Grades/*": ["modules/Grades/*"],
+      "@Promos/*": ["modules/Promos/*"],
+      "@Students/*": ["modules/Students/*"],
+      "@Semesters/*": ["modules/Semesters/*"],
+      "@Ues/*": ["modules/Ues/*"],
+      "@Absences/*": ["modules/Absences/*"],
+      "@Subjects/*": ["modules/Subjects/*"],
+      "@Assignments/*": ["modules/Assignments/*"],
+
+      "@Shared/*": ["modules/Shared/*"],
+      "@App/*": ["modules/App/*"]
+    },
+    "lib": [
+      "dom", "es2015", "es2017"
+    ]
+  },
+  "include": [
+    "./src/**/*"
+  ],
+  "exclude": [
+    "node_modules", "dist"
+  ],
+}
