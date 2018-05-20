@@ -40,7 +40,7 @@ class Router extends React.Component {
         <PrivateRoute exact path='/promotions/:promotionId/assignments/:assignmentId' allowed={['admin']} component={AssignmentsDetails} />
 
         <PrivateRoute exact path='/promotions/:promotionId/assignments' allowed={['admin']} component={AssignmentsList} />
-        <PrivateRoute exact path='/promotions/:promotionId' allowed={['admin']} component={PromotionsDetails} />
+        <PrivateRoute exact path='/promotions/:promotionId' component={PromotionsDetails} />
         <PrivateRoute exact path='/promotions' allowed={['admin']} component={PromotionList} />
 
         <Route exact path='*' component={Error} />

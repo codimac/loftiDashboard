@@ -102,7 +102,6 @@ class Details extends React.Component {
 
   formatChartData() {
     const labels = [...this.state.gradesForSemester.ues.map(ue => ue.name)];
-    this.state.gradesForSemester.ues.map(ue => console.log('ue', ue));
     const data = {
       labels,
       datasets: [{

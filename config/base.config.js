@@ -36,7 +36,7 @@ const cssLoaders = [
 
 const plugins = [
   new ExtractTextPlugin({
-    filename: isDev ? '[name].css' : '[name].[contenthash:16].css',
+    filename: isDev ? '[name].css' : '[name].[hash:16].css',
     allChunks: true,
     disable: isDev
   }),
@@ -112,23 +112,14 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)?$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: 'file-loader',
             options: {
-              limit: 8192,
-              publicPath: '/',
               name(file) {
-                if (isProd) return 'assets/[hash:16].[ext]';
-                return '[name].[ext]';
+                if (isProd) return './public/images/[hash:16].[ext]'
+                return '[name].[ext]'
               }
             }
-          },
-          {
-            loader: 'img-loader',
-            options: {
-              publicPath: '/',
-              enabled: isProd
-            }
-          },
+          }
         ]
       }
     ]

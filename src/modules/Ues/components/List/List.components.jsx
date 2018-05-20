@@ -44,7 +44,6 @@ class List extends React.Component {
 
   render() {
     const { ues } = this.props;
-    console.log(ues);
 
     return (
       <React.Fragment>

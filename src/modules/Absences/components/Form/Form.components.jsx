@@ -117,7 +117,6 @@ class Form extends React.Component {
       const {student} = this.props;
       const {datas} = this.state;
       const datasToSend = { ...student, absences: datas};
-      console.log(datasToSend);
       this.props.createAbsences(datasToSend);
     }
   }
