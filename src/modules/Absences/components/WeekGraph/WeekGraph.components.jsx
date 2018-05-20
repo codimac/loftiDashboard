@@ -1,6 +1,7 @@
 import React from 'react';
 import { defaults, Bar } from 'react-chartjs-2';
 import Proptypes from 'prop-types';
+import {extractColumn} from '@Shared/helpers/array.helpers';
 
 class WeekGraph extends React.Component {
   static propTypes = {
@@ -15,23 +16,10 @@ class WeekGraph extends React.Component {
     this.props.getAbsencesWeekGraphList();
   }
 
-  /**
-   * allow us to extract from an array of objects a column
-   * @param {array} arr
-   * @param {string} column
-   */
-  extractColumn(arr, column) {
-    function reduction(previousValue, currentValue) {
-      previousValue.push(currentValue[column]);
-      return previousValue;
-    }
-    return arr.reduce(reduction, []);
-  }
-
   render() {
     const {graph} = this.props;
     const data = {
-      labels: this.extractColumn(graph, 'day'),
+      labels: extractColumn(graph, 'day'),
       datasets: [
         {
           label: 'Absences par jour',
@@ -40,7 +28,7 @@ class WeekGraph extends React.Component {
           borderWidth: 1,
           hoverBackgroundColor: 'rgba(255,99,132,0.4)',
           hoverBorderColor: 'rgba(255,99,132,1)',
-          data: this.extractColumn(graph, 'absences')
+          data: extractColumn(graph, 'absences')
         }
       ]
     };
