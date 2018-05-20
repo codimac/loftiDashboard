@@ -12,10 +12,11 @@ class StudentDetails extends React.Component {
     updateAbsencesJustification: Proptypes.func.isRequired,
     onClose: Proptypes.func,
     absencesList: Proptypes.arrayOf(Proptypes.shape({
-      id: Proptypes.number.isRequired,
-      beginning: Proptypes.string.isRequired,
-      end: Proptypes.string.isRequired,
-      justified: Proptypes.bool.isRequired
+      absence_id: Proptypes.number.isRequired,
+      date: Proptypes.string.isRequired,
+      justified: Proptypes.number.isRequired,
+      student_id: Proptypes.number.isRequired,
+      username: Proptypes.string.isRequired
     })).isRequired,
     student: Proptypes.shape({
       id: Proptypes.number.isRequired,
@@ -25,7 +26,13 @@ class StudentDetails extends React.Component {
   };
 
   componentDidMount() {
-    this.props.getAbsencesList();
+    this.props.getAbsencesList(this.props.student.id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.student.id !== this.props.student.id) {
+      this.props.getAbsencesList(nextProps.student.id);
+    }
   }
 
   /**
@@ -37,17 +44,19 @@ class StudentDetails extends React.Component {
 
   render() {
     const { student } = this.props;
-    const {absencesList} = this.props;
+    const { absencesList } = this.props;
     const justified = '\u2714';
     const notJustified = '\u2716';
+
+    console.log(absencesList);
 
     return (
       <React.Fragment>
         <ul className="details-container flex justify-content-sb">
           {
             absencesList.map(absence => (
-              <li key={absence.id} className="details-li flex-inline align-items-center">
-                <h5 className="mr-1"><span>Date : </span>{absence.beginning}</h5>
+              <li key={absence.absence_id} className="details-li flex-inline align-items-center">
+                <h5 className="mr-1"><span>Date : </span>{absence.date}</h5>
                 <button className="button button__switch" onClick={() => this.props.updateAbsencesJustification(absence.id, !absence.justified)}> {absence.justified ? justified : notJustified} </button>
               </li>
             ))

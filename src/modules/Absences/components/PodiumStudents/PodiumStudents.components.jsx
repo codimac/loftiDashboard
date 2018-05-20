@@ -7,7 +7,6 @@ import Podium from '@modules/Shared/components/Podium/Podium.components';
 class PodiumStudients extends React.Component {
   static propTypes = {
     getPromoPodiumAbsences: Proptypes.func.isRequired,
-    year: Proptypes.number.isRequired,
     absencesPodium: Proptypes.arrayOf(Proptypes.shape({
       user_id: Proptypes.number.isRequired,
       firstname: Proptypes.string.isRequired,

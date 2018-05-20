@@ -150,23 +150,6 @@ class List extends React.Component {
               </Chart>
             </Wrapper>
           </div>
-
-          { /* <div className="absences">
-          <div className="flex justify-content-sb">
-            <section>
-              {
-                this.state.selectedStudent===true &&
-                  <Details id={this.state.selectedStudent} student={this.state.student} onClose={this.closeStudent} />
-              }
-              <PodiumStudient />
-            </section>
-            <section className='graph-high'>
-              <h3>Les jours mal aimés</h3>
-              <WeekGraph />
-            </section>
-          </div>
-
-          </div> */ }
         </div>
       </React.Fragment>
     );

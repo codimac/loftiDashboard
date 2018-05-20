@@ -34,8 +34,8 @@ export const updateAbsencesJustification = (absencesId, justified = true) => dis
 
   Http.post('/always/true', data, requestSvc.generateOptions())
     .then(res => {
-      const abs = newData.find(absence => absence.id === absencesId);
-      toasterSvc.success(`Absence du ${abs.beginning} a été ${abs.justified ? 'justifiée' : 'annulée'}`);
+      const abs = newData.find(absence => absence.abscence_id === absencesId);
+      toasterSvc.success(`Absence du ${abs.date} a été ${abs.justified ? 'justifiée' : 'annulée'}`);
       dispatch(actions.updateAbsencesJustificationSucceed(success));
       dispatch(actions.fetchAbsencesListSucceed(newData));
     })
