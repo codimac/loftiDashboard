@@ -28,7 +28,7 @@ class PodiumStudients extends React.Component {
       <React.Fragment>
         {podium.length >= 3 &&
           <React.Fragment>
-            <Podium podium={podium} accessor='absences' />
+            <Podium podium={podium} accessor='abs_count' />
             <ReactTable
               defaultPageSize={others.length}
               data={others}
@@ -36,7 +36,7 @@ class PodiumStudients extends React.Component {
               columns={[
                 {Header: 'Nom', accessor: 'lastname', headerStyle: { display: 'none' }, className: 'centered-col'},
                 {Header: 'Prénom', accessor: 'firstname', headerStyle: { display: 'none' }, className: 'centered-col'},
-                {Header: '', accessor: 'absences', headerStyle: { display: 'none' }, className: 'centered-col', width: 50}
+                {Header: '', accessor: 'abs_count', headerStyle: { display: 'none' }, className: 'centered-col', width: 50}
               ]
               }
               showPagination={false}
