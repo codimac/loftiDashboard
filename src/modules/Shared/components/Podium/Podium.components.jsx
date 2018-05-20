@@ -26,25 +26,25 @@ class Podium extends React.Component {
           {podium.length > 0 &&
             <ul>
               <li className="li-podium">
-                <Link to={`/students/${seconde.username}`}>
+                <Link className="link link__yellow" to={`/students/${seconde.username}`}>
                   {seconde.firstname} {seconde.lastname}
-                  <div className="p-second">
+                  <div className="p-second username">
                     {seconde[accessor]}
                   </div>
                 </Link>
               </li>
               <li className="li-podium">
-                <Link to={`/students/${first.username}`}>
+                <Link className="link link__yellow" to={`/students/${first.username}`}>
                   {first.firstname} {first.lastname}
-                  <div className="p-first">
+                  <div className="p-first username">
                     {first[accessor]}
                   </div>
                 </Link>
               </li>
               <li className="li-podium">
-                <Link to={`/students/${third.username}`}>
+                <Link className="link link__yellow" to={`/students/${third.username}`}>
                   {third.firstname} {third.lastname}
-                  <div className="p-third">
+                  <div className="p-third username">
                     {third[accessor]}
                   </div>
                 </Link>

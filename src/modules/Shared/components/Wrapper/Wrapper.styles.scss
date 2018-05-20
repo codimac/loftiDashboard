@@ -52,13 +52,6 @@
     }
   }
   .details-container {
-    &.inline {
-      display: inline-flex;
-      width: 100%;
-      background: red;
-      justify-content: center;
-      align-items: center;
-    }
     .details-li {
       font-size: 1.05rem;
       margin: 5px 0;

@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
 import Podium from '@modules/Shared/components/Podium/Podium.components';
 
-import './style';
-
 class PodiumStudients extends React.Component {
   static propTypes = {
     getPromoPodiumAbsences: Proptypes.func.isRequired,
@@ -63,9 +61,7 @@ class PodiumStudients extends React.Component {
     const podium = absencesPodium.slice(0, 3);
     return (
       <div className="podium-absences">
-        <h3> Le podium des meilleurs absents</h3>
         {this.renderPodium()}
-
       </div>
     );
   }

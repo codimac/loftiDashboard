@@ -39,7 +39,7 @@ export const updateAbsencesJustification = (absencesId, justified = true) => dis
       dispatch(actions.fetchAbsencesListSucceed(newData));
     })
     .catch(err => {
-      actions.updateAbsencesJustificationFailed(error)
+      actions.updateAbsencesJustificationFailed(error);
       toasterSvc.error('Erreur lors de la mise à jour de l\'absence');
     });
 };

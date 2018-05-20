@@ -109,7 +109,7 @@ class Details extends React.Component {
                 <FilterInput placeholder="Elève..." />
               </div>
               <div className="range">
-                <span>Notes : </span>
+                <span>Absences : </span>
                 <div className="slider">
                   <FilterRange />
                 </div>

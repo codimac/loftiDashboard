@@ -130,8 +130,8 @@ class Form extends React.Component {
             this.state.datas.map((data, id) => this.oneAbsence(data, id))
           }
           <div className="flex flex-inline justify-content-sb addButton">
-            <button className="button small" onClick={this.addAbsencesInput} >Ajouter une autre absences </button>
-            <button className="button small" type="submit" disabled={!this.state.validForm}>Enregistrer </button>
+            <button className="button small" onClick={this.addAbsencesInput}>Ajouter une absence</button>
+            <button className="button small" type="submit" disabled={!this.state.validForm}>Enregistrer</button>
           </div>
         </form>
       </React.Fragment>

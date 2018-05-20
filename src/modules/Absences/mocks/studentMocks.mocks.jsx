@@ -1,7 +1,7 @@
 import { randomDate } from '@Shared/helpers/date.helpers';
 import faker from 'faker';
 
-const createFakeAbsences = (number = 5 /* faker.random.number({min: 1, max: 12}) */) => {
+const createFakeAbsences = (number = faker.random.number({min: 1, max: 12})) => {
   const absences = Array(number);
   for (let i=0; i<number; i++) {
     absences[i] = {

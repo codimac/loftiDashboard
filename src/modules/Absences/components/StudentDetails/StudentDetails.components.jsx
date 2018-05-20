@@ -47,7 +47,7 @@ class StudentDetails extends React.Component {
           {
             absencesList.map(absence => (
               <li key={absence.id} className="details-li flex-inline align-items-center">
-                <h5 className="mr-2"><span>Date : </span>{absence.beginning}</h5>
+                <h5 className="mr-1"><span>Date : </span>{absence.beginning}</h5>
                 <button className="button button__switch" onClick={() => this.props.updateAbsencesJustification(absence.id, !absence.justified)}> {absence.justified ? justified : notJustified} </button>
               </li>
             ))
