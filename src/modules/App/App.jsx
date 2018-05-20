@@ -15,9 +15,7 @@ class App extends React.Component {
       <React.Fragment>
         <Switch>
           <Route exact path='/login' component={Login} />
-          <Route exact path='/404' component={Error} />
           <PrivateRoute path='/' allowed={['admin', 'student']} component={Home} />
-          <Redirect from='*' to='/404' />exact
         </Switch>
       </React.Fragment>
     );

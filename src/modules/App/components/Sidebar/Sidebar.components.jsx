@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Proptypes from 'prop-types';
+import { Link, NavLink } from 'react-router-dom';
 
 import ListPromos from '@Promos/containers/List.containers';
 
@@ -9,9 +10,11 @@ import { storageSvc } from '@services/storage.services';
 import { getPromotion } from '@Promos/reducers/details.reducers';
 import store from '@App/App.store';
 
-import './Sidebar.styles';
-
 class Sidebar extends React.Component {
+
+  static propTypes = {
+    promotionId: Proptypes.number
+  };
 
   constructor() {
     super();
@@ -35,20 +38,30 @@ class Sidebar extends React.Component {
     return (
       <React.Fragment>
         <div className="sidebar-section">
-          <h2><Link className="link link__sidebar__title" to='/promotions'>Promotions</Link></h2>
+          <h2 className="sidebar-section-title"><Link className="link link__white link__sidebar__title" to='/promotions'>Promotions</Link></h2>
           <ListPromos sidebar={true} />
         </div>
-        <div className="sidebar-section">
-          {
-            this.state.promotionId !== null &&
-              <React.Fragment>
-                <h2><Link to={`/promotions/${this.state.promotionId}/assignments`}>Lister les devoirs</Link></h2>
-                <h2><Link to={`/promotions/${this.state.promotionId}/assignments/add`}>Ajouter un devoir</Link></h2>
-                <h2><Link to={`/promotions/${this.state.promotionId}/absences`}>Consulter les absences</Link></h2>
-                {/* <h2><Link to={`/promotions/${this.state.promotionId}/absences/add`}>Consulter les absences</Link></h2> */}
-              </React.Fragment>
-          }
-        </div>
+        {
+          this.state.promotionId !== null &&
+          <React.Fragment>
+            <div className="sidebar-section">
+              <ul>
+                <li><NavLink exact className="link link__white link__sidebar  " activeClassName="active" to={`/promotions/${this.state.promotionId}/subjects`}>Lister les cours</NavLink></li>
+              </ul>
+            </div>
+            <div className="sidebar-section">
+              <ul>
+                <li><NavLink exact className="link link__white link__sidebar  " activeClassName="active" to={`/promotions/${this.state.promotionId}/assignments`}>Lister les devoirs</NavLink></li>
+                <li><NavLink exact className="link link__white link__sidebar" activeClassName="active" to={`/promotions/${this.state.promotionId}/assignments/add`}>Ajouter un devoir</NavLink></li>
+              </ul>
+            </div>
+            <div className="sidebar-section">
+              <ul>
+                <li><NavLink exact className="link link__white link__sidebar" activeClassName="active" to={`/promotions/${this.state.promotionId}/absences`}>Consulter les absences</NavLink></li>
+              </ul>
+            </div>
+          </React.Fragment>
+        }
       </React.Fragment>
     );
   }
@@ -64,7 +77,7 @@ class Sidebar extends React.Component {
 
   render() {
     return (
-      <nav className="flex flex-column justify-content-sb align-items-center sidebar">
+      <nav className="sidebar">
         <div>
           { permissionsSvc.isAdmin() &&
             this.renderAdmin()
@@ -74,7 +87,11 @@ class Sidebar extends React.Component {
           }
         </div>
         <div>
-          <button className="button button__white" onClick={this.disconnect}>Deco</button>
+          <div className="sidebar-section disconnect">
+            <ul>
+              <li className="link link__white link__sidebar link__disconnect" onClick={this.disconnect}>Déconnexion</li>
+            </ul>
+          </div>
         </div>
       </nav>
     );

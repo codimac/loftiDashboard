@@ -28,3 +28,5 @@ const promotionsDetailsReducer = (state = promotionsDetailsListInitialState, act
 export default promotionsDetailsReducer;
 
 export const getPromotion = state => state.promotionsDetails;
+
+export const getPromotionId = state => getPromotion(state).year;

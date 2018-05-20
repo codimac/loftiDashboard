@@ -3,9 +3,11 @@ const studentDetailsInitialState = {
   identity: {
     firstname: '',
     lastname: '',
-    username: ''
+    username: '',
+    td: 0
   },
-  grades: []
+  grades: [],
+  tempGrades: []
 };
 
 export default studentDetailsInitialState;

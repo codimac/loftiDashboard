@@ -7,4 +7,4 @@ const mapStateToProps = state => ({
   promotionId: getPromotion(state).year
 });
 
-export default connect(mapStateToProps, {})(Sidebar);
+export default connect(mapStateToProps, {}, null, {pure: false})(Sidebar);

@@ -5,7 +5,7 @@ import ReactTable from 'react-table';
 import { getPromotion } from '@Promos/reducers/details.reducers';
 
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
-import StudentDetails from '@Absences/containers/StudentDetails.containers';
+import Details from '@Absences/containers/Details.containers';
 import PodiumStudient from '@Absences/containers/PromoPodiumStudent.containers';
 import WeekGraph from '@Absences/containers/WeekGraph.containers';
 
@@ -98,7 +98,7 @@ class List extends React.Component {
             <section>
               {
                 this.state.selectedStudent===true &&
-                  <StudentDetails id={this.state.selectedStudent} student={this.state.student} onClose={this.closeStudent} />
+                  <Details id={this.state.selectedStudent} student={this.state.student} onClose={this.closeStudent} />
               }
               <PodiumStudient />
             </section>

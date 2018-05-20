@@ -70,6 +70,7 @@
   "globals": {
     "document": true,
     "navigator": true,
-    "window": true
+    "window": true,
+    "Number": true
   }
 }

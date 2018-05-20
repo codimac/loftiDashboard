@@ -1,1 +1,23 @@
 @import '~react-table/react-table.css';
+
+.icon-plus {
+  width: 20px;
+  height: 20px;
+  vertical-align: middle;
+  float: right;
+}
+
+.centered-col {
+  text-align: center;
+}
+
+.ReactTable {
+  .rt-th {
+    &.-sort-desc {
+      box-shadow: inset 0 -3px 0 0 $yellow !important;
+    }
+    &.-sort-asc {
+      box-shadow: inset 0 3px 0 0 $yellow !important;
+    }
+  }
+}

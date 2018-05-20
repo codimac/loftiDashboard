@@ -1,14 +1,50 @@
+$border-length: 60%;
+
 .sidebar {
-  background: $blue-1;
-  width: $sidebar-width;
-  height: 100%;
-  padding: 5% 0;
-  color: $white;
-  position: fixed;
-  left: 0;
-  top: 0;
+  background: $black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  & > div:last-child {
+    margin: 20px 0;
+    position: relative;
+  }
   .sidebar-section {
-    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1em;
+    padding: 20px 0;
+    position: relative;
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: $border-length;
+      left: (100%-$border-length)/2;
+      margin: 0 auto;
+      bottom: 0;
+      height: 1px;
+      background: rgba($white, 0.4);
+    }
+    &.disconnect {
+      &::before {
+        content: '';
+        position: absolute;
+        display: block;
+        width: $border-length;
+        left: (100%-$border-length)/2;
+        margin: 0 auto;
+        top: 0;
+        height: 1px;
+        background: rgba($white, 0.4);
+      }
+    }
+    .sidebar-section-title {
+      margin-bottom: 22px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
-

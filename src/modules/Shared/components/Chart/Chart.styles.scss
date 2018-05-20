@@ -1,0 +1,23 @@
+.chart-wrapper {
+  position: relative;
+  margin-top: 35px;
+  &:not(:last-child) {
+    padding-bottom: 30px;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 25%;
+      bottom: 0;
+      width: 50%;
+      height: 1px;
+      background: rgba($black, 0.4);
+    }
+  }
+  .chart-title {
+    font-weight: 600;
+    font-size: 1.1rem;
+    &::first-letter {
+      text-transform: capitalize;
+    }
+  }
+}

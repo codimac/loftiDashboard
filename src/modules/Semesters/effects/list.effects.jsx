@@ -13,7 +13,7 @@ export const getSemestersList = () => dispatch => {
     .catch(err => dispatch(actions.fetchSemestersListFailed(err)));
 };
 
-export const getSemesterForPromo = id => dispatch => {
+export const getSemestersForPromo = id => dispatch => {
   dispatch(actions.fetchSemestersList());
   Http.get('/always/true', requestSvc.generateOptions())
     .then(res => {

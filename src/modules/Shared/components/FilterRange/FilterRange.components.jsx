@@ -14,7 +14,6 @@ class FilterRange extends React.Component {
   };
 
   componentWillUnmount() {
-    console.log(this.props);
     this.props.resetFilter();
   }
 
@@ -22,6 +21,7 @@ class FilterRange extends React.Component {
     const { grades, onChange } = this.props;
     return (
       <InputRange
+        ariaControls="controls"
         minValue={0}
         maxValue={20}
         step={1}

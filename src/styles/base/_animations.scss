@@ -1,0 +1,57 @@
+.wave{
+  display:block;
+  position:absolute;
+  width:100%;
+  height:100%;
+  top:0;
+  left:0;
+  opacity:0.3;
+  z-index:0;
+}
+
+// wave for buttons
+.wave-buttons{
+  transform:scaleX(0) scaleY(10);
+  background: darken($yellow, 8%);
+  border-radius:4%;
+}
+
+@keyframes ripple-buttons{
+  0% {transform: scaleX(0);}
+  20%{transform: scaleX(1);opacity:0.2;}
+  100%{transform: scaleX(1);opacity:0;}
+}
+
+// wave for icons
+.wave-icons{
+  border-radius:50%;
+  transform:scale(0);
+  width:45px;
+  height:45px;
+  top:calc((100% - 45px) / 2);
+  left:calc((100% - 45px) / 2);
+  background-color:rgba(0, 0, 0, 1);
+}
+
+@keyframes ripple-icons{
+  0% {transform: scale(0);}
+  20%{transform: scale(1);opacity:0.05;}
+  100%{transform: scale(1);opacity:0;}
+}
+
+
+// shake effect
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-2px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-6px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(6px, 0, 0);
+  }
+}

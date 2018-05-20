@@ -5,7 +5,7 @@ import Form from '@Absences/containers/Form.containers';
 
 import './styles';
 
-class StudentDetails extends React.Component {
+class Details extends React.Component {
 
   static propTypes = {
     getAbsencesList: Proptypes.func.isRequired,
@@ -78,4 +78,4 @@ class StudentDetails extends React.Component {
 }
 
 
-export default StudentDetails;
+export default Details;

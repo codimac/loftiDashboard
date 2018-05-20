@@ -7,11 +7,11 @@ class FilterTd extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <FilterLink filter={types.SHOW_ALL}>Show all</FilterLink>
-        <FilterLink filter={types.SHOW_TD_1}>Show td1</FilterLink>
-        <FilterLink filter={types.SHOW_TD_2}>Show td2</FilterLink>
-      </React.Fragment>
+      <div>
+        <FilterLink filter={types.SHOW_ALL} className='active'>TOUT</FilterLink>
+        <FilterLink filter={types.SHOW_TD_1}>TD1</FilterLink>
+        <FilterLink filter={types.SHOW_TD_2}>TD2</FilterLink>
+      </div>
     );
   }
 

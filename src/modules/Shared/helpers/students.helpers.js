@@ -7,7 +7,7 @@ const createFakeStudents = (number = 25) => {
       id: i,
       firstname: `${faker.name.firstName()}`,
       lastname: `${faker.name.lastName()}`,
-      username: `${faker.internet.userName()}`,
+      username: `${faker.name.firstName()}`,
       td: +`${faker.random.number({min: 1, max: 2})}`,
       absences: +`${faker.random.number({min: 0, max: 30})}`,
       grades: +`${faker.random.number({min: 0, max: 20})}`

@@ -29,7 +29,7 @@ export const updateAbsencesJustification = (absencesId, justified = true) => dis
 
   Http.post('/always/true', data, requestSvc.generateOptions())
     .then(res => {
-      console.log('absences justification updated, id: ' + absencesId);
+      console.log(`absences justification updated id: ${absencesId}`);
       dispatch(actions.updateAbsencesJustificationSucceed(success));
       dispatch(actions.fetchAbsencesListSucceed(newData));
     })

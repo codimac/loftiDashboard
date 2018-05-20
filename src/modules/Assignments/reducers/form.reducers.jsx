@@ -5,19 +5,22 @@ const assignmentsFormReducer = (state = assignmentsFormInitialState, action) => 
 
   switch (action.type) {
 
-    case types.CREATE_ASSIGNMENTT_WITH_GRADES:
+    case types.CREATE_ASSIGNMENT_WITH_GRADES:
+    case types.EDIT_ASSIGNMENT_WITH_GRADES:
       return {
         ...state,
         ...action.payload
       };
 
-    case types.CREATE_ASSIGNMENTT_WITH_GRADES_SUCCESS:
+    case types.CREATE_ASSIGNMENT_WITH_GRADES_SUCCESS:
+    case types.EDIT_ASSIGNMENT_WITH_GRADES_SUCCESS:
       return {
         ...state,
         ...action.payload
       };
 
-    case types.CREATE_ASSIGNMENTT_WITH_GRADES_FAILURE:
+    case types.CREATE_ASSIGNMENT_WITH_GRADES_FAILURE:
+    case types.EDIT_ASSIGNMENT_WITH_GRADES_FAILURE:
       return state;
 
     default:

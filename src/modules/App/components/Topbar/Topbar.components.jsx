@@ -1,18 +1,17 @@
 import React from 'react';
 
 import Identity from '@App/containers/User.containers';
-import './Topbar.styles';
 
 class Topbar extends React.Component {
 
   render() {
     return (
-      <div className="topbar flex justify-content-sb align-items-center">
+      <section className="topbar">
+        <div></div>
         <div>
-          la partie de gauche
+          <Identity />
         </div>
-        <Identity />
-      </div>
+      </section>
     );
   }
 

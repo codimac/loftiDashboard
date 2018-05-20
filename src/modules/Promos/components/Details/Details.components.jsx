@@ -2,13 +2,18 @@ import React from 'react';
 import Proptypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import ReactTable from 'react-table';
-
+import { Bar } from 'react-chartjs-2';
 
 import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
 import FilterInput from '@Shared/containers/FilterInput.containers';
+import Wrapper from '@Shared/components/Wrapper/Wrapper.components';
+import Chart from '@Shared/components/Chart/Chart.components';
+
+import { average, arrayOf, maxInArray } from '@helpers/array.helpers';
+import { parsedData, formatData } from '@helpers/chart.helpers';
 
 import plus from '@images/icon-plus.png';
-import './styles';
+import './Details.styles';
 
 class DetailsPromotion extends React.Component {
 
@@ -26,6 +31,20 @@ class DetailsPromotion extends React.Component {
     }).isRequired,
   };
 
+  constructor() {
+    super();
+    this.state = {
+      grades: {
+        data: {},
+        options: {}
+      },
+      absences: {
+        data: {},
+        options: {}
+      }
+    };
+  }
+
   componentDidMount() {
     this.props.getPromotion(this.props.match.params.promotionId);
   }
@@ -34,6 +53,49 @@ class DetailsPromotion extends React.Component {
     if (this.props.match.params.promotionId !== nextProps.match.params.promotionId) {
       this.props.getPromotion(nextProps.match.params.promotionId);
     }
+    if (nextProps.promotion.length) {
+      this.formatChartData(nextProps.promotion);
+    }
+  }
+
+  formatChartData(students) {
+    // GRADES
+    const gradesLabels = ['0 - 5', '5 - 10', '10 - 15', '15 - 20'];
+    const gradesRawData = parsedData(gradesLabels, students, 'grades', (value) => (Math.floor(value / 5) > 3 ? 3 : Math.floor(value / 5)));
+    const gradesData = formatData(gradesLabels, gradesRawData);
+
+    const absencesLabels = ['0 - 5', '5 - 10', '10 - 15', '15 - 20', '20 - 25', '25 - 30'];
+    const absencesRawData = parsedData(absencesLabels, students, 'absences', (value) => (Math.floor(value / 5) > 5 ? 5 : Math.floor(value / 5)));
+    const absencesData = formatData(absencesLabels, absencesRawData);
+
+    const gradesOptions = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            stepSize: 2,
+            min: 0,
+            max: maxInArray(gradesRawData)+1
+          }
+        }],
+      }
+    };
+
+    const absencesOptions = {
+      scales: {
+        yAxes: [{
+          ticks: {
+            stepSize: 2,
+            min: 0,
+            max: maxInArray(absencesRawData) + 1
+          }
+        }],
+      }
+    };
+
+    this.setState({
+      grades: {data: gradesData, options: gradesOptions},
+      absences: {data: absencesData, options: absencesOptions}
+    });
   }
 
   render() {
@@ -44,40 +106,31 @@ class DetailsPromotion extends React.Component {
       },
       {Header: 'Nom', accessor: 'lastname'},
       {Header: 'Prénom', accessor: 'firstname'},
-      {Header: 'Absences', accessor: 'absences', width: 75, className: 'centered-col',
-        Cell: row => (
-          <React.Fragment>
-            {row.value}
-            <Link to={`/grades/${row.row.username}`}>
-              <img className="icon-plus" src={plus} alt="ajouter une note" />
-            </Link>
-          </React.Fragment>
-        )
+      {Header: 'Absences', accessor: 'absences', width: 85,
+        Cell: row => row.value
       },
-      {Header: 'Notes', accessor: 'grades', width: 75, className: 'centered-col',
-        Cell: row => (
-          <React.Fragment>
-            {row.value}
-            <Link to={`/grades/${row.row.username}`}>
-              <img className="icon-plus" src={plus} alt="ajouter une note" />
-            </Link>
-          </React.Fragment>
-        )
+      {Header: 'Moyenne', accessor: 'grades', width: 75,
+        Cell: row => row.value
       },
       {Header: 'Page', accessor: 'username', width: 50, className: 'centered-col',
-        Cell: row => (<span className='icon-access'><Link to={`/students/${row.value}`}> > </Link> </span>)}
+        Cell: row => (<span className='icon-access'><Link to={`/promotions/${this.props.match.params.promotionId}/students/${row.value}`}> > </Link> </span>)}
     ];
 
     const len = promotion.length;
     return (
-      <div className="promotions">
-        <h1>Détails d'une promo</h1>
-        <div className="flex flex-wrap-reverse justify-content-sb">
-          <section className="alig-items-start">
-            <FilterInput placeholder="Rechercher un étudiant" />
-            <FilterTd />
+      <React.Fragment>
+        <h1 className="page-title">Détails d'une promo</h1>
+        <div className="promotion-details flex justify-content-sb">
+          <Wrapper title="Liste des élèves" className="promotion__list">
+            <div className="filters">
+              <div className="students">
+                <FilterTd />
+                <FilterInput placeholder="Elève..." />
+              </div>
+            </div>
             <ReactTable
               defaultPageSize={len}
+              defaultSorted={[{id: 'lastname', desc: false}]}
               data={promotion}
               noDataText="Aucun élève trouvé."
               columns={columns}
@@ -86,19 +139,19 @@ class DetailsPromotion extends React.Component {
               resizable={false}
               pageSize={len}
             />
-          </section>
-
-          <section className="alig-items-start actions">
-            <h1>Les actions</h1>
-            <ul>
-              <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignments/add`} className="link link__black" >Ajouter un devoir</Link></li>
-              <li><Link to={`/promotions/${this.props.match.params.promotionId}/assignments`} className="link link__black">Lister les devoirs</Link></li>
-              <li><Link to={`/promotions/${this.props.match.params.promotionId}/absences`} className="link link__black" >Consulter les absences</Link></li>
-              <li><Link to={`/promotions/${this.props.match.params.promotionId}/addAbsences`} className="link link__black" >Ajouter une absence</Link></li>
-            </ul>
-          </section>
+          </Wrapper>
+          <Wrapper title="Résumé de la promotion" className="promotion__average">
+            <p className="average">Moyenne de la classe : <span>{average(promotion, 'grades')}</span></p>
+            <p className="average">Moyenne des absences : <span>{average(promotion, 'absences')}</span></p>
+            <Chart title="moyenne des élèves par TD">
+              <Bar data={this.state.grades.data} options={this.state.grades.options} height={200} />
+            </Chart>
+            <Chart title="moyenne des absences">
+              <Bar data={this.state.absences.data} options={this.state.absences.options} height={200} />
+            </Chart>
+          </Wrapper>
         </div>
-      </div>
+      </React.Fragment>
     );
   }
 

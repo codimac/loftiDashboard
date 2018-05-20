@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600');
+@import url('https://fonts.googleapis.com/css?family=Titillium+Web:400,600,700');
 
 @import 'vendors/_reset';
 
@@ -11,5 +11,7 @@
 @import 'components/_sidebar';
 @import 'components/_dataTable';
 @import 'components/_rangeInput';
-
-@import 'table/_table.scss'
+@import 'components/_topbar';
+@import 'components/_wrapper';
+@import 'components/_toaster';
+@import 'components/_assignments';
