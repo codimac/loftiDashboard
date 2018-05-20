@@ -1,8 +1,16 @@
 import React from 'react';
 import { defaults, Bar } from 'react-chartjs-2';
+import Proptypes from 'prop-types';
 
 class WeekGraph extends React.Component {
+  static propTypes = {
+    getAbsencesWeekGraphList: Proptypes.func.isRequired,
+    graph: Proptypes.arrayOf(Proptypes.shape({
+      day: Proptypes.string.isRequired,
+      absences: Proptypes.number.isRequired,
+    })).isRequired,
 
+  };
   componentDidMount() {
     this.props.getAbsencesWeekGraphList();
   }
