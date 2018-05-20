@@ -6,6 +6,7 @@ import { success, error } from '@Absences/mocks/form.mocks';
 import store from '@App/App.store';
 
 export const getAbsencesList = (id) => dispatch => {
+  console.log('mocks', mocks);
   dispatch(actions.fetchAbsencesList());
   Http.get('/always/true', requestSvc.generateOptions())
     .then(res => {

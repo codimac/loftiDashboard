@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Details from '@Absences/components/Details/Details.components';
+import studentDetails from '@Absences/components/studentDetails/studentDetails.components';
 
 import { getAbsencesList } from '@Absences/reducers/studentDetails.reducers';
 
@@ -10,4 +10,4 @@ const mapStateToProps = state => getAbsencesList(state);
 
 const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Details);
+export default connect(mapStateToProps, mapDispatchToProps)(studentDetails);

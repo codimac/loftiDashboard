@@ -113,7 +113,8 @@ class DetailsPromotion extends React.Component {
         Cell: row => row.value
       },
       {Header: 'Page', accessor: 'username', width: 50, className: 'centered-col',
-        Cell: row => (<span className='icon-access'><Link to={`/promotions/${this.props.match.params.promotionId}/students/${row.value}`}> > </Link> </span>)}
+        Cell: row => <Link to={`/promotions/${this.props.match.params.promotionId}/students/${row.value}`} className="link link__yellow"> > </Link>
+      }
     ];
 
     const len = promotion.length;
