@@ -5,6 +5,7 @@ class Form extends React.Component {
   static propTypes = {
     createAbsences: Proptypes.func.isRequired
   }
+
   constructor() {
     super();
     this.state = {
@@ -16,13 +17,13 @@ class Form extends React.Component {
 
   oneAbsence(data, key) {
     return (
-      <React.Fragment>
+      <div key={key}>
         <input type="date" value={data.date} name="date" onChange={(ev) => this.handleDate(ev, key)} />
         <label htmlFor="justified"> Justification
           <input id="justified" value={data.justified} type="checkbox" name="justified" onChange={(ev) => this.handleJustified(ev, key)} />
         </label>
         <button onClick={(ev) => this.deleteAbsencesInput(ev, key)}>X</button>
-      </React.Fragment>
+      </div>
 
     );
   }
@@ -86,7 +87,7 @@ class Form extends React.Component {
         <h3>Ajouter une absences </h3>
         <form onSubmit={this.submit} >
           {
-            this.state.datas.map((data, id) => <div> {this.oneAbsence(data, id)} </div>)
+            this.state.datas.map((data, id) => this.oneAbsence(data, id))
           }
           <button onClick={this.addAbsencesInput} >Ajouter une autre absences </button>
           <button type="submit" disabled={!this.state.validForm}>Enregistrer </button>

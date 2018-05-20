@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import Form from '@Absences/components/Form/Form.components';
 
-import { getAbsencesForm } from '@Absences/reducers/Form.reducers';
+import { getAbsencesForm } from '@Absences/reducers/form.reducers';
 
 import * as actions from '@Absences/effects/form.effects';
 
