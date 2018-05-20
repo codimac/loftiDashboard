@@ -3,7 +3,8 @@ const studentDetailsInitialState = {
   identity: {
     firstname: '',
     lastname: '',
-    username: ''
+    username: '',
+    td: 0
   },
   grades: []
 };

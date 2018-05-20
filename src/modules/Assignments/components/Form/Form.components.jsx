@@ -95,7 +95,7 @@ class Form extends React.Component {
     if (this.state.isEditing) {
       store.dispatch(assignmentsDetailsEffects.getAssignment(this.props.match.params.assignmentId));
     }
-    store.dispatch(semestersListEffects.getSemesterForPromo(this.props.match.params.promotionId));
+    store.dispatch(semestersListEffects.getSemestersForPromo(this.props.match.params.promotionId));
   }
 
   componentWillReceiveProps(nextProps) {
@@ -206,7 +206,7 @@ class Form extends React.Component {
 
   validForm = () => {
     const { assignment, grades } = this.state;
-    const subjectValues = Object.values(assignment);
+    const subjectValues = Object.values(assignment || {});
     const gradesValues = Object.values(grades || {});
     this.setState({
       validForm: subjectValues.length === 3 && subjectValues.every(value => value.length !== 0) &&
@@ -247,7 +247,7 @@ class Form extends React.Component {
     ];
 
     return (
-      <div>
+      <React.Fragment>
         {
           this.state.isEditing
             ? (<h1 className="page-title">Edition du devoir : {values.assignment.name}</h1>)
@@ -282,6 +282,7 @@ class Form extends React.Component {
             }
           </Wrapper>
 
+
           {
             this.state.selectedSubject &&
               <Wrapper title="Les notes" className="grades">
@@ -301,7 +302,7 @@ class Form extends React.Component {
           }
         </div>
         <ToastContainer />
-      </div>
+      </React.Fragment>
     );
   }
 

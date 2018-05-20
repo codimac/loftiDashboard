@@ -30,10 +30,7 @@ class Router extends React.Component {
 
         <PrivateRoute path='/subjects' allowed={['admin']} component={ListUe} />
 
-        <PrivateRoute path='/students/:username' allowed={['admin']} component={StudentsDetails} />
-
-        <PrivateRoute path='/grades' allowed={['admin']} component={GradesList} />
-
+        <PrivateRoute exact path='/promotions/:promotionId/students/:username' allowed={['admin']} component={StudentsDetails} />
 
         <PrivateRoute exact path='/promotions/:promotionId/assignments/:assignmentId/edit' allowed={['admin']} component={AssignmentsForm} />
         <PrivateRoute exact path='/promotions/:promotionId/assignments/add' allowed={['admin']} component={AssignmentsForm} />

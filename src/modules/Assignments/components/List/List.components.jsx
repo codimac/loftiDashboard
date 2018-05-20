@@ -8,8 +8,6 @@ import store from '@App/App.store';
 import { getPromotionId } from '@Promos/reducers/details.reducers';
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
 
-import './List.styles';
-
 class List extends React.Component {
 
   static propTypes = {
@@ -53,7 +51,7 @@ class List extends React.Component {
     return (
       <React.Fragment>
         <h1 className="page-title">Liste des devoirs de la promo {this.props.match.params.promotionId}</h1>
-        <div className="flex justify-content-sb assignments-list">
+        <div className="flex justify-content-sb assignments-container">
           {
             assignments.map(semester => (
               <Wrapper key={semester.id} title={`Devoirs du Semestre ${semester.id}`} className={`semester semester-${semester.id}`}>

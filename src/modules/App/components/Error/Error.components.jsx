@@ -9,7 +9,7 @@ import './Error.styles';
 export class Error extends React.Component {
 
   goToHome = ev => {
-    history.push('/');
+    history.push('/promotions/2020');
   }
 
   render() {

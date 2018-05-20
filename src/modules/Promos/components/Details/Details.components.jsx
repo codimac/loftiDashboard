@@ -127,7 +127,7 @@ class DetailsPromotion extends React.Component {
         )
       },
       {Header: 'Page', accessor: 'username', width: 50, className: 'centered-col',
-        Cell: row => (<span className='icon-access'><Link to={`/students/${row.value}`}> > </Link> </span>)}
+        Cell: row => (<span className='icon-access'><Link to={`/promotions/${this.props.match.params.promotionId}/students/${row.value}`}> > </Link> </span>)}
     ];
 
     const len = promotion.length;
