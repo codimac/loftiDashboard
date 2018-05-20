@@ -60,7 +60,7 @@ class List extends React.Component {
 
   render() {
     const { promotion } = this.props;
-    const year = this.props.match.params.promotionId; // à améliorer
+    const year = this.props.match.params.promotionId;
     const columns = [
       {Header: 'Nom', accessor: 'lastname'},
       {Header: 'Prénom', accessor: 'firstname'},
@@ -100,7 +100,7 @@ class List extends React.Component {
                 this.state.selectedStudent===true &&
                   <Details id={this.state.selectedStudent} student={this.state.student} onClose={this.closeStudent} />
               }
-              <PodiumStudient />
+              <PodiumStudient year={year} />
             </section>
             <section className='graph-high'>
               <h3>Les jours mal aimés</h3>

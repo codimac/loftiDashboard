@@ -7,7 +7,6 @@ export const getPromoPodiumAbsences = (id) => dispatch => {
   dispatch(actions.fetchPromoAbsencesPodium());
   Http.get('/students/absences/2019', requestSvc.generateOptions())
     .then(res => {
-      console.log(res);
       dispatch(actions.fetchPromoAbsencesPodiumSucceed(res.data));
       dispatch(actions.fetchPromoAbsencesPodium(false));
     })

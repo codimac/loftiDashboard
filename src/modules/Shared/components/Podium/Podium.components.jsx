@@ -7,7 +7,7 @@ import './styles';
 class Podium extends React.Component {
   static propTypes = {
     podium: Proptypes.arrayOf(Proptypes.shape({
-      id: Proptypes.number.isRequired,
+      user_id: Proptypes.number.isRequired,
       firstname: Proptypes.string.isRequired,
       lastname: Proptypes.string.isRequired,
       username: Proptypes.string.isRequired
@@ -26,7 +26,7 @@ class Podium extends React.Component {
           {podium.length > 0 &&
             <ul>
               <li className="li-podium">
-                <Link to={`/students/${seconde.username}`}>
+                <Link to={`/promotions/${this.props.year}/students/${seconde.username}`}>
                   {seconde.firstname} {seconde.lastname}
                   <div className="p-second">
                     {seconde[accessor]}
@@ -34,7 +34,7 @@ class Podium extends React.Component {
                 </Link>
               </li>
               <li className="li-podium">
-                <Link to={`/students/${first.username}`}>
+                <Link to={`/promotions/${this.props.year}/students/${first.username}`}>
                   {first.firstname} {first.lastname}
                   <div className="p-first">
                     {first[accessor]}
@@ -42,7 +42,7 @@ class Podium extends React.Component {
                 </Link>
               </li>
               <li className="li-podium">
-                <Link to={`/students/${third.username}`}>
+                <Link to={`/promotions/${this.props.year}/students/${third.username}`}>
                   {third.firstname} {third.lastname}
                   <div className="p-third">
                     {third[accessor]}
