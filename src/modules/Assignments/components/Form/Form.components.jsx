@@ -35,17 +35,16 @@ class Form extends React.Component {
     semesters: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       label: Proptypes.string.isRequired
-    })).isRequired,
+    })),
     ues: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       name: Proptypes.string.isRequired,
-      description: Proptypes.string.isRequired
-    })).isRequired,
+    })),
     subjects: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       name: Proptypes.string.isRequired,
       description: Proptypes.string.isRequired
-    })).isRequired,
+    })),
     assignment: Proptypes.shape({
       promotionYear: Proptypes.number,
       semesterId: Proptypes.number,
@@ -262,8 +261,8 @@ class Form extends React.Component {
                 : (<SelectInput items={this.parsedSemesters(semesters)} placeholder='Sélectionner un semestre' selected={0} className="full-size" onChange={this.selectSemester} required />)
             }
             {
-              this.state.selectedSemester &&
-                <SelectInput items={this.parsedItems(ues)} placeholder='Sélectionner une UE' selected={values.ueId} onChange={this.selectUE} className="mt-1 full-size" required />
+              this.state.selectedSemester && ues[0] &&
+                <SelectInput items={this.parsedItems(ues[0].ues)} placeholder='Sélectionner une UE' selected={values.ueId} onChange={this.selectUE} className="mt-1 full-size" required />
             }
             {
               this.state.selectedUE &&

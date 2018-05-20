@@ -1,6 +1,13 @@
 .student-details {
-  .student-details__identity {
+  .left-side {
     width: 29%;
+    height: 100%;
+    .student-details__identity {
+      width: 100%;
+    }
+    .student-details-cchart {
+      width: 100%;
+    }
   }
   .student-details__assignments {
     width: 69%;

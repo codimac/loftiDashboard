@@ -106,25 +106,11 @@ class DetailsPromotion extends React.Component {
       },
       {Header: 'Nom', accessor: 'lastname'},
       {Header: 'Prénom', accessor: 'firstname'},
-      {Header: 'Absences', accessor: 'absences', width: 75, className: 'centered-col',
-        Cell: row => (
-          <React.Fragment>
-            {row.value}
-            <Link to={`/grades/${row.row.username}`}>
-              <img className="icon-plus" src={plus} alt="ajouter une note" />
-            </Link>
-          </React.Fragment>
-        )
+      {Header: 'Absences', accessor: 'absences', width: 85,
+        Cell: row => row.value
       },
-      {Header: 'Notes', accessor: 'grades', width: 75, className: 'centered-col',
-        Cell: row => (
-          <React.Fragment>
-            {row.value}
-            <Link to={`/grades/${row.row.username}`}>
-              <img className="icon-plus" src={plus} alt="ajouter une note" />
-            </Link>
-          </React.Fragment>
-        )
+      {Header: 'Moyenne', accessor: 'grades', width: 75,
+        Cell: row => row.value
       },
       {Header: 'Page', accessor: 'username', width: 50, className: 'centered-col',
         Cell: row => (<span className='icon-access'><Link to={`/promotions/${this.props.match.params.promotionId}/students/${row.value}`}> > </Link> </span>)}

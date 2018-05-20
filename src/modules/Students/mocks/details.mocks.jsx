@@ -14,6 +14,7 @@ export default {
         {
           id: 1,
           name: 'UE1',
+          average: 11.13,
           subjects: [
             {
               id: 1,
@@ -51,8 +52,36 @@ export default {
           ]
         },
         {
+          id: 2,
+          name: 'UE2',
+          average: 17,
+          subjects: [
+            {
+              id: 3,
+              name: 'Programmation Web',
+              assignments: [
+                {
+                  id: 8,
+                  name: 'Dashboard',
+                  description: 'Faire un dashboard',
+                  coefficient: 2,
+                  grade: 18
+                },
+                {
+                  id: 89,
+                  name: 'TD',
+                  description: 'TD noté',
+                  coefficient: 1,
+                  grade: 15
+                }
+              ]
+            }
+          ]
+        },
+        {
           id: 3,
           name: 'UE3',
+          average: 13,
           subjects: [
             {
               id: 3,
@@ -78,6 +107,7 @@ export default {
         {
           id: 5,
           name: 'UE5',
+          average: 16.50,
           subjects: [
             {
               id: 10,
@@ -104,6 +134,7 @@ export default {
         {
           id: 6,
           name: 'UE6',
+          average: 13.00,
           subjects: [
             {
               id: 78,
@@ -123,6 +154,7 @@ export default {
         {
           id: 7,
           name: 'UE7',
+          average: 15.00,
           subjects: [
             {
               id: 45,
