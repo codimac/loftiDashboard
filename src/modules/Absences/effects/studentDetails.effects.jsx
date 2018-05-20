@@ -6,10 +6,11 @@ import { success, error } from '@Absences/mocks/form.mocks';
 import store from '@App/App.store';
 
 export const getAbsencesList = (id) => dispatch => {
+  console.log(id);
   dispatch(actions.fetchAbsencesList());
-  Http.get('/always/true', requestSvc.generateOptions())
+  Http.get(`/abs/student/${id}`, requestSvc.generateOptions())
     .then(res => {
-      dispatch(actions.fetchAbsencesListSucceed(mocks));
+      dispatch(actions.fetchAbsencesListSucceed(res.data));
       dispatch(actions.fetchAbsencesList(false));
     })
     .catch(err => dispatch(actions.fetchAbsencesListFailed(err)));

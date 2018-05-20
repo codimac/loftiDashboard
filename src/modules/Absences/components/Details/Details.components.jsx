@@ -30,7 +30,13 @@ class Details extends React.Component {
   }
 
   componentDidMount() {
-    this.props.getAbsencesList();
+    this.props.getAbsencesList(this.props.student.id);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.student.id !== this.props.student.id) {
+      this.props.getAbsencesList(nextProps.student.id);
+    }
   }
 
   /**
@@ -46,8 +52,7 @@ class Details extends React.Component {
     const justified = '\u2714';
     const notJustified = '\u2716';
     const columns = [
-      {Header: 'date ', accessor: 'beginning', className: 'centered-col'},
-      // {Header: 'fin', accessor: 'end'},
+      {Header: 'date ', accessor: 'date', className: 'centered-col'},
       {Header: 'justifiée', accessor: 'justified', width: 75,
         className: 'centered-col',
         Cell: row => (row.value ? <button onClick={() => this.props.updateAbsencesJustification(row.original.id, false)}> {justified} </button> : <button onClick={() => this.props.updateAbsencesJustification(row.original.id)}> {notJustified} </button>)},
