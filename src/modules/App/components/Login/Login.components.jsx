@@ -26,7 +26,7 @@ class Login extends React.Component {
 
   componentWillMount() {
     if (authSvc.isAuth()) {
-      history.push('/');
+      history.push('/promotions/2020');
     }
   }
 

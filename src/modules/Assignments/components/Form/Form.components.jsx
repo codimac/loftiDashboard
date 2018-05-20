@@ -3,6 +3,7 @@ import Proptypes from 'prop-types';
 import { connect } from 'react-redux';
 import ReactTable from 'react-table';
 import { ToastContainer } from 'react-toastify';
+import { Line } from 'react-chartjs-2';
 
 import store from '@App/App.store';
 import { convertArrayToObjet } from '@helpers/array.helpers';
@@ -17,6 +18,7 @@ import SelectInput from '@Shared/components/SelectInput/SelectInput.components';
 import Input from '@Shared/components/Input/Input.components';
 import Textarea from '@Shared/components/Textarea/Textarea.components';
 import Wrapper from '@Shared/components/Wrapper/Wrapper.components';
+import Chart from '@Shared/components/Chart/Chart.components';
 
 import './Form.styles';
 
@@ -75,7 +77,9 @@ class Form extends React.Component {
       selectedSubject: null,
       validForm: false,
       assignment: null,
-      grades: null
+      grades: null,
+      chartData: {},
+      chartOptions: {}
     };
     this.state = this.initialState;
   }

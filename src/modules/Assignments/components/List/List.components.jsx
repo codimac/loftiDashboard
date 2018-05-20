@@ -69,7 +69,7 @@ class List extends React.Component {
                               subject.assignments.map(assignment => (
                                 <ul key={assignment.id} className="assignment-list">
                                   <li className="assignment">
-                                    <Link to={`assignments/${assignment.id}`} className="link link__black">{assignment.name}</Link>
+                                    <Link to={`/promotions/${this.props.match.params.promotionId}/assignments/${assignment.id}`} className="link link__black">{assignment.name}</Link>
                                   </li>
                                 </ul>
                               ))
@@ -83,29 +83,6 @@ class List extends React.Component {
               </Wrapper>
             ))
           }
-          {/* {
-            assignments.map(ue => (
-              <section className='ue' key={ue.id}>
-                <h1>{ue.id} - {ue.name}</h1>
-                {
-                  ue.subjects.map(subject => (
-                    <article className='subject' key={subject.id}>
-                      <h2>Matière: {subject.name}</h2>
-                      {
-                        subject.assignments.map(assignment => (
-                          <ul key={assignment.id}>
-                            <li className='link link__black'>
-                              {assignment.name}
-                            </li>
-                          </ul>
-                        ))
-                      }
-                    </article>
-                  ))
-                }
-              </section>
-            ))
-          } */}
         </div>
       </React.Fragment>
     );

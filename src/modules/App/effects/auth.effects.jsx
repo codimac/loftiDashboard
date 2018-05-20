@@ -13,7 +13,7 @@ export const signin = (username, password) => dispatch => {
       dispatch(actions.fetchAuthSucceed(token));
       dispatch(actions.fetchAuth(false));
       storageSvc.setItem('token', token);
-      history.push('/');
+      history.push('/promotions/2020');
     })
     .catch(err => {
       dispatch(actions.fetchAuthFailed(err));
