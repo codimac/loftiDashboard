@@ -13,7 +13,7 @@ export const getAbsencesList = (id) => dispatch => {
       dispatch(actions.fetchAbsencesListSucceed(res.data));
       dispatch(actions.fetchAbsencesList(false));
     })
-    .catch(err => dispatch(actions.fetchAbsencesListFailed(err)));
+    .catch(err => dispatch(actions.fetchAbsencesListFailed(err.response.data.error)));
 };
 
 export const updateAbsencesJustification = (absencesId, justified = true) => dispatch => {

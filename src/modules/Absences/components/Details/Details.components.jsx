@@ -22,6 +22,7 @@ class Details extends React.Component {
       firstname: Proptypes.string.isRequired,
       lastname: Proptypes.string.isRequired,
     }).isRequired,
+    error: Proptypes.string.isRequired,
   };
 
   constructor() {
@@ -48,6 +49,7 @@ class Details extends React.Component {
 
   render() {
     const { student } = this.props;
+
     const {absencesList} = this.props;
     const justified = '\u2714';
     const notJustified = '\u2716';
@@ -64,7 +66,7 @@ class Details extends React.Component {
         <section className='alig-items-start'>
           <ReactTable
             defaultPageSize={len}
-            data={absencesList}
+            data={this.props.error ? [] : absencesList}
             noDataText='Aucune absence trouvé.'
             columns={columns}
             showPagination={false}

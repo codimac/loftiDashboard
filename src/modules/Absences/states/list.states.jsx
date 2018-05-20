@@ -1,6 +1,7 @@
 const absencesListInitialState = {
   isFetching: false,
-  absencesList: []
+  absencesList: [],
+  error: null
 };
 
 export default absencesListInitialState;
