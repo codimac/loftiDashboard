@@ -7,7 +7,6 @@ import './styles';
 
 class StudentDetails extends React.Component {
 
-
   static propTypes = {
     getAbsencesList: Proptypes.func.isRequired,
     updateAbsencesJustification: Proptypes.func.isRequired,
@@ -34,6 +33,9 @@ class StudentDetails extends React.Component {
     this.props.getAbsencesList();
   }
 
+  /**
+   * tell the parent component to close this panel
+   */
   close() {
     this.props.onClose();
   }

@@ -3,7 +3,12 @@ import Proptypes from 'prop-types';
 
 class Form extends React.Component {
   static propTypes = {
-    createAbsences: Proptypes.func.isRequired
+    createAbsences: Proptypes.func.isRequired,
+    student: Proptypes.shape({
+      id: Proptypes.number.isRequired,
+      firstname: Proptypes.string.isRequired,
+      lastname: Proptypes.string.isRequired,
+    }).isRequired,
   }
 
   constructor() {
@@ -15,6 +20,11 @@ class Form extends React.Component {
     this.deleteAbsencesInput = this.deleteAbsencesInput.bind(this);
   }
 
+  /**
+   * render one row of input for one absence
+   * @param {object} data row data
+   * @param {int} key key of the row
+   */
   oneAbsence(data, key) {
     return (
       <div key={key}>
@@ -24,10 +34,14 @@ class Form extends React.Component {
         </label>
         <button onClick={(ev) => this.deleteAbsencesInput(ev, key)}>X</button>
       </div>
-
     );
   }
 
+  /**
+   * on change handler for date
+   * @param {object} ev event object
+   * @param {int} key key of the row being modified
+   */
   handleDate(ev, key) {
     const newDatas = this.state.datas.map((data, id) => {
       if (key !== id) {
@@ -38,6 +52,11 @@ class Form extends React.Component {
     this.setState({datas: newDatas}, () => this.validForm());
   }
 
+  /**
+   * on change handler for justified
+   * @param {object} ev event object
+   * @param {int} key key of the row being modified
+   */
   handleJustified(ev, key) {
     const newDatas = this.state.datas.map((data, id) => {
       if (key !== id) {
@@ -48,6 +67,10 @@ class Form extends React.Component {
     this.setState({datas: newDatas}, () => this.validForm());
   }
 
+  /**
+   * add an input dynamically to the form
+   * @param {object} ev event object
+   */
   addAbsencesInput(ev) {
     ev.preventDefault();
     this.setState({
@@ -56,6 +79,11 @@ class Form extends React.Component {
     () => this.validForm());
   }
 
+  /**
+   * delete an input
+   * @param {object} ev event object
+   * @param {int} key key of the row being deleted
+   */
   deleteAbsencesInput(ev, key) {
     ev.preventDefault();
     if (this.state.datas.length > 0) {
@@ -65,6 +93,9 @@ class Form extends React.Component {
     }
   }
 
+  /**
+   * validate conformity of the datas
+   */
   validForm() {
     const {datas} = this.state;
     const error = datas.every(value => value.date.length !== 0);
@@ -77,7 +108,11 @@ class Form extends React.Component {
     ev.preventDefault();
     this.validForm();
     if (this.state.validForm) {
-      this.props.createAbsences(this.state.datas);
+      const {student} = this.props;
+      const {datas} = this.state;
+      const datasToSend = { ...student, absences: datas};
+      console.log(datasToSend);
+      this.props.createAbsences(datasToSend);
     }
   }
 

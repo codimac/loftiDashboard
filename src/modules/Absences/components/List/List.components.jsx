@@ -41,11 +41,19 @@ class List extends React.Component {
     store.dispatch(promotionsDetailsEffects.getPromotion(this.props.match.params.promotionId));
   }
 
+  /**
+   * allow the opening of the student detail
+   * @param {object} event event object
+   * @param {object} row the row of the table data
+   */
   getStudentDetails(event, row) {
     const {firstname, lastname, id} = row;
     this.setState({selectedStudent: true, student: {firstname, lastname, id}});
   }
 
+  /**
+   * close the student details panel
+   */
   closeStudent() {
     this.setState({selectedStudent: false, student: null});
   }
