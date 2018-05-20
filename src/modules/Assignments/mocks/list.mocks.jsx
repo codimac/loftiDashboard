@@ -69,18 +69,18 @@ export default [
         subjects: [
           {
             id: 10,
-            name: 'Maths',
+            name: 'Synthèse de l\'image',
             assignments: [
               {
                 id: 17,
-                name: 'DM de maths',
-                description: 'Des probas',
+                name: 'Imacman',
+                description: 'Faire un pacman en OpenGL3',
                 coefficient: 1
               },
               {
                 id: 22,
-                name: 'Partiel final',
-                description: 'Partiel final',
+                name: 'Arkanopong',
+                description: 'Un arkanopong',
                 coefficient: 3
               }
             ]
@@ -93,12 +93,12 @@ export default [
         subjects: [
           {
             id: 78,
-            name: 'Anglais',
+            name: 'Arts',
             assignments: [
               {
                 id: 31,
-                name: 'Devoir partiel',
-                description: 'TOEIC',
+                name: 'Performance artistique',
+                description: 'Il faut faire une perforamnce, et la présenter',
                 coefficient: 2
               }
             ]
@@ -111,12 +111,12 @@ export default [
         subjects: [
           {
             id: 45,
-            name: 'Anglais',
+            name: 'Techniques',
             assignments: [
               {
                 id: 34,
-                name: 'Devoir partiel',
-                description: 'TOEIC',
+                name: 'Web',
+                description: 'Dashboard en React',
                 coefficient: 2
               }
             ]
