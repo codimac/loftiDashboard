@@ -21,6 +21,6 @@ export const average = (grades, key) => {
 export const averageWithCoeff = (grades, key) => {
   const res = parseFloat(grades.reduce((acc, value) => acc + value[key]*value.coefficient, 0) / sum(grades, 'coefficient'));
   return res !== 'NaN' ? res : '__';
-}
+};
 
 export const maxInArray = data => Math.max(...data.map(array => Math.max(...array.data)));

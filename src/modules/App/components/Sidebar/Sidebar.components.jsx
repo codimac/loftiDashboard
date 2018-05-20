@@ -46,6 +46,11 @@ class Sidebar extends React.Component {
           <React.Fragment>
             <div className="sidebar-section">
               <ul>
+                <li><NavLink exact className="link link__white link__sidebar  " activeClassName="active" to={`/promotions/${this.state.promotionId}/subjects`}>Lister les cours</NavLink></li>
+              </ul>
+            </div>
+            <div className="sidebar-section">
+              <ul>
                 <li><NavLink exact className="link link__white link__sidebar  " activeClassName="active" to={`/promotions/${this.state.promotionId}/assignments`}>Lister les devoirs</NavLink></li>
                 <li><NavLink exact className="link link__white link__sidebar" activeClassName="active" to={`/promotions/${this.state.promotionId}/assignments/add`}>Ajouter un devoir</NavLink></li>
               </ul>
