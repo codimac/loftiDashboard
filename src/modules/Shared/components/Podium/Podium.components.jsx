@@ -12,7 +12,8 @@ class Podium extends React.Component {
       lastname: Proptypes.string.isRequired,
       username: Proptypes.string.isRequired
     })).isRequired,
-    accessor: Proptypes.string.isRequired
+    accessor: Proptypes.string.isRequired,
+    year: Proptypes.number
   };
   render() {
     const {podium} = this.props;

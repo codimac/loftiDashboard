@@ -14,7 +14,7 @@ class StudentDetails extends React.Component {
     absencesList: Proptypes.arrayOf(Proptypes.shape({
       absence_id: Proptypes.number.isRequired,
       date: Proptypes.string.isRequired,
-      justified: Proptypes.number.isRequired,
+      justified: Proptypes.oneOfType([Proptypes.bool, Proptypes.number]),
       student_id: Proptypes.number.isRequired,
       username: Proptypes.string.isRequired
     })).isRequired,
@@ -45,10 +45,8 @@ class StudentDetails extends React.Component {
   render() {
     const { student } = this.props;
     const { absencesList } = this.props;
-    const justified = '\u2714';
-    const notJustified = '\u2716';
-
-    console.log(absencesList);
+    const justifiedIcon = '\u2714';
+    const notJustifiedIcon = '\u2716';
 
     return (
       <React.Fragment>
@@ -57,7 +55,7 @@ class StudentDetails extends React.Component {
             absencesList.map(absence => (
               <li key={absence.absence_id} className="details-li flex-inline align-items-center">
                 <h5 className="mr-1"><span>Date : </span>{absence.date}</h5>
-                <button className="button button__switch" onClick={() => this.props.updateAbsencesJustification(absence.id, !absence.justified)}> {absence.justified ? justified : notJustified} </button>
+                <button className="button button__switch" onClick={() => this.props.updateAbsencesJustification(absence.id, !absence.justified)}> {absence.justified ? justifiedIcon : notJustifiedIcon} </button>
               </li>
             ))
           }

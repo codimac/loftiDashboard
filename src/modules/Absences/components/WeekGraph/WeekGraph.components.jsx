@@ -30,13 +30,22 @@ class WeekGraph extends React.Component {
         }
       ]
     };
+
     return (
       <React.Fragment>
         <Bar
           data={data}
           height={500}
           options={{
-            maintainAspectRatio: false
+            maintainAspectRatio: false,
+            scales: {
+              yAxes: [{
+                ticks: {
+                  min: 0,
+                  max: Math.max(...data.datasets[0].data)+1
+                }
+              }]
+            }
           }}
         />
       </React.Fragment>

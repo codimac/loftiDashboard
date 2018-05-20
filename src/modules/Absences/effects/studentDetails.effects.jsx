@@ -10,14 +10,16 @@ import { requestSvc } from '@services/request.services';
 import { toasterSvc } from '@services/toaster.service';
 
 export const getAbsencesList = (id) => dispatch => {
-  console.log(id);
   dispatch(actions.fetchAbsencesList());
-  Http.get(`/abs/student/${id}`, requestSvc.generateOptions())
+  Http.get(`/abs/student/${+id}`, requestSvc.generateOptions())
     .then(res => {
       dispatch(actions.fetchAbsencesListSucceed(res.data));
       dispatch(actions.fetchAbsencesList(false));
     })
-    .catch(err => dispatch(actions.fetchAbsencesListFailed(err.response.data.error)));
+    .catch(err => {
+      toasterSvc.error('L\'élève n\'a pas d\'absence');
+      dispatch(actions.fetchAbsencesListFailed(err.response.data.error));
+    });
 };
 
 export const updateAbsencesJustification = (absencesId, justified = true) => dispatch => {

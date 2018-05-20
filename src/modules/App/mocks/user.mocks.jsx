@@ -5,5 +5,5 @@ export default {
   username: 'root',
   roleId: 1,
   roleLabel: 'ADMIN',
-  picture: 'A.png'
+  picture: 'harold.jpg'
 };

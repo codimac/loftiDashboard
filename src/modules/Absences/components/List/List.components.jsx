@@ -13,10 +13,6 @@ import Form from '@Absences/containers/Form.containers';
 import Wrapper from '@Shared/components/Wrapper/Wrapper.components';
 import Chart from '@Shared/components/Chart/Chart.components';
 
-import FilterInput from '@Shared/containers/FilterInput.containers';
-import FilterTd from '@Shared/components/FilterTd/FilterTd.components';
-import FilterRange from '@Shared/containers/FilterRange.containers';
-
 import './List.styles';
 
 class List extends React.Component {
@@ -89,18 +85,6 @@ class List extends React.Component {
         <div className="absences flex justify-content-sb">
 
           <Wrapper title="Liste des élèves absents" className="absences__list">
-            <div className="filters">
-              <div className="students">
-                <FilterTd />
-                <FilterInput placeholder="Elève..." />
-              </div>
-              <div className="range">
-                <span>Notes : </span>
-                <div className="slider">
-                  <FilterRange />
-                </div>
-              </div>
-            </div>
             <ReactTable
               defaultPageSize={promotion.length}
               data={promotion}
@@ -145,7 +129,7 @@ class List extends React.Component {
             </Wrapper>
 
             <Wrapper title="En graphique">
-              <Chart title="Les absences par jour">
+              <Chart title="Les absences par jour de la semaine">
                 <WeekGraph />
               </Chart>
             </Wrapper>
