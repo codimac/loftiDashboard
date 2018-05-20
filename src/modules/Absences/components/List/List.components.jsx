@@ -35,9 +35,9 @@ class List extends React.Component {
     super();
     this.state = {
       selectedStudent: false,
+      addAbsence: false,
       student: null,
     };
-    this.closeStudent = this.closeStudent.bind(this);
   }
 
   componentDidMount() {
@@ -51,15 +51,19 @@ class List extends React.Component {
    */
   getStudentDetails(event, row) {
     const {firstname, lastname, id} = row;
-    this.setState({selectedStudent: true, student: {firstname, lastname, id}});
+    this.setState({selectedStudent: true, addAbsence: true, student: {firstname, lastname, id}});
   }
 
   /**
    * close the student details panel
    */
-  closeStudent() {
-    this.setState({selectedStudent: false, student: null});
-  }
+  closeStudentList = ev => {
+    this.setState({selectedStudent: false});
+  };
+
+  closeAddStudent = ev => {
+    this.setState({addAbsence: false});
+  };
 
   render() {
     const { promotion } = this.props;
@@ -103,20 +107,24 @@ class List extends React.Component {
             />
           </Wrapper>
 
-          {
-            this.state.selectedStudent &&
-              <div className="right-side">
-                <Wrapper title={`les absences de ${this.state.student.firstname} ${this.state.student.lastname}`} onClose={this.closeStudent} className="absences__details">
+          <div className="right-side">
+            {
+              this.state.selectedStudent &&
+                <Wrapper title={`Les absences de ${this.state.student.firstname} ${this.state.student.lastname}`} onClose={this.closeStudentList} className="absences__details">
                   <StudentDetails id={this.state.selectedStudent} student={this.state.student} />
                 </Wrapper>
+            }
 
-                <Wrapper title={`Ajouter une absence pour ${this.state.student.firstname} ${this.state.student.lastname}`} className="absences__add">
+            {
+              this.state.addAbsence &&
+                <Wrapper title={`Ajouter une absence pour ${this.state.student.firstname} ${this.state.student.lastname}`} onClose={this.closeAddStudent} className="absences__add">
                   <Form student={this.state.student} />
                 </Wrapper>
-              </div>
-          }
-        </div>
-        <div className="absences">
+            }
+          </div>
+
+
+          { /* <div className="absences">
           <div className="flex justify-content-sb">
             <section>
               <PodiumStudient />
@@ -127,6 +135,7 @@ class List extends React.Component {
             </section>
           </div>
 
+          </div> */ }
         </div>
       </React.Fragment>
     );

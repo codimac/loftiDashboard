@@ -16,6 +16,15 @@
   flex-direction: column !important;
 }
 
+.flex-flow-row {
+  display: flex !important;
+  flex-flow: row wrap !important;
+  &::after {
+    content: '';
+    float: auto !important;
+  }
+}
+
 .justify-content-start{
   justify-content:flex-start !important;
 }

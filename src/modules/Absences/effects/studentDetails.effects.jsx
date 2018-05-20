@@ -1,12 +1,15 @@
 import Http from '@Shared/Http';
-import * as actions from '@Absences/actions/studentDetails.actions';
-import mocks from '@Absences/mocks/studentMocks.mocks';
-import { requestSvc } from '@services/request.services';
-import { success, error } from '@Absences/mocks/form.mocks';
 import store from '@App/App.store';
 
+import { success, error } from '@Absences/mocks/form.mocks';
+import mocks from '@Absences/mocks/studentMocks.mocks';
+
+import * as actions from '@Absences/actions/studentDetails.actions';
+
+import { requestSvc } from '@services/request.services';
+import { toasterSvc } from '@services/toaster.service';
+
 export const getAbsencesList = (id) => dispatch => {
-  console.log('mocks', mocks);
   dispatch(actions.fetchAbsencesList());
   Http.get('/always/true', requestSvc.generateOptions())
     .then(res => {
@@ -30,10 +33,14 @@ export const updateAbsencesJustification = (absencesId, justified = true) => dis
 
   Http.post('/always/true', data, requestSvc.generateOptions())
     .then(res => {
-      console.log(`absences justification updated id: ${absencesId}`);
+      const abs = newData.find(absence => absence.id === absencesId);
+      toasterSvc.success(`Absence du ${abs.beginning} a été ${abs.justified ? 'justifiée' : 'annulée'}`);
       dispatch(actions.updateAbsencesJustificationSucceed(success));
       dispatch(actions.fetchAbsencesListSucceed(newData));
     })
-    .catch(actions.updateAbsencesJustificationFailed(error));
+    .catch(err => {
+      actions.updateAbsencesJustificationFailed(error)
+      toasterSvc.error('Erreur lors de la mise à jour de l\'absence');
+    });
 };
 

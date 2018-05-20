@@ -46,5 +46,10 @@
     padding: 3px 8px;
     display: inline-block;
     width: auto;
+    &.button__delete {
+      background: none;
+      color: red;
+      border: none;
+    }
   }
 }
