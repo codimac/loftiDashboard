@@ -5,16 +5,19 @@ import ReactTable from 'react-table';
 import { getPromotion } from '@Promos/reducers/details.reducers';
 
 import * as promotionsDetailsEffects from '@Promos/effects/details.effects';
-import Details from '@Absences/containers/Details.containers';
+import StudentDetails from '@Absences/containers/StudentDetails.containers';
 import PodiumStudient from '@Absences/containers/PromoPodiumStudent.containers';
 import WeekGraph from '@Absences/containers/WeekGraph.containers';
+import Form from '@Absences/containers/Form.containers';
 
-import './styles';
+import Wrapper from '@Shared/components/Wrapper/Wrapper.components';
+import Chart from '@Shared/components/Chart/Chart.components';
+
+import './List.styles';
 
 class List extends React.Component {
 
   static propTypes = {
-    // year: Proptypes.number.isRequired,
     promotion: Proptypes.arrayOf(Proptypes.shape({
       id: Proptypes.number.isRequired,
       firstname: Proptypes.string.isRequired,
@@ -32,9 +35,9 @@ class List extends React.Component {
     super();
     this.state = {
       selectedStudent: false,
+      addAbsence: false,
       student: null,
     };
-    this.closeStudent = this.closeStudent.bind(this);
   }
 
   componentDidMount() {
@@ -48,42 +51,50 @@ class List extends React.Component {
    */
   getStudentDetails(event, row) {
     const {firstname, lastname, id} = row;
-    this.setState({selectedStudent: true, student: {firstname, lastname, id}});
+    this.setState({selectedStudent: true, addAbsence: true, student: {firstname, lastname, id}});
   }
 
   /**
    * close the student details panel
    */
-  closeStudent() {
-    this.setState({selectedStudent: false, student: null});
-  }
+  closeStudentList = ev => {
+    this.setState({selectedStudent: false});
+  };
+
+  closeAddStudent = ev => {
+    this.setState({addAbsence: false});
+  };
 
   render() {
     const { promotion } = this.props;
-    const year = this.props.match.params.promotionId; // à améliorer
     const columns = [
-      {Header: 'Nom', accessor: 'lastname'},
-      {Header: 'Prénom', accessor: 'firstname'},
+      {Header: 'Eleve', accessor: 'lastname',
+        Cell: row => `${row.original.firstname} ${row.original.lastname}`
+      },
+      {Header: 'Absences', accessor: 'absences', width: 75,
+        Cell: row => row.value
+      },
       {Header: 'Voir', accessor: 'id', width: 50, className: 'centered-col',
-        Cell: row => (<span role='none' className='icon-access' onClick={(e) => this.getStudentDetails(e, row.row)}> > </span>)}
+        Cell: row => <span role='none' className="link link__yellow" onClick={(e) => this.getStudentDetails(e, row.row)}> > </span>}
     ];
-    const len = promotion.length;
+
+
     return (
       <React.Fragment>
-        <div className="absences">
-          <h1>Les absences de la promos {year}</h1>
-          <div className="flex justify-content-sb">
-            <section className="alig-items-start">
-              <ReactTable
-                defaultPageSize={len}
-                data={promotion}
-                noDataText="Aucun élève trouvé."
-                columns={columns}
-                showPagination={false}
-                className="-highlight"
-                resizable={false}
-                pageSize={len}
-                getTrProps={(state, rowInfo, column) => {
+        <h1 className="page-title">Les absences de la promo {this.props.match.params.promotionId}</h1>
+        <div className="absences flex justify-content-sb">
+
+          <Wrapper title="Liste des élèves absents" className="absences__list">
+            <ReactTable
+              defaultPageSize={promotion.length}
+              data={promotion}
+              noDataText="Aucun élève trouvé."
+              columns={columns}
+              showPagination={false}
+              className="-highlight"
+              resizable={false}
+              pageSize={promotion.length}
+              getTrProps={(state, rowInfo, column) => {
                 return {
                   onClick: (e, handleOriginal) => {
                     this.getStudentDetails(e, rowInfo.original);
@@ -93,21 +104,36 @@ class List extends React.Component {
                   }
                 };
               }}
-              />
-            </section>
-            <section>
-              {
-                this.state.selectedStudent===true &&
-                  <Details id={this.state.selectedStudent} student={this.state.student} onClose={this.closeStudent} />
-              }
-              <PodiumStudient />
-            </section>
-            <section className='graph-high'>
-              <h3>Les jours mal aimés</h3>
-              <WeekGraph />
-            </section>
+            />
+          </Wrapper>
+
+          <div className="middle">
+            {
+              this.state.selectedStudent &&
+                <Wrapper title={`Les absences de ${this.state.student.firstname} ${this.state.student.lastname}`} onClose={this.closeStudentList} className="absences__details">
+                  <StudentDetails id={this.state.selectedStudent} student={this.state.student} />
+                </Wrapper>
+            }
+
+            {
+              this.state.addAbsence &&
+                <Wrapper title={`Ajouter une absence pour ${this.state.student.firstname} ${this.state.student.lastname}`} onClose={this.closeAddStudent} className="absences__add">
+                  <Form student={this.state.student} />
+                </Wrapper>
+            }
           </div>
 
+          <div className="right-side">
+            <Wrapper title="Les jours les moins aimés">
+              <PodiumStudient />
+            </Wrapper>
+
+            <Wrapper title="En graphique">
+              <Chart title="Les absences par jour de la semaine">
+                <WeekGraph />
+              </Chart>
+            </Wrapper>
+          </div>
         </div>
       </React.Fragment>
     );

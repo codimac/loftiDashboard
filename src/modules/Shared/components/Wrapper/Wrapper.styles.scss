@@ -5,6 +5,8 @@
   border-radius: 5px;
   height: 100%;
   .head {
+    display: inline-flex;
+    justify-content: space-between;
     width: 100%;
     color: $black;
     text-align: left;
@@ -13,6 +15,12 @@
     padding-bottom: 10px;
     position: relative;
     font-weight: 600;
+    .close {
+      color: red;
+      padding: 0 15px;
+      cursor: pointer;
+      outline: none;
+    }
     &::after {
       content: '';
       position: absolute;
@@ -36,10 +44,10 @@
       display: inline-flex;
       justify-content: space-between;
       span {
-        width: 15%;
+        width: 20%;
       }
       .slider {
-        width: 80%;
+        width: 78%;
       }
     }
   }
@@ -53,3 +61,4 @@
     }
   }
 }
+

@@ -12,7 +12,7 @@
 // wave for buttons
 .wave-buttons{
   transform:scaleX(0) scaleY(10);
-  background: darken($yellow, 8%);
+  background: lighten($yellow, 15%);
   border-radius:4%;
 }
 

@@ -1,34 +1,41 @@
-$second-height: 75px;
-.p-second {
-  width: 100px;
-  height: $second-height; // height: $second-height;
-  background-color: rgb(31, 48, 3);
-  line-height: $second-height; // line-height: $second-height;
-}
-
-$first-height: 100px;
-.p-first {
-  width: 100px;
-  height: $first-height; // height: $first-height;
-  background-color: darkkhaki;
-  line-height: $first-height; // line-height: $first-height;
-}
-
-$third-height: 50px;
-.p-third {
-  width: 100px;
-  height: $third-height; // height: $third-height;
-  background-color: darkcyan;
-  line-height: $third-height; // line-height: $third-height;
-}
-
-.li-podium {
-  &:hover {
-    .p-first,
-    .p-second,
-    .p-third {
-      background-color: $white; // background-color: $color-4;
+.podium {
+  width: 100%;
+  .li-podium {
+    display: inline-block;
+    vertical-align: bottom;
+    text-align: center;
+    width: 33.3%;
+    cursor: pointer;
+    & > * {
+      width: 100%;
+      &:hover {
+        text-decoration: none;
+      }
+    }
+    .p-first, .p-second, .p-third {
+      width: 100%;
+      margin-top: 15px;
+      color: white;
+      font-weight: bold;
+      font-size: 1.5em;
+    }
+    $second-height: 75px;
+    .p-second{
+      height: $second-height;
+      background-color: darken($yellow, 10%);
+      line-height: $second-height;
+    }
+    $first-height: 100px;
+    .p-first {
+      height: $first-height;
+      background-color: $yellow;
+      line-height: $first-height;
+    }
+    $third-height: 50px;
+    .p-third{
+      height: $third-height;
+      background-color: lighten($yellow, 10%);
+      line-height: $third-height;
     }
   }
 }
-

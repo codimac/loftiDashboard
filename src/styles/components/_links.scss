@@ -63,6 +63,12 @@
   &.link__white {
     color: $white;
   }
+  &.link__yellow {
+    color: $yellow;
+    &:hover {
+      text-decoration: underline;
+    }
+  }
   &.link__disconnect {
     width: 100%;
     text-align: center;

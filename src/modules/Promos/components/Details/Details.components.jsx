@@ -12,7 +12,6 @@ import Chart from '@Shared/components/Chart/Chart.components';
 import { average, arrayOf, maxInArray } from '@helpers/array.helpers';
 import { parsedData, formatData } from '@helpers/chart.helpers';
 
-import plus from '@images/icon-plus.png';
 import './Details.styles';
 
 class DetailsPromotion extends React.Component {
@@ -50,7 +49,8 @@ class DetailsPromotion extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.promotionId !== nextProps.match.params.promotionId) {
+    if (this.props.year !== nextProps.year) {
+      console.log(this.props);
       this.props.getPromotion(nextProps.match.params.promotionId);
     }
     if (nextProps.promotion.length) {
@@ -113,7 +113,8 @@ class DetailsPromotion extends React.Component {
         Cell: row => row.value
       },
       {Header: 'Page', accessor: 'username', width: 50, className: 'centered-col',
-        Cell: row => (<span className='icon-access'><Link to={`/promotions/${this.props.match.params.promotionId}/students/${row.value}`}> > </Link> </span>)}
+        Cell: row => <Link to={`/promotions/${this.props.match.params.promotionId}/students/${row.value}`} className="link link__yellow"> > </Link>
+      }
     ];
 
     const len = promotion.length;

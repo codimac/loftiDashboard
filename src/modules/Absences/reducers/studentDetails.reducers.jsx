@@ -14,11 +14,15 @@ const absencesListReducer = (state = absencesListInitialState, action) => {
     case types.FETCHING_ABSENCES_LIST_SUCCESS:
       return {
         ...state,
-        ...action.payload
+        ...action.payload,
+        error: null
       };
 
     case types.FETCHING_ABSENCES_LIST_FAILURE:
-      return state;
+      return {
+        ...state,
+        ...action.payload
+      };
 
     default:
       return state;

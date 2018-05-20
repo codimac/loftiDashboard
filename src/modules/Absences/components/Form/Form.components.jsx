@@ -1,6 +1,10 @@
 import React from 'react';
 import Proptypes from 'prop-types';
 
+import Input from '@Shared/components/Input/Input.components';
+
+import './Form.styles';
+
 class Form extends React.Component {
   static propTypes = {
     createAbsences: Proptypes.func.isRequired,
@@ -28,11 +32,13 @@ class Form extends React.Component {
   oneAbsence(data, key) {
     return (
       <div key={key}>
-        <input type="date" value={data.date} name="date" onChange={(ev) => this.handleDate(ev, key)} />
-        <label htmlFor="justified"> Justification
-          <input id="justified" value={data.justified} type="checkbox" name="justified" onChange={(ev) => this.handleJustified(ev, key)} />
-        </label>
-        <button onClick={(ev) => this.deleteAbsencesInput(ev, key)}>X</button>
+        <div className="flex flex-inline justify-content-sb align-items-center addAbsence mb-2">
+          <Input type="date" value={data.date} name="date" onChange={(ev) => this.handleDate(ev, key)} />
+          <label htmlFor={`justified-${key}`}> Justification
+            <input id={`justified-${key}`} value={data.justified} type="checkbox" name="justified" onChange={(ev) => this.handleJustified(ev, key)} />
+          </label>
+          <button className="button button__switch button__delete" onClick={(ev) => this.deleteAbsencesInput(ev, key)}>{'\u2716'}</button>
+        </div>
       </div>
     );
   }
@@ -111,7 +117,6 @@ class Form extends React.Component {
       const {student} = this.props;
       const {datas} = this.state;
       const datasToSend = { ...student, absences: datas};
-      console.log(datasToSend);
       this.props.createAbsences(datasToSend);
     }
   }
@@ -119,13 +124,14 @@ class Form extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <h3>Ajouter une absences </h3>
         <form onSubmit={this.submit} >
           {
             this.state.datas.map((data, id) => this.oneAbsence(data, id))
           }
-          <button onClick={this.addAbsencesInput} >Ajouter une autre absences </button>
-          <button type="submit" disabled={!this.state.validForm}>Enregistrer </button>
+          <div className="flex flex-inline justify-content-sb addButton">
+            <button className="button small" onClick={this.addAbsencesInput}>Ajouter une absence</button>
+            <button className="button small" type="submit" disabled={!this.state.validForm}>Enregistrer</button>
+          </div>
         </form>
       </React.Fragment>
 
